@@ -1,0 +1,23 @@
+{
+    "name": "Arduino Eurorack",
+    "version": "0.0.1",
+    "description": "Utilities for making Eurorack modules from Arduino devices",
+    "keywords": "eurorack",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/pigatron-industries/arduino_eurorack.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Robert Ellis"
+      }
+    ],
+    "license": "Unlicense",
+    "dependencies": {
+      "thomasfredericks/Bounce2": "^2.57"
+    },
+    "frameworks": "arduino",
+    "platforms": "*"
+  }
