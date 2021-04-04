@@ -5,8 +5,9 @@
 
 #include "util/util.h"
 
-#include "input/PushButton.h"
-#include "input/RotaryEncoder.h"
+#include "input/digital/GateInput.h"
+#include "input/digital/PushButton.h"
+#include "input/digital/RotaryEncoder.h"
 
 #include "input/analog/LinearInput.h"
 #include "input/analog/ExpInput.h"
