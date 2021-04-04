@@ -1,3 +1,9 @@
+#ifndef Eurorack_h
+#define Eurorack_h
+
+#include "EurorackConfig.h"
+
+#include "util/util.h"
 
 #include "input/PushButton.h"
 #include "input/RotaryEncoder.h"
@@ -9,4 +15,4 @@
 #include "input/analog/FilterInput.h"
 #include "input/analog/CrossfadeInput.h"
 
-#include "util/util.h"
+#endif
