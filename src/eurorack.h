@@ -16,4 +16,6 @@
 #include "input/analog/FilterInput.h"
 #include "input/analog/CrossfadeInput.h"
 
+#include "output/GateOutput.h"
+
 #endif
