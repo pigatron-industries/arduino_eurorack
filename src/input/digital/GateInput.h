@@ -1,5 +1,5 @@
-#ifndef PushButton_h
-#define PushButton_h
+#ifndef GateInput_h
+#define GateInput_h
 
 #include <Bounce2.h>
 
