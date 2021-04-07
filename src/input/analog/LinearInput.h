@@ -3,45 +3,28 @@
 
 #include <inttypes.h>
 #include "AbstractInput.h"
-
+#include "../../util/RangeScale.h"
 
 class LinearInput : public AbstractInput {
     public:
         LinearInput(uint8_t _pin, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
             AbstractInput(_pin),
-            realMin(_realMin),
-            realMax(_realMax),
-            virtualMin(_virtualMin),
-            virtualMax(_virtualMax)  {
-                realRange = realMax - realMin;
-                virtualRange = virtualMax - virtualMin;
+            scale(_realMin, _realMax, _virtualMin, _virtualMax)  {
         }
 
         void setRange(float _virtualMin, float _virtualMax) {
-            virtualMin = _virtualMin;
-            virtualMax = _virtualMax;
-            virtualRange = virtualMax - virtualMin;
+            scale.setToRange(_virtualMin, _virtualMax);
         }
 
         inline float getValue() {
             float voltage = getSmoothedVoltage();
-            if(voltage < realMin) {
-                voltage = realMin;
-            } else if(voltage > realMax) {
-                voltage = realMax;
-            }
-            return (((voltage - realMin) * virtualRange) / realRange) + virtualMin;
+            return scale.convert(voltage);
         }
 
     private:
-        float realMin;
-        float realMax;
-        float virtualMin;
-        float virtualMax;
-        float realRange;
-        float virtualRange;
-
         float virtualValue;
+
+        RangeScale scale;
 };
 
 #endif

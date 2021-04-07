@@ -4,6 +4,7 @@
 #include <inttypes.h>
 #include "Arduino.h"
 #include "../../util/util.h"
+#include "../../util/RangeScale.h"
 
 #define SMOOTHING_FAST 0.0005
 #define SMOOTHING_SLOW 0.1
@@ -38,6 +39,8 @@ class AbstractInput {
         uint8_t pin;
         float smoothingWeight;
 
+        RangeScale voltageScale = RangeScale(0, 4095, -5, 5);
+
         uint32_t value;
         float targetVoltage;
         float smoothedVoltage;
@@ -47,7 +50,7 @@ class AbstractInput {
         bool readVoltage() {
             uint32_t value = analogRead(pin);
             float prevVoltage = smoothedVoltage;
-            float newVoltage = ((value / 4095.0) * -10.0) + 5; //represents actual voltage on input of op-amp -5v to +5v
+            float newVoltage = voltageScale.convert(value); //represents actual voltage on input of op-amp -5v to +5v
             float diff = fabsf(newVoltage-prevVoltage);
             if(diff > 0.02) {
                 changed = true;
