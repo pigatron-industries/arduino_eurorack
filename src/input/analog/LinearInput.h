@@ -9,7 +9,7 @@ class LinearInput : public AbstractInput {
     public:
         LinearInput(uint8_t _pin, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
             AbstractInput(_pin),
-            scale(_realMin, _realMax, _virtualMin, _virtualMax)  {
+            scale(_realMin, _realMax, _virtualMin, _virtualMax) {
         }
 
         void setRange(float _virtualMin, float _virtualMax) {

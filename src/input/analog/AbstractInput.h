@@ -39,7 +39,8 @@ class AbstractInput {
         uint8_t pin;
         float smoothingWeight;
 
-        RangeScale voltageScale = RangeScale(0, 4095, -5, 5);
+        //represents actual voltage on input of inverting op-amp -5v to +5v
+        RangeScale voltageScale = RangeScale(0, 4095, 5, -5); 
 
         uint32_t value;
         float targetVoltage;
@@ -50,7 +51,7 @@ class AbstractInput {
         bool readVoltage() {
             uint32_t value = analogRead(pin);
             float prevVoltage = smoothedVoltage;
-            float newVoltage = voltageScale.convert(value); //represents actual voltage on input of op-amp -5v to +5v
+            float newVoltage = voltageScale.convert(value);
             float diff = fabsf(newVoltage-prevVoltage);
             if(diff > 0.02) {
                 changed = true;

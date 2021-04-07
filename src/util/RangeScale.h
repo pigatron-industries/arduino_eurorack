@@ -1,6 +1,8 @@
 #ifndef RangeScale_h
 #define RangeScale_h
 
+#include <Arduino.h>
+
 class RangeScale {
     public:
         RangeScale(float fromMin, float fromMax, float toMin, float toMax) {
@@ -11,7 +13,7 @@ class RangeScale {
             calcFactor();
         }
 
-        int convert(float fromValue) {
+        float convert(float fromValue) {
             if(fromValue < fromMin) {
                 fromValue = fromMin;
             } else if (fromValue > fromMax) {
@@ -22,7 +24,7 @@ class RangeScale {
 
         void setToRange(float toMin, float toMax) { 
             this->toMin = toMin; 
-            this->toMax - toMax;
+            this->toMax = toMax;
             calcFactor();
         }
 
