@@ -4,6 +4,7 @@
 #include "EurorackConfig.h"
 
 #include "util/util.h"
+#include "util/CycleEnum.h"
 
 #include "input/digital/GateInput.h"
 #include "input/digital/PushButton.h"
