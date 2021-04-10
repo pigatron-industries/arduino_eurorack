@@ -4,8 +4,8 @@ Utilities for creating Eurorack modules using Arduino devices.
 
 Tested with the following devices:
 
-Teensy LC / 4.0 / 4.1
-Electrosmith Daisy
+    Teensy LC / 4.0 / 4.1
+    Electrosmith Daisy
 
 
 ## Usage
