@@ -1,13 +1,13 @@
-#ifndef GateInput_h
-#define GateInput_h
+#ifndef AnalogGateInput_h
+#define AnalogGateInput_h
 
 #include <inttypes.h>
 #include "LinearInput.h"
 
 
-class GateInput : public LinearInput {
+class AnalogGateInput : public LinearInput {
     public:
-        GateInput(uint8_t _pin, float triggerVoltage = 3) : 
+        AnalogGateInput(uint8_t _pin, float triggerVoltage = 3) : 
             LinearInput(_pin, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
                 smoothingWeight = 1;
