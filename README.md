@@ -21,7 +21,7 @@ Include the library with
 Recommended circuit. Uses an inverting rail-to-rail op-amp powered by 3.3V. Scales an input of -5V/5V to 3.3V/0V required by the Arduino. 
 The values are then re-inverted by the library code. Requires a -5V reference voltage.
 
-![Analog Input Circuit](/docs/input_analog.png)
+![Analog Input Circuit](/docs/input_analogue.png)
 
 
 ### Digital Inputs
