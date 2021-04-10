@@ -76,3 +76,44 @@ Detect trigger in main loop:
 Recommended circuit.
 
 ![Digital Input Circuit](/docs/input_digital.png)
+
+#### TriggerInput
+
+    TriggerInput triggerInput = TriggerInput(0);
+
+Main loop:
+
+    if(triggerInput.didRise()) {
+        
+    } else if (triggerInput.didFall()) {
+    
+    }
+    
+Trigger input uses interrupts to detect pin changes and can detect much shorter pulses that the other inputs. Has no debouncing so cannot be used for user pressable buttons.
+
+### Control Inputs
+
+#### PushButton
+
+Switch or push button connected to 0V and Arduino pin. Switch debouncing included.
+
+    PushButton button = PushButton(0);
+    
+Main loop:
+
+    if(button.update() && button.pressed()) {
+        
+    }
+
+#### RotaryEncoder
+
+A quadrature rotary ender connected to 2 pins, whihth the common pin conencted to 0V.
+
+    RotaryEncoder encoder = RotaryEncoder(1, 2);
+    
+getMovement() will return negative or positive depending on direction the encoder was moved:
+    
+    if(encoder.update()) {
+        int movement = encoder.getMovement()
+    }
+    
