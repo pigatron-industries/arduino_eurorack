@@ -28,4 +28,4 @@ The values are then re-inverted by the library code. Requires a -5V reference vo
 
 Recommended circuit.
 
-![Digital Input Circuit](/docs/input_analog.png)
+![Digital Input Circuit](/docs/input_digital.png)
