@@ -22,8 +22,6 @@ class RotaryEncoder {
 public:
     RotaryEncoder(uint8_t pin1, uint8_t pin2);
 
-    static void interruptCallback();
-
     bool update() {
         movement = position;
         position = 0; 
@@ -44,6 +42,7 @@ private:
     unsigned char pin1;
     unsigned char pin2;
 
+    static void interrupt();
     unsigned char process();
 };
 

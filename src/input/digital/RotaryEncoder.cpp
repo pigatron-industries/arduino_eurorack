@@ -73,11 +73,11 @@ RotaryEncoder::RotaryEncoder(uint8_t pin1, uint8_t pin2) {
 
     state = R_START;
 
-    attachInterrupt(pin1, RotaryEncoder::interruptCallback, CHANGE);
-    attachInterrupt(pin2, RotaryEncoder::interruptCallback, CHANGE);
+    attachInterrupt(pin1, RotaryEncoder::interrupt, CHANGE);
+    attachInterrupt(pin2, RotaryEncoder::interrupt, CHANGE);
 }
 
-void RotaryEncoder::interruptCallback() {
+void RotaryEncoder::interrupt() {
     unsigned char result = encoderPtr->process();
     if (result == DIR_CW) {
         encoderPtr->position++;
