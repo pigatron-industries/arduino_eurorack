@@ -11,8 +11,8 @@ public:
     }
 
     bool update() { return debouncer.update(); }
-    bool rose() { return debouncer.rose(); }
-    bool fell() { return debouncer.fell(); }
+    bool rose() { return debouncer.fell(); }
+    bool fell() { return debouncer.rose(); }
     unsigned long duration() { return debouncer.duration(); }
     unsigned long previousDuration() { return debouncer.previousDuration(); }
 
