@@ -13,6 +13,11 @@ Electrosmith Daisy
 Include the library with 
 
     include <eurorack.h>
+    
+Initialise the library with
+
+    Eurorack::init();
+    
 
 ## Components
 
@@ -22,6 +27,48 @@ Recommended circuit. Uses an inverting rail-to-rail op-amp powered by 3.3V. Scal
 The values are then re-inverted by the library code. Requires a -5V reference voltage.
 
 ![Analog Input Circuit](/docs/input_analogue.png)
+
+#### LinearInput
+
+Instantiate a linear input on pin number A0, where the real voltage range goes from -5 to 5 and the output of getValue() is scaled from 0 to 10:
+
+    LinearInput cvInput = LinearInput(A0, -5, 5, 0, 10);
+    
+In main loop get value with:
+
+    if(cvInput.update()) {
+        float value = cvInput.getValue();
+    }
+
+#### ExpInput
+
+Useful for frequency controls and other input that require an exponential response
+
+    ExpInput pitchInput = ExpInput(A0);
+
+Can optionally specifiy a mid value, which is the value when te voltage is at 0V. The default is 523.25 which is the frequency of midi note C5:
+
+    ExpInput pitchInput = ExpInput(A0, 440);
+
+The output will then be divided by 2 for each 1V below 0 and multipled by 2 for each 1V above 0. The value is given by the formual:
+
+    midValue * 2^voltage
+
+#### AnalogGateInput
+
+Use an analogue input as a gate. This is useful to reuse an input with analogue circuitry as a gate input.
+
+    AnalogGateInput gateInput = AnalogGateInput(A0);
+
+Trigger voltage default to 3V, bt van also be specified:
+
+    AnalogGateInput gateInput = AnalogGateInput(A0, 2.5);
+
+Detect trigger in main loop:
+
+    if(gateInput.update()) {
+        bool trigger = gateInput.isTriggered();
+    }
 
 
 ### Digital Inputs
