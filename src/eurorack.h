@@ -7,6 +7,7 @@
 #include "util/CycleEnum.h"
 
 #include "input/digital/GateInput.h"
+#include "input/digital/TriggerInput.h"
 #include "input/digital/PushButton.h"
 #include "input/digital/RotaryEncoder.h"
 
