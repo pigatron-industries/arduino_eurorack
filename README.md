@@ -116,4 +116,15 @@ getMovement() will return negative or positive depending on direction the encode
     if(encoder.update()) {
         int movement = encoder.getMovement()
     }
+
+### Utilities
+
+#### RangeScale
+
+Scales a value from one range to another range.
+
+    RangeScale scale(fromMin, fromMax, toMin, toMax);
     
+    float toValue = scale.convert(fromValue);
+    
+
