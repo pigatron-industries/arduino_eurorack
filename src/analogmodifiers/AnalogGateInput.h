@@ -1,7 +1,6 @@
 #ifndef AnalogGateInput_h
 #define AnalogGateInput_h
 
-#include <inttypes.h>
 #include "LinearInput.h"
 
 template<class T = AnalogInputPin>

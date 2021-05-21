@@ -1,7 +1,6 @@
 #ifndef ExpInput_h
 #define ExpInput_h
 
-#include <inttypes.h>
 #include "AbstractInput.h"
 
 template<class T = AnalogInputPin>

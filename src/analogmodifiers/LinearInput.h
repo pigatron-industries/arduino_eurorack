@@ -3,7 +3,7 @@
 
 #include <inttypes.h>
 #include "AbstractInput.h"
-#include "../../util/RangeScale.h"
+#include "../util/RangeScale.h"
 
 template<class T = AnalogInputPin>
 class LinearInput : public AbstractInput<T> {

@@ -1,7 +1,6 @@
 #ifndef CrossfadeInput_h
 #define CrossfadeInput_h
 
-#include <inttypes.h>
 #include "LinearInput.h"
 
 template<class T = AnalogInputPin>
