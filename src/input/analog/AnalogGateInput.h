@@ -15,8 +15,8 @@ class AnalogGateInput : public LinearInput<T> {
 
         inline bool update() {
             bool prevOpen = open;
-            if(LinearInput<T>::update()) {
-                open = LinearInput<T>::getValue() > triggerVoltage;
+            if(this->update()) {
+                open = this->getValue() > triggerVoltage;
                 triggered = !prevOpen && open;
                 return true;
             }

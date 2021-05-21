@@ -12,7 +12,7 @@ class PowInput : public LinearInput<T> {
         }
 
         float getValue() { 
-            powValue = powf(LinearInput<T>::getValue(), power);
+            powValue = powf(this->getValue(), power);
             return powValue;
         }
 
