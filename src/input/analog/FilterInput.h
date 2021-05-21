@@ -15,12 +15,12 @@ class FilterInput : public AbstractInput<T> {
         }
 
         inline bool update() {
-            if(readVoltage()) {
-                if(getVoltage() > 0.5) {
+            if(AbstractInput<T>::readVoltage()) {
+                if(AbstractInput<T>::getVoltage() > 0.5) {
                     frequency = zeroFrequency*powf(2, (getVoltage()*2)-6);
                     highPass = true;
                     lowPass = false;
-                } else if (getVoltage() < -0.5) {
+                } else if (AbstractInput<T>::getVoltage() < -0.5) {
                     frequency = zeroFrequency*powf(2, (getVoltage()*2)+7);
                     lowPass = true;
                     highPass = false;

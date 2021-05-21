@@ -13,8 +13,8 @@ class CrossfadeInput : public LinearInput<T> {
 
         inline bool update() {
             if(LinearInput<T>::update()) {
-                dryLevel = (sinf(getValue()*M_PI - M_PI*0.5) + 1)*0.5;
-                wetLevel = (sinf((1-getValue())*M_PI - M_PI*0.5) + 1)*0.5;
+                dryLevel = (sinf(LinearInput<T>::getValue()*M_PI - M_PI*0.5) + 1)*0.5;
+                wetLevel = (sinf((1-LinearInput<T>::getValue())*M_PI - M_PI*0.5) + 1)*0.5;
             }
             return isChanged();
         }

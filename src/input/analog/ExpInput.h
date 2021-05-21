@@ -15,7 +15,7 @@ class ExpInput : public AbstractInput<T> {
         }
 
         float getValue() { 
-            expValue = midValue*powf(2, getSmoothedVoltage());
+            expValue = midValue*powf(2, AbstractInput<T>::getSmoothedVoltage());
             return expValue;
         }
         
