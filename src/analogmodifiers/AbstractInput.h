@@ -3,21 +3,23 @@
 
 #include <inttypes.h>
 #include "Arduino.h"
-#include "../../util/util.h"
-#include "../../util/RangeScale.h"
+#include "../hardware/AnalogInputPin.h"
+#include "../util/util.h"
+#include "../util/RangeScale.h"
 
 #define SMOOTHING_FAST 0.0005
 #define SMOOTHING_SLOW 0.1
 
+template<class T = AnalogInputPin>
 class AbstractInput {
     public:
-        AbstractInput(uint8_t _pin) : 
-            pin(_pin) {
+        AbstractInput(T input) : 
+            input(input) {
                 smoothingWeight = SMOOTHING_SLOW;
         }
 
-        AbstractInput(uint8_t _pin, float smoothingWeight) : 
-            pin(_pin) {
+        AbstractInput(T input, float smoothingWeight) : 
+            input(input) {
                 this->smoothingWeight = smoothingWeight;
         }
 
@@ -36,7 +38,7 @@ class AbstractInput {
         }
 
     protected:
-        uint8_t pin;
+        T input;
         float smoothingWeight;
 
         //represents actual voltage on input of inverting op-amp -5v to +5v
@@ -49,7 +51,7 @@ class AbstractInput {
         bool changed;
 
         bool readVoltage() {
-            uint32_t value = analogRead(pin);
+            uint32_t value = input.read();
             float prevVoltage = smoothedVoltage;
             float newVoltage = voltageScale.convert(value);
             float diff = fabsf(newVoltage-prevVoltage);

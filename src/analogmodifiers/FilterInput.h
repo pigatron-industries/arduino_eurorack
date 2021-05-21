@@ -4,23 +4,24 @@
 #include <inttypes.h>
 #include "AbstractInput.h"
 
-class FilterInput : public AbstractInput {
+template<class T = AnalogInputPin>
+class FilterInput : public AbstractInput<T> {
     public:
-        FilterInput(uint8_t _pin) : AbstractInput(_pin) {
+        FilterInput(T input) : AbstractInput<T>(input) {
         }
 
-        FilterInput(uint8_t _pin, float zeroFrequency) : AbstractInput(_pin) {
+        FilterInput(T input, float zeroFrequency) : AbstractInput<T>(input) {
             this->zeroFrequency = zeroFrequency;
         }
 
         inline bool update() {
-            if(readVoltage()) {
-                if(getVoltage() > 0.5) {
-                    frequency = zeroFrequency*powf(2, (getVoltage()*2)-6);
+            if(this->readVoltage()) {
+                if(this->getVoltage() > 0.5) {
+                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)-6);
                     highPass = true;
                     lowPass = false;
-                } else if (getVoltage() < -0.5) {
-                    frequency = zeroFrequency*powf(2, (getVoltage()*2)+7);
+                } else if (this->getVoltage() < -0.5) {
+                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)+7);
                     lowPass = true;
                     highPass = false;
                 } else {
@@ -28,7 +29,7 @@ class FilterInput : public AbstractInput {
                     highPass = false;
                 }
             }
-            return isChanged();
+            return this->isChanged();
         }
 
         inline float getFrequency() {

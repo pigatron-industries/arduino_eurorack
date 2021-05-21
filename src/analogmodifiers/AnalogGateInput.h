@@ -1,22 +1,21 @@
 #ifndef AnalogGateInput_h
 #define AnalogGateInput_h
 
-#include <inttypes.h>
 #include "LinearInput.h"
 
-
-class AnalogGateInput : public LinearInput {
+template<class T = AnalogInputPin>
+class AnalogGateInput : public LinearInput<T> {
     public:
-        AnalogGateInput(uint8_t _pin, float triggerVoltage = 3) : 
-            LinearInput(_pin, -5, 5, -5, 5)  {
+        AnalogGateInput(T input, float triggerVoltage = 3) : 
+            LinearInput<T>(input, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
-                smoothingWeight = 1;
+                this->smoothingWeight = 1;
         }
 
         inline bool update() {
             bool prevOpen = open;
-            if(LinearInput::update()) {
-                open = getValue() > triggerVoltage;
+            if(this->update()) {
+                open = this->getValue() > triggerVoltage;
                 triggered = !prevOpen && open;
                 return true;
             }

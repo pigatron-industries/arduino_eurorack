@@ -3,12 +3,13 @@
 
 #include <inttypes.h>
 #include "AbstractInput.h"
-#include "../../util/RangeScale.h"
+#include "../util/RangeScale.h"
 
-class LinearInput : public AbstractInput {
+template<class T = AnalogInputPin>
+class LinearInput : public AbstractInput<T> {
     public:
-        LinearInput(uint8_t _pin, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
-            AbstractInput(_pin),
+        LinearInput(T input, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
+            AbstractInput<T>(input),
             scale(_realMin, _realMax, _virtualMin, _virtualMax) {
         }
 
@@ -17,7 +18,7 @@ class LinearInput : public AbstractInput {
         }
 
         inline float getValue() {
-            float voltage = getSmoothedVoltage();
+            float voltage = this->getSmoothedVoltage();
             return scale.convert(voltage);
         }
 

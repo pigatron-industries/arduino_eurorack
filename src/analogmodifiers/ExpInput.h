@@ -1,20 +1,20 @@
 #ifndef ExpInput_h
 #define ExpInput_h
 
-#include <inttypes.h>
 #include "AbstractInput.h"
 
-class ExpInput : public AbstractInput {
+template<class T = AnalogInputPin>
+class ExpInput : public AbstractInput<T> {
     public:
-        ExpInput(uint8_t _pin) : AbstractInput(_pin) {
+        ExpInput(T input) : AbstractInput<T>(input) {
         }
 
-        ExpInput(uint8_t _pin, float midValue) : AbstractInput(_pin) {
+        ExpInput(T input, float midValue) : AbstractInput<T>(input) {
             this->midValue = midValue;
         }
 
         float getValue() { 
-            expValue = midValue*powf(2, getSmoothedVoltage());
+            expValue = midValue*powf(2, this->getSmoothedVoltage());
             return expValue;
         }
         
