@@ -3,7 +3,7 @@
 
 #include "LinearInput.h"
 
-template<class T = AnalogInputPin>
+template<class T = AnalogPin>
 class AnalogGateInput : public LinearInput<T> {
     public:
         AnalogGateInput(T input, float triggerVoltage = 3) : 

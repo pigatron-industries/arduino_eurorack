@@ -37,7 +37,9 @@ MAX11300::MAX11300(SPIClass *spi, uint8_t convertPin, uint8_t selectPin, uint8_t
 }
 
 void MAX11300::setDefaults() {
-		setDACref(DACInternal);
+	setDACref(DACInternal);
+    setDACmode(SequentialUpdate);
+    setADCmode(ContinuousSweep);
 }
 
 bool MAX11300::begin() {

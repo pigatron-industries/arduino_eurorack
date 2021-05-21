@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "LinearInput.h"
 
-template<class T = AnalogInputPin>
+template<class T = AnalogPin>
 class PowInput : public LinearInput<T> {
     public:
         PowInput(T input, float power, float realMin, float realMax) : LinearInput<T>(input, realMin, realMax, 0, 1) {

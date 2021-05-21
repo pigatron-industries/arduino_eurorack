@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "AbstractInput.h"
 
-template<class T = AnalogInputPin>
+template<class T = AnalogPin>
 class FilterInput : public AbstractInput<T> {
     public:
         FilterInput(T input) : AbstractInput<T>(input) {

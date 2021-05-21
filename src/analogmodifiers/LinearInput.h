@@ -5,7 +5,7 @@
 #include "AbstractInput.h"
 #include "../util/RangeScale.h"
 
-template<class T = AnalogInputPin>
+template<class T = AnalogPin>
 class LinearInput : public AbstractInput<T> {
     public:
         LinearInput(T input, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 

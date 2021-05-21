@@ -22,6 +22,15 @@ class RangeScale {
             return ((fromValue - fromMin) * factor) + toMin;
         }
 
+        float convertReverse(float toValue) {
+            if(toValue < toMin) {
+                toValue = toMin;
+            } else if (toValue > toMax) {
+                toValue = toMax;
+            }
+            return ((toValue - toMin) * reverseFactor) + fromMin;  
+        }
+
         void setToRange(float toMin, float toMax) { 
             this->toMin = toMin; 
             this->toMax = toMax;
@@ -35,12 +44,13 @@ class RangeScale {
 
     private:
         float fromMin, fromMax, toMin, toMax;
-        float fromRange, toRange, factor;
+        float fromRange, toRange, factor, reverseFactor;
 
         void calcFactor() {
             fromRange = fromMax - fromMin;
             toRange = toMax - toMin;
             factor = toRange / fromRange;
+            reverseFactor = fromRange / toRange;
         }
 };
 
