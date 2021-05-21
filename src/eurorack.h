@@ -6,6 +6,8 @@
 #include "util/util.h"
 #include "util/CycleEnum.h"
 
+#include "hardware/AnalogInputPin.h"
+
 #include "input/digital/GateInput.h"
 #include "input/digital/TriggerInput.h"
 #include "input/digital/PushButton.h"
