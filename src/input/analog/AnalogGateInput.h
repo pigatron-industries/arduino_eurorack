@@ -10,7 +10,7 @@ class AnalogGateInput : public LinearInput<T> {
         AnalogGateInput(T input, float triggerVoltage = 3) : 
             LinearInput<T>(input, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
-                smoothingWeight = 1;
+                this->smoothingWeight = 1;
         }
 
         inline bool update() {

@@ -16,7 +16,7 @@ class CrossfadeInput : public LinearInput<T> {
                 dryLevel = (sinf(this->getValue()*M_PI - M_PI*0.5) + 1)*0.5;
                 wetLevel = (sinf((1-this->getValue())*M_PI - M_PI*0.5) + 1)*0.5;
             }
-            return isChanged();
+            return this->isChanged();
         }
 
         inline float getDryLevel() { return dryLevel; }

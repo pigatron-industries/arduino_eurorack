@@ -17,11 +17,11 @@ class FilterInput : public AbstractInput<T> {
         inline bool update() {
             if(this->readVoltage()) {
                 if(this->getVoltage() > 0.5) {
-                    frequency = zeroFrequency*powf(2, (getVoltage()*2)-6);
+                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)-6);
                     highPass = true;
                     lowPass = false;
                 } else if (this->getVoltage() < -0.5) {
-                    frequency = zeroFrequency*powf(2, (getVoltage()*2)+7);
+                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)+7);
                     lowPass = true;
                     highPass = false;
                 } else {
@@ -29,7 +29,7 @@ class FilterInput : public AbstractInput<T> {
                     highPass = false;
                 }
             }
-            return isChanged();
+            return this->isChanged();
         }
 
         inline float getFrequency() {
