@@ -4,11 +4,11 @@
 #include <inttypes.h>
 #include "LinearInput.h"
 
-
-class AnalogGateInput : public LinearInput {
+template<class T>
+class AnalogGateInput : public LinearInput<T> {
     public:
-        AnalogGateInput(uint8_t _pin, float triggerVoltage = 3) : 
-            LinearInput(_pin, -5, 5, -5, 5)  {
+        AnalogGateInput(T input, float triggerVoltage = 3) : 
+            LinearInput(input, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
                 smoothingWeight = 1;
         }

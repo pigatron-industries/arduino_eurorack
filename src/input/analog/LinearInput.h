@@ -5,10 +5,11 @@
 #include "AbstractInput.h"
 #include "../../util/RangeScale.h"
 
-class LinearInput : public AbstractInput {
+template<class T>
+class LinearInput : public AbstractInput<T> {
     public:
-        LinearInput(uint8_t _pin, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
-            AbstractInput(_pin),
+        LinearInput(T input, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
+            AbstractInput(input),
             scale(_realMin, _realMax, _virtualMin, _virtualMax) {
         }
 

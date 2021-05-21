@@ -7,6 +7,7 @@
 class AnalogInputPin {
     public:
         AnalogInputPin(uint8_t pin) { this->pin = pin; }
+        int read() { return analogRead(pin); }
 
     protected:
         uint8_t pin;

@@ -4,10 +4,11 @@
 #include <inttypes.h>
 #include "LinearInput.h"
 
-class CrossfadeInput : public LinearInput {
+template<class T>
+class CrossfadeInput : public LinearInput<T> {
     public:
-        CrossfadeInput(uint8_t _pin, float _realMin, float _realMax) : 
-            LinearInput(_pin, _realMin, _realMax, 0, 1) {
+        CrossfadeInput(T input, float _realMin, float _realMax) : 
+            LinearInput(input, _realMin, _realMax, 0, 1) {
         }
 
         inline bool update() {

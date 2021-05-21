@@ -4,12 +4,13 @@
 #include <inttypes.h>
 #include "AbstractInput.h"
 
-class FilterInput : public AbstractInput {
+template<class T>
+class FilterInput : public AbstractInput<T> {
     public:
-        FilterInput(uint8_t _pin) : AbstractInput(_pin) {
+        FilterInput(T input) : AbstractInput(input) {
         }
 
-        FilterInput(uint8_t _pin, float zeroFrequency) : AbstractInput(_pin) {
+        FilterInput(T input, float zeroFrequency) : AbstractInput(input) {
             this->zeroFrequency = zeroFrequency;
         }
 

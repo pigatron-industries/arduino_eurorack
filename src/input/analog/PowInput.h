@@ -4,9 +4,10 @@
 #include <inttypes.h>
 #include "LinearInput.h"
 
-class PowInput : public LinearInput {
+template<class T>
+class PowInput : public LinearInput<T> {
     public:
-        PowInput(uint8_t pin, float power, float realMin, float realMax) : LinearInput(pin, realMin, realMax, 0, 1) {
+        PowInput(T input, float power, float realMin, float realMax) : LinearInput(input, realMin, realMax, 0, 1) {
             this->power = power;
         }
 

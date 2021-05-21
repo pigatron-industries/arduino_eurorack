@@ -4,9 +4,10 @@
 #include <inttypes.h>
 #include "AbstractInput.h"
 
-class ExpInput : public AbstractInput {
+template<class T>
+class ExpInput : public AbstractInput<T> {
     public:
-        ExpInput(uint8_t _pin) : AbstractInput(_pin) {
+        ExpInput(T input) : AbstractInput(input) {
         }
 
         ExpInput(uint8_t _pin, float midValue) : AbstractInput(_pin) {
