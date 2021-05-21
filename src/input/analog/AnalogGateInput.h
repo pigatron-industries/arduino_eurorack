@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include "LinearInput.h"
 
-template<class T>
+template<class T = AnalogInputPin>
 class AnalogGateInput : public LinearInput<T> {
     public:
         AnalogGateInput(T input, float triggerVoltage = 3) : 
