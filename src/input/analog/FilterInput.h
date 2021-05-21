@@ -7,10 +7,10 @@
 template<class T>
 class FilterInput : public AbstractInput<T> {
     public:
-        FilterInput(T input) : AbstractInput(input) {
+        FilterInput(T input) : AbstractInput<T>(input) {
         }
 
-        FilterInput(T input, float zeroFrequency) : AbstractInput(input) {
+        FilterInput(T input, float zeroFrequency) : AbstractInput<T>(input) {
             this->zeroFrequency = zeroFrequency;
         }
 

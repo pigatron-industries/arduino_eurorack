@@ -8,14 +8,14 @@ template<class T>
 class AnalogGateInput : public LinearInput<T> {
     public:
         AnalogGateInput(T input, float triggerVoltage = 3) : 
-            LinearInput(input, -5, 5, -5, 5)  {
+            LinearInput<T>(input, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
                 smoothingWeight = 1;
         }
 
         inline bool update() {
             bool prevOpen = open;
-            if(LinearInput::update()) {
+            if(LinearInput<T>::update()) {
                 open = getValue() > triggerVoltage;
                 triggered = !prevOpen && open;
                 return true;

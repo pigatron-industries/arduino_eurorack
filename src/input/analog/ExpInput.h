@@ -7,10 +7,10 @@
 template<class T>
 class ExpInput : public AbstractInput<T> {
     public:
-        ExpInput(T input) : AbstractInput(input) {
+        ExpInput(T input) : AbstractInput<T>(input) {
         }
 
-        ExpInput(uint8_t _pin, float midValue) : AbstractInput(_pin) {
+        ExpInput(T input, float midValue) : AbstractInput<T>(input) {
             this->midValue = midValue;
         }
 

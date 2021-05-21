@@ -9,7 +9,7 @@ template<class T>
 class LinearInput : public AbstractInput<T> {
     public:
         LinearInput(T input, float _realMin, float _realMax, float _virtualMin, float _virtualMax) : 
-            AbstractInput(input),
+            AbstractInput<T>(input),
             scale(_realMin, _realMax, _virtualMin, _virtualMax) {
         }
 
