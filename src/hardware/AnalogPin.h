@@ -13,7 +13,7 @@ class AnalogPin {
 
     protected:
         uint8_t pin;
-        RangeScale voltageScale = RangeScale(0, 4095, 5, -5); 
+        RangeScale voltageScale = RangeScale(0, 4095, -5, 5); 
 
         float convertToVoltage(int value) {  
             return voltageScale.convert(value);
