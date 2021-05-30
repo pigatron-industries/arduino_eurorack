@@ -7,13 +7,17 @@
 
 class AnalogPin {
     public:
-        AnalogPin(uint8_t pin) { this->pin = pin; }
+        // Default low and high voltage inverted on purpose due to inverting op-amp
+        AnalogPin(uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) :
+                voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) { 
+            this->pin = pin;
+        }
         int read() { return analogRead(pin); }
         float readVoltage() { return convertToVoltage(read()); }
 
     protected:
         uint8_t pin;
-        RangeScale voltageScale = RangeScale(0, 4095, -5, 5); 
+        RangeScale voltageScale; 
 
         float convertToVoltage(int value) {  
             return voltageScale.convert(value);
