@@ -3,14 +3,14 @@
 
 #include <inttypes.h>
 #include "Arduino.h"
-#include "../hardware/AnalogPin.h"
+#include "../hardware/AnalogInputPin.h"
 #include "../util/util.h"
 #include "../util/RangeScale.h"
 
 #define SMOOTHING_FAST 0.0005
 #define SMOOTHING_SLOW 0.1
 
-template<class T = AnalogPin>
+template<class T = AnalogInputPin>
 class AbstractInput {
     public:
         AbstractInput(T input) : 

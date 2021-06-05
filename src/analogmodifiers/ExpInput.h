@@ -3,7 +3,7 @@
 
 #include "AbstractInput.h"
 
-template<class T = AnalogPin>
+template<class T = AnalogInputPin>
 class ExpInput : public AbstractInput<T> {
     public:
         ExpInput(T input) : AbstractInput<T>(input) {
