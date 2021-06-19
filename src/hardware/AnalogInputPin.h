@@ -1,5 +1,5 @@
-#ifndef AnalogPin_h
-#define AnalogPin_h
+#ifndef AnalogInputPin_h
+#define AnalogInputPin_h
 
 #include <inttypes.h>
 #include <Arduino.h>

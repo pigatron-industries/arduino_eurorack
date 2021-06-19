@@ -3,4 +3,5 @@
 
 void Eurorack::init() {
     analogReadResolution(12);
+    Serial.begin(SERIAL_BAUD);
 }
