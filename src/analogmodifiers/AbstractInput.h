@@ -28,6 +28,7 @@ class AbstractInput {
 
     protected:
         T input;
+        float smoothingWeight = SMOOTHING_WEIGHT;
 
         uint32_t value;
         float measuredVoltage;
@@ -38,7 +39,7 @@ class AbstractInput {
 
         bool readVoltage() {
             measuredVoltage = input.readVoltage();
-            smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, SMOOTHING_WEIGHT);
+            smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, smoothingWeight);
             float diff = fabsf(smoothedVoltage-stableVoltage);
             if(diff > STABILISE_THRESHOLD) {
                 changed = true;
