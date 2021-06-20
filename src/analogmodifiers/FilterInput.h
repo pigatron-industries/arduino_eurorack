@@ -15,13 +15,13 @@ class FilterInput : public AbstractInput<T> {
         }
 
         inline bool update() {
-            if(this->readVoltage()) {
-                if(this->getVoltage() > 0.5) {
-                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)-6);
+            if(AbstractInput<T>::update()) {
+                if(this->getStableVoltage() > 0.5) {
+                    frequency = zeroFrequency*powf(2, (this->getStableVoltage()*2)-6);
                     highPass = true;
                     lowPass = false;
-                } else if (this->getVoltage() < -0.5) {
-                    frequency = zeroFrequency*powf(2, (this->getVoltage()*2)+7);
+                } else if (this->getStableVoltage() < -0.5) {
+                    frequency = zeroFrequency*powf(2, (this->getStableVoltage()*2)+7);
                     lowPass = true;
                     highPass = false;
                 } else {

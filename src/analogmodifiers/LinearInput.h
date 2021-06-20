@@ -18,7 +18,7 @@ class LinearInput : public AbstractInput<T> {
         }
 
         inline float getValue() {
-            float voltage = this->getSmoothedVoltage();
+            float voltage = this->getStableVoltage();
             return scale.convert(voltage);
         }
 

@@ -7,8 +7,8 @@
 #include "../util/util.h"
 #include "../util/RangeScale.h"
 
-#define SMOOTHING_FAST 0.0005
-#define SMOOTHING_SLOW 0.1
+#define SMOOTHING_WEIGHT 0.03
+#define STABILISE_THRESHOLD 0.005
 
 template<class T = AnalogInputPin>
 class AbstractInput {
@@ -29,31 +29,30 @@ class AbstractInput {
 
         bool update() { return readVoltage(); }
         bool isChanged() { return changed; }
-        float getVoltage() { return targetVoltage; }
+        float getVoltage() { return measuredVoltage; }
         uint32_t getRawValue() { return value; }
 
-        float getSmoothedVoltage() { 
-            smoothedVoltage = smooth(targetVoltage, smoothedVoltage, smoothingWeight);
-            return smoothedVoltage;
+        float getStableVoltage() {
+            return stableVoltage;
         }
 
     protected:
         T input;
-        float smoothingWeight;
 
         uint32_t value;
-        float targetVoltage;
+        float measuredVoltage;
         float smoothedVoltage;
+        float stableVoltage;
 
         bool changed;
 
         bool readVoltage() {
-            float prevVoltage = smoothedVoltage;
-            float newVoltage = input.readVoltage();
-            float diff = fabsf(newVoltage-prevVoltage);
-            if(diff > 0.02) {
+            measuredVoltage = input.readVoltage();
+            smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, SMOOTHING_WEIGHT);
+            float diff = fabsf(smoothedVoltage-stableVoltage);
+            if(diff > STABILISE_THRESHOLD) {
                 changed = true;
-                targetVoltage = newVoltage;
+                stableVoltage = smoothedVoltage;
             } else {
                 changed = false;
             }
