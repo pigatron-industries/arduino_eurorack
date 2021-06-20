@@ -15,16 +15,6 @@ class AbstractInput {
     public:
         AbstractInput(T input) : 
             input(input) {
-                smoothingWeight = SMOOTHING_SLOW;
-        }
-
-        AbstractInput(T input, float smoothingWeight) : 
-            input(input) {
-                this->smoothingWeight = smoothingWeight;
-        }
-
-        void setSmoothingWeight(float smoothingWeight) {
-            this->smoothingWeight = smoothingWeight;
         }
 
         bool update() { return readVoltage(); }
