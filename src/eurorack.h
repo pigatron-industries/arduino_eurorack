@@ -5,6 +5,7 @@
 
 #include "util/util.h"
 #include "util/CycleEnum.h"
+#include "util/SlewLimiter.h"
 
 #include "hardware/AnalogInputPin.h"
 #include "hardware/DigitalOutputPin.h"
