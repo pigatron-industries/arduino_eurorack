@@ -7,8 +7,8 @@
 class MAX11300Pin : public AnalogInputPin {
     public:
         MAX11300Pin(MAX11300& max11300, uint8_t pin): 
-            max11300(max11300), 
-            AnalogInputPin(pin, 12, -5, 5) { 
+            AnalogInputPin(pin, 12, -5, 5),
+            max11300(max11300) { 
                 this->pin = pin; 
         }
 
