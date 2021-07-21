@@ -1,7 +1,7 @@
 #ifndef MAX11300Pin_h
 #define MAX11300Pin_h
 
-#include "../AnalogInputPin.h"
+#include "../native/AnalogInputPin.h"
 #include "MAX11300.h"
 
 class MAX11300Pin : public AnalogInputPin {

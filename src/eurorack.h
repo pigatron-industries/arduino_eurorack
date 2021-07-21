@@ -7,11 +7,14 @@
 #include "util/CycleEnum.h"
 #include "util/SlewLimiter.h"
 
-#include "hardware/native/AnalogInputPin.h"
-#include "hardware/native/DigitalOutputPin.h"
 #include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
 #include "hardware/MultiplexGateOutput.h"
+#include "hardware/native/AnalogInputPin.h"
+#include "hardware/native/DigitalOutputPin.h"
+#include "hardware/max11300/MAX11300Pin.h"
+#include "hardware/mcp23s17/MCP23S17InputPin.h"
+#include "hardware/mcp23s17/MCP23S17OutputPin.h"
 
 #include "io/analoginputs/LinearInput.h"
 #include "io/analoginputs/ExpInput.h"
