@@ -3,7 +3,7 @@
 
 #include <inttypes.h>
 #include <Arduino.h>
-#include "../util/RangeScale.h"
+#include "../../util/RangeScale.h"
 
 class AnalogInputPin {
     public:

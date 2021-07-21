@@ -3,9 +3,9 @@
 
 #include <inttypes.h>
 #include "Arduino.h"
-#include "../hardware/AnalogInputPin.h"
-#include "../util/util.h"
-#include "../util/RangeScale.h"
+#include "../../hardware/native/AnalogInputPin.h"
+#include "../../util/util.h"
+#include "../../util/RangeScale.h"
 
 #define SMOOTHING_WEIGHT 0.03
 #define STABILISE_THRESHOLD 0.005

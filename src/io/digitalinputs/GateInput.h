@@ -3,6 +3,7 @@
 
 #include <Bounce2.h>
 
+//TODO make into a template to use other types of digital pins
 class GateInput {
 
 public:
