@@ -2,25 +2,25 @@
 #define GateInput_h
 
 #include "../../hardware/native/DigitalInputPin.h"
-#include "../../util/Debouncer.h"
+#include "../../util/Debounce.h"
 
 template<class T = DigitalInputPin>
 class GateInput {
 
     public:
         GateInput(T input) : input(input) {
-            debouncer.begin(input.getValue());
+            debounce.begin(input.getValue());
         }
 
-        bool update() { return debouncer.update(input.getValue()); }
-        bool rose() { return debouncer.fell(); }
-        bool fell() { return debouncer.rose(); }
-        unsigned long duration() { return debouncer.duration(); }
-        unsigned long previousDuration() { return debouncer.previousDuration(); }
+        bool update() { return debounce.update(input.getValue()); }
+        bool rose() { return debounce.fell(); }
+        bool fell() { return debounce.rose(); }
+        unsigned long duration() { return debounce.duration(); }
+        unsigned long previousDuration() { return debounce.previousDuration(); }
 
     protected:
         T input;
-        Debouncer debouncer;
+        Debounce debounce;
 
 };
 

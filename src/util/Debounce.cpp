@@ -1,18 +1,18 @@
-#include "Debouncer.h"
+#include "Debounce.h"
 
 #include <Arduino.h>
 
-Debouncer::Debouncer():
+Debounce::Debounce():
     previousMillis(0),
     intervalMillis(10),
     state(0) {
 }
 
-void Debouncer::setInterval(uint16_t intervalMillis) {
+void Debounce::setInterval(uint16_t intervalMillis) {
     this->intervalMillis = intervalMillis;
 }
 
-void Debouncer::begin(bool value) {
+void Debounce::begin(bool value) {
 	state = 0;
     if (value) {
         setStateFlag(DEBOUNCED_STATE | UNSTABLE_STATE);
@@ -25,8 +25,7 @@ void Debouncer::begin(bool value) {
     #endif
 }
 
-bool Debouncer::update(bool value)
-{
+bool Debounce::update(bool value) {
     unsetStateFlag(CHANGED_STATE);
     #ifdef BOUNCE_LOCK_OUT
     
@@ -80,29 +79,29 @@ bool Debouncer::update(bool value)
     return changed(); 
 }
 
-unsigned long Debouncer::previousDuration() const {
+unsigned long Debounce::previousDuration() const {
 	return durationOfPreviousState;
 }
 
-unsigned long Debouncer::duration() const {
+unsigned long Debounce::duration() const {
 	return (millis() - stateChangeLastTime);
 }
 
-inline void Debouncer::changeState() {
+inline void Debounce::changeState() {
 	toggleStateFlag(DEBOUNCED_STATE);
 	setStateFlag(CHANGED_STATE) ;
 	durationOfPreviousState = millis() - stateChangeLastTime;
 	stateChangeLastTime = millis();
 }
 
-bool Debouncer::read() const{
+bool Debounce::read() const{
     return getStateFlag(DEBOUNCED_STATE);
 }
 
-bool Debouncer::rose() const {
+bool Debounce::rose() const {
     return getStateFlag(DEBOUNCED_STATE) && getStateFlag(CHANGED_STATE);
 }
 
-bool Debouncer::fell() const {
+bool Debounce::fell() const {
     return !getStateFlag(DEBOUNCED_STATE) && getStateFlag(CHANGED_STATE);
 }

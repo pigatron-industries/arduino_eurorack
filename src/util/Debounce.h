@@ -1,14 +1,14 @@
-#ifndef Debouncer_h
-#define Debouncer_h
+#ifndef Debounce_h
+#define Debounce_h
 
 #include <inttypes.h>
 
 #define BOUNCE_LOCK_OUT 1
 
-class Debouncer {
+class Debounce {
 
     public:
-        Debouncer();
+        Debounce();
         void setInterval(uint16_t intervalMillis);
         void begin(bool value);
         bool update(bool value);
