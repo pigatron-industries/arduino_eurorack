@@ -1,25 +1,25 @@
 #ifndef PushButton_h
 #define PushButton_h
 
-#include <Bounce2.h>
+#include "GateInput.h"
 
+template<class T = DigitalInputPin>
 class PushButton {
 
-public:
-    PushButton(uint8_t pin) {
-        debouncer.attach(pin, INPUT_PULLUP);
-        digitalWrite(pin, HIGH);
-    }
+    public:
+        PushButton(T input) : input(input) {
+            debouncer.begin(input.getValue());
+        }
+        bool update() { return debouncer.update(input.getValue()); }
+        bool released() { return debouncer.rose(); }
+        bool pressed() { return debouncer.fell(); }
+        bool held() { return !debouncer.read(); }
+        unsigned long duration() { return debouncer.duration(); }
+        unsigned long previousDuration() { return debouncer.previousDuration(); }
 
-    bool update() { return debouncer.update(); }
-    bool released() { return debouncer.rose(); }
-    bool pressed() { return debouncer.fell(); }
-    bool held() { return !debouncer.read(); }
-    unsigned long duration() { return debouncer.duration(); }
-    unsigned long previousDuration() { return debouncer.previousDuration(); }
-
-private:
-    Bounce debouncer;
+    protected:
+        T input;
+        Debouncer debouncer;
 
 };
 

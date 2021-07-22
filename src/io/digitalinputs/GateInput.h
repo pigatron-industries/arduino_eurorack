@@ -1,24 +1,26 @@
 #ifndef GateInput_h
 #define GateInput_h
 
-#include <Bounce2.h>
+#include "../../hardware/native/DigitalInputPin.h"
+#include "../../util/Debouncer.h"
 
-//TODO make into a template to use other types of digital pins
+template<class T = DigitalInputPin>
 class GateInput {
 
-public:
-    GateInput(uint8_t pin) {
-        debouncer.attach(pin, INPUT);
-    }
+    public:
+        GateInput(T input) : input(input) {
+            debouncer.begin(input.getValue());
+        }
 
-    bool update() { return debouncer.update(); }
-    bool rose() { return debouncer.fell(); }
-    bool fell() { return debouncer.rose(); }
-    unsigned long duration() { return debouncer.duration(); }
-    unsigned long previousDuration() { return debouncer.previousDuration(); }
+        bool update() { return debouncer.update(input.getValue()); }
+        bool rose() { return debouncer.fell(); }
+        bool fell() { return debouncer.rose(); }
+        unsigned long duration() { return debouncer.duration(); }
+        unsigned long previousDuration() { return debouncer.previousDuration(); }
 
-private:
-    Bounce debouncer;
+    protected:
+        T input;
+        Debouncer debouncer;
 
 };
 
