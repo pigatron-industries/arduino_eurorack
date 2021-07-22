@@ -97,7 +97,7 @@ Trigger input uses interrupts to detect pin changes and can detect much shorter 
 
 Switch or push button connected to 0V and Arduino pin. Switch debouncing included.
 
-    PushButton button = PushButton(0);
+    PushButton<> button = PushButton<>(DigitalInputPin(0));
     
 Main loop:
 
