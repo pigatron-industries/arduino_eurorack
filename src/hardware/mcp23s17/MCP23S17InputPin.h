@@ -10,7 +10,10 @@ class MCP23S17InputPin : public DigitalInputPin {
         MCP23S17InputPin(gpio_MCP23S17& mcp23s17, uint8_t pin) :
             DigitalInputPin(pin),
             mcp23s17(mcp23s17) { 
-            mcp23s17.gpioPinMode(INPUT);
+        }
+
+        void init() {
+            mcp23s17.gpioPinMode(pin, INPUT);
         }
         
         bool getValue() {
