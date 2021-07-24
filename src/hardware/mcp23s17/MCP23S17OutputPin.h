@@ -17,8 +17,7 @@ class MCP23S17OutputPin : public DigitalOutputPin {
         }
         
         void setValue(bool value) {
-            mcp23s17.gpioDigitalWriteFast(pin, true);
-            //gpio.gpioPortUpdate();
+            mcp23s17.gpioDigitalWriteFast(pin, value);
         }
 
     protected:

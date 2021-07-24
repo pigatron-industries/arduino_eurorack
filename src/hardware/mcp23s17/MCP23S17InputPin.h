@@ -17,7 +17,7 @@ class MCP23S17InputPin : public DigitalInputPin {
         }
         
         bool getValue() {
-            return mcp23s17.gpioDigitalReadFast(pin);
+            return mcp23s17.gpioDigitalRead(pin);
         }
 
     protected:

@@ -7,9 +7,8 @@ template<class T = DigitalInputPin>
 class PushButton {
 
     public:
-        PushButton(T input) : input(input) {
-            debounce.begin(input.getValue());
-        }
+        PushButton(T input) : input(input) {}
+        void init() { debounce.begin(input.getValue()); }
         bool update() { return debounce.update(input.getValue()); }
         bool released() { return debounce.rose(); }
         bool pressed() { return debounce.fell(); }
