@@ -1,14 +1,12 @@
 #ifndef ControllerList_h
 #define ControllerList_h
 
-#include "Controller.h"
-
 template<class T, int SIZE>
 class ControllerList {
 
     public:
 
-        void addController(Controller& controller) {
+        void addController(T& controller) {
             controllers[controllerSize] = &controller;
             controllerSize++;
         }
