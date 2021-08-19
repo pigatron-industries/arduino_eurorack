@@ -6,6 +6,7 @@
 #include "util/util.h"
 #include "util/CycleEnum.h"
 #include "util/SlewLimiter.h"
+#include "util/ControllerList.h"
 
 #include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
