@@ -9,6 +9,9 @@ class ControllerList {
         void addController(T& controller) {
             controllers[controllerSize] = &controller;
             controllerSize++;
+            if(activeController == nullptr) {
+                activeController = &controller;
+            }
         }
 
         T* setActiveController(int controllerIndex) {
@@ -38,7 +41,7 @@ class ControllerList {
         int controllerSize = 0;
         T* controllers[SIZE];
         int activeControllerIndex = 0;
-        T* activeController = 0;
+        T* activeController = nullptr;
 
 };
 
