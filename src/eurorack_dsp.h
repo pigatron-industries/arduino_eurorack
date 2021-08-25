@@ -1,5 +1,5 @@
-#ifndef Eurorack_h
-#define Eurorack_h
+#ifndef EurorackDsp_h
+#define EurorackDsp_h
 
 #include "dsp/Oscillator.h"
 
