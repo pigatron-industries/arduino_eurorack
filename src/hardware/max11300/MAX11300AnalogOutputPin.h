@@ -1,13 +1,13 @@
-#ifndef MAX11300Pin_h
-#define MAX11300Pin_h
+#ifndef MAX11300AnalogOutputPin_h
+#define MAX11300AnalogOutputPin_h
 
-#include "../native/AnalogInputPin.h"
+#include "../native/AnalogOutputPin.h"
 #include "MAX11300.h"
 
-class MAX11300AnalogOutputPin : public AnalogInputPin {
+class MAX11300AnalogOutputPin : public AnalogOutputPin {
     public:
         MAX11300AnalogOutputPin(MAX11300& max11300, uint8_t pin): 
-            AnalogInputPin(pin, 12, -5, 5),
+            AnalogOutputPin(pin, 12, -5, 5),
             max11300(max11300) { 
                 this->pin = pin; 
         }
