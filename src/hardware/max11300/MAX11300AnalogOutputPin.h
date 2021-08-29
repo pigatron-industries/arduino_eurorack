@@ -17,7 +17,7 @@ class MAX11300AnalogOutputPin : public AnalogOutputPin {
         }
 
         void write(int value) { max11300.writeAnalogPin(pin, value); }
-        void writeVoltage(float voltage) { max11300.writeAnalogPin(pin, voltageScale.convertReverse(voltage)); }
+        void writeVoltage(float voltage) { max11300.writeAnalogPin(pin, voltageScale.convert(voltage)); }
 
     protected:
         MAX11300& max11300;
