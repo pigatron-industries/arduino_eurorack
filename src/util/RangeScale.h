@@ -31,7 +31,13 @@ class RangeScale {
             return ((toValue - toMin) * reverseFactor) + fromMin;  
         }
 
-        void setToRange(float toMin, float toMax) { 
+        void setInputRange(float fromMin, float fromMax) { 
+            this->fromMin = fromMin; 
+            this->fromMax = fromMax;
+            calcFactor();
+        }
+
+        void setOutputRange(float toMin, float toMax) { 
             this->toMin = toMin; 
             this->toMax = toMax;
             calcFactor();

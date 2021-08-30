@@ -12,6 +12,7 @@ class AnalogInputPin {
                 voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) { 
             this->pin = pin;
         }
+        void setInputRange(int min, int max) { voltageScale.setInputRange(min, max); }
         int read() { return analogRead(pin); }
         float readVoltage() { return convertToVoltage(read()); }
 

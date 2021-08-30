@@ -14,7 +14,7 @@ class LinearInput : public AbstractInput<T> {
         }
 
         void setRange(float _virtualMin, float _virtualMax) {
-            scale.setToRange(_virtualMin, _virtualMax);
+            scale.setInputRange(_virtualMin, _virtualMax);
         }
 
         inline float getValue() {
