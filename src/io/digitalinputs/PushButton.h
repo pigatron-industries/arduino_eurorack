@@ -16,6 +16,11 @@ class PushButton {
         unsigned long duration() { return debounce.duration(); }
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
+        void waitForPressAndRelease() {
+            while(!held()) { update(); }
+            while(held()) { update(); }
+        }
+
     protected:
         T input;
         Debounce debounce;
