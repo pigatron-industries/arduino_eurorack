@@ -8,7 +8,7 @@ class DigitalInputPin {
     public:
         DigitalInputPin(uint8_t pin) { 
             this->pin = pin;
-            pinMode(pin, INPUT);
+            pinMode(pin, INPUT_PULLUP);
         }
         
         bool getValue() {
