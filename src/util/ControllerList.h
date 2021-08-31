@@ -36,6 +36,10 @@ class ControllerList {
             return activeController;
         }
 
+        int getActiveControllerIndex() {
+            return activeControllerIndex;
+        }
+
     private:
 
         int controllerSize = 0;
