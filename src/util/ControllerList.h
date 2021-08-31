@@ -32,6 +32,15 @@ class ControllerList {
             return activeController;
         }
 
+        T* cycle(int amount) {
+            if(amount > 0) {
+                return incrementController();
+            } else if(amount < 0) {
+                return decrementController();
+            }
+            return getActiveController();
+        }
+
         T* getActiveController() {
             return activeController;
         }

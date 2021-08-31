@@ -15,7 +15,7 @@ class CycleEnum {
         T cycle(int amount) {
             if(amount > 0) {
                 value = static_cast<T>((value + 1)%(last + 1));
-            } else {
+            } else if(amount < 0) {
                 value = static_cast<T>(value > 0 ? value - 1 : last);
             }
             return value;
