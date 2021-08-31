@@ -145,6 +145,8 @@ inline float Oscillator::process() {
     phase_ += phase_inc_;
     if(phase_ > 1.0f) {
         phase_ -= 1.0f;
+    } else if (phase_ < 0.0f) {
+        phase_ += 1.0f;
     }
     return out * amp_;
 }
