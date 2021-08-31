@@ -15,6 +15,9 @@ class ControllerList {
         }
 
         T* setActiveController(int controllerIndex) {
+            if(controllerIndex >= controllerSize) {
+                return activeController;
+            }
             activeControllerIndex = controllerIndex;
             activeController = controllers[activeControllerIndex];
             return activeController;

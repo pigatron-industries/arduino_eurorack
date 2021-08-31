@@ -20,6 +20,12 @@ class CycleEnum {
             }
             return value;
         }
+
+        void setValue(T value) {
+            if(value <= last) {
+                this->value = value;
+            }
+        }
 };
 
 #endif
