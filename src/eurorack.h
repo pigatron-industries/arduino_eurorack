@@ -20,7 +20,9 @@
 #include "io/analoginputs/AnalogGateInput.h"
 #include "io/analoginputs/FilterInput.h"
 #include "io/analoginputs/CrossfadeInput.h"
+#include "io/analogoutputs/AnalogTriggerOutput.h"
 #include "io/digitalinputs/GateInput.h"
 #include "io/digitalinputs/PushButton.h"
+#include "io/digitaloutputs/TriggerOutput.h"
 
 #endif
