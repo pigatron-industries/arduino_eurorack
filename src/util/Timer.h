@@ -9,6 +9,7 @@ class Timer {
 public:
     Timer();
     void start(unsigned long waitTime);
+    void start();
     bool isRunning();
     bool isStopped();
     bool hasJustStopped();

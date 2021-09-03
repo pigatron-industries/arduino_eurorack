@@ -11,6 +11,11 @@ void Timer::start(unsigned long waitTime) {
     _startTime = micros();
 }
 
+void Timer::start() {
+    _running = true;
+    _startTime = micros();
+}
+
 bool Timer::isRunning() {
     update();
     return _running;
