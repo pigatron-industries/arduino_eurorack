@@ -13,8 +13,11 @@ void MAX11300Device::setPinType(uint8_t pin, PinType pinType) {
             setPinModeAnalogIn(pin, ADCNegative5to5);
             break;
         case PinType::DIGITAL_OUTPUT:
+            //TODO
             break;
         case PinType::DIGITAL_INPUT:
+        case PinType::DIGITAL_INPUT_PULLUP:
+            //TODO
             break;
     }
 }

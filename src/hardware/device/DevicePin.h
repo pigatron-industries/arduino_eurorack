@@ -28,7 +28,9 @@ class DevicePin {
 template<class T = NativeDevice>
 class DigitalOutputPin: virtual public DevicePin<T> {
     public:
-        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
+        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            device.setPinType(pin, PinType::DIGITAL_OUTPUT);
+        }
 
         void digitalWrite(bool value) {
             digitalValue = value;
@@ -49,7 +51,9 @@ class DigitalOutputPin: virtual public DevicePin<T> {
 template<class T = NativeDevice>
 class DigitalInputPin: virtual public DevicePin<T> {
     public:
-        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
+        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            device.setPinType(pin, PinType::DIGITAL_INPUT);
+        }
 
         bool digitalRead() {
             return DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
@@ -97,7 +101,9 @@ class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalog
         AnalogOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
             AbstractAnalogPin(bits, lowVoltage, highVoltage),
-            DigitalOutputPin<T>(device, pin) {}
+            DigitalOutputPin<T>(device, pin) {
+                device.setPinType(pin, PinType::ANALOG_OUTPUT);
+        }
 
         void analogWrite(float value) {
             // TODO convert float to int
@@ -115,7 +121,9 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
         AnalogInputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
             AbstractAnalogPin(bits, lowVoltage, highVoltage),
-            DigitalInputPin<T>(device, pin) {}
+            DigitalInputPin<T>(device, pin) {
+                device.setPinType(pin, PinType::ANALOG_INPUT);
+        }
 
         float analogRead() {
             return voltageScale.convert(DevicePin<T>::device.analogRead(DevicePin<T>::pin));

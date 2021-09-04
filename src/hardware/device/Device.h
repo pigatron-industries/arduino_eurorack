@@ -13,6 +13,7 @@ enum PinType {
 
 class Device {
     public:
+        void setPinType(uint8_t pin, PinType pinType) {}
         bool isDeferredOutput() { return deferredOutput; }
         void setDeferredOutput(bool deferredOutput) { this->deferredOutput = deferredOutput; }
     protected:
