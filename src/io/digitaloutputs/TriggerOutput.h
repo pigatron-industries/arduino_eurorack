@@ -21,7 +21,7 @@ class TriggerOutput {
 
         void trigger() { 
             triggered = true; 
-            output.setValue(true); 
+            output.digitalWrite(true);
             timer.start(duration); 
         }
 

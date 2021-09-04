@@ -11,7 +11,7 @@ class PushButton {
     public:
         PushButton(DigitalInputPin<T> input) : input(input) {}
         void init() { debounce.begin(input.getValue()); }
-        bool update() { return debounce.update(input.getValue()); }
+        bool update() { return debounce.update(input.digitalRead()); }
         bool released() { return debounce.rose(); }
         bool pressed() { return debounce.fell(); }
         bool held() { return !debounce.read(); }

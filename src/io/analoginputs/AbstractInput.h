@@ -39,7 +39,7 @@ class AbstractInput {
         bool changed;
 
         bool readVoltage() {
-            measuredVoltage = input.readVoltage();
+            measuredVoltage = input.analogRead();
             smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, smoothingWeight);
             float diff = fabsf(smoothedVoltage-stableVoltage);
             if(diff > STABILISE_THRESHOLD) {

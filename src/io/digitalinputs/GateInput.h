@@ -13,7 +13,7 @@ class GateInput {
             debounce.begin(input.digitalRead());
         }
 
-        bool update() { return debounce.update(input.getValue()); }
+        bool update() { return debounce.update(input.digitalRead()); }
         bool rose() { return debounce.fell(); }
         bool fell() { return debounce.rose(); }
         unsigned long duration() { return debounce.duration(); }
