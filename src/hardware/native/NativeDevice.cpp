@@ -17,6 +17,9 @@ void NativeDevice::setPinType(uint8_t pin, PinType pinType) {
         case PinType::DIGITAL_INPUT:
             pinMode(pin, INPUT);
             break;
+        case PinType::DIGITAL_INPUT_PULLUP:
+            pinMode(pin, INPUT_PULLUP);
+            break;
     }
 }
 

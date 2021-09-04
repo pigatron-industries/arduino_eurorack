@@ -7,7 +7,8 @@ enum PinType {
     ANALOG_OUTPUT, 
     ANALOG_INPUT,
     DIGITAL_OUTPUT,
-    DIGITAL_INPUT
+    DIGITAL_INPUT,
+    DIGITAL_INPUT_PULLUP
 };
 
 class Device {
