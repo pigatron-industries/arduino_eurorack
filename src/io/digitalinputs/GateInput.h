@@ -9,7 +9,7 @@ template<class T = NativeDevice>
 class GateInput {
 
     public:
-        GateInput(DigitalInputPin<T> input) : input(input) {
+        GateInput(DigitalInputPin<T>& input) : input(input) {
             debounce.begin(input.digitalRead());
         }
 
@@ -20,7 +20,7 @@ class GateInput {
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
     protected:
-        DigitalInputPin<T> input;
+        DigitalInputPin<T>& input;
         Debounce debounce;
 
 };

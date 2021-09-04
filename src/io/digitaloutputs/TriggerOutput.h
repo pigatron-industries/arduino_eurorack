@@ -8,7 +8,7 @@ template<class T = NativeDevice>
 class TriggerOutput {
 
     public:
-        TriggerOutput(DigitalOutputPin<T> output, unsigned long durationMicros = 1000) : output(output) {
+        TriggerOutput(DigitalOutputPin<T>& output, unsigned long durationMicros = 1000) : output(output) {
             duration = durationMicros;
         }
 
@@ -32,7 +32,7 @@ class TriggerOutput {
         void setTriggerDurationMicros(unsigned long duration) { this->duration = duration; }
 
     protected:
-        DigitalOutputPin<T> output;
+        DigitalOutputPin<T>& output;
         bool triggered;
         unsigned long duration;
         Timer timer;

@@ -9,7 +9,7 @@ template<class T = NativeDevice>
 class PushButton {
 
     public:
-        PushButton(DigitalInputPin<T> input) : input(input) {}
+        PushButton(DigitalInputPin<T>& input) : input(input) {}
         void init() { debounce.begin(input.getValue()); }
         bool update() { return debounce.update(input.digitalRead()); }
         bool released() { return debounce.rose(); }
@@ -24,7 +24,7 @@ class PushButton {
         }
 
     protected:
-        DigitalInputPin<T> input;
+        DigitalInputPin<T>& input;
         Debounce debounce;
 
 };
