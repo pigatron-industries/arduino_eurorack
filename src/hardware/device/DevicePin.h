@@ -76,8 +76,12 @@ class AbstractAnalogPin {
             return voltageScale.convertReverse(analogValue);
         }
 
-        void setInputRange(uint16_t min, uint16_t max) {
-            
+        void setBinaryRange(uint16_t min, uint16_t max) {
+            voltageScale.setInputRange(min, max);
+        }
+
+        void setAnalogRange(float min, float max) {
+            voltageScale.setOutputRange(min, max);
         }
 
     protected:
