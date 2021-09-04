@@ -16,7 +16,7 @@ class AnalogTriggerOutput {
         void update() {  
             if(triggered && timer.hasJustStopped()) {
                 triggered = false; 
-                output.writeVoltage(0);
+                output.analogWrite(0);
             }
         }
 
