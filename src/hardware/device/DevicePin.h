@@ -5,8 +5,9 @@
 #include "../../util/RangeScale.h"
 #include <inttypes.h>
 
+class NativeDevice;
 
-template<class T>
+template<class T = NativeDevice>
 class DevicePin {
     public:
         DevicePin(T& device, uint8_t pin) : device(device), pin(pin) {}
@@ -24,7 +25,7 @@ class DevicePin {
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class DigitalOutputPin: virtual public DevicePin<T> {
     public:
         DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
@@ -45,7 +46,7 @@ class DigitalOutputPin: virtual public DevicePin<T> {
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class DigitalInputPin: virtual public DevicePin<T> {
     public:
         DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
@@ -90,7 +91,7 @@ class AbstractAnalogPin {
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalogPin {
     public:
         AnalogOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
@@ -108,7 +109,7 @@ class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalog
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPin {
     public:
         AnalogInputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
@@ -126,7 +127,7 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class DigitalInputOutputPin: public DigitalInputPin<T>, public DigitalOutputPin<T> {
     public:
         DigitalInputOutputPin(T& device, uint8_t pin) : 
@@ -136,7 +137,7 @@ class DigitalInputOutputPin: public DigitalInputPin<T>, public DigitalOutputPin<
 };
 
 
-template<class T>
+template<class T = NativeDevice>
 class AnalogInputOutputPin: public AnalogInputPin<T>, public AnalogOutputPin<T> {
     public:
         AnalogInputOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
