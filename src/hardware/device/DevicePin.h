@@ -5,6 +5,7 @@
 #include "../../util/RangeScale.h"
 #include <inttypes.h>
 
+
 template<class T>
 class DevicePin {
     public:
@@ -62,21 +63,10 @@ class DigitalInputPin: virtual public DevicePin<T> {
 };
 
 
-template<class T>
-class AnalogOutputPin: public DigitalOutputPin<T> {
+class AbstractAnalogPin {
     public:
-        AnalogOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
-            DevicePin<T>(device, pin),
-            DigitalOutputPin<T>(device, pin), 
+        AbstractAnalogPin(uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) :
             voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
-
-        void analogWrite(float value) {
-            // TODO convert float to int
-            analogValue = value;
-            if(!DevicePin<T>::device.isDeferredOutput()) {
-                DevicePin<T>::device.analogWrite(DevicePin<T>::pin, voltageScale.convertReverse(value));
-            }
-        }
 
         float getAnalogValue() {
             return analogValue;
@@ -86,6 +76,10 @@ class AnalogOutputPin: public DigitalOutputPin<T> {
             return voltageScale.convertReverse(analogValue);
         }
 
+        void setInputRange(uint16_t min, uint16_t max) {
+            
+        }
+
     protected:
         float analogValue;
         RangeScale voltageScale;
@@ -93,24 +87,38 @@ class AnalogOutputPin: public DigitalOutputPin<T> {
 
 
 template<class T>
-class AnalogInputPin: public DigitalInputPin<T> {
+class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalogPin {
+    public:
+        AnalogOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
+            DevicePin<T>(device, pin),
+            AbstractAnalogPin(bits, lowVoltage, highVoltage),
+            DigitalOutputPin<T>(device, pin) {}
+
+        void analogWrite(float value) {
+            // TODO convert float to int
+            analogValue = value;
+            if(!DevicePin<T>::device.isDeferredOutput()) {
+                DevicePin<T>::device.analogWrite(DevicePin<T>::pin, voltageScale.convertReverse(analogValue));
+            }
+        }
+};
+
+
+template<class T>
+class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPin {
     public:
         AnalogInputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
-            DigitalInputPin<T>(device, pin),
-            voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
+            AbstractAnalogPin(bits, lowVoltage, highVoltage),
+            DigitalInputPin<T>(device, pin) {}
 
         float analogRead() {
             return voltageScale.convert(DevicePin<T>::device.analogRead(DevicePin<T>::pin));
         }
 
-        float getAnalogValue() {
-            return analogValue;
+        uint16_t binaryRead() {
+            return DevicePin<T>::device.analogRead(DevicePin<T>::pin);
         }
-
-    protected:
-        bool analogValue;
-        RangeScale voltageScale;
 };
 
 
@@ -127,10 +135,11 @@ class DigitalInputOutputPin: public DigitalInputPin<T>, public DigitalOutputPin<
 template<class T>
 class AnalogInputOutputPin: public AnalogInputPin<T>, public AnalogOutputPin<T> {
     public:
-        AnalogInputOutputPin(T& device, uint8_t pin) : 
+        AnalogInputOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
-            AnalogInputPin<T>(device, pin), 
-            AnalogOutputPin<T>(device, pin) {}
+            AbstractAnalogPin(bits, lowVoltage, highVoltage),
+            AnalogInputPin<T>(device, pin, bits, lowVoltage, highVoltage), 
+            AnalogOutputPin<T>(device, pin, bits, lowVoltage, highVoltage) {}
 };
 
 #endif
