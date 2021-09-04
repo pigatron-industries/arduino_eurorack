@@ -40,9 +40,11 @@ uint16_t MAX11300Device::analogRead(uint8_t pin) {
 
 void MAX11300Device::send() {
     for(int i = 0; i < MAX11300_PINCOUNT; i++) {
-        //TODO
-        // if(digitalValues[i].enabled) {
-        //     writeDigitalPin(i, digitalValues[i].value);
-        // }
+        AnalogInputOutputPin<MAX11300Device>& pin = pins[i];
+        if(pin.getPinType() == PinType::ANALOG_OUTPUT) {
+            analogWrite(pin.getPin(), pin.getBinaryValue());
+        } else if(pin.getPinType() == PinType::DIGITAL_OUTPUT) {
+            digitalWrite(pin.getPin(), pin.getDigitalValue());
+        }
     }
 }

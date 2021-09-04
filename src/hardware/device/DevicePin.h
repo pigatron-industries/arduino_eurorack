@@ -17,51 +17,19 @@ class DevicePin {
             DevicePin<T>::device.setPinType(DevicePin<T>::pin, pinType);
         }
 
+        PinType getPinType() { return pinType; }
+        uint8_t getPin() { return pin; };
+
     protected:
         T& device;
-        int pin;
+        uint8_t pin;
         PinType pinType;
         bool enabled = true;
 };
 
-
-template<class T = NativeDevice>
-class DigitalOutputPin: virtual public DevicePin<T> {
+class AbstractDigitalPin {
     public:
-        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
-            device.setPinType(pin, PinType::DIGITAL_OUTPUT);
-        }
-
-        void digitalWrite(bool value) {
-            digitalValue = value;
-            if(!DevicePin<T>::device.isDeferredOutput()) {
-                DevicePin<T>::device.digitalWrite(DevicePin<T>::pin, value);
-            }
-        }
-
-        bool getDigitalValue() {
-            return digitalValue;
-        }
-
-    protected:
-        bool digitalValue;
-};
-
-
-template<class T = NativeDevice>
-class DigitalInputPin: virtual public DevicePin<T> {
-    public:
-        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
-            device.setPinType(pin, PinType::DIGITAL_INPUT);
-        }
-
-        bool digitalRead() {
-            return DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
-        }
-
-        bool getDigitalValue() {
-            return digitalValue;
-        }
+        bool getDigitalValue() { return digitalValue; }
 
     protected:
         bool digitalValue;
@@ -73,25 +41,43 @@ class AbstractAnalogPin {
         AbstractAnalogPin(uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) :
             voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
 
-        float getAnalogValue() {
-            return analogValue;
-        }
-
-        uint16_t getBinaryValue() {
-            return voltageScale.convertReverse(analogValue);
-        }
-
-        void setBinaryRange(uint16_t min, uint16_t max) {
-            voltageScale.setInputRange(min, max);
-        }
-
-        void setAnalogRange(float min, float max) {
-            voltageScale.setOutputRange(min, max);
-        }
+        float getAnalogValue() { return analogValue; }
+        uint16_t getBinaryValue() { return voltageScale.convertReverse(analogValue); }
+        void setBinaryRange(uint16_t min, uint16_t max) { voltageScale.setInputRange(min, max); }
+        void setAnalogRange(float min, float max) { voltageScale.setOutputRange(min, max); }
 
     protected:
         float analogValue;
         RangeScale voltageScale;
+};
+
+
+template<class T = NativeDevice>
+class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
+    public:
+        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            device.setPinType(pin, PinType::DIGITAL_OUTPUT);
+        }
+
+        void digitalWrite(bool value) {
+            digitalValue = value;
+            if(!DevicePin<T>::device.isDeferredOutput()) {
+                DevicePin<T>::device.digitalWrite(DevicePin<T>::pin, value);
+            }
+        }
+};
+
+
+template<class T = NativeDevice>
+class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
+    public:
+        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            device.setPinType(pin, PinType::DIGITAL_INPUT);
+        }
+
+        bool digitalRead() {
+            return DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
+        }
 };
 
 
