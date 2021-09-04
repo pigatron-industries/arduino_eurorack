@@ -1,7 +1,6 @@
-#ifndef MCP23S17Device_h
-#define MCP23S17Device_h
+#ifndef HC595Device_h
+#define HC595Device_h
 
-#include <gpio_MCP23S17.h>
 #include "../device/DevicePin.h"
 
 #define HC595_PINCOUNT 8

@@ -4,11 +4,13 @@
     #include "eurorack_dsp.h"
     #include "eurorack_max11300.h"
     #include "eurorack_mcp23s17.h"
+    #include "eurorack_hc595.h"
 
     NativeDevice native = NativeDevice();
     AnalogInputPin<NativeDevice> nativeAnalogInputPin = AnalogInputPin<NativeDevice>(native, 10);
 
     //devices
+    HC595Device hc595 = HC595Device(10, 11, 12);
     MAX11300Device max11300 = MAX11300Device(&SPI, 10, 11);
     MCP23S17Device mcp23s17 = MCP23S17Device(10, 0x20);
 
@@ -19,6 +21,9 @@
 
     void test() {
         nativeAnalogInputPin.analogRead();
+
+        hc595.pins[0].digitalWrite(true);
+        hc595.setDeferredOutput(false);
 
         max11300.pins[0].digitalWrite(true);
         max11300.pins[0].analogWrite(5);

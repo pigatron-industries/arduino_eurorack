@@ -12,9 +12,12 @@ HC595Device::HC595Device(const uint8_t clockPin, const uint8_t latchPin, const u
     digitalWrite(clockPin, LOW);
     digitalWrite(latchPin, LOW);
     digitalWrite(dataPin, LOW);
+    Device::setDeferredOutput(true);
 }
 
 void HC595Device::digitalWrite(uint8_t pin, bool value) {
+    pins[pin].digitalWrite(value);
+    send();
 }
 
 void HC595Device::send() {
