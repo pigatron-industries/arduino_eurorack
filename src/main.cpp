@@ -25,6 +25,7 @@
         hc595.pins[0].digitalWrite(true);
         hc595.setDeferredOutput(false);
 
+        max11300.pins[0].setPinType(ANALOG_OUTPUT);
         max11300.pins[0].digitalWrite(true);
         max11300.pins[0].analogWrite(5);
         max11300.pins[0].digitalRead();
