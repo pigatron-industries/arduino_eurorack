@@ -8,17 +8,22 @@
 
     //Native
 
-    NativeDevice native = NativeDevice();
-    AnalogInputPin<NativeDevice> nativeAnalogInputPin = AnalogInputPin<NativeDevice>(native, 10);
-    AnalogOutputPin<NativeDevice> nativeAnalogOutputPin = AnalogOutputPin<NativeDevice>(native, 10);
-    DigitalInputPin<NativeDevice> nativeDigitalInputPin = DigitalInputPin<NativeDevice>(native, 10);
-    DigitalOutputPin<NativeDevice> nativeDigitalOutputPin = DigitalOutputPin<NativeDevice>(native, 10);
+    class Hardware {
+        public:
+            static Hardware hw;
+            AnalogInput(A0)
+            AnalogOutput(A1)
+            DigitalInput(10)
+            DigitalOutput(11)
+    };
+
+    Hardware Hardware::hw;
 
     void testNativePins() {
-        nativeAnalogInputPin.analogRead();
-        nativeAnalogOutputPin.analogWrite(5);
-        nativeDigitalInputPin.digitalRead();
-        nativeDigitalOutputPin.digitalWrite(true);
+        Hardware::hw.A0.analogRead();
+        Hardware::hw.A1.analogWrite(5);
+        Hardware::hw.D10.digitalRead();
+        Hardware::hw.D11.digitalWrite(true);
     }
 
     // HC595
@@ -54,11 +59,11 @@
 
     // Analog Inputs
 
-    LinearInput<> linearInput = LinearInput<>(nativeAnalogInputPin, -5.0, 5.0, 0.0, 5.0);
-    AnalogGateInput<> analogGateInput = AnalogGateInput<>(nativeAnalogInputPin, 3.0);
-    CrossfadeInput<> crossfadeInput = CrossfadeInput<>(nativeAnalogInputPin, -5.0, 5.0);
-    ExpInput<> expInput = ExpInput<>(nativeAnalogInputPin);
-    PowInput<> powInput = PowInput<>(nativeAnalogInputPin, 2, -5.0, 5.0);
+    LinearInput<> linearInput = LinearInput<>(Hardware::hw.A0, -5.0, 5.0, 0.0, 5.0);
+    AnalogGateInput<> analogGateInput = AnalogGateInput<>(Hardware::hw.A0, 3.0);
+    CrossfadeInput<> crossfadeInput = CrossfadeInput<>(Hardware::hw.A0, -5.0, 5.0);
+    ExpInput<> expInput = ExpInput<>(Hardware::hw.A0);
+    PowInput<> powInput = PowInput<>(Hardware::hw.A0, 2, -5.0, 5.0);
 
     void testAnalogInputs() {
         linearInput.update();
@@ -69,8 +74,8 @@
 
     // Digital inputs
 
-    GateInput<> gateInput = GateInput<>(nativeDigitalInputPin);
-    PushButton<> pushButton = PushButton<>(nativeDigitalInputPin);
+    GateInput<> gateInput = GateInput<>(Hardware::hw.D10);
+    PushButton<> pushButton = PushButton<>(Hardware::hw.D10);
 
     void testDigitalInputs() {
         gateInput.update();
@@ -79,7 +84,7 @@
 
     // Digital Outputs
 
-    TriggerOutput<> triggerOutput = TriggerOutput<>(nativeDigitalOutputPin);
+    TriggerOutput<> triggerOutput = TriggerOutput<>(Hardware::hw.D11);
 
     void testDigitalOutputs() {
         triggerOutput.trigger();
@@ -87,7 +92,7 @@
 
     // Analog Outputs
 
-    AnalogTriggerOutput<> analogTriggerOutput = AnalogTriggerOutput<>(nativeAnalogOutputPin);
+    AnalogTriggerOutput<> analogTriggerOutput = AnalogTriggerOutput<>(Hardware::hw.A1);
 
     void testAnalogOutputs() {
         analogTriggerOutput.trigger();

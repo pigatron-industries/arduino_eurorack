@@ -1,5 +1,7 @@
 #include "NativeDevice.h"
 
+NativeDevice NativeDevice::instance;
+
 NativeDevice::NativeDevice() {
 }
 
