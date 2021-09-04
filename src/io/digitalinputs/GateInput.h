@@ -10,6 +10,7 @@ class GateInput {
 
     public:
         GateInput(DigitalInputPin<T>& input) : input(input) {
+            input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
             debounce.begin(input.digitalRead());
         }
 

@@ -16,6 +16,7 @@ class AbstractInput {
     public:
         AbstractInput(AnalogInputPin<T>& input) : 
             input(input) {
+            input.setPinType(PinType::ANALOG_INPUT);
         }
 
         bool update() { return readVoltage(); }

@@ -9,8 +9,10 @@ template<class T = NativeDevice>
 class PushButton {
 
     public:
-        PushButton(DigitalInputPin<T>& input) : input(input) {}
-        void init() { debounce.begin(input.getValue()); }
+        PushButton(DigitalInputPin<T>& input) : input(input) { 
+            input.setPinType(PinType::DIGITAL_INPUT_PULLUP); 
+            debounce.begin(input.digitalRead());
+        }
         bool update() { return debounce.update(input.digitalRead()); }
         bool released() { return debounce.rose(); }
         bool pressed() { return debounce.fell(); }
