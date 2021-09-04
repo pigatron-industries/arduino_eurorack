@@ -1,13 +1,14 @@
 #ifndef AnalogTriggerOutput_h
 #define AnalogTriggerOutput_h
 
-#include "../../hardware/native/AnalogOutputPin.h"
+#include "../../hardware/device/DevicePin.h"
+#include "../../hardware/native/NativeDevice.h"
 
-template<class T = AnalogOutputPin>
+template<class T = NativeDevice>
 class AnalogTriggerOutput {
 
     public:
-        AnalogTriggerOutput(T output, unsigned long durationMicros = 1000, float triggerVoltage = 5) : output(output) {
+        AnalogTriggerOutput(AnalogOutputPin<T> output, unsigned long durationMicros = 1000, float triggerVoltage = 5) : output(output) {
             this->duration = durationMicros;
             this->triggerVoltage = triggerVoltage;
         }
@@ -32,7 +33,7 @@ class AnalogTriggerOutput {
         void setTriggerDurationMicros(unsigned long duration) { this->duration = duration; }
 
     protected:
-        T output;
+        AnalogOutputPin<T> output;
         bool triggered;
         unsigned long duration;
         float triggerVoltage;
