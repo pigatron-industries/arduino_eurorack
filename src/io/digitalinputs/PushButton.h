@@ -10,8 +10,7 @@ class PushButton {
 
     public:
         PushButton(DigitalInputPin<T>& input) : input(input) { 
-            input.setPinType(PinType::DIGITAL_INPUT_PULLUP); 
-            debounce.begin(input.digitalRead());
+            input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
         }
         bool update() { return debounce.update(input.digitalRead()); }
         bool released() { return debounce.rose(); }
