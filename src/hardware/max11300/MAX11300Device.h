@@ -17,26 +17,26 @@ class MAX11300Device: public MAX11300, public Device, public DigitalOutputDevice
         void send();
 
         AnalogInputOutputPin<MAX11300Device> pins[MAX11300_PINCOUNT] = { 
-            AnalogInputOutputPin<MAX11300Device>(*this, 0),
-            AnalogInputOutputPin<MAX11300Device>(*this, 1),
-            AnalogInputOutputPin<MAX11300Device>(*this, 2),
-            AnalogInputOutputPin<MAX11300Device>(*this, 3),
-            AnalogInputOutputPin<MAX11300Device>(*this, 4),
-            AnalogInputOutputPin<MAX11300Device>(*this, 5),
-            AnalogInputOutputPin<MAX11300Device>(*this, 6),
-            AnalogInputOutputPin<MAX11300Device>(*this, 7),
-            AnalogInputOutputPin<MAX11300Device>(*this, 8),
-            AnalogInputOutputPin<MAX11300Device>(*this, 9),
-            AnalogInputOutputPin<MAX11300Device>(*this, 10),
-            AnalogInputOutputPin<MAX11300Device>(*this, 11),
-            AnalogInputOutputPin<MAX11300Device>(*this, 12),
-            AnalogInputOutputPin<MAX11300Device>(*this, 13),
-            AnalogInputOutputPin<MAX11300Device>(*this, 14),
-            AnalogInputOutputPin<MAX11300Device>(*this, 15),
-            AnalogInputOutputPin<MAX11300Device>(*this, 16),
-            AnalogInputOutputPin<MAX11300Device>(*this, 17),
-            AnalogInputOutputPin<MAX11300Device>(*this, 18),
-            AnalogInputOutputPin<MAX11300Device>(*this, 19)
+            AnalogInputOutputPin<MAX11300Device>(*this, 0, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 1, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 2, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 3, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 4, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 5, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 6, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 7, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 8, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 9, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 10, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 11, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 12, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 13, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 14, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 15, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 16, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 17, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 18, 12, -5, 5),
+            AnalogInputOutputPin<MAX11300Device>(*this, 19, 12, -5, 5)
         };
 };
 
