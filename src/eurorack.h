@@ -8,11 +8,13 @@
 #include "util/SlewLimiter.h"
 #include "util/ControllerList.h"
 
+#include "hardware/device/Device.h"
+#include "hardware/device/DevicePin.h"
+#include "hardware/native/NativeDevice.h"
+
 #include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
 #include "hardware/MultiplexGateOutput.h"
-#include "hardware/native/AnalogInputPin.h"
-#include "hardware/native/DigitalOutputPin.h"
 
 #include "io/analoginputs/LinearInput.h"
 #include "io/analoginputs/ExpInput.h"

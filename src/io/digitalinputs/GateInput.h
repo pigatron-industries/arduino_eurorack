@@ -1,25 +1,27 @@
 #ifndef GateInput_h
 #define GateInput_h
 
-#include "../../hardware/native/DigitalInputPin.h"
+#include "../../hardware/device/DevicePin.h"
+#include "../../hardware/native/NativeDevice.h"
 #include "../../util/Debounce.h"
 
-template<class T = DigitalInputPin>
+template<class T = NativeDevice>
 class GateInput {
 
     public:
-        GateInput(T input) : input(input) {
-            debounce.begin(input.getValue());
+        GateInput(DigitalInputPin<T>& input) : input(input) {
+            input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
+            debounce.begin(input.digitalRead());
         }
 
-        bool update() { return debounce.update(input.getValue()); }
+        bool update() { return debounce.update(input.digitalRead()); }
         bool rose() { return debounce.fell(); }
         bool fell() { return debounce.rose(); }
         unsigned long duration() { return debounce.duration(); }
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
     protected:
-        T input;
+        DigitalInputPin<T>& input;
         Debounce debounce;
 
 };

@@ -4,13 +4,13 @@
 #include <inttypes.h>
 #include "AbstractInput.h"
 
-template<class T = AnalogInputPin>
+template<class T = NativeDevice>
 class FilterInput : public AbstractInput<T> {
     public:
-        FilterInput(T input) : AbstractInput<T>(input) {
+        FilterInput(AnalogInputPin<T>& input) : AbstractInput<T>(input) {
         }
 
-        FilterInput(T input, float zeroFrequency) : AbstractInput<T>(input) {
+        FilterInput(AnalogInputPin<T>& input, float zeroFrequency) : AbstractInput<T>(input) {
             this->zeroFrequency = zeroFrequency;
         }
 

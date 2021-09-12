@@ -1,15 +1,18 @@
 #ifndef PushButton_h
 #define PushButton_h
 
+#include "../../hardware/device/DevicePin.h"
+#include "../../hardware/native/NativeDevice.h"
 #include "../../util/Debounce.h"
 
-template<class T = DigitalInputPin>
+template<class T = NativeDevice>
 class PushButton {
 
     public:
-        PushButton(T input) : input(input) {}
-        void init() { debounce.begin(input.getValue()); }
-        bool update() { return debounce.update(input.getValue()); }
+        PushButton(DigitalInputPin<T>& input) : input(input) { 
+            input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
+        }
+        bool update() { return debounce.update(input.digitalRead()); }
         bool released() { return debounce.rose(); }
         bool pressed() { return debounce.fell(); }
         bool held() { return !debounce.read(); }
@@ -22,7 +25,7 @@ class PushButton {
         }
 
     protected:
-        T input;
+        DigitalInputPin<T>& input;
         Debounce debounce;
 
 };

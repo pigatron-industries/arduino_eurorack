@@ -1,13 +1,14 @@
 #ifndef TriggerOutput_h
 #define TriggerOutput_h
 
-#include "../../hardware/native/DigitalOutputPin.h"
+#include "../../hardware/device/DevicePin.h"
+#include "../../hardware/native/NativeDevice.h"
 
-template<class T = DigitalOutputPin>
+template<class T = NativeDevice>
 class TriggerOutput {
 
     public:
-        TriggerOutput(T output, unsigned long durationMicros = 1000) : output(output) {
+        TriggerOutput(DigitalOutputPin<T>& output, unsigned long durationMicros = 1000) : output(output) {
             duration = durationMicros;
         }
 
@@ -20,7 +21,7 @@ class TriggerOutput {
 
         void trigger() { 
             triggered = true; 
-            output.setValue(true); 
+            output.digitalWrite(true);
             timer.start(duration); 
         }
 
@@ -31,7 +32,7 @@ class TriggerOutput {
         void setTriggerDurationMicros(unsigned long duration) { this->duration = duration; }
 
     protected:
-        T output;
+        DigitalOutputPin<T>& output;
         bool triggered;
         unsigned long duration;
         Timer timer;

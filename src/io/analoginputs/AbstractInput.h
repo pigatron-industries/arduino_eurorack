@@ -3,18 +3,20 @@
 
 #include <inttypes.h>
 #include "Arduino.h"
-#include "../../hardware/native/AnalogInputPin.h"
+#include "../../hardware/device/DevicePin.h"
+#include "../../hardware/native/NativeDevice.h"
 #include "../../util/util.h"
 #include "../../util/RangeScale.h"
 
 #define SMOOTHING_WEIGHT 0.03
 #define STABILISE_THRESHOLD 0.005
 
-template<class T = AnalogInputPin>
+template<class T = NativeDevice>
 class AbstractInput {
     public:
-        AbstractInput(T input) : 
+        AbstractInput(AnalogInputPin<T>& input) : 
             input(input) {
+            input.setPinType(PinType::ANALOG_INPUT);
         }
 
         bool update() { return readVoltage(); }
@@ -27,7 +29,7 @@ class AbstractInput {
         }
 
     protected:
-        T input;
+        AnalogInputPin<T>& input;
         float smoothingWeight = SMOOTHING_WEIGHT;
 
         uint32_t value;
@@ -38,7 +40,7 @@ class AbstractInput {
         bool changed;
 
         bool readVoltage() {
-            measuredVoltage = input.readVoltage();
+            measuredVoltage = input.analogRead();
             smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, smoothingWeight);
             float diff = fabsf(smoothedVoltage-stableVoltage);
             if(diff > STABILISE_THRESHOLD) {

@@ -3,10 +3,10 @@
 
 #include "LinearInput.h"
 
-template<class T = AnalogInputPin>
+template<class T = NativeDevice>
 class CrossfadeInput : public LinearInput<T> {
     public:
-        CrossfadeInput(T input, float _realMin, float _realMax) : 
+        CrossfadeInput(AnalogInputPin<T>& input, float _realMin, float _realMax) : 
             LinearInput<T>(input, _realMin, _realMax, 0, 1) {
         }
 
