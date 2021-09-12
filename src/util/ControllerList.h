@@ -6,6 +6,8 @@ class ControllerList {
 
     public:
 
+        int getSize() { return controllerSize; }
+
         void addController(T& controller) {
             controllers[controllerSize] = &controller;
             controllerSize++;
