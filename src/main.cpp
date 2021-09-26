@@ -12,9 +12,13 @@
         public:
             static Hardware hw;
             AnalogInput(A0)
+            AnalogInput(test1, A0)
             AnalogOutput(A1)
+            AnalogOutput(test2, A1)
             DigitalInput(10)
+            DigitalInput(test3, 10)
             DigitalOutput(11)
+            DigitalOutput(test4, 11)
     };
 
     Hardware Hardware::hw;
@@ -24,6 +28,11 @@
         Hardware::hw.A1.analogWrite(5);
         Hardware::hw.D10.digitalRead();
         Hardware::hw.D11.digitalWrite(true);
+
+        Hardware::hw.test1.analogRead();
+        Hardware::hw.test2.analogWrite(5);
+        Hardware::hw.test3.digitalRead();
+        Hardware::hw.test4.digitalWrite(true);
     }
 
     // HC595
