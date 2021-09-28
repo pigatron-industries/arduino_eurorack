@@ -5,6 +5,7 @@
     #include "eurorack_max11300.h"
     #include "eurorack_mcp23s17.h"
     #include "eurorack_hc595.h"
+    #include "eurorack_is32fl3738.h"
 
     //Native
 
@@ -64,6 +65,14 @@
         max11300.pins[0].analogWrite(5);
         max11300.pins[0].digitalRead();
         max11300.pins[0].analogRead();
+    }
+
+    // IS32FL3738
+
+    IS32FL3738Device is32fl3738 = IS32FL3738Device(Wire, IS32_ADDRESS_A);
+
+    void testIS32FL3738Pins() {
+        is32fl3738.pins[0].analogWrite(1);
     }
 
     // Analog Inputs
