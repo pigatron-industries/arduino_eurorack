@@ -6,6 +6,7 @@
     #include "eurorack_mcp23s17.h"
     #include "eurorack_hc595.h"
     #include "eurorack_is32fl3738.h"
+    #include "eurorack_dac8164.h"
 
     //Native
 
@@ -73,6 +74,14 @@
 
     void testIS32FL3738Pins() {
         is32fl3738.pins[0].analogWrite(1);
+    }
+
+    // DAC8164
+
+    DAC8164Device dac8164 = DAC8164Device();
+
+    void testDAC8164Pins() {
+        dac8164.pins[0].analogWrite(1);
     }
 
     // Analog Inputs
