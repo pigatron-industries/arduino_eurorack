@@ -23,12 +23,13 @@ class RangeScale {
         }
 
         float convertReverse(float toValue) {
-            if(toValue < toMin) {
-                toValue = toMin;
-            } else if (toValue > toMax) {
-                toValue = toMax;
+            float fromValue = ((toValue - toMin) * reverseFactor) + fromMin;
+            if(fromValue < fromMin) {
+                fromValue = fromMin;
+            } else if (fromValue > fromMax) {
+                fromValue = fromMax;
             }
-            return ((toValue - toMin) * reverseFactor) + fromMin;  
+            return fromValue;
         }
 
         void setInputRange(float fromMin, float fromMax) { 
