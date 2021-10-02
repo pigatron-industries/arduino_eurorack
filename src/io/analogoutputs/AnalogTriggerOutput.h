@@ -13,6 +13,10 @@ class AnalogTriggerOutput {
             this->triggerVoltage = triggerVoltage;
         }
 
+        void setDuration(unsigned long durationMillis) {
+            duration = durationMillis;
+        }
+
         void update() {  
             if(triggered && timer.hasJustStopped()) {
                 triggered = false; 
