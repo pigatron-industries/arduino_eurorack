@@ -68,6 +68,7 @@ class Oscillator
     /** Resets the phase to the input argument. If no argument is present, it will reset phase to 0.0;
     */
     void setPhase(float _phase = 0.0f) { phase_ = _phase; }
+    float getPhase() { return phase_; }
 
     void setAllowHighFrequency(bool allowHighFrequency) { this->allowHighFrequency = allowHighFrequency; }
 
