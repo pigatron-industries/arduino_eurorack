@@ -5,17 +5,17 @@ template<class T, int MAXSIZE>
 class Array {
 
     public:
-        int size = 0;
+        int _size = 0;
         T items[MAXSIZE];
 
         T& operator [] (int i) { return items[i]; }
-        int size() { return size; }
+        int size() { return _size; }
         int add(const T& item) {
-            items[size] = item;
-            return size++;
+            items[_size] = item;
+            return _size++;
         }
         void clear() {
-            size = 0;
+            _size = 0;
         }
 
 };
