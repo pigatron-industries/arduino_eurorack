@@ -8,6 +8,7 @@ class Array {
         int size = 0;
         T items[MAXSIZE];
 
+        T& operator [] (int i) { return items[i]; }
         int size() { return size; }
         int add(const T& item) {
             items[size] = item;
