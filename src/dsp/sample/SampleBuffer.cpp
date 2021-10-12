@@ -8,6 +8,9 @@ void SampleBuffer::init(size_t bufferSize, void* (*allocate)(size_t)) {
 void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSize, void* (*allocate)(size_t)) {
     this->bufferSize = bufferSize;
     this->sampleSize = bufferSize;
+    this->sampleRate = sampleRate;
+    this->sampleFrequency = sampleFrequency;
+    this->playbackSampleRate = sampleRate;
     buffer = new (allocate(sizeof(float)*bufferSize)) float[bufferSize];
     reset();
     clear();
