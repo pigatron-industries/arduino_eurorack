@@ -2,14 +2,16 @@
 #define SampleBuffer_h
 #include <stdlib.h>
 #include <stdint.h>
+#include "util/MemPool.h"
 
 class SampleBuffer
 {
     public:
         SampleBuffer() {}
 
-        void init(size_t bufferSize, void* (*allocate)(size_t));
-        void init(float sampleRate, float sampleFrequency, size_t bufferSize, void* (*allocate)(size_t));
+        void init(size_t bufferSize, MemPool& memPool);
+        void init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool& memPool);
+        void setPlaybackSampleRate(float playbackSampleRate) { this->playbackSampleRate = playbackSampleRate; }
         void reset();
         void clear();
 
@@ -23,7 +25,7 @@ class SampleBuffer
         bool write(const float sample);
         const float read(int position);
         const float read(float position);
-        float caclReadIncrement();
+        float calculateReadIncrement(float playbackFrequency);
 
         bool isSampleFull() { return sampleFull; }
         bool isBufferFull() { return bufferFull; }

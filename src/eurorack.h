@@ -6,6 +6,7 @@
 #include "util/util.h"
 #include "util/Array.h"
 #include "util/CycleEnum.h"
+#include "util/MemPool.h"
 #include "util/SlewLimiter.h"
 #include "util/ControllerList.h"
 
