@@ -13,27 +13,27 @@ class AnalogGateInput : public LinearInput<T> {
         }
 
         inline bool update() {
-            bool prevOpen = open;
+            bool prevGate = gate;
             if(LinearInput<T>::update()) {
-                open = this->getValue() > triggerVoltage;
-                triggered = !prevOpen && open;
+                gate = this->getValue() > triggerVoltage;
+                triggeredOn = !prevGate && gate;
                 return true;
             }
             return false;
         }
 
-        inline bool isTriggered() {
-            return triggered;
+        inline bool isTriggeredOn() {
+            return triggeredOn;
         }
 
-        inline bool isOpen() {
-            return open;
+        inline bool isGateOn() {
+            return gate;
         }
 
     private:
         float triggerVoltage;
-        bool triggered;
-        bool open;
+        bool gate;
+        bool triggeredOn;
 };
 
 #endif

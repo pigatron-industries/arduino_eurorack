@@ -13,6 +13,7 @@ void Envelope::init(float sampleRate, int segmentCount, float length, bool repea
     this->length = length;
     this->repeat = repeat;
     this->increment = 1.0f/sampleRate;
+    this->sustainSegment = 0;
     position = 0;
     segmentIndex = 0;
     stopped = !repeat;
@@ -24,10 +25,16 @@ void Envelope::init(float sampleRate, int segmentCount, float length, bool repea
     }
 }
 
-void Envelope::trigger() {
-    stopped = false;
-    position = 0;
-    segmentIndex = 0;
+void Envelope::trigger(bool gate) {
+    this->gate = gate;
+    if(gate) {
+        stopped = false;
+        position = 0;
+        segmentIndex = 0;
+    } else {
+        position = 0;
+        segmentIndex = sustainSegment+1;
+    }
 }
 
 float Envelope::process() {
@@ -51,15 +58,24 @@ void Envelope::incrementPosition() {
     Segment& currentSegment = segments[segmentIndex];
     position += increment;
 
-    if(position > currentSegment.getLength()) {
-        segmentIndex++;
-        position -= currentSegment.getLength();
+    if(position >= currentSegment.getLength()) {
+        if(gate && segmentIndex == sustainSegment) {
+            // sustain
+            position = currentSegment.getLength();
+        } else {
+            // increment
+            segmentIndex++;
+            position -= currentSegment.getLength();
+        }
     }
     if(segmentIndex >= segmentCount) {
+        // end
         if(repeat) {
+            // repeat
             position -= totalLength;
             segmentIndex = getSegmentForPosition(position);
         } else {
+            // stop
             stopped = true;
             segmentIndex = 0;
             position = 0;

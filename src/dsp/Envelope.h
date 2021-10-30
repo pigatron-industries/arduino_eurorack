@@ -7,7 +7,7 @@ class Envelope
         static const int MAX_SEGMENTS = 6;
         Envelope() {}
         void init(float sampleRate, int segmentCount = 2, float length = 1, bool repeat = false);
-        void trigger();
+        void trigger(bool gate = true);
         float process();
 
         void setSegmentEndValue(int index, float endValue);
@@ -41,7 +41,7 @@ class Envelope
         int segmentCount;
         float totalLength;
 
-        int sustainPoint;
+        int sustainSegment;
         bool repeat;
  
         float sampleRate;
@@ -49,6 +49,7 @@ class Envelope
         float increment;
         
         bool stopped;
+        bool gate;
         float position;
         int segmentIndex;
         float length;
