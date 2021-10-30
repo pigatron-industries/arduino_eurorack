@@ -1,41 +1,56 @@
 #ifndef Envelope_h
 #define Envelope_h
 
-
-class Point {
-    public:
-        Point() { x=0; y=0; }
-        Point(float x, float y) { this->x = x; this->y = y; }
-        float x;
-        float y;
-};
-
 class Envelope
 {
     public:
-        static const int MAX_POINTS = 6;
+        static const int MAX_SEGMENTS = 6;
         Envelope() {}
-        void init(float sampleRate, int pointCount = 3, float length = 1, bool repeat = false);
+        void init(float sampleRate, int segmentCount = 2, float length = 1, bool repeat = false);
         void trigger();
         float process();
 
-        void setPoint(int index, Point point);
-        void setSegmentLength(int index, float segmentLength);
+        void setSegmentEndValue(int index, float endValue);
+        void setSegmentLength(int index, float length);
         void setFrequency(float frequency);
         
     private:
-        Point points[MAX_POINTS];
-        int pointCount;
+
+        class Segment {
+            public:
+                Segment() {}
+                Segment(float length, float start, float end) { 
+                    this->length = length; this->startValue = start; this->endValue = end;
+                    calculateGradient();
+                }
+                float getLength() { return length; }
+                float getStartValue() { return startValue; }
+                float getEndValue() { return endValue; }
+                float getGradient() { return gradient; }
+                void setLength(float length) { this->length = length; calculateGradient(); }
+                void setEndValue(float endValue) { this->endValue = endValue; calculateGradient(); }
+                void setStartValue(float startValue) { this->startValue = startValue; calculateGradient(); }
+
+            private:
+                float length, startValue, endValue;
+                float gradient;
+                void calculateGradient();
+        };
+
+        Segment segments[MAX_SEGMENTS];
+        int segmentCount;
+        float totalLength;
+
         int sustainPoint;
         bool repeat;
  
         float sampleRate;
         float sampleRateRecip;
         float increment;
-        float position;
+        
         bool stopped;
-
-        int segment;
+        float position;
+        int segmentIndex;
         float length;
 
         int getSegmentForPosition(float position);
