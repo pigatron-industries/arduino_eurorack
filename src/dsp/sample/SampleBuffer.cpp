@@ -1,6 +1,9 @@
 #include "SampleBuffer.h"
 #include <Arduino.h>
 
+//TODO this is defined somewhere when using daisy but not teensy. maybe can get away without new operator.
+void* operator new[](size_t size, void* pointer);
+
 void SampleBuffer::init(size_t bufferSize, MemPool& memPool) { 
     init(0, 0, bufferSize, memPool);
 }

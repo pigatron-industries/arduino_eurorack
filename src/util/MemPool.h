@@ -3,8 +3,6 @@
 
 #include <stddef.h>
 
-#define ALLOCATOR(name) void* (*name)(size_t)
-
 class MemPool {
     public:
         MemPool(char* poolMem, size_t poolSize);
