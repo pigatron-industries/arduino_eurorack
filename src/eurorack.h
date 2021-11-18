@@ -3,6 +3,8 @@
 
 #include "EurorackConfig.h"
 
+#include "debug/Profiler.h"
+
 #include "util/util.h"
 #include "util/Array.h"
 #include "util/CycleEnum.h"
