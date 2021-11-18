@@ -6,7 +6,7 @@
 #ifdef PROFILE_PROCESS
     #define PROFILE_START Profiler::profiler.start();                                                                     
     #define PROFILE_END Profiler::profiler.end();  
-    #define PROFILE_PRINT if(Profiler::profiler.isFull()) { Profiler::profiler.dumpAverageTime(); }
+    #define PROFILE_PRINT if(Profiler::profiler.isFull()) { Profiler::profiler.printAverageTime(); }
 #else
     #define PROFILE_START                                                                   
     #define PROFILE_END
