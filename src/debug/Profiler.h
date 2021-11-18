@@ -5,10 +5,12 @@
 
 #ifdef PROFILE_PROCESS
     #define PROFILE_START Profiler::profiler.start();                                                                     
-    #define PROFILE_END Profiler::profiler.end();
+    #define PROFILE_END Profiler::profiler.end();  
+    #define PROFILE_PRINT if(Profiler::profiler.isFull()) { Profiler::profiler.dumpAverageTime(); }
 #else
     #define PROFILE_START                                                                   
     #define PROFILE_END
+    #define PROFILE_PRINT
 #endif
 
 #define PROFILER_SAMPLES 1000
@@ -39,9 +41,7 @@ class Profiler {
                         full = true;
                     }
                 }
-            } else {
-                printAverageTime();
-            }
+            } 
         }
 
         inline bool isFull() {
