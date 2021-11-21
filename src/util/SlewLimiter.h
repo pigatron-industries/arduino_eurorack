@@ -5,7 +5,7 @@
 
 class SlewLimiter {
     public:
-        SlewLimiter() {}
+        SlewLimiter(float speed = 0.01) { this->speed = speed; }
         void setTargetValue(float targetValue) { this->targetValue = targetValue; }
         void setSpeed(float speed) { this->speed = speed; }
         float getValue() { return value; }
