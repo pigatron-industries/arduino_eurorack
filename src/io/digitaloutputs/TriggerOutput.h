@@ -15,7 +15,7 @@ class TriggerOutput {
         void update() {  
             if(triggered && timer.hasJustStopped()) {
                 triggered = false; 
-                output.setValue(false);   
+                output.digitalWrite(false);   
             }
         }
 
@@ -26,7 +26,7 @@ class TriggerOutput {
         }
 
         void setValue(bool value) {
-            output.setValue(value);
+            output.digitalWrite(value);
         }
 
         void setTriggerDurationMicros(unsigned long duration) { this->duration = duration; }
