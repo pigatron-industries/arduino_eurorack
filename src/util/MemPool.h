@@ -2,17 +2,35 @@
 #define MemPool_h
 
 #include <stddef.h>
+#include <Arduino.h>
 
+template <class T = char>
 class MemPool {
     public:
-        MemPool(char* poolMem, size_t poolSize);
+        MemPool(T* poolMem, size_t poolSize) : poolMem(poolMem), poolSize(poolSize) {}
         void* allocate(size_t size);
         void reset();
     private:
-        char* poolMem;
+        T* poolMem;
         size_t poolSize;
         size_t poolIndex;
 };
+
+template <class T>
+void* MemPool<T>::allocate(size_t size) {
+    if (poolIndex + size >= poolSize) {
+        Serial.println("Pool memory space exceeded");
+        return 0;
+    }
+    void* ptr = &poolMem[poolIndex];
+    poolIndex += size;
+    return ptr;
+}
+
+template <class T>
+void MemPool<T>::reset() {
+    poolIndex = 0;
+}
 
 
 #endif

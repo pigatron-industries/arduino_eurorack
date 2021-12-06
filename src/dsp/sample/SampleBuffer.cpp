@@ -4,15 +4,15 @@
 //TODO this is defined somewhere when using daisy but not teensy. maybe can get away without new operator.
 void* operator new[](size_t size, void* pointer);
 
-void SampleBuffer::init(size_t bufferSize, MemPool& memPool) { 
+void SampleBuffer::init(size_t bufferSize, MemPool<float>& memPool) { 
     init(0, 0, bufferSize, memPool);
 }
 
-void SampleBuffer::init(float sampleRate, size_t bufferSize, MemPool& memPool) {
+void SampleBuffer::init(float sampleRate, size_t bufferSize, MemPool<float>& memPool) {
     init(sampleRate, 0, bufferSize, memPool);
 }
 
-void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool& memPool) {
+void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool<float>& memPool) {
     this->bufferSize = bufferSize;
     this->sampleSize = bufferSize;
     this->sampleRate = sampleRate;

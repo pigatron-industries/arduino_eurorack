@@ -9,9 +9,9 @@ class SampleBuffer
     public:
         SampleBuffer() {}
 
-        void init(size_t bufferSize, MemPool& memPool);
-        void init(float sampleRate, size_t bufferSize, MemPool& memPool);
-        void init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool& memPool);
+        void init(size_t bufferSize, MemPool<float>& memPool);
+        void init(float sampleRate, size_t bufferSize, MemPool<float>& memPool);
+        void init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool<float>& memPool);
         void setPlaybackSampleRate(float playbackSampleRate) { this->playbackSampleRate = playbackSampleRate; }
         void reset();
         void clear();
