@@ -12,7 +12,6 @@ class DelayLine : public SampleBuffer
 
         void setDelay(size_t delay);
         void setDelay(float delay);
-        void write(const float sample);
         const float read() const;
 
     private:
