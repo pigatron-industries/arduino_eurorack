@@ -22,7 +22,11 @@ class DelayLine : public SampleBuffer
 
 
 inline const float DelayLine::read() const {
-    return SampleBuffer::read(writePointer + delayInt, delayFrac);
+    float pos = writePointer - delay;
+    if(pos < 0) {
+        pos += bufferSize;
+    }
+    return SampleBuffer::read(pos);
 }
 
 #endif
