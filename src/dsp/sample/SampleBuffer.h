@@ -10,6 +10,7 @@ class SampleBuffer
         SampleBuffer() {}
 
         void init(size_t bufferSize, MemPool& memPool);
+        void init(float sampleRate, size_t bufferSize, MemPool& memPool);
         void init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool& memPool);
         void setPlaybackSampleRate(float playbackSampleRate) { this->playbackSampleRate = playbackSampleRate; }
         void reset();
@@ -30,7 +31,7 @@ class SampleBuffer
         bool isSampleFull() { return sampleFull; }
         bool isBufferFull() { return bufferFull; }
 
-    private:
+    protected:
         size_t bufferSize;
         size_t sampleSize;
         float* buffer;
@@ -39,9 +40,11 @@ class SampleBuffer
         bool sampleFull;
         bool bufferFull;
 
-        float sampleRate;
-        float sampleFrequency;
-        float playbackSampleRate;
+        float sampleRate;         // sample rate of buffered samples
+        float sampleFrequency;    // actual frequency of waveform
+        float playbackSampleRate; // sample rate of playback
+
+        const float read(size_t position, float fraction);
 };
 
 
@@ -66,6 +69,10 @@ inline const float SampleBuffer::read(float position) {
     int32_t intPosition = static_cast<int32_t>(position);
     float fracPosition = position - static_cast<float>(intPosition);
     intPosition = static_cast<size_t>(intPosition) < bufferSize ? intPosition : bufferSize - 1;
+    return read(intPosition, fracPosition);
+}
+
+inline const float SampleBuffer::read(size_t intPosition, float fracPosition) {
     float a = buffer[intPosition % bufferSize];
     float b = buffer[(intPosition + 1) % bufferSize];
     return a + (b - a) * fracPosition;
