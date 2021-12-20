@@ -8,7 +8,7 @@ template <class T = char>
 class MemPool {
     public:
         MemPool(T* poolMem, size_t poolSize) : poolMem(poolMem), poolSize(poolSize) {}
-        void* allocate(size_t size);
+        T* allocate(size_t size);
         void reset();
     private:
         T* poolMem;
@@ -17,12 +17,12 @@ class MemPool {
 };
 
 template <class T>
-void* MemPool<T>::allocate(size_t size) {
+T* MemPool<T>::allocate(size_t size) {
     if (poolIndex + size >= poolSize) {
         Serial.println("Pool memory space exceeded");
         return 0;
     }
-    void* ptr = &poolMem[poolIndex];
+    T* ptr = &poolMem[poolIndex];
     poolIndex += size;
     return ptr;
 }
