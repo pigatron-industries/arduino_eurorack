@@ -1,5 +1,7 @@
 #include "IS32FL3738Device.h"
 
+#define IS32_I2C_SPEED 3400000
+
 // Global Registers
 #define IS32_REG_GLOBAL_PAGE 0xFD
 #define IS32_REG_GLOBAL_UNLOCK 0xFE
@@ -25,6 +27,7 @@ IS32FL3738Device::IS32FL3738Device(TwoWire& wire, uint8_t address) :
 
 void IS32FL3738Device::init() {
     wire.begin();
+    wire.setClock(IS32_I2C_SPEED);
 
     selectPage(3);
     writeRegister(IS32_REG_GLOBAL_CONFIG, IS32_REG_GLOBAL_CONFIG_SSD_RUN);
