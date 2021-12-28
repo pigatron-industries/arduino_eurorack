@@ -31,4 +31,7 @@
 #include "io/digitalinputs/PushButton.h"
 #include "io/digitaloutputs/TriggerOutput.h"
 
+#include "controller/AbstractMainController.h"
+#include "controller/Config.h"
+
 #endif
