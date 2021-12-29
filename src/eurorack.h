@@ -18,7 +18,6 @@
 
 #include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
-#include "hardware/MultiplexGateOutput.h"
 
 #include "io/analoginputs/LinearInput.h"
 #include "io/analoginputs/ExpInput.h"
