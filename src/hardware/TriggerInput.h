@@ -11,8 +11,8 @@ public:
     TriggerInput(uint8_t pin, bool inverted = true, bool useInterrupt = true);
     uint8_t getPin() { return pin; }
     bool getValue() { return value; } 
-    bool didRise() { return inverted ? didFallInternal() : didRiseInternal(); }
-    bool didFall() { return inverted ? didRiseInternal() : didFallInternal(); }
+    bool rose() { return inverted ? didFallInternal() : didRiseInternal(); }
+    bool fell() { return inverted ? didRiseInternal() : didFallInternal(); }
     bool update(); // need to call update if pin doesn't use interrupt
 
 private:
@@ -22,8 +22,8 @@ private:
     bool useInterrupt;
     bool interruptFired;
 
-    bool rose;
-    bool fell;
+    bool didRise;
+    bool didFall;
 
     static TriggerInput* interruptInputs[MAX_INTERRUPT_TRIGGERS];
     static uint8_t interruptInputCount;
@@ -31,19 +31,19 @@ private:
 
     void setValue(bool value) { 
         this->value = value;
-        this->rose = rose || value;
-        this->fell = fell || !value;
+        this->didRise = didRise || value;
+        this->didFall = didFall || !value;
     }
 
     bool didRiseInternal() {
-        bool returnValue = rose;
-        rose = false;
+        bool returnValue = didRise;
+        didRise = false;
         return returnValue;
     }
 
     bool didFallInternal() {
-        bool returnValue = fell;
-        fell = false;
+        bool returnValue = didFall;
+        didFall = false;
         return returnValue;
     }
 };
