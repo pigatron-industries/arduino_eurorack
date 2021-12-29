@@ -8,7 +8,9 @@
 
 class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputDevice, public DigitalInputDevice {
     public:
-        MCP23S17Device(const uint8_t csPin,const uint8_t haenAddress) : gpio_MCP23S17(csPin, haenAddress) {};
+        MCP23S17Device(const uint8_t csPin,const uint8_t haenAddress) : gpio_MCP23S17(csPin, haenAddress) {
+            begin();
+        };
         inline void setPinType(uint8_t pin, PinType pinType);
         inline void digitalWrite(uint8_t pin, bool value);
         inline bool digitalRead(uint8_t pin);
