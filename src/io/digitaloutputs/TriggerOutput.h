@@ -3,6 +3,7 @@
 
 #include "../../hardware/device/DevicePin.h"
 #include "../../hardware/native/NativeDevice.h"
+#include "../../util/Timer.h"
 
 template<class T = NativeDevice>
 class TriggerOutput {
