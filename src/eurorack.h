@@ -1,6 +1,8 @@
 #ifndef Eurorack_h
 #define Eurorack_h
 
+#include <Wire.h>
+
 #include "EurorackConfig.h"
 
 #include "debug/Profiler.h"
