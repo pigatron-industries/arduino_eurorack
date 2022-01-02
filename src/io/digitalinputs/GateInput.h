@@ -14,9 +14,10 @@ class GateInput {
             debounce.begin(input.digitalRead());
         }
 
+        bool getValue() { return inverted ? !debounce.read() : debounce.read(); }
         bool update() { return debounce.update(input.digitalRead()); }
-        bool rose() { return debounce.fell(); }
-        bool fell() { return debounce.rose(); }
+        bool rose() { return inverted ? debounce.fell() : debounce.rose(); }
+        bool fell() { return inverted ? debounce.rose() : debounce.fell(); }
         unsigned long duration() { return debounce.duration(); }
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
