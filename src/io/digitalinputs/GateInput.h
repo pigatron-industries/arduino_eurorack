@@ -9,7 +9,7 @@ template<class T = NativeDevice>
 class GateInput {
 
     public:
-        GateInput(DigitalInputPin<T>& input, inverted = true) : input(input), inverted(inverted) {
+        GateInput(DigitalInputPin<T>& input, bool inverted = true) : input(input), inverted(inverted) {
             input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
             debounce.begin(input.digitalRead());
         }
