@@ -7,6 +7,8 @@
 constexpr float TWO_PI_F     = (float)M_PI*2;
 constexpr float TWO_PI_RECIP = 1.0f / float(M_PI*2);
 
+/** DEPRECATED use WaveOscillator **/
+
 namespace pigatron
 {
 /** Synthesis of several waveforms, including polyBLEP bandlimited waveforms.

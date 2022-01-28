@@ -3,8 +3,10 @@
 
 class ClockDivider {
     public:
-        ClockDivider(int divisor = 1) {
+        ClockDivider(int divisor = 1, int offset = 0) {
             this->divisor = divisor;
+            this->offset = offset;
+            reset();
         }
 
         bool tick() {
@@ -22,11 +24,15 @@ class ClockDivider {
         }
 
         void reset() {
-            counter = -1;
+            counter = -1 + offset;
         }
 
         void setDivisor(int divisor) {
             this->divisor = divisor;
+        }
+
+        void setOffset(int offset) {
+            this->offset = offset;
         }
 
         bool getAndResetTrigger() {
@@ -41,6 +47,7 @@ class ClockDivider {
     private:
         int counter = -1;
         int divisor = 1;
+        int offset = 0;
         bool triggered;
         
 };
