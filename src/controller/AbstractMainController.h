@@ -33,7 +33,7 @@ class AbstractMainController {
 
         ConfigField<ModeConfig> configMode;
 
-        void controllerInit();
+        virtual void controllerInit();
         void updateEncoder();
 };
 
