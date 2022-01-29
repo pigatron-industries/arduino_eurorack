@@ -39,7 +39,7 @@ inline float Line::get(float phase) {
 }
 
 inline void Line::calculateGradient() {
-    float gradient = (endValue - startValue) / length;
+    gradient = (endValue - startValue) / length;
 }
 
 #endif
