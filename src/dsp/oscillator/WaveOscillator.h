@@ -12,6 +12,7 @@ class WaveOscillator {
         void init(float sampleRate, bool repeat = true);
         void setFrequency(float frequency);
         void setPeriod(float period);
+        void setPhase(float phase);
         T& getShape() { return waveShape; }
         virtual float process();
 
@@ -47,6 +48,11 @@ void WaveOscillator<T>::setFrequency(float frequency) {
 template<class T>
 void WaveOscillator<T>::setPeriod(float period) {
     increment = sampleTime / period;
+}
+
+template<class T>
+void WaveOscillator<T>::setPhase(float phase) {
+    this->phase = phase;
 }
 
 template<class T>
