@@ -25,6 +25,9 @@ void EnvelopePlayer<T>::init(float sampleRate, bool repeat) {
 
 template<class T>
 void EnvelopePlayer<T>::setGate(bool value) {
+    if(value == gate) {
+        return;
+    }
     gate = value;
     if(gate) {
         WaveOscillator<T>::phase = 0;
