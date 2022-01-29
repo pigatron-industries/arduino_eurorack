@@ -1,8 +1,8 @@
 #ifndef AsymmetricalTriangle_h
 #define AsymmetricalTriangle_h
 
-#include <eurorack_dsp.h>
-#include "math.h"
+#include "WaveSequence.h"
+#include "Line.h"
 
 class AsymmetricalTriangle : public WaveSequence<2, Line> {
     public:
