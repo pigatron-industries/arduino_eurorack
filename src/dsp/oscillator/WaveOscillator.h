@@ -17,7 +17,7 @@ class WaveOscillator : public BaseOscillator {
         T& getShape() { return waveShape; }
         virtual float process();
 
-    private:
+    protected:
         T waveShape;
 
         float sampleRate;
