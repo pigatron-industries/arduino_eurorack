@@ -7,12 +7,25 @@
 template<int N, class T = WaveShape>
 class WaveSequence : public WaveShape {
     public:
-        WaveShapeSequence() {}
+        WaveSequence();
+        T& segment(int i);
         virtual float get(float phase);
 
     protected:
         T segments[N];
 };
+
+template<int N, class T>
+WaveSequence<N, T>::WaveSequence() {
+    for(int i = 0; i< N; i++) {
+        segment(i).setLength(1.0f/N);
+    }
+}
+
+template<int N, class T>
+inline T& WaveSequence<N, T>::segment(int i) {
+    return segments[i];
+}
 
 template<int N, class T>
 inline float WaveSequence<N, T>::get(float phase) {
