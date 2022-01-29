@@ -1,11 +1,12 @@
 #ifndef WaveOscillator_h
 #define WaveOscillator_h
 
+#include "BaseOscillator.h"
 #include "../base/WaveShape.h"
 
 // increments through a waveshape over time
 template<class T = WaveShape>
-class WaveOscillator {
+class WaveOscillator : public BaseOscillator {
     public:
         WaveOscillator() {}
         WaveOscillator(T waveShape): waveShape(waveShape) {}
