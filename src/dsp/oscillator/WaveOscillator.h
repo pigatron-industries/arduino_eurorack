@@ -74,6 +74,8 @@ void WaveOscillator<T>::incrementPhase() {
             playing = false;
             phase = 0;
         }
+    } else if(phase < 0) {
+        phase += waveShape.getLength();
     }
 }
 
