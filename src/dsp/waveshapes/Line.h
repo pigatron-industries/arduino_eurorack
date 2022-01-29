@@ -7,6 +7,7 @@
 class Line : public WaveShape {
     public:
         Line() {}
+        virtual void setLength(float length);
         void setStartValue(float startValue);
         void setEndValue(float endValue);
         virtual float get(float phase);
@@ -19,6 +20,11 @@ class Line : public WaveShape {
 
         void calculateGradient();
 };
+
+inline void Line::setLength(float length) {
+    WaveShape::setLength(length);
+    calculateGradient();
+}
 
 inline void Line::setStartValue(float startValue) {
     this->startValue = startValue;

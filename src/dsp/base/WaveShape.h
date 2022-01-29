@@ -7,11 +7,15 @@
 class WaveShape : public Function {
     public:
         WaveShape() {}
-        void setLength(float length) { this->length = length; }
+        virtual void setLength(float length);
         float getLength() { return length; }
 
     protected:
         float length = 1;
 };
+
+inline void WaveShape::setLength(float length) { 
+    this->length = length; 
+}
 
 #endif

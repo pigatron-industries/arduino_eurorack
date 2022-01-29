@@ -9,10 +9,13 @@ class WaveSequence : public WaveShape {
     public:
         WaveSequence();
         T& segment(int i);
+        void setSegmentLength(int i, float length);
         virtual float get(float phase);
 
     protected:
         T segments[N];
+
+        void calculateTotalLength();
 };
 
 template<int N, class T>
@@ -25,6 +28,21 @@ WaveSequence<N, T>::WaveSequence() {
 template<int N, class T>
 inline T& WaveSequence<N, T>::segment(int i) {
     return segments[i];
+}
+
+template<int N, class T>
+inline void WaveSequence<N, T>::setSegmentLength(int i, float length) {
+    segments[i].setLength(length);
+    calculateTotalLength();
+}
+
+template<int N, class T>
+inline void WaveSequence<N, T>::calculateTotalLength() {
+    float totalLength = 0;
+    for(T& segment : segments) {
+        totalLength += segment.getLength();
+    }
+    setLength(totalLength);
 }
 
 template<int N, class T>
