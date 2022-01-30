@@ -13,6 +13,7 @@
 #include "util/MemPool.h"
 #include "util/SlewLimiter.h"
 #include "util/ControllerList.h"
+#include "util/ObjectSelector.h"
 
 #include "hardware/device/Device.h"
 #include "hardware/device/DevicePin.h"
