@@ -33,7 +33,7 @@ class ObjectSelector {
             select(0);
         }
 
-        B* operator [] (int i) const { return objectPts[i]; }
+        B* operator [] (int i) const { return objectPtrs[i]; }
 
         B* select(int n) { selected = objectPtrs[n]; return selected; }
 
