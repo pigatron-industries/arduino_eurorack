@@ -17,7 +17,7 @@
 #include "dsp/waveshapes/Sine.h"
 #include "dsp/waveshapes/Triangle.h"
 #include "dsp/waveshapes/AsymmetricalTriangle.h"
-#include "dsp/waveshapes/WaveList.h"
+#include "dsp/waveshapes/WaveSelector.h"
 #include "dsp/waveshapes/WaveSequence.h"
 
 #endif
