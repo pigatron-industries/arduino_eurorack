@@ -35,6 +35,7 @@ class ObjectSelector {
 
         B* operator [] (int i) const { return objectPtrs[i]; }
         B* getSelected() { return selected; }
+        size_t getSize() { return sizeof...(Ts); }
 
         B* select(int n) { 
             selectedIndex = 0; 
