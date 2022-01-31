@@ -34,14 +34,39 @@ class ObjectSelector {
         }
 
         B* operator [] (int i) const { return objectPtrs[i]; }
-
-        B* select(int n) { selected = objectPtrs[n]; return selected; }
-
         B* getSelected() { return selected; }
+
+        B* select(int n) { 
+            selectedIndex = 0; 
+            selected = objectPtrs[n]; 
+            return selected; 
+        }
+
+        B* increment() {
+            selectedIndex = ((selectedIndex + 1) % (sizeof...(Ts)));
+            selected = objectPtrs[selectedIndex];
+            return selected;
+        }
+
+        B* decrement() {
+            selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : (sizeof...(Ts)) - 1;
+            selected = objectPtrs[selectedIndex];
+            return selected;
+        }
+
+        B* cycle(int direction) {
+            if(direction > 0) {
+                return incrementController();
+            } else if(direction < 0) {
+                return decrementController();
+            }
+            return selected;
+        }
 
     protected:
         std::tuple<Ts...> objects;
         B* objectPtrs[sizeof...(Ts)];
+        size_t selectedIndex;
         B* selected;
 };
 
