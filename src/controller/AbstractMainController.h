@@ -1,11 +1,7 @@
 #ifndef AbstractMainController_h
 #define AbstractMainController_h
 
-#include <eurorack.h>
 #include "Config.h"
-
-#define CHANNELS 4
-#define OUTPUTS 8
 
 class ModeConfig {
     public:
@@ -13,8 +9,7 @@ class ModeConfig {
         uint8_t controllerMode;
 };
 
-
-template <class T, int N>
+template <class B, class... Ts>
 class AbstractMainController {
     public:
         AbstractMainController(RotaryEncoder& encoder, PushButton<>& encoderButton) : 
@@ -23,10 +18,8 @@ class AbstractMainController {
         void init();
         void update();
 
-        void registerController(T& controller);
-
     protected:
-        ObjectSelector<T, N> controllers;
+        TypeSelector<B, Ts...> controllers;
 
         RotaryEncoder& encoder;
         PushButton<>& encoderButton;
@@ -38,8 +31,8 @@ class AbstractMainController {
 };
 
 
-template <class T, int N>
-void AbstractMainController<T, N>::init() {
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::init() {
     Eurorack::init();
     Config::config.load(configMode);
     controllers.select(configMode.data.controllerIndex);
@@ -47,26 +40,21 @@ void AbstractMainController<T, N>::init() {
     controllerInit();
 }
 
-template <class T, int N>
-void AbstractMainController<T, N>::update() {
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::update() {
     updateEncoder();
     controllers.getSelected()->update();
 }
 
-template <class T, int N>
-void AbstractMainController<T, N>::registerController(T& controller) {
-    controllers.addItem(&controller);
-}
-
-template <class T, int N>
-void AbstractMainController<T, N>::controllerInit() {
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::controllerInit() {
     configMode.data.controllerIndex = controllers.getSelectedIndex();
     Config::config.save(configMode);
     controllers.getSelected()->init();
 }
 
-template <class T, int N>
-void AbstractMainController<T, N>::updateEncoder() {
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::updateEncoder() {
     encoderButton.update();
     bool cycled = false;
     if(encoder.update()) {
