@@ -33,7 +33,7 @@ class ObjectSelector {
         }
 
         B* select(size_t i) { 
-            selectedIndex = 0; 
+            selectedIndex = i; 
             selected = objectPtrs[i]; 
             return selected; 
         }
