@@ -1,5 +1,5 @@
-#ifndef ObjectSelector_h
-#define ObjectSelector_h
+#ifndef TypeSelector_h
+#define TypeSelector_h
 
 #include <tuple>
 
@@ -14,43 +14,31 @@ for_each(std::tuple<Ts...>& t, Func func) {
     for_each<I + 1, Func, Ts...>(t, func);
 }
 
-template<class B, class... Ts>
+template<class B, int N>
 class ObjectSelector {
     public:
-        ObjectSelector() { 
-            buildList();
+        TypeSelector() {
             select(0);
         }
-
-        void buildList() { 
-            int i = 0;
-            for_each(objects, [this, &i](B* object) {
-                Serial.println(i);
-                Serial.println((int)object);
-                this->objectPtrs[i] = object;
-                i++;
-            });
-            select(0);
-        }
-
+    
         B* operator [] (int i) const { return objectPtrs[i]; }
         B* getSelected() { return selected; }
-        size_t getSize() { return sizeof...(Ts); }
+        size_t getSize() { return N; }
 
-        B* select(int n) { 
+        B* select(size_t i) { 
             selectedIndex = 0; 
-            selected = objectPtrs[n]; 
+            selected = objectPtrs[i]; 
             return selected; 
         }
 
         B* increment() {
-            selectedIndex = ((selectedIndex + 1) % (sizeof...(Ts)));
+            selectedIndex = (selectedIndex + 1) % N;
             selected = objectPtrs[selectedIndex];
             return selected;
         }
 
         B* decrement() {
-            selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : (sizeof...(Ts)) - 1;
+            selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : N - 1;
             selected = objectPtrs[selectedIndex];
             return selected;
         }
@@ -65,10 +53,29 @@ class ObjectSelector {
         }
 
     protected:
-        std::tuple<Ts...> objects;
-        B* objectPtrs[sizeof...(Ts)];
+        B* objectPtrs[N];
         size_t selectedIndex;
         B* selected;
+};
+
+template<class B, class... Ts>
+class TypeSelector : public ObjectSelector<B, sizeof...(Ts)> {
+    public:
+        TypeSelector() { 
+            buildList();
+        }
+
+        void buildList() { 
+            int i = 0;
+            for_each(objects, [this, &i](B* object) {
+                this->objectPtrs[i] = object;
+                i++;
+            });
+            ObjectSelector<B, sizeof...(Ts)>::select(0);
+        }
+
+    protected:
+        std::tuple<Ts...> objects;
 };
 
 #endif
