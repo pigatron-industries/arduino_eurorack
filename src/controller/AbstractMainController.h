@@ -26,7 +26,7 @@ class AbstractMainController {
         void registerController(T& controller);
 
     protected:
-        ControllerList<T, N> controllers;
+        ObjectSelector<T, N> controllers;
 
         RotaryEncoder& encoder;
         PushButton<>& encoderButton;
@@ -42,27 +42,27 @@ template <class T, int N>
 void AbstractMainController<T, N>::init() {
     Eurorack::init();
     Config::config.load(configMode);
-    controllers.setActiveController(configMode.data.controllerIndex);
-    controllers.getActiveController()->setMode(configMode.data.controllerMode);
+    controllers.select(configMode.data.controllerIndex);
+    controllers.getSelected()->setMode(configMode.data.controllerMode);
     controllerInit();
 }
 
 template <class T, int N>
 void AbstractMainController<T, N>::update() {
     updateEncoder();
-    controllers.getActiveController()->update();
+    controllers.getSelected()->update();
 }
 
 template <class T, int N>
 void AbstractMainController<T, N>::registerController(T& controller) {
-    controllers.addController(controller);
+    controllers.addItem(&controller);
 }
 
 template <class T, int N>
 void AbstractMainController<T, N>::controllerInit() {
-    configMode.data.controllerIndex = controllers.getActiveControllerIndex();
+    configMode.data.controllerIndex = controllers.getSelectedIndex();
     Config::config.save(configMode);
-    controllers.getActiveController()->init();
+    controllers.getSelected()->init();
 }
 
 template <class T, int N>
@@ -80,10 +80,10 @@ void AbstractMainController<T, N>::updateEncoder() {
         } else {
             //change controller mode
             if(encoder.getMovement() != 0) {
-                configMode.data.controllerMode = controllers.getActiveController()->cycleMode(encoder.getMovement());
+                configMode.data.controllerMode = controllers.getSelected()->cycleMode(encoder.getMovement());
                 Serial.print("Mode: ");
                 Serial.println(configMode.data.controllerMode);
-                controllers.getActiveController()->init();
+                controllers.getSelected()->init();
                 Config::config.save(configMode);
             }
         }

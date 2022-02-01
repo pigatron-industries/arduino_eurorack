@@ -17,13 +17,20 @@ for_each(std::tuple<Ts...>& t, Func func) {
 template<class B, int N>
 class ObjectSelector {
     public:
-        TypeSelector() {
-            select(0);
-        }
-    
+        ObjectSelector() { select(0); }
         B* operator [] (int i) const { return objectPtrs[i]; }
         B* getSelected() { return selected; }
-        size_t getSize() { return N; }
+        size_t getSelectedIndex() { return selectedIndex; }
+        size_t getSize() { return size; }
+
+        void addItem(B* object) {
+            objectPtrs[size] = object;
+            if(selected == nullptr) {
+                selected = object;
+                selectedIndex = size;
+            }
+            size++;
+        }
 
         B* select(size_t i) { 
             selectedIndex = 0; 
@@ -45,9 +52,9 @@ class ObjectSelector {
 
         B* cycle(int direction) {
             if(direction > 0) {
-                return incrementController();
+                return increment();
             } else if(direction < 0) {
-                return decrementController();
+                return decrement();
             }
             return selected;
         }
@@ -56,6 +63,7 @@ class ObjectSelector {
         B* objectPtrs[N];
         size_t selectedIndex;
         B* selected;
+        size_t size = 0;
 };
 
 template<class B, class... Ts>
@@ -65,11 +73,9 @@ class TypeSelector : public ObjectSelector<B, sizeof...(Ts)> {
             buildList();
         }
 
-        void buildList() { 
-            int i = 0;
-            for_each(objects, [this, &i](B* object) {
-                this->objectPtrs[i] = object;
-                i++;
+        void buildList() {
+            for_each(objects, [this](B* object) {
+                this->addItem(object);
             });
             ObjectSelector<B, sizeof...(Ts)>::select(0);
         }
