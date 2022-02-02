@@ -4,7 +4,7 @@
 class Clock {
     public:
         enum State {
-            INTERNAL, EXTERNAL_WAITING, EXTERNAL
+            CLK_INTERNAL, CLK_EXTERNAL_WAITING, CLK_EXTERNAL
         };
 
         void init(float sampleRate);
@@ -21,7 +21,7 @@ class Clock {
         float phaseInc;
         float phase = 0;
 
-        State state = INTERNAL;
+        State state = CLK_INTERNAL;
         bool externalTicked;
 
         float externalTimeCounter = 0;
@@ -35,11 +35,11 @@ class Clock {
 
 inline bool Clock::process() {
     switch(state) {
-        case EXTERNAL_WAITING:
+        case CLK_EXTERNAL_WAITING:
             externalTimeCounter += sampleTime;
-        case INTERNAL:
+        case CLK_INTERNAL:
             return processInternal();
-        case EXTERNAL:
+        case CLK_EXTERNAL:
             return processExternal();
     }
     return false;
@@ -64,7 +64,7 @@ inline bool Clock::processExternal() {
         return true;
     } else {
         if(externalTimeCounter > externalWaitTime) {
-            state = INTERNAL;
+            state = CLK_INTERNAL;
         }
         return false;
     }

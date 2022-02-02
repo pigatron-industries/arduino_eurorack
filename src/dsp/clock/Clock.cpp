@@ -16,12 +16,12 @@ void Clock::reset() {
 
 void Clock::externalTick() {
     switch(state) {
-        case INTERNAL:
-            state = EXTERNAL_WAITING;
+        case CLK_INTERNAL:
+            state = CLK_EXTERNAL_WAITING;
             break;
-        case EXTERNAL_WAITING:
-            state = EXTERNAL;
-        case EXTERNAL:
+        case CLK_EXTERNAL_WAITING:
+            state = CLK_EXTERNAL;
+        case CLK_EXTERNAL:
             externalTime = externalTimeCounter;
             externalWaitTime = externalTime*2;
             externalTicked = true;
