@@ -20,6 +20,7 @@
 
 #include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
+#include "hardware/RotaryEncoderButton.h"
 
 #include "io/analoginputs/LinearInput.h"
 #include "io/analoginputs/ExpInput.h"
