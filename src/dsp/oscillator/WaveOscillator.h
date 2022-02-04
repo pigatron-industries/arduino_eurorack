@@ -14,6 +14,7 @@ namespace eurorack {
             WaveOscillator(T waveShape): waveShape(waveShape) {}
             void init(float sampleRate, bool repeat = true);
             void setFrequency(float frequency);
+            void setAmplitude(float amplitude);
             void setPeriod(float period);
             void setPhase(float phase);
             void setPolyblep(bool polyblepEnabled) { this->polyblepEnabled = polyblepEnabled; }
@@ -26,6 +27,7 @@ namespace eurorack {
             float sampleRate;
             float sampleTime;
 
+            float amplitude = 0.8;
             float increment;
             float phase;
             bool repeat;
@@ -51,6 +53,11 @@ namespace eurorack {
     }
 
     template<class T>
+    void WaveOscillator<T>::setAmplitude(float amplitude) {
+        this->amplitude = amplitude;
+    }
+
+    template<class T>
     void WaveOscillator<T>::setPeriod(float period) {
         increment = sampleTime / period;
     }
@@ -62,14 +69,16 @@ namespace eurorack {
 
     template<class T>
     float WaveOscillator<T>::process() {
+        if(!playing) {
+            return 0;
+        }
+
         float value = waveShape.get(phase);
         if(polyblepEnabled) {
             value += waveShape.polyblep(phase, increment);
         }
-        if(playing) {
-            incrementPhase();
-        }
-        return value;
+        
+        return value * amplitude;
     }
 
     template<class T>
