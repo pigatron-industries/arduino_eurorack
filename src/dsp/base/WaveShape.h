@@ -21,7 +21,7 @@ namespace eurorack {
         this->length = length; 
     }
 
-    inline float polyblepTransient(float phase, float phaseIncrement) { 
+    inline float WaveShape::polyblepTransient(float phase, float phaseIncrement) { 
         if(phase < phaseIncrement) {
             phase /= phaseIncrement;
             return phase + phase - phase * phase - 1.0;
