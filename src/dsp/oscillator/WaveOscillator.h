@@ -4,80 +4,84 @@
 #include "BaseOscillator.h"
 #include "../base/WaveShape.h"
 
-// increments through a waveshape over time
-template<class T = WaveShape>
-class WaveOscillator : public BaseOscillator {
-    public:
-        WaveOscillator() {}
-        WaveOscillator(T waveShape): waveShape(waveShape) {}
-        void init(float sampleRate, bool repeat = true);
-        void setFrequency(float frequency);
-        void setPeriod(float period);
-        void setPhase(float phase);
-        T& getShape() { return waveShape; }
-        virtual float process();
+namespace eurorack {
 
-    protected:
-        T waveShape;
+    // increments through a waveshape over time
+    template<class T = WaveShape>
+    class WaveOscillator : public BaseOscillator {
+        public:
+            WaveOscillator() {}
+            WaveOscillator(T waveShape): waveShape(waveShape) {}
+            void init(float sampleRate, bool repeat = true);
+            void setFrequency(float frequency);
+            void setPeriod(float period);
+            void setPhase(float phase);
+            T& getShape() { return waveShape; }
+            virtual float process();
 
-        float sampleRate;
-        float sampleTime;
+        protected:
+            T waveShape;
 
-        float increment;
-        float phase;
-        bool repeat;
-        bool playing;
+            float sampleRate;
+            float sampleTime;
 
-        void incrementPhase();
-};
+            float increment;
+            float phase;
+            bool repeat;
+            bool playing;
 
-template<class T>
-void WaveOscillator<T>::init(float sampleRate, bool repeat) {
-    this->sampleRate = sampleRate;
-    this->sampleTime = 1.0f/sampleRate;
-    this->increment = sampleTime;
-    this->repeat = repeat;
-    phase = 0;
-    playing = repeat;
-}
+            void incrementPhase();
+    };
 
-template<class T>
-void WaveOscillator<T>::setFrequency(float frequency) {
-    increment = sampleTime * frequency;
-}
-
-template<class T>
-void WaveOscillator<T>::setPeriod(float period) {
-    increment = sampleTime / period;
-}
-
-template<class T>
-void WaveOscillator<T>::setPhase(float phase) {
-    this->phase = phase;
-}
-
-template<class T>
-float WaveOscillator<T>::process() {
-    float value = waveShape.get(phase);
-    if(playing) {
-        incrementPhase();
+    template<class T>
+    void WaveOscillator<T>::init(float sampleRate, bool repeat) {
+        this->sampleRate = sampleRate;
+        this->sampleTime = 1.0f/sampleRate;
+        this->increment = sampleTime;
+        this->repeat = repeat;
+        phase = 0;
+        playing = repeat;
     }
-    return value;
-}
 
-template<class T>
-void WaveOscillator<T>::incrementPhase() {
-    phase += increment;
-    if(phase > waveShape.getLength()) {
-        if(repeat) {
-            phase -= waveShape.getLength();
-        } else {
-            playing = false;
-            phase = 0;
+    template<class T>
+    void WaveOscillator<T>::setFrequency(float frequency) {
+        increment = sampleTime * frequency;
+    }
+
+    template<class T>
+    void WaveOscillator<T>::setPeriod(float period) {
+        increment = sampleTime / period;
+    }
+
+    template<class T>
+    void WaveOscillator<T>::setPhase(float phase) {
+        this->phase = phase;
+    }
+
+    template<class T>
+    float WaveOscillator<T>::process() {
+        float value = waveShape.get(phase);
+        if(playing) {
+            incrementPhase();
         }
-    } else if(phase < 0) {
-        phase += waveShape.getLength();
+        return value;
     }
+
+    template<class T>
+    void WaveOscillator<T>::incrementPhase() {
+        phase += increment;
+        if(phase > waveShape.getLength()) {
+            if(repeat) {
+                phase -= waveShape.getLength();
+            } else {
+                playing = false;
+                phase = 0;
+            }
+        } else if(phase < 0) {
+            phase += waveShape.getLength();
+        }
+    }
+
 }
 
 #endif

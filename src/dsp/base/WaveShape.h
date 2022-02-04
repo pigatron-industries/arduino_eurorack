@@ -3,19 +3,23 @@
 
 #include "Function.h"
 
-// Curve that represents a single cycle of a waveform
-class WaveShape : public Function {
-    public:
-        WaveShape() {}
-        virtual void setLength(float length);
-        float getLength() { return length; }
+namespace eurorack {
 
-    protected:
-        float length = 1;
-};
+    // Curve that represents a single cycle of a waveform
+    class WaveShape : public Function {
+        public:
+            WaveShape() {}
+            virtual void setLength(float length);
+            float getLength() { return length; }
 
-inline void WaveShape::setLength(float length) { 
-    this->length = length; 
+        protected:
+            float length = 1;
+    };
+
+    inline void WaveShape::setLength(float length) { 
+        this->length = length; 
+    }
+
 }
 
 #endif
