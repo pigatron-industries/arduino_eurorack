@@ -61,6 +61,7 @@ namespace eurorack {
     template<class T>
     float WaveOscillator<T>::process() {
         float value = waveShape.get(phase);
+        value += waveShape.polyblep(phase, increment);
         if(playing) {
             incrementPhase();
         }
