@@ -1,5 +1,6 @@
 #include "DelayLine.h"
 
+using namespace eurorack;
 
 void DelayLine::setDelay(size_t delay) {
     this->delay = delay;

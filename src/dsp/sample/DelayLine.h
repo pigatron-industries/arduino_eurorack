@@ -5,28 +5,31 @@
 #include <stdint.h>
 #include "SampleBuffer.h"
 
-class DelayLine : public SampleBuffer
-{
-    public:
-        DelayLine() {}
+namespace eurorack {
 
-        void setDelay(size_t delay);
-        void setDelay(float delay);
-        const float read() const;
+    class DelayLine : public SampleBuffer
+    {
+        public:
+            DelayLine() {}
 
-    private:
-        float delay;
-        float  delayFrac;
-        size_t delayInt;
-};
+            void setDelay(size_t delay);
+            void setDelay(float delay);
+            const float read() const;
 
+        private:
+            float delay;
+            float  delayFrac;
+            size_t delayInt;
+    };
 
-inline const float DelayLine::read() const {
-    float pos = writePointer - delay;
-    if(pos < 0) {
-        pos += bufferSize;
+    inline const float DelayLine::read() const {
+        float pos = writePointer - delay;
+        if(pos < 0) {
+            pos += bufferSize;
+        }
+        return SampleBuffer::read(pos);
     }
-    return SampleBuffer::read(pos);
+
 }
 
 #endif
