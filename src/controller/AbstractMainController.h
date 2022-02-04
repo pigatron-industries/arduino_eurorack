@@ -12,8 +12,8 @@ class ModeConfig {
 template <class B, class... Ts>
 class AbstractMainController {
     public:
-        AbstractMainController(RotaryEncoder& encoder, PushButton<>& encoderButton) : 
-            encoder(encoder), encoderButton(encoderButton) {}
+        AbstractMainController(RotaryEncoderButton& rotaryEncoderButton) : 
+            encoder(rotaryEncoderButton) {}
 
         void init();
         void update();
@@ -21,8 +21,7 @@ class AbstractMainController {
     protected:
         TypeSelector<B, Ts...> controllers;
 
-        RotaryEncoder& encoder;
-        PushButton<>& encoderButton;
+        RotaryEncoderButton& encoder;
 
         ConfigField<ModeConfig> configMode;
 
@@ -55,31 +54,35 @@ void AbstractMainController<B, Ts...>::controllerInit() {
 
 template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::updateEncoder() {
-    encoderButton.update();
-    bool cycled = false;
-    if(encoder.update()) {
-        if(encoderButton.held()) {
-            //change controller when button held down
-            if(encoder.getMovement() != 0) {
-                cycled = true;
-                controllers.cycle(encoder.getMovement());
-                controllerInit();
-            }
-        } else {
-            //change controller mode
-            if(encoder.getMovement() != 0) {
-                configMode.data.controllerMode = controllers.getSelected()->cycleMode(encoder.getMovement());
-                Serial.print("Mode: ");
-                Serial.println(configMode.data.controllerMode);
-                controllers.getSelected()->init();
-                Config::config.save(configMode);
-            }
-        }
-    }
-    if(encoderButton.released()) {
-        if(!cycled) {
+    RotaryEncoderButton::EncoderEvent event = encoder.getEncoderEvent();
+    switch(event) {
+        case RotaryEncoderButton::EncoderEvent::EVENT_CLOCKWISE:
+            configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
+            Serial.print("Mode: ");
+            Serial.println(configMode.data.controllerMode);
+            controllers.getSelected()->init();
+            Config::config.save(configMode);
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_ANTICLOCKWISE:
+            configMode.data.controllerMode = controllers.getSelected()->cycleMode(-1);
+            Serial.print("Mode: ");
+            Serial.println(configMode.data.controllerMode);
+            controllers.getSelected()->init();
+            Config::config.save(configMode);
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_HELD_CLOCKWISE:
+            controllers.increment();
             controllerInit();
-        }
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_HELD_ANTICLOCKWISE:
+            controllers.decrement();
+            controllerInit();
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_SHORT_PRESS:
+            controllerInit();
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_NONE:
+            break;
     }
 }
 
