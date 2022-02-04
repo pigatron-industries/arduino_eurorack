@@ -33,6 +33,7 @@
 #include "io/digitaloutputs/TriggerOutput.h"
 
 #include "controller/AbstractMainController.h"
+#include "controller/AbstractController.h"
 #include "controller/Config.h"
 
 #endif
