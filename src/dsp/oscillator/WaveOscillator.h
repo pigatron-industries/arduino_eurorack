@@ -16,6 +16,7 @@ namespace eurorack {
             void setFrequency(float frequency);
             void setPeriod(float period);
             void setPhase(float phase);
+            void setPolyblep(bool polyblepEnabled) { this->polyblepEnabled = polyblepEnabled; }
             T& getShape() { return waveShape; }
             virtual float process();
 
@@ -29,6 +30,7 @@ namespace eurorack {
             float phase;
             bool repeat;
             bool playing;
+            bool polyblepEnabled;
 
             void incrementPhase();
     };
@@ -61,7 +63,9 @@ namespace eurorack {
     template<class T>
     float WaveOscillator<T>::process() {
         float value = waveShape.get(phase);
-        value += waveShape.polyblep(phase, increment);
+        if(polyblepEnabled) {
+            value += waveShape.polyblep(phase, increment);
+        }
         if(playing) {
             incrementPhase();
         }
