@@ -32,15 +32,15 @@ class SampleBuffer
         bool isBufferFull() { return bufferFull; }
 
     protected:
-        size_t bufferSize;
-        size_t sampleSize;
+        size_t bufferSize;        // size of buffer
+        size_t sampleSize;        // size of the sample within the buffer
         float* buffer;
         
         size_t writePointer;
         bool sampleFull;
         bool bufferFull;
 
-        float sampleRate;         // sample rate of buffered samples
+        float sampleRate;         // sample rate that the sample was recorded at
         float sampleFrequency;    // actual frequency of waveform
         float playbackSampleRate; // sample rate of playback
 

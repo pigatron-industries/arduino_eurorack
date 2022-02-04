@@ -12,7 +12,6 @@ Additional thanks to Laurent de Soras for stability limit, and
 Stefan Diedrichsen for the correct notch output
 
 Ported by: Stephen Hensley
-Performance Enhancements: Robert Ellis
 */
 class StateVariableFilter
 {
