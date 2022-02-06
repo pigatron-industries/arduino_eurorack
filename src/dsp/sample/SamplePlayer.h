@@ -3,23 +3,27 @@
 
 #include "SampleBuffer.h"
 
-class SamplePlayer
-{
-    public:
-        SamplePlayer() {}
-        void init(float sampleRate);
+namespace eurorack {
 
-        void setSample(SampleBuffer* sample);
-        void setFrequency(float frequency);
+    class SamplePlayer
+    {
+        public:
+            SamplePlayer() {}
+            void init(float sampleRate);
+
+            void setSample(SampleBuffer* sample);
+            void setFrequency(float frequency);
 
 
-    private:
-        SampleBuffer* sample = nullptr;
-        float sampleRate;
+        private:
+            SampleBuffer* sample = nullptr;
+            float sampleRate;
 
-        size_t readPointer;
-        float readIncrement;
-        float frequency = 0;
-};
+            size_t readPointer;
+            float readIncrement;
+            float frequency = 0;
+    };
+
+}
 
 #endif
