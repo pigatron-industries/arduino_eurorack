@@ -19,21 +19,40 @@ namespace eurorack {
             void setFrequency(float frequency);
             float getTableFrequency(int tableIndex);
 
+            SampleBuffer& getTempBuffer() { return tempBuffer; }
+            void copyTempBufferToTable(int tableIndex);
+
         private:
             SampleBuffer buffer[TABLES];
             float tableFrequency[TABLES];
             int tableIndex;
 
+            // when initialising wavetable, temporary buffer can be written to first then copied to each table.
+            static SampleBuffer tempBuffer;
+
             void calcTableFrequencies();
     };
 
 
+    template<int TABLES, int SAMPLES>  
+    SampleBuffer WaveTable<TABLES, SAMPLES>::tempBuffer;
+
     template<int TABLES, int SAMPLES>
     void WaveTable<TABLES, SAMPLES>::init(MemPool<float>& memPool) {
+        if(!tempBuffer.isInited()) {
+            tempBuffer.init(SAMPLES, memPool);
+        }
         for(int i = 0; i < TABLES; i++) {
             buffer[i].init(SAMPLES, memPool);
         }
         calcTableFrequencies();
+    }
+
+    template<int TABLES, int SAMPLES>
+    void WaveTable<TABLES, SAMPLES>::copyTempBufferToTable(int tableIndex) {
+        for(int i = 0; i < SAMPLES; i++) {
+            buffer[tableIndex][i] += tempBuffer[i];
+        }
     }
 
     template<int TABLES, int SAMPLES>
