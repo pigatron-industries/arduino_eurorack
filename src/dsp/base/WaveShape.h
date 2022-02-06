@@ -12,6 +12,7 @@ namespace eurorack {
             virtual void setLength(float length);
             float getLength() { return length; }
             virtual float polyblep(float phase, float phaseIncrement) { return 0; }
+            virtual void setFrequency(float frequency) {}
         protected:
             float length = 1;
             float polyblepTransient(float phase, float phaseIncrement);

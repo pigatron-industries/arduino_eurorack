@@ -10,6 +10,7 @@ namespace eurorack {
         public:
             virtual float get(float phase);
             virtual float polyblep(float phase, float phaseIncrement);
+            virtual void setFrequency(float frequency);
     };
 
     template<class... Ts>
@@ -20,6 +21,11 @@ namespace eurorack {
     template<class... Ts>
     inline float WaveSelector<Ts...>::polyblep(float phase, float phaseIncrement) {
         return TypeSelector<WaveShape, Ts...>::selected->polyblep(phase, phaseIncrement);
+    }
+
+    template<class... Ts>
+    inline void WaveSelector<Ts...>::setFrequency(float frequency) {
+        TypeSelector<WaveShape, Ts...>::selected->setFrequency(frequency);
     }
 
 }

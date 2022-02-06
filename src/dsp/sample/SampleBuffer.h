@@ -24,6 +24,7 @@ class SampleBuffer
         float operator [] (float i) { return read(i); }
 
         bool write(const float sample);
+        bool mix(const float sample);
         const float read(int position) const;
         const float read(float position) const;
         float calculateReadIncrement(float playbackFrequency);
@@ -50,6 +51,19 @@ class SampleBuffer
 
 inline bool SampleBuffer::write(const float sample) {
     buffer[writePointer] = sample;
+    writePointer++;
+    if(!sampleFull && writePointer >= sampleSize) {
+        sampleFull = true;
+    }
+    if(writePointer >= bufferSize) {
+        bufferFull = true;
+        writePointer = 0;
+    }
+    return sampleFull;
+}
+
+inline bool SampleBuffer::mix(const float sample) {
+    buffer[writePointer] += sample;
     writePointer++;
     if(!sampleFull && writePointer >= sampleSize) {
         sampleFull = true;

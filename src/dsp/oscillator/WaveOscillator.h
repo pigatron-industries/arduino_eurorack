@@ -50,6 +50,7 @@ namespace eurorack {
     template<class T>
     void WaveOscillator<T>::setFrequency(float frequency) {
         increment = sampleTime * frequency;
+        waveShape.setFrequency();
     }
 
     template<class T>
