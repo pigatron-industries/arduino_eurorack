@@ -1,7 +1,7 @@
 #include "SampleBuffer.h"
 #include <Arduino.h>
 
-using namesapce eurorack;
+using namespace eurorack;
 
 void SampleBuffer::init(size_t bufferSize, MemPool<float>& memPool) { 
     init(0, 0, bufferSize, memPool);
