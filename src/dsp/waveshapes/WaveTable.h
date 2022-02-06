@@ -17,7 +17,7 @@ namespace eurorack {
             float get(float phase);
 
             void setFrequency(float frequency);
-
+            float getTableFrequency(int tableIndex);
 
         private:
             SampleBuffer buffer[TABLES];
@@ -49,6 +49,11 @@ namespace eurorack {
             }
         }
         tableIndex = TABLES-1;
+    }
+
+    template<int TABLES, int SAMPLES>
+    float WaveTable<TABLES, SAMPLES>::getTableFrequency(int tableIndex) {
+        return tableFrequency(tableIndex);
     }
 
     template<int TABLES, int SAMPLES>
