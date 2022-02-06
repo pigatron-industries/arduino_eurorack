@@ -84,7 +84,7 @@ namespace eurorack {
 
     template<int TABLES, int SAMPLES>
     float WaveTable<TABLES, SAMPLES>::getTableFrequency(int tableIndex) {
-        return tableFrequency(tableIndex);
+        return tableFrequency[tableIndex];
     }
 
     template<int TABLES, int SAMPLES>
