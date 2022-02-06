@@ -18,6 +18,6 @@
 #include "dsp/waveshapes/AsymmetricalTriangle.h"
 #include "dsp/waveshapes/WaveSelector.h"
 #include "dsp/waveshapes/WaveSequence.h"
-#include "dsp/waveshapes/WaveTable.h"
+#include "dsp/waveshapes/wavetable/WaveTable.h"
 
 #endif

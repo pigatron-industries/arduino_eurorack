@@ -2,19 +2,28 @@
 #define WaveTable_h
 
 #include <stdlib.h>
-#include "../base/WaveShape.h"
-#include "../sample/SampleBuffer.h"
+#include "../../base/WaveShape.h"
+#include "../../sample/SampleBuffer.h"
 
 #define RANGE_OCTAVES 10.0
 
 namespace eurorack {
 
+    class BaseWaveTable : public WaveShape {
+        public:
+            virtual size_t getTableSize() = 0;
+            virtual size_t getSampleSize() = 0;
+    };
+
     template<int TABLES, int SAMPLES>    
-    class WaveTable : public WaveShape {
+    class WaveTable : public BaseWaveTable {
         public:
             WaveTable() {}
             void init(MemPool<float>& memPool);
             float get(float phase);
+
+            virtual size_t getTableSize() { return TABLES; }
+            virtual size_t getSampleSize() { return SAMPLES; }
 
             void setFrequency(float frequency);
             float getTableFrequency(int tableIndex);
