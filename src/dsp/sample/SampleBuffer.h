@@ -12,6 +12,7 @@ class SampleBuffer
         void init(size_t bufferSize, MemPool<float>& memPool);
         void init(float sampleRate, size_t bufferSize, MemPool<float>& memPool);
         void init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool<float>& memPool);
+        bool isInited() { return inited; }
         void setPlaybackSampleRate(float playbackSampleRate) { this->playbackSampleRate = playbackSampleRate; }
         void reset();
         void clear();
@@ -33,6 +34,7 @@ class SampleBuffer
         bool isBufferFull() { return bufferFull; }
 
     protected:
+        bool inited;
         size_t bufferSize;        // size of buffer
         size_t sampleSize;        // size of the sample within the buffer
         float* buffer;

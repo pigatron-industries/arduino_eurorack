@@ -18,6 +18,7 @@ void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSi
     buffer = memPool.allocate(bufferSize);
     reset();
     clear();
+    inited = true;
 }
 
 void SampleBuffer::reset() {
