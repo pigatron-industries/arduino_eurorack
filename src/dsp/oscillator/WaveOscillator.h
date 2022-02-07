@@ -79,6 +79,7 @@ namespace eurorack {
             value += waveShape.polyblep(phase, increment);
         }
         
+        incrementPhase();
         return value * amplitude;
     }
 
