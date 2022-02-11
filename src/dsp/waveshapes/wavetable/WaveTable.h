@@ -77,6 +77,7 @@ namespace eurorack {
         for(int i = 0; i < TABLES; i++) {
             if(frequency < tableFrequency[i]) {
                 tableIndex = i;
+                return;
             }
         }
         tableIndex = TABLES-1;
