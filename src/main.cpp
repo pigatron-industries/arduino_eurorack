@@ -8,6 +8,9 @@
     #include "eurorack_is32fl3738.h"
     #include "eurorack_dac8164.h"
 
+    void setup() {}
+    void loop() {}
+
     //Native
 
     class Hardware {

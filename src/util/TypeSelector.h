@@ -73,6 +73,10 @@ class TypeSelector : public ObjectSelector<B, sizeof...(Ts)> {
             buildList();
         }
 
+        TypeSelector(Ts&&... args) : objects(args...) { 
+            buildList();
+        }
+
         void buildList() {
             for_each(objects, [this](B* object) {
                 this->addItem(object);

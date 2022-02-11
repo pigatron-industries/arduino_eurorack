@@ -8,6 +8,8 @@ namespace eurorack {
     template<class... Ts>
     class WaveSelector : public WaveShape, public TypeSelector<WaveShape, Ts...> {
         public:
+            WaveSelector() {}
+            WaveSelector(Ts&&... args) : TypeSelector<WaveShape, Ts...>(args...) {}
             virtual float get(float phase);
             virtual float polyblep(float phase, float phaseIncrement);
             virtual void setFrequency(float frequency);
