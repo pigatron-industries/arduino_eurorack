@@ -23,7 +23,7 @@ namespace eurorack {
             size_t getBufferSize() { return bufferSize; }
             void setSampleSize(size_t sampleSize);
 
-            float& operator [] (int i) { return buffer[i]; }
+            float& operator [] (size_t i) { return buffer[i]; }
             float operator [] (float i) { return read(i); }
 
             bool write(const float sample);

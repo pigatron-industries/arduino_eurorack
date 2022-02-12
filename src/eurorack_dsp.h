@@ -6,6 +6,7 @@
 #include "dsp/envelope/Envelope.h"
 #include "dsp/envelope/EnvelopePlayer.h"
 #include "dsp/oscillator/WaveOscillator.h"
+#include "dsp/oscillator/PhaseDistortionOscillator.h"
 #include "dsp/filter/StateVariableFilter.h"
 #include "dsp/sample/SampleBuffer.h"
 #include "dsp/sample/DelayLine.h"

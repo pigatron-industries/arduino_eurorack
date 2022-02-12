@@ -62,7 +62,7 @@ namespace eurorack {
 
     template<int TABLES, int SAMPLES>
     void WaveTable<TABLES, SAMPLES>::copyTempBufferToTable(int tableIndex) {
-        for(int i = 0; i < SAMPLES; i++) {
+        for(size_t i = 0; i < SAMPLES; i++) {
             buffer[tableIndex][i] += tempBuffer[i];
         }
     }

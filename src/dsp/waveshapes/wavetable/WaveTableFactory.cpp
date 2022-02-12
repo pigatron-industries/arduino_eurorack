@@ -14,13 +14,13 @@ bool WaveTableFactory::addSine(BaseWaveTable* wavetable, float amplitude, int mu
     // create sine in temp buffer
     float phaseIncrement = (1 / float(bufferSize)) * M_PI*2 * mult;
     float phase = phaseShift;
-    for(int i = 0; i < bufferSize; i++) {
+    for(size_t i = 0; i < bufferSize; i++) {
         tempBuffer[i] = sinf(phase) * amplitude;
         phase += phaseIncrement;
     }
 
     // copy temp buffer to each table if it's max frequency is less than nyquist
-    for(int tableIndex = 0; tableIndex < wavetable->getTableSize(); tableIndex++) {
+    for(size_t tableIndex = 0; tableIndex < wavetable->getTableSize(); tableIndex++) {
         float maxFrequency = wavetable->getTableFrequency(tableIndex) * mult;
         if(maxFrequency <= nyquist) {
             added = true;
