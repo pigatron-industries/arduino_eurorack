@@ -11,6 +11,8 @@
 #include "dsp/sample/SampleBuffer.h"
 #include "dsp/sample/DelayLine.h"
 
+#include "dsp/distortionfunctions/TwoLineFunction.h"
+
 #include "dsp/waveshapes/Line.h"
 #include "dsp/waveshapes/Pulse.h"
 #include "dsp/waveshapes/Saw.h"
