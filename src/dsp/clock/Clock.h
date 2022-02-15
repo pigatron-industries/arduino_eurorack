@@ -20,6 +20,7 @@ class Clock {
         float frequency;
         float phaseInc;
         float phase = 0;
+        float phaseMax = 1.0;
 
         State state = CLK_INTERNAL;
         bool externalTicked;
@@ -47,11 +48,11 @@ inline bool Clock::process() {
 
 inline bool Clock::processInternal() {
     phase += phaseInc;
-    if(phase > 1.0f) {
-        phase -= 1.0f;
+    if(phase > phaseMax) {
+        phase -= phaseMax;
         return true;
     } else if (phase < 0.0f) {
-        phase += 1.0f;
+        phase += phaseMax;
         return true;
     }
     return false;
