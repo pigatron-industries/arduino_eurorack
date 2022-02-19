@@ -58,7 +58,7 @@ namespace eurorack {
             }
             segmentStart = segmentEnd;
         }
-        return 0;
+        return segments[N-1].get(segments[N-1].getLength());
     }
 
 }
