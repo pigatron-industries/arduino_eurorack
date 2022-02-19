@@ -14,12 +14,17 @@ class Clock {
 
         bool process();
 
+    protected:
+        void setPhaseMax(float phaseMax) { this->phaseMax = phaseMax; }
+        virtual bool processInternal();
+        virtual bool processExternal();
+
     private:
         float sampleRate, sampleTime;
 
         float frequency;
         float phaseInc;
-        float phase = 0;
+        float phase = 1.0;
         float phaseMax = 1.0;
 
         State state = CLK_INTERNAL;
@@ -28,9 +33,6 @@ class Clock {
         float externalTimeCounter = 0;
         float externalTime = 0;
         float externalWaitTime;
-
-        bool processInternal();
-        bool processExternal();
 };
 
 
