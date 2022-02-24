@@ -26,7 +26,7 @@ class AbstractMainController {
         ConfigField<ModeConfig> configMode;
 
         virtual void controllerInit();
-        void updateEncoder();
+        void doEncoderEvent(RotaryEncoderButton::EncoderEvent event);
 };
 
 
@@ -41,7 +41,7 @@ void AbstractMainController<B, Ts...>::init() {
 
 template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::update() {
-    updateEncoder();
+    doEncoderEvent(encoder.getEncoderEvent());
     controllers.getSelected()->update();
 }
 
@@ -53,8 +53,7 @@ void AbstractMainController<B, Ts...>::controllerInit() {
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::updateEncoder() {
-    RotaryEncoderButton::EncoderEvent event = encoder.getEncoderEvent();
+void AbstractMainController<B, Ts...>::doEncoderEvent(RotaryEncoderButton::EncoderEvent event) {
     switch(event) {
         case RotaryEncoderButton::EncoderEvent::EVENT_CLOCKWISE:
             configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
