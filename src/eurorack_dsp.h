@@ -3,6 +3,7 @@
 
 #include "dsp/clock/Clock.h"
 #include "dsp/clock/ClockDivider.h"
+#include "dsp/clock/ClockGate.h"
 #include "dsp/envelope/Envelope.h"
 #include "dsp/envelope/EnvelopePlayer.h"
 #include "dsp/oscillator/WaveOscillator.h"
