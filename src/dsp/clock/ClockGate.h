@@ -7,6 +7,10 @@ class ClockGate {
             this->length = length;
         }
 
+        void setLength(int length) {
+            this->length = length;
+        }
+
         bool tick(bool trigger) {
             if(trigger) {
                 count = 0;
