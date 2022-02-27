@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Devices
 
 A Device is a piece of hardware that provides a number analog/digital input/output pins.

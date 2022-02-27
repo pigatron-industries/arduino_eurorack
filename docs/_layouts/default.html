@@ -25,8 +25,9 @@
           <div class="logoline2"></div>
         </a>
         <div class="links">
-          {% for page in site.pages %}
-            <div><a href="{{ site.url }}/{{ site.github.repository_name }}/{{ page.url }}">{{ page.title }}</a></div>
+          {% assign sorted_pages = site.pages | sort:"order" %}
+          {% for page in sorted_pages %}
+            <div><a href="{{ site.url }}/{{ site.github.repository_name }} {{ page.url }}">{{ page.title }}</a></div>
           {% endfor %}
         </div>
         <section id="downloads" class="clearfix">

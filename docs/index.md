@@ -1,3 +1,7 @@
+---
+order: 1
+---
+
 # Arduino Eurorack
 
 Tested with the following devices, but will likely work with any 3.3v logic level device (may require changes for a 5v logic level):

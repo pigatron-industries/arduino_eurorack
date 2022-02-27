@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Input / Output Handling
 
 ## Defining Pin Types
