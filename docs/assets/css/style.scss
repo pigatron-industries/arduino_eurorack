@@ -9,13 +9,16 @@
 }
 
 .sidebar {
-    left: 20px;
-    position: absolute;
-    top: 25px;
+    width: 300px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
 }
 
 .inner {
     width: 920px;
+    float: left;
+    margin: 0px;
 }
 
 .inner.header {
@@ -23,7 +26,9 @@
 }
 
 .logo {
+    position: relative;
     display: inline-block;
+    height: 100px;
 }
 
 .logotext1 {
