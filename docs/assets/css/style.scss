@@ -8,6 +8,12 @@
     src: url('/assets/fonts/Audiowide-Regular.ttf') format("truetype");
 }
 
+.sidebar {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+}
+
 .inner {
     width: 920px;
 }
@@ -17,35 +23,35 @@
 }
 
 .logotext1 {
-    font-family: audiowide;
-    font-size: 50pt;
-    color: #1d638f;
+	font-family: audiowide;
+	font-size: 36pt;
+	color: #1d638f;
 }
 
 .logotext2 {
-    font-family: "Courier New";
-    font-size: 25pt;
-    font-weight: bold;
-    position: absolute;
-    top: 2.1em;
-    left: 3.5em;
-    color: #15425e;
+	font-family: "Courier New";
+	font-size: 18pt;
+	font-weight: bold;
+	position: absolute;
+	top: 2.1em;
+	left: 3.5em;
+	color: #15425e;
 }
 
 .logoline1 {
-    background: linear-gradient(to right, transparent, #1d638f);
-    height: 1px;
-    width: 200px;
-    position: absolute;
-    top: 95px;
-    left: -90px;
+	background: linear-gradient(to right, transparent, #1d638f);
+	height: 1px;
+	width: 100px;
+	position: absolute;
+	top: 67px;
+	left: -20px;
 }
 
 .logoline2 {
-    background: linear-gradient(to left, transparent, #1d638f);
-    height: 1px;
-    width: 600px;
-    position: absolute;
-    top: 95px;
-    left: 325px;
+	background: linear-gradient(to left, transparent, #1d638f);
+	height: 1px;
+	width: 600px;
+	position: absolute;
+	top: 67px;
+	left: 234px;
 }
