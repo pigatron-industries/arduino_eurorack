@@ -33,6 +33,7 @@ Recommended circuit.
 
 Where digitalOutputPin is the name of the variable created to represent the pin and 1 is the arduino digital pin number. This is a macro which creates an object of type `DigitalOutputPin<NativeDevice>`
 
+---
 
 ## Input/Output Modifiers
 
@@ -123,9 +124,10 @@ TODO
 
 TODO 
 
+---
 
-### Specialised Hardware
+## Specialised Hardware
 
-#### RotaryEncoder and RotaryEncoderButton
+### RotaryEncoder and RotaryEncoderButton
 
 
