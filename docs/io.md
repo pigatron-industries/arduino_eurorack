@@ -1,4 +1,4 @@
-# Input / Output handling
+# Input / Output Handling
 
 ## Defining Pin Types
 
