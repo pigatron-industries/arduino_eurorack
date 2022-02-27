@@ -11,7 +11,7 @@
 .sidebar {
     left: 20px;
     position: absolute;
-    top: 20px;
+    top: 25px;
 }
 
 .inner {
@@ -54,4 +54,9 @@
 	position: absolute;
 	top: 67px;
 	left: 234px;
+}
+
+#downloads {
+    position: relative;
+    top: 65px;
 }
