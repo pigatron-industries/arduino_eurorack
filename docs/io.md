@@ -16,6 +16,10 @@ The values are then re-inverted by the library code. Requires a -5V reference vo
 
 ![Analog Input Circuit](images/input_analogue.png)
 
+-5V Reference circuit:
+
+![-5V Reference circuit](images/ref--5v.png)
+
 ### Digital Input
 
     DigitalInput(digitalInputPin, 0)
