@@ -1,4 +1,4 @@
-# Arduino Eurorack - DSP
+# DSP
 
 ## Oscillator
 

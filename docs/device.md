@@ -1,4 +1,4 @@
-# Arduino Eurorack - Devices
+# Devices
 
 A Device is a piece of hardware that provides a number analog/digital input/output pins.
 The DevicePin objects that are available for the device are provided by each specific Device class.

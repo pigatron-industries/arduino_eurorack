@@ -1,4 +1,4 @@
-# Arduino Eurorack - Input / Output handling
+# Input / Output handling
 
 ## Defining Pin Types
 
