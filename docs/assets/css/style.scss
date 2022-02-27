@@ -22,6 +22,10 @@
     position: relative;
 }
 
+.logo {
+    display: inline-block;
+}
+
 .logotext1 {
 	font-family: audiowide;
 	font-size: 36pt;
@@ -54,9 +58,4 @@
 	position: absolute;
 	top: 67px;
 	left: 234px;
-}
-
-#downloads {
-    position: relative;
-    top: 65px;
 }
