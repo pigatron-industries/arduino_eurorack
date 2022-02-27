@@ -26,9 +26,7 @@
         </a>
         <div class="links">
           {% for page in site.pages %}
-            <li>
-              {{ page.title }}
-            </li>
+            <div><a href="{{ page.url }}">{{ page.title }}</a></div>
           {% endfor %}
         </div>
         <section id="downloads" class="clearfix">
