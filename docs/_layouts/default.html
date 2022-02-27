@@ -26,8 +26,12 @@
         </a>
         <div class="links">
           {% assign sorted_pages = site.pages | sort:"order" %}
-          {% for page in sorted_pages %}
-            <div><a href="{{ site.url }}/{{ site.github.repository_name }} {{ page.url }}">{{ page.title }}</a></div>
+          {% for node in sorted_pages %}
+            {% if page.url == node.url %}
+              <div class="active">{{ page.title }}</div>
+            {% else %}
+              <div><a href="{{ site.url }}/{{ site.github.repository_name }}{{ node.url }}">{{ page.title }}</a></div>
+            {% endif %}
           {% endfor %}
         </div>
         <section id="downloads" class="clearfix">
