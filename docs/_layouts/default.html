@@ -28,9 +28,9 @@
           {% assign sorted_pages = site.pages | sort:"order" %}
           {% for node in sorted_pages %}
             {% if page.url == node.url %}
-              <div class="active">{{ page.title }}</div>
+              <div class="active">{{ node.title }}</div>
             {% else %}
-              <div><a href="{{ site.url }}/{{ site.github.repository_name }}{{ node.url }}">{{ page.title }}</a></div>
+              <div><a href="{{ site.url }}/{{ site.github.repository_name }}{{ node.url }}">{{ node.title }}</a></div>
             {% endif %}
           {% endfor %}
         </div>
