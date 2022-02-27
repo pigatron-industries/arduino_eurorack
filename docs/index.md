@@ -15,3 +15,10 @@ Include the library with
 Initialise the library with
 
     Eurorack::init();
+
+## Documentation
+
+- [IO](io.md)
+- [DSP](dsp.md)
+- [Devices](device.md)
+- [Utilities](util.md)
