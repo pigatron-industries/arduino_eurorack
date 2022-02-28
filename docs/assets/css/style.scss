@@ -12,7 +12,7 @@
     width: 220px;
     float: left;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-right: 70px;
 }
 
@@ -32,19 +32,20 @@
 
 .logo {
     position: relative;
-    display: inline-block;
+    float: right;
     height: 100px;
+	font-size: 32pt;
 }
 
 .logotext1 {
 	font-family: audiowide;
-	font-size: 36pt;
 	color: #1d638f;
+	font-size: 100%;
 }
 
 .logotext2 {
 	font-family: "Courier New";
-	font-size: 18pt;
+	font-size: 50%;
 	font-weight: bold;
 	position: absolute;
 	top: 2.1em;
@@ -57,8 +58,8 @@
 	height: 1px;
 	width: 100px;
 	position: absolute;
-	top: 67px;
-	left: -20px;
+	top: 1.4em;
+	right: 3.1em;
 }
 
 .logoline2 {
@@ -66,8 +67,8 @@
 	height: 1px;
 	width: 600px;
 	position: absolute;
-	top: 67px;
-	left: 234px;
+	top: 1.4em;
+	left: 4.9em;
 }
 
 #downloads {
