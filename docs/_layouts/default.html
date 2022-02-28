@@ -35,7 +35,11 @@
           {% endfor %}
         </div>
         <section id="downloads" class="clearfix">
-          <a href="{{ site.github.repository_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          {% if site.github.is_project_page %}
+            <a href="{{ site.github.repository_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          {% else %}
+            <a href="{{ site.github.owner_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          {% endif %}
         </section>
       </div>
 
