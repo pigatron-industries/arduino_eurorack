@@ -30,7 +30,7 @@
             {% if page.url == node.url %}
               <div class="active">{{ node.title }}</div>
             {% else %}
-              <div><a href="{{ site.url }}/{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a></div>
+              <div><a href="{{ site.url }}{{ site.basepath }}{{ node.url }}">{{ node.title }}</a></div>
             {% endif %}
           {% endfor %}
         </div>
