@@ -20,8 +20,8 @@ This library is still in an alpha stage. Breaking changes could be made at any t
 The following things are currently untested:
 - Using the Arduino IDE (recommend using [PlatformIO](https://platformio.org/))
 - Only tested on the following Devices. These are all 3.3V logic level devices. Not tested on any 5V logic devices.
- - Teensy LC / 4.0 / 4.1
- - Electrosmith Daisy
+   - Teensy LC / 4.0 / 4.1
+   - Electrosmith Daisy
 
 If you use with an untested configuration, then feel free to report problems and anything fixes you made, or let me know if it works ok!
 
