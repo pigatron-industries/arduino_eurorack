@@ -17,11 +17,13 @@ It is recommended to use [PlatformIO](https://platformio.org/) to write module c
 
 This library is still in an alpha stage. Breaking changes could be made at any time.
 
-The following things are currently untested:
+The following things are currently untested and may or may not work ok:
 - Using the Arduino IDE (recommend using [PlatformIO](https://platformio.org/))
-- Only tested on the following Devices. These are all 3.3V logic level devices. Not tested on any 5V logic devices.
-   - Teensy LC / 4.0 / 4.1
-   - Electrosmith Daisy
+- Not tested with 5V logic devices.
+
+The following devices have been tested and work, it is likely to work with other Teensy microcontrollers and other 3.3V logic level devices.
+- Teensy LC / 4.0 / 4.1
+- Electrosmith Daisy
 
 If you use with an untested configuration, then feel free to report problems and anything fixes you made, or let me know if it works ok!
 
