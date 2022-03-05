@@ -1,6 +1,9 @@
 remote_theme: pages-themes/tactile@v0.2.0
 plugins:
 - jekyll-remote-theme
+layouts: /pigatron-industries.common/_layouts
+includes_dir: /pigatron-industries.common/_includes
+exclude: /pigatron-industries.common
 basepath: /arduino_eurorack
 title: Arduino Eurorack
 description: [A library for creating Eurorack modules using Arduino devices]
