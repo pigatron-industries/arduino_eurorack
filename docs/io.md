@@ -1,8 +1,8 @@
 ---
-order: 2
+order: 3
 ---
 
-# Input / Output Handling
+# Input / Output API
 
 ## Defining Pin Types
 
