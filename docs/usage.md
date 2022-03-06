@@ -4,7 +4,7 @@ order: 2
 
 # Basic Usage
 
-### PlatfromIO
+### PlatformIO
 
 Add to a platformio project by adding the following to lib_deps in platformio.ini. Other dependencies may need to be added when using specific device drivers. See full documnetation for details.
 
