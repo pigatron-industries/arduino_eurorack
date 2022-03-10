@@ -13,6 +13,7 @@
 #include "dsp/sample/DelayLine.h"
 
 #include "dsp/distortionfunctions/TwoLineFunction.h"
+#include "dsp/distortionfunctions/SmoothStepFunction.h"
 
 #include "dsp/waveshapes/Line.h"
 #include "dsp/waveshapes/Pulse.h"
