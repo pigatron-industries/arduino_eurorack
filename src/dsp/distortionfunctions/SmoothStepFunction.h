@@ -17,7 +17,7 @@ namespace eurorack {
 
         private:
             float midPoint = 0.5; // 0 - 1
-            float midGradient = 0.5; // -1 - 1
+            float midGradient = 0; // -1 - 1
             float c, d, e;
 
             void calcCoefficients();
