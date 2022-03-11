@@ -18,7 +18,6 @@
 #include "hardware/device/DevicePin.h"
 #include "hardware/native/NativeDevice.h"
 
-#include "hardware/TriggerInput.h"
 #include "hardware/RotaryEncoder.h"
 #include "hardware/RotaryEncoderButton.h"
 
