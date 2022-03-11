@@ -6,10 +6,10 @@
 namespace eurorack {
 
     template<class... Ts>
-    class WaveInterpolator : public WaveSelector<Ts...> {
+    class WaveInterpolator : public TypeSelector<WaveShape, Ts...> {
         public:
             WaveInterpolator() {}
-            WaveInterpolator(Ts&&... args) : WaveSelector<Ts...>(args...) {}
+            WaveInterpolator(Ts&&... args) : TypeSelector<WaveShape, Ts...>(args...) {}
             virtual float get(float phase);
             virtual float polyblep(float phase, float phaseIncrement);
             virtual void setFrequency(float frequency);
@@ -57,7 +57,7 @@ namespace eurorack {
     template<class... Ts>
     inline void WaveInterpolator<Ts...>::select(float interpolation) {
         this->interpolation = interpolation;
-        int lastIndex = WaveSelector<Ts...>::size - 1;
+        int lastIndex = sizeof...(Ts) - 1;
         if(interpolation >= lastIndex) {
             interpolationIndex1 = lastIndex;
             interpolationIndex2 = lastIndex;
