@@ -32,6 +32,7 @@
 #include "io/analogoutputs/AnalogGateOutput.h"
 #include "io/digitalinputs/GateInput.h"
 #include "io/digitalinputs/PushButton.h"
+#include "io/digitalinputs/TriggerInput.h"
 #include "io/digitaloutputs/TriggerOutput.h"
 
 #include "controller/AbstractMainController.h"

@@ -106,6 +106,7 @@
 
     GateInput<> gateInput = GateInput<>(Hardware::hw.D10);
     PushButton<> pushButton = PushButton<>(Hardware::hw.D10);
+    eurorack::TriggerInput<> triggerInput = eurorack::TriggerInput<>(Hardware::hw.D10, true, 10);
 
     void testDigitalInputs() {
         gateInput.update();
