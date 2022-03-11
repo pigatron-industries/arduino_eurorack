@@ -25,10 +25,10 @@ namespace eurorack {
     template<class... Ts>
     inline float WaveInterpolator<Ts...>::get(float phase) {
         if(interpolationIndex1 == interpolationIndex2) {
-            return WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->get(phase);
+            return (*this)[interpolationIndex1]->get(phase);
         } else {
-            float a = WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->get(phase);
-            float b = WaveSelector<Ts...>::objectPtrs[interpolationIndex2]->get(phase);
+            float a = (*this)[interpolationIndex1]->get(phase);
+            float b = (*this)[interpolationIndex2]->get(phase);
             return a + (b - a) * interpolationFraction;
         }
     }
@@ -36,10 +36,10 @@ namespace eurorack {
     template<class... Ts>
     inline float WaveInterpolator<Ts...>::polyblep(float phase, float phaseIncrement) {
         if(interpolationIndex1 == interpolationIndex2) {
-            return WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->polyblep(phase, phaseIncrement);
+            return (*this)[interpolationIndex1]->polyblep(phase, phaseIncrement);
         } else {
-            float a = WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->polyblep(phase, phaseIncrement);
-            float b = WaveSelector<Ts...>::objectPtrs[interpolationIndex2]->polyblep(phase, phaseIncrement);
+            float a = (*this)[interpolationIndex1]->polyblep(phase, phaseIncrement);
+            float b = (*this)[interpolationIndex2]->polyblep(phase, phaseIncrement);
             return a + (b - a) * interpolationFraction;
         }
     }
@@ -47,10 +47,10 @@ namespace eurorack {
     template<class... Ts>
     inline void WaveInterpolator<Ts...>::setFrequency(float frequency) {
         if(interpolationIndex1 == interpolationIndex2) {
-            return WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->setFrequency(frequency);
+            return (*this)[interpolationIndex1]->setFrequency(frequency);
         } else {
-            WaveSelector<Ts...>::objectPtrs[interpolationIndex1]->setFrequency(frequency);
-            WaveSelector<Ts...>::objectPtrs[interpolationIndex2]->setFrequency(frequency);
+            (*this)[interpolationIndex1]->setFrequency(frequency);
+            (*this)[interpolationIndex2]->setFrequency(frequency);
         }
     }
 
