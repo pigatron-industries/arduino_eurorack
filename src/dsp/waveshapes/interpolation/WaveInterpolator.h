@@ -1,8 +1,8 @@
 #ifndef WaveInterpolator_h
 #define WaveInterpolator_h
 
-#include "../base/WaveShape.h"
-#include "../../util/TypeSelector.h"
+#include "../../base/WaveShape.h"
+#include "../../../util/TypeSelector.h"
 
 namespace eurorack {
 

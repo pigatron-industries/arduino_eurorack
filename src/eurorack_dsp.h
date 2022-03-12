@@ -21,9 +21,12 @@
 #include "dsp/waveshapes/Sine.h"
 #include "dsp/waveshapes/Triangle.h"
 #include "dsp/waveshapes/AsymmetricalTriangle.h"
-#include "dsp/waveshapes/WaveInterpolator.h"
 #include "dsp/waveshapes/WaveSelector.h"
 #include "dsp/waveshapes/WaveSequence.h"
+
+#include "dsp/waveshapes/interpolation/WaveInterpolator.h"
+#include "dsp/waveshapes/interpolation/WaveInterpolator2D.h"
+#include "dsp/waveshapes/interpolation/WaveInterpolator3D.h"
 
 #include "dsp/waveshapes/wavetable/WaveTable.h"
 #include "dsp/waveshapes/wavetable/WaveTableFactory.h"
