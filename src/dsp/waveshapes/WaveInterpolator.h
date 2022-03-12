@@ -81,6 +81,7 @@ namespace eurorack {
             using Interpolator::get;
             using Interpolator::polyblep;
             using Interpolator::setFrequency;
+            using TypeSelector<WaveShape, Ts...>::operator[];
 
         protected:
             float get(int index, float phase) { return (*this)[index]->get(phase); }
@@ -98,6 +99,7 @@ namespace eurorack {
             using Interpolator::get;
             using Interpolator::polyblep;
             using Interpolator::setFrequency;
+            using ArraySelector<T, N>::operator[];
 
         protected:
             float get(int index, float phase) { return (*this)[index].get(phase); }
