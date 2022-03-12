@@ -1,8 +1,9 @@
 ---
 order: 5
+title: Oscillators
 ---
 
-# Oscillators / WaveShapes
+# Oscillators and WaveShapes
 
 ## Oscillators
 
