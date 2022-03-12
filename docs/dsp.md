@@ -157,14 +157,14 @@ WaveSequence<3, Line> lineShape;
 The properties of each individual segment of the sequence can be changed, e.g. for a sequence made of lines:
 
 ```cpp
-lineShape.segment(0).setStartValue(0);
+lineShape.segment(0).setStartValue(-0.8);
 lineShape.segment(0).setEndValue(0.8);
 lineShape.segment(0).setLength(0.2);
 lineShape.segment(1).setStartValue(0.8);
 lineShape.segment(1).setEndValue(0.8);
 lineShape.segment(1).setLength(0.6);
 lineShape.segment(2).setStartValue(0.8);
-lineShape.segment(2).setEndValue(0);
+lineShape.segment(2).setEndValue(-0.8);
 lineShape.segment(2).setLength(0.2);
 ```
 
@@ -174,6 +174,21 @@ If the end position of a segment does not match the start position of the next s
 
 
 ### WaveSelector
+
+Allows a single WaveShape to be selected from a list at runtime. The WaveShapes to be selected from can be added as template parameters. Since the template names can get lengthy a typedef can be used:
+
+```cpp
+typedef WaveSelector<Sine, Triangle, Saw, Pulse> WaveSelectionT;
+WaveSelectionT waveSelector;
+WaveOscillator<WaveSelectionT&> oscillator = WaveOscillator<WaveSelectionT&>(waveSelector);
+```
+
+Then, at runtime, a selection can be made to change which wave the oscillator uses. The select function uses the index of the waveform in the list.
+
+```cpp
+waveSelector.select(2);
+```
+
 
 ### WaveTable
 
