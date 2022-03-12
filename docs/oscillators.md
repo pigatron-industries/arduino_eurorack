@@ -120,9 +120,12 @@ A basic triangle wave. Supports polyblep.
 
 ![Triangle](images/waveshape_triangle.drawio.png)
 
+
 ### Saw
 
 A basic saw wave. Supports polyblep.
+
+![Saw](images/waveshape_saw.drawio.png)
 
 
 ### AsymmetricalTriangle
