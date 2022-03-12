@@ -97,7 +97,7 @@ Shapes used by an oscillator. Some shapes support polyblep, which is a means of 
 
 A basic sine wave.
 
-![Sine](images/waveshape_sine.png)
+![Sine](images/waveshape_sine.drawio.png)
 
 ### Pulse
 
@@ -111,11 +111,14 @@ Set the width of the pulse from 0 (very short pulse), to 1 (long pulse)
 pulse.setWidth(pulseWidth);
 ```
 
+![Pulse](images/waveshape_pulse.drawio.png)
+
 
 ### Triangle
 
 A basic triangle wave. Supports polyblep.
 
+![Triangle](images/waveshape_triangle.drawio.png)
 
 ### Saw
 
@@ -134,7 +137,7 @@ Set the position of the peak from 0 to 1.
 triangle.setPeakPosition(peakPosition);
 ```
 
-![Asymmetrical Triangle](images/waveshape_asymmetrical_triangle.png)
+![Asymmetrical Triangle](images/waveshape_asymmetrical_triangle.drawio.png)
 
 ### Line
 
