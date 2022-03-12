@@ -2,7 +2,7 @@
 order: 5
 ---
 
-# DSP
+# Oscillators and WaveShapes
 
 ## Oscillators
 
@@ -192,6 +192,10 @@ waveSelector.select(2);
 
 ### WaveTable
 
+TODO
+
 ### WaveInterpolator
+
+TODO
 
 
