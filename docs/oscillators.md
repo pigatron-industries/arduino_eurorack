@@ -203,7 +203,21 @@ waveSelector.select(2);
 
 ### WaveTable
 
-TODO
+A WaveTable represents a range of lookup tables of values for a single cycle of a waveform. There can be a slightly different lookup table used depending on the frequency of playback. This can be used to reduce aliasing by removing higher harmonics from the higher frequency lookup tables.
+
+WaveTable uses template parameters to set number of tables and the sample size of each table. By default the number of tables is evenly distributed over a 10 octave range, so to create a WaveTable with one table per octave you can use:
+
+```cpp
+WaveTable<10, 128> waveTable;
+```
+
+Before a WaveTable can be used, it needs to be initialised with a memory pool for storage space. see [MemPool](util.md#MemPool) for more details about initialising meory pools.
+
+```cpp
+waveTable.init(memPool);
+```
+
+
 
 ### WaveInterpolator
 
