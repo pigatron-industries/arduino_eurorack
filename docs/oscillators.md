@@ -5,8 +5,6 @@ title: Oscillators
 
 # Oscillators and WaveShapes
 
-## Oscillators
-
 Oscillators can be combined with different WaveShapes to produces repeating wave forms. 
 
 All oscillators have a process method wich must be called at the specified sample rate in order to give the next sample. It is up to your code to call this at the correct rate.
@@ -15,11 +13,11 @@ All oscillators have a process method wich must be called at the specified sampl
 float sample = oscillator.process();
 ```
 
-### WaveOscillator
+## WaveOscillator
 
 Basic oscillator which uses any WaveShape to produce a repeating wave form. 
 
-#### Instantiation
+### Instantiation
 
 There are 2 basic ways of instantiating a WaveOscillator.
 
@@ -36,7 +34,7 @@ Sine sine;
 WaveOscillator<Sine&> oscillator = WaveOscillator(sine);
 ```
 
-#### Initialisation
+### Initialisation
 
 The oscillator must be initialised with the sample rate before it can be used:
 
@@ -44,7 +42,7 @@ The oscillator must be initialised with the sample rate before it can be used:
 oscillator.init(sampleRate);
 ```
 
-#### Parameters
+### Parameters
 
 Other parameters that can be set are:
 
