@@ -43,19 +43,19 @@ oscillator.init(sampleRate);
 
 Other parameters that can be set are:
 
-- *Frequency* 
+- **Frequency**
 
 ``` cpp
 oscillator.setFrequency(frequency);
 ```
 
-- *Amplitude* 
+- **Amplitude** 
 
 ``` cpp
 oscillator.setAmplitude(amplitude);
 ```
 
-- *Period*
+- **Period**
 
 Does the same as frequency but using the wave period in seconds instead
 
@@ -63,7 +63,7 @@ Does the same as frequency but using the wave period in seconds instead
 oscillator.setPeriod(period);
 ```
 
-- *Phase*
+- **Phase**
 
 The phase is automatically incremented by the process function but can also be reset or set to any point manually. Phase should be between 0 and 1.
 
@@ -71,7 +71,7 @@ The phase is automatically incremented by the process function but can also be r
 oscillator.setPhase(phase);
 ```
 
-- Polyblep
+- **Polyblep**
 
 Polyblep can be enabled but only has an effect if the WaveShape supports it.
 
