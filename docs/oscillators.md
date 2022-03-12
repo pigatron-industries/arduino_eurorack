@@ -2,7 +2,7 @@
 order: 5
 ---
 
-# Oscillators and WaveShapes
+# Oscillators / WaveShapes
 
 ## Oscillators
 
