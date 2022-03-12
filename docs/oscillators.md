@@ -211,13 +211,31 @@ WaveTable uses template parameters to set number of tables and the sample size o
 WaveTable<10, 128> waveTable;
 ```
 
-Before a WaveTable can be used, it needs to be initialised with a memory pool for storage space. see [MemPool](util.md#MemPool) for more details about initialising meory pools.
+Before a WaveTable can be used, it needs to be initialised with a memory pool for storage space. see [MemPool](util.md#MemPool) for more details about initialising memory pools.
 
 ```cpp
 waveTable.init(memPool);
 ```
 
+There are some factory methods to create WaveTable waves by adding together sines. e.g. add 2 sines into a wavetable, one with double the frequency of the other:
 
+```cpp
+WaveTableFactory::addSine(&waveTable, 0.5, 1);
+WaveTableFactory::addSine(&waveTable, 0.5, 2);
+```
+
+The full list of functions to create wavetables:
+
+```cpp
+WaveTableFactory::addSine(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1, float phaseShift = 0);
+WaveTableFactory::addSquare(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addTriangle(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addRamp(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addPulse(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addImpulse(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addViolin(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
+WaveTableFactory::addHarmonics(BaseWaveTable* wavetable, RollOffFunction* rolloff, float amplitude = 0.5, int mult = 1);
+```
 
 ### WaveInterpolator
 
