@@ -93,9 +93,11 @@ oscillator.setPolyblep(true);
 
 Shapes used by an oscillator. Some shapes support polyblep, which is a means of bandlimiting a waveshape so that aliasing artifacts are reduced when played at higher frequencies. Polyblep must be turned on at the oscillator level.
 
+
 ### Sine
 
 A basic sine wave.
+
 
 ### Pulse
 
@@ -109,19 +111,22 @@ Set the width of the pulse from 0 (very short pulse), to 1 (long pulse)
 pulse.setWidth(pulseWidth);
 ```
 
+
 ### Triangle
 
 A basic triangle wave.
+
 
 ### Saw
 
 A basic saw wave.
 
+
 ### AsymmetricalTriangle
 
 A triangle wave with the optional to move the point from sawtooth to ramp wave.
 
-- ** Peak Position **
+- **Peak Position**
 
 Set the position of the peak from 0 to 1.
 
@@ -129,13 +134,44 @@ Set the position of the peak from 0 to 1.
 triangle.setPeakPosition(peakPosition);
 ```
 
+
 ### Line
 
 A Line is intended to be used as part of a longer WaveSequence although it could be used on it's own to create a ramp or saw like wave form
 
+A line has the following parameters:
+
+- **Start Value**: The amplitude at the start of the line.
+- **End Value**: The amplitude of the end of the line.
+- **Length**: The length of the line measured as a fraction of the total phase of the waveform.
+
+
 ### WaveSequence
 
-Used to put together multiple WaveShapes to create a longer WaveShape. Can also be use for envelopes.
+Used to put together multiple other WaveShapes to create a longer WaveShape. Can also be use for envelopes. The WaveShape types must be specified as tempalte parameters. e.g A wave made from 3 lines:
+
+``` cpp
+WaveSequence<3, Line> lineShape;
+```
+
+The properties of each individual segment of the sequence can be changed, e.g. for a sequence made of lines:
+
+```cpp
+lineShape.segment(0).setStartValue(0);
+lineShape.segment(0).setEndValue(0.8);
+lineShape.segment(0).setLength(0.2);
+lineShape.segment(1).setStartValue(0.8);
+lineShape.segment(1).setEndValue(0.8);
+lineShape.segment(1).setLength(0.6);
+lineShape.segment(2).setStartValue(0.8);
+lineShape.segment(2).setEndValue(0);
+lineShape.segment(2).setLength(0.2);
+```
+
+If used with an oscillator, the total length of the sequence should add up to 1, otherwise the oscillator frequency calculations would play it back at the wrong frequency.
+
+If the end position of a segment does not match the start position of the next segment then a jump will occur.
+
 
 ### WaveSelector
 
