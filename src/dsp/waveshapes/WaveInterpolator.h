@@ -74,7 +74,7 @@ namespace eurorack {
 
 
     template<class... Ts>
-    class WaveInterpolator : public Interpolator, public TypeSelector<WaveShape, Ts...> {
+    class WaveInterpolator : public Interpolator, private TypeSelector<WaveShape, Ts...> {
         public:
             WaveInterpolator() : Interpolator(sizeof...(Ts)) {}
             WaveInterpolator(Ts&&... args) : Interpolator(sizeof...(Ts)), TypeSelector<WaveShape, Ts...>(args...) {}
@@ -91,7 +91,7 @@ namespace eurorack {
 
 
     template<class T, int N>
-    class WaveArrayInterpolator : public Interpolator, public ArraySelector<T, N> {
+    class WaveArrayInterpolator : public Interpolator, private ArraySelector<T, N> {
         public:
             WaveArrayInterpolator() : Interpolator(N) {}
             void select(float interpolation);
