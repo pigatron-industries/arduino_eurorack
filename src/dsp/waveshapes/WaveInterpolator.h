@@ -1,63 +1,32 @@
 #ifndef WaveInterpolator_h
 #define WaveInterpolator_h
 
-#include "WaveSelector.h"
+#include "../base/WaveShape.h"
+#include "../../util/TypeSelector.h"
 
 namespace eurorack {
 
-    template<class... Ts>
-    class WaveInterpolator : public TypeSelector<WaveShape, Ts...> {
+    class Interpolator : public WaveShape {
         public:
-            WaveInterpolator() {}
-            WaveInterpolator(Ts&&... args) : TypeSelector<WaveShape, Ts...>(args...) {}
+            Interpolator(int size) { lastIndex = size-1; }
+            void setInterpolation(float interpolation);
             virtual float get(float phase);
             virtual float polyblep(float phase, float phaseIncrement);
             virtual void setFrequency(float frequency);
-            void select(float interpolation);
-
         protected:
             float interpolation;
             float interpolationFraction;
             size_t interpolationIndex1;
             size_t interpolationIndex2;
+            size_t lastIndex;
+
+            virtual float get(int index, float phase) = 0;
+            virtual float polyblep(int index, float phase, float phaseIncrement) = 0;
+            virtual void setFrequency(int index, float frequency) = 0;
     };
 
-    template<class... Ts>
-    inline float WaveInterpolator<Ts...>::get(float phase) {
-        if(interpolationIndex1 == interpolationIndex2) {
-            return (*this)[interpolationIndex1]->get(phase);
-        } else {
-            float a = (*this)[interpolationIndex1]->get(phase);
-            float b = (*this)[interpolationIndex2]->get(phase);
-            return a + (b - a) * interpolationFraction;
-        }
-    }
-
-    template<class... Ts>
-    inline float WaveInterpolator<Ts...>::polyblep(float phase, float phaseIncrement) {
-        if(interpolationIndex1 == interpolationIndex2) {
-            return (*this)[interpolationIndex1]->polyblep(phase, phaseIncrement);
-        } else {
-            float a = (*this)[interpolationIndex1]->polyblep(phase, phaseIncrement);
-            float b = (*this)[interpolationIndex2]->polyblep(phase, phaseIncrement);
-            return a + (b - a) * interpolationFraction;
-        }
-    }
-
-    template<class... Ts>
-    inline void WaveInterpolator<Ts...>::setFrequency(float frequency) {
-        if(interpolationIndex1 == interpolationIndex2) {
-            return (*this)[interpolationIndex1]->setFrequency(frequency);
-        } else {
-            (*this)[interpolationIndex1]->setFrequency(frequency);
-            (*this)[interpolationIndex2]->setFrequency(frequency);
-        }
-    }
-
-    template<class... Ts>
-    inline void WaveInterpolator<Ts...>::select(float interpolation) {
+    inline void Interpolator::setInterpolation(float interpolation) {
         this->interpolation = interpolation;
-        int lastIndex = sizeof...(Ts) - 1;
         if(interpolation >= lastIndex) {
             interpolationIndex1 = lastIndex;
             interpolationIndex2 = lastIndex;
@@ -72,6 +41,69 @@ namespace eurorack {
             interpolationFraction = interpolation - static_cast<float>(interpolationIndex1);
         }
     }
+
+    inline float Interpolator::get(float phase) {
+        if(interpolationIndex1 == interpolationIndex2) {
+            return get(interpolationIndex1, phase);
+        } else {
+            float a = get(interpolationIndex1, phase);
+            float b = get(interpolationIndex2, phase);
+            return a + (b - a) * interpolationFraction;
+        }
+    }
+
+    inline float Interpolator::polyblep(float phase, float phaseIncrement) {
+        if(interpolationIndex1 == interpolationIndex2) {
+            return polyblep(interpolationIndex1, phase, phaseIncrement);
+        } else {
+            float a = polyblep(interpolationIndex1, phase, phaseIncrement);
+            float b = polyblep(interpolationIndex2, phase, phaseIncrement);
+            return a + (b - a) * interpolationFraction;
+        }
+    }
+
+    inline void Interpolator::setFrequency(float frequency) {
+        if(interpolationIndex1 == interpolationIndex2) {
+            setFrequency(interpolationIndex1, frequency);
+        } else {
+            setFrequency(interpolationIndex1, frequency);
+            setFrequency(interpolationIndex2, frequency);
+        }
+    }
+
+
+
+    template<class... Ts>
+    class WaveInterpolator : public Interpolator, public TypeSelector<WaveShape, Ts...> {
+        public:
+            WaveInterpolator() : Interpolator(sizeof...(Ts)) {}
+            WaveInterpolator(Ts&&... args) : Interpolator(sizeof...(Ts)), TypeSelector<WaveShape, Ts...>(args...) {}
+            using Interpolator::get;
+            using Interpolator::polyblep;
+            using Interpolator::setFrequency;
+
+        protected:
+            float get(int index, float phase) { return (*this)[index]->get(phase); }
+            float polyblep(int index, float phase, float phaseIncrement) { return (*this)[index]->polyblep(phase, phaseIncrement); }
+            void setFrequency(int index, float frequency) { (*this)[index]->setFrequency(frequency); }
+    };
+
+
+
+    template<class T, int N>
+    class WaveArrayInterpolator : public Interpolator, public ArraySelector<T, N> {
+        public:
+            WaveArrayInterpolator() : Interpolator(N) {}
+            void select(float interpolation);
+            using Interpolator::get;
+            using Interpolator::polyblep;
+            using Interpolator::setFrequency;
+
+        protected:
+            float get(int index, float phase) { return (*this)[index].get(phase); }
+            float polyblep(int index, float phase, float phaseIncrement) { return (*this)[index].polyblep(phase, phaseIncrement); }
+            void setFrequency(int index, float frequency) { (*this)[index].setFrequency(frequency); }
+    };
 
 }
 
