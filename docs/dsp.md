@@ -87,6 +87,8 @@ Polyblep can be enabled but only has an effect if the WaveShape supports it.
 oscillator.setPolyblep(true);
 ```
 
+---
+
 ## WaveShapes
 
 Shapes used by an oscillator. Some shapes support polyblep, which is a means of bandlimiting a waveshape so that aliasing artifacts are reduced when played at higher frequencies. Polyblep must be turned on at the oscillator level.
@@ -103,6 +105,10 @@ A pulse wave shape. Supports polyblep.
 
 Set the width of the pulse from 0 (very short pulse), to 1 (long pulse)
 
+```cpp
+pulse.setWidth(pulseWidth);
+```
+
 ### Triangle
 
 A basic triangle wave.
@@ -113,9 +119,23 @@ A basic saw wave.
 
 ### AsymmetricalTriangle
 
+A triangle wave with the optional to move the point from sawtooth to ramp wave.
+
+- ** Peak Position **
+
+Set the position of the peak from 0 to 1.
+
+```cpp
+triangle.setPeakPosition(peakPosition);
+```
+
 ### Line
 
+A Line is intended to be used as part of a longer WaveSequence although it could be used on it's own to create a ramp or saw like wave form
+
 ### WaveSequence
+
+Used to put together multiple WaveShapes to create a longer WaveShape. Can also be use for envelopes.
 
 ### WaveSelector
 
