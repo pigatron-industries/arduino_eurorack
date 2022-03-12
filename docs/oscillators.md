@@ -5,7 +5,7 @@ title: Oscillators
 
 # Oscillators and WaveShapes
 
-Oscillators can be combined with different WaveShapes to produces repeating wave forms. 
+Oscillators can be combined with different WaveShapes to produce repeating wave forms. 
 
 All oscillators have a process method wich must be called at the specified sample rate in order to give the next sample. It is up to your code to call this at the correct rate.
 
@@ -97,6 +97,7 @@ Shapes used by an oscillator. Some shapes support polyblep, which is a means of 
 
 A basic sine wave.
 
+![Sine](images/waveshape_sine.png)
 
 ### Pulse
 
@@ -113,12 +114,12 @@ pulse.setWidth(pulseWidth);
 
 ### Triangle
 
-A basic triangle wave.
+A basic triangle wave. Supports polyblep.
 
 
 ### Saw
 
-A basic saw wave.
+A basic saw wave. Supports polyblep.
 
 
 ### AsymmetricalTriangle
@@ -133,6 +134,7 @@ Set the position of the peak from 0 to 1.
 triangle.setPeakPosition(peakPosition);
 ```
 
+![Asymmetrical Triangle](images/waveshape_asymmetrical_triangle.png)
 
 ### Line
 
