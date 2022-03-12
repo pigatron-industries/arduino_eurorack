@@ -8,7 +8,11 @@ order: 5
 
 Oscillators can be combined with different WaveShapes to produces repeating wave forms. 
 
-All oscillators have a process method wich must be called at the specified sample rate in order to give the next sample.
+All oscillators have a process method wich must be called at the specified sample rate in order to give the next sample. It is up to your code to call this at the correct rate.
+
+```cpp
+float sample = oscillator.process();
+```
 
 ### WaveOscillator
 
@@ -16,7 +20,7 @@ Basic oscillator which uses any WaveShape to produce a repeating wave form.
 
 #### Instantiation
 
-There are 2 basic ways of defining it.
+There are 2 basic ways of instantiating a WaveOscillator.
 
 The first way is to let the oscillator instantiate it's own WaveShape object, you just need to tell it the type of the WaveShape you want e.g. to create a basic Sine wave oscillator:
 
@@ -45,11 +49,15 @@ Other parameters that can be set are:
 
 - **Frequency**
 
+Set frequency in Hz.
+
 ``` cpp
 oscillator.setFrequency(frequency);
 ```
 
 - **Amplitude** 
+
+Set amplitude, nomrmally between 0 and 1.
 
 ``` cpp
 oscillator.setAmplitude(amplitude);
@@ -57,7 +65,7 @@ oscillator.setAmplitude(amplitude);
 
 - **Period**
 
-Does the same as frequency but using the wave period in seconds instead
+Does the same as setting the frequency but using the wave period in seconds instead.
 
 ``` cpp
 oscillator.setPeriod(period);
@@ -80,5 +88,39 @@ oscillator.setPolyblep(true);
 ```
 
 ## WaveShapes
+
+Shapes used by an oscillator. Some shapes support polyblep, which is a means of bandlimiting a waveshape so that aliasing artifacts are reduced when played at higher frequencies. Polyblep must be turned on at the oscillator level.
+
+### Sine
+
+A basic sine wave.
+
+### Pulse
+
+A pulse wave shape. Supports polyblep.
+
+- **Width**
+
+Set the width of the pulse from 0 (very short pulse), to 1 (long pulse)
+
+### Triangle
+
+A basic triangle wave.
+
+### Saw
+
+A basic saw wave.
+
+### AsymmetricalTriangle
+
+### Line
+
+### WaveSequence
+
+### WaveSelector
+
+### WaveTable
+
+### WaveInterpolator
 
 
