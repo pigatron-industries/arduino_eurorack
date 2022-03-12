@@ -152,6 +152,8 @@ A line has the following parameters:
 - **End Value**: The amplitude of the end of the line.
 - **Length**: The length of the line measured as a fraction of the total phase of the waveform.
 
+![Line](images/waveshape_line.drawio.png)
+
 
 ### WaveSequence
 
@@ -178,6 +180,8 @@ lineShape.segment(2).setLength(0.2);
 If used with an oscillator, the total length of the sequence should add up to 1, otherwise the oscillator frequency calculations would play it back at the wrong frequency.
 
 If the end position of a segment does not match the start position of the next segment then a jump will occur.
+
+![Wave Sequence](images/waveshape_wave_sequence.drawio.png)
 
 
 ### WaveSelector
