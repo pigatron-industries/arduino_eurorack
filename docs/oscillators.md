@@ -184,23 +184,6 @@ If the end position of a segment does not match the start position of the next s
 ![Wave Sequence](images/waveshape_wave_sequence.drawio.png)
 
 
-### WaveSelector
-
-Allows a single WaveShape to be selected from a list at runtime. The WaveShapes to be selected from can be added as template parameters. Since the template names can get lengthy a typedef can be used:
-
-```cpp
-typedef WaveSelector<Sine, Triangle, Saw, Pulse> WaveSelectionT;
-WaveSelectionT waveSelector;
-WaveOscillator<WaveSelectionT&> oscillator = WaveOscillator<WaveSelectionT&>(waveSelector);
-```
-
-Then, at runtime, a selection can be made to change which wave the oscillator uses. The select function uses the index of the waveform in the list.
-
-```cpp
-waveSelector.select(2);
-```
-
-
 ### WaveTable
 
 A WaveTable represents a range of lookup tables of values for a single cycle of a waveform. There can be a slightly different lookup table used depending on the frequency of playback. This can be used to reduce aliasing by removing higher harmonics from the higher frequency lookup tables.
@@ -245,8 +228,61 @@ Also note, that these functions generate the tables at runtime, so they may intr
 
 The addHarmonics function requires a RollOffFunction. This is a function that given the harmonic number will tell us what the amplitude of the sine is for that harmonic. The other functions use a RollOffFunction for their specific wave forms, but you can implement your own and use it with this function. Examples of these can be found in [RollOffFunction.h]({{ site.repolink }}/src/dsp/waveshapes/wavetable/RollOffFunction.h)
 
+
+### WaveSelector
+
+Allows a single WaveShape to be selected from a list at runtime. The WaveShapes to be selected from can be added as template parameters. Since the template names can get lengthy a typedef can be used:
+
+```cpp
+typedef WaveSelector<Sine, Triangle, Saw, Pulse> WaveSelectionT;
+WaveSelectionT waveSelector;
+WaveOscillator<WaveSelectionT&> oscillator = WaveOscillator<WaveSelectionT&>(waveSelector);
+```
+
+Then, at runtime, a selection can be made to change which wave the oscillator uses. The select function uses the index of the waveform in the list.
+
+```cpp
+waveSelector.select(2);
+```
+
+
 ### WaveInterpolator
 
-TODO
+Similar to WaveSelector, except that it smoothly interpolates the values between wave forms.
 
+For example, to smoothly interpolate between 4 wave shapes:
 
+```cpp
+typedef WaveInterpolator<Sine, Triangle, Saw, Pulse> WaveInterpolationT;
+WaveInterpolationT interpolator;
+WaveOscillator<WaveInterpolationT&> oscillator = WaveOscillator<WaveInterpolationT&>(interpolator);
+```
+
+Then, at runtime, the position can be selected using a floating point number between 0 and 3 (The number of wave shapes used). 0 will be a Sine, anything between 0 and 1 will an interpolation between Sine and Triangle, 1 will be Triangle, etc.
+
+```cpp
+waveSelector.setInterpolation(1.3);
+```
+
+![Wave Interpolator](images/waveshape_interpolator.drawio.png)
+
+#### WaveArrayInterpolator
+
+A variation of WaveInterpolator that allows the same WaveShape class to be repeated multple times in the template. Most usefult with a WaveShape such as WaveTable which can use the same class to hold different waveforms.
+
+For example, an interpolator over 3 WaveTables:
+
+```cpp
+typedef WaveTable<10, 128> WaveTableT;
+typedef WaveArrayInterpolator<WaveTableT, 3> WaveInterpolationT;
+WaveInterpolationT interpolator;
+WaveOscillator<WaveInterpolationT&> oscillator = WaveOscillator<WaveInterpolationT&>(interpolator);
+```
+
+Then each WaveTable can be initialised with a differrent wave:
+
+```cpp
+WaveTableFactory::addSine(&interpolator[0], 0.5);
+WaveTableFactory::addRamp(&interpolator[1], 0.5);
+WaveTableFactory::addSquare(&interpolator[2], 0.5);
+```
