@@ -279,7 +279,7 @@ WaveInterpolationT interpolator;
 WaveOscillator<WaveInterpolationT&> oscillator = WaveOscillator<WaveInterpolationT&>(interpolator);
 ```
 
-Then each WaveTable can be initialised with a differrent wave:
+Each WaveTable can be accessed using the array operator, and can be initialised with differrent waves:
 
 ```cpp
 WaveTableFactory::addSine(&interpolator[0], 0.5);
