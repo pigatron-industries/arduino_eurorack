@@ -286,3 +286,35 @@ WaveTableFactory::addSine(&interpolator[0], 0.5);
 WaveTableFactory::addRamp(&interpolator[1], 0.5);
 WaveTableFactory::addSquare(&interpolator[2], 0.5);
 ```
+
+#### WaveInterpolator2D and WaveInterpolator3D
+
+Variations of WaveArrayInterpolator extends to 2 and 3 dimensions.
+
+Example:
+
+```cpp
+typedef WaveTable<10, 128> WaveTableT;
+typedef WaveInterpolator2D<WaveTableT, 2, 2> WaveInterpolationT;
+WaveInterpolationT interpolator;
+WaveOscillator<WaveInterpolationT&> oscillator = WaveOscillator<WaveInterpolationT&>(interpolator);
+```
+
+The wavetable at each point needs to be initialised:
+
+```cpp
+WaveTableFactory::addSine(&interpolator[0][0], 0.5);
+WaveTableFactory::addRamp(&interpolator[1][0], 0.5);
+WaveTableFactory::addSquare(&interpolator[0][1], 0.5);
+WaveTableFactory::addTriangle(&interpolator[1][1], 0.5);
+```
+
+X, Y and Z interpolation can be set separately:
+
+```cpp
+interpolator.setInterpolationX(0.3);
+interpolator.setInterpolationY(0.4);
+interpolator.setInterpolationZ(0.5);
+```
+
+![Wave Interpolator 2D](images/waveshape_interpolator2d.drawio.png)
