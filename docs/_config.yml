@@ -5,5 +5,6 @@ layouts: /pigatron-industries.common/_layouts
 includes_dir: /pigatron-industries.common/_includes
 exclude: /pigatron-industries.common
 basepath: /arduino_eurorack
+repolink: https://github.com/pigatron-industries/arduino_eurorack/blob/main/
 title: Arduino Eurorack
 description: [A library for creating Eurorack modules using Arduino devices]

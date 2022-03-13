@@ -205,6 +205,8 @@ waveSelector.select(2);
 
 A WaveTable represents a range of lookup tables of values for a single cycle of a waveform. There can be a slightly different lookup table used depending on the frequency of playback. This can be used to reduce aliasing by removing higher harmonics from the higher frequency lookup tables.
 
+For more complex waveforms containing multiple harmonics, this is often the most efficient way to synthesise, since the wave form is pre-calculated.
+
 WaveTable uses template parameters to set number of tables and the sample size of each table. By default the number of tables is evenly distributed over a 10 octave range, so to create a WaveTable with one table per octave you can use:
 
 ```cpp
@@ -224,7 +226,7 @@ WaveTableFactory::addSine(&waveTable, 0.5, 1);
 WaveTableFactory::addSine(&waveTable, 0.5, 2);
 ```
 
-The full list of functions to create wavetables:
+The full list of functions for creating wavetables:
 
 ```cpp
 WaveTableFactory::addSine(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1, float phaseShift = 0);
@@ -236,6 +238,12 @@ WaveTableFactory::addImpulse(BaseWaveTable* wavetable, float amplitude = 0.5, in
 WaveTableFactory::addViolin(BaseWaveTable* wavetable, float amplitude = 0.5, int mult = 1);
 WaveTableFactory::addHarmonics(BaseWaveTable* wavetable, RollOffFunction* rolloff, float amplitude = 0.5, int mult = 1);
 ```
+
+These functions create their waveshapes by adding together sines. To prevent aliasing, they don't add frequencies that are higher than half the sample rate, so the tables for higher frequencies will contain less harmonics. The highest frequency table may well be a single sine wave.
+
+Also note, that these functions generate the tables at runtime, so they may introduce a time delay before the module can be used.
+
+The addHarmonics function requires a RollOffFunction. This is a function that given the harmonic number will tell us what the amplitude of the sine is for that harmonic. The other functions use a RollOffFunction for their specific wave forms, but you can implement your own and use it with this function. Examples of these can be found in [RollOffFunction.h]({{ site.repolink }}/src/dsp/waveshapes/wavetable/RollOffFunction.h)
 
 ### WaveInterpolator
 
