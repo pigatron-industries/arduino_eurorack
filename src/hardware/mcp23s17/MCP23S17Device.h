@@ -35,6 +35,15 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
         };
 };
 
+void MCP23S17Device::init() {
+    for(int i = 0; i < MCP23S17_PINCOUNT; i++) {
+        gpioPinMode(pins[i].getPin(), pins[i].getPinType() == PinType::DIGITAL_OUTPUT);
+        if(pins[i].getInterruptEnabled()) {
+            
+        }
+    }
+}
+
 void MCP23S17Device::digitalWrite(uint8_t pin, bool value) {
     gpioDigitalWriteFast(pin, value);
 }
