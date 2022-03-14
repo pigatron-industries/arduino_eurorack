@@ -57,6 +57,10 @@ class ArraySelector {
             return selected;
         }
 
+        int getSize() {
+            return N;
+        }
+
     protected:
         Array<T, N> items;
         size_t selectedIndex;
