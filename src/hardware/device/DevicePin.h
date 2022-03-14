@@ -13,8 +13,8 @@ class DevicePin {
         DevicePin(T& device, uint8_t pin) : device(device), pin(pin) {}
 
         void setPinType(PinType pinType) {
+            this->enabled = true;
             this->pinType = pinType;
-            DevicePin<T>::device.setPinType(DevicePin<T>::pin, pinType);
         }
 
         PinType getPinType() { return pinType; }
@@ -26,7 +26,7 @@ class DevicePin {
         T& device;
         uint8_t pin;
         PinType pinType;
-        bool enabled = true;
+        bool enabled = false;
 };
 
 class AbstractDigitalPin {
@@ -57,10 +57,8 @@ class AbstractAnalogPin {
 template<class T = NativeDevice>
 class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
     public:
-        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
-
-        void init() {
-            DevicePin<T>::device.setPinType(DevicePin<T>::pin, PinType::DIGITAL_OUTPUT);
+        DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            DevicePin<T>::setPinType(PinType::DIGITAL_OUTPUT);
         }
 
         void digitalWrite(bool value) {
@@ -75,15 +73,19 @@ class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigi
 template<class T = NativeDevice>
 class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
     public:
-        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {}
-
-        void init() {
-            DevicePin<T>::device.setPinType(DevicePin<T>::pin, PinType::DIGITAL_INPUT);
+        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
+            DevicePin<T>::setPinType(PinType::DIGITAL_INPUT);
         }
 
         bool digitalRead() {
             return DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
         }
+
+        void enableInterrupt(bool enabled) { this->interruptEnabled = enabled; }
+        bool getInterruptEnabled() { return interruptEnabled; }
+
+    protected:
+        bool interruptEnabled;
 };
 
 
@@ -94,7 +96,7 @@ class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalog
             DevicePin<T>(device, pin),
             AbstractAnalogPin(bits, lowVoltage, highVoltage),
             DigitalOutputPin<T>(device, pin) {
-                device.setPinType(pin, PinType::ANALOG_OUTPUT);
+                DevicePin<T>::setPinType(PinType::ANALOG_OUTPUT);
         }
 
         void analogWrite(float value) {
@@ -114,7 +116,7 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
             DevicePin<T>(device, pin),
             AbstractAnalogPin(bits, lowVoltage, highVoltage),
             DigitalInputPin<T>(device, pin) {
-                device.setPinType(pin, PinType::ANALOG_INPUT);
+                DevicePin<T>::setPinType(PinType::ANALOG_INPUT);
         }
 
         float analogRead() {

@@ -4,7 +4,13 @@ MAX11300Device::MAX11300Device(SPIClass* spi, uint8_t convertPin, uint8_t select
     MAX11300(spi, convertPin, selectPin) {
 }
 
-void MAX11300Device::setPinType(uint8_t pin, PinType pinType) {
+void MAX11300Device::init() {
+    for(int i = 0; i < MAX11300_PINCOUNT; i++) {
+        initPinType(pins[i].getPin(), pins[i].getPinType());
+    }
+}
+
+void MAX11300Device::initPinType(uint8_t pin, PinType pinType) {
     switch(pinType) {
         case PinType::ANALOG_OUTPUT:
             setPinModeAnalogOut(pin, DACNegative5to5);

@@ -9,7 +9,7 @@
 class MAX11300Device: public MAX11300, public Device, public DigitalOutputDevice, public DigitalInputDevice, public AnalogOutputDevice, public AnalogInputDevice {
     public:
         MAX11300Device(SPIClass* spi, uint8_t convertPin, uint8_t selectPin);
-        void setPinType(uint8_t pin, PinType pinType);
+        void init();
         void digitalWrite(uint8_t pin, bool value);
         bool digitalRead(uint8_t pin);
         void analogWrite(uint8_t pin, uint16_t value);
@@ -38,6 +38,9 @@ class MAX11300Device: public MAX11300, public Device, public DigitalOutputDevice
             AnalogInputOutputPin<MAX11300Device>(*this, 18, 12, -5, 5),
             AnalogInputOutputPin<MAX11300Device>(*this, 19, 12, -5, 5)
         };
+
+    private:
+        void initPinType(uint8_t pin, PinType pinType);
 };
 
 #endif
