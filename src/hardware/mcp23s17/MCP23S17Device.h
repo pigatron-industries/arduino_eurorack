@@ -11,7 +11,7 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
         MCP23S17Device(const uint8_t csPin,const uint8_t haenAddress) : gpio_MCP23S17(csPin, haenAddress) {
             begin();
         };
-        void init();
+        inline void init();
         inline void digitalWrite(uint8_t pin, bool value);
         inline bool digitalRead(uint8_t pin);
 
@@ -36,12 +36,14 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
 };
 
 void MCP23S17Device::init() {
+    uint16_t interruptPins = 0;
     for(int i = 0; i < MCP23S17_PINCOUNT; i++) {
         gpioPinMode(pins[i].getPin(), pins[i].getPinType() == PinType::DIGITAL_OUTPUT);
         if(pins[i].getInterruptEnabled()) {
-            
+            interruptPins |= (1 << pins[i].getPin());
         }
     }
+    gpioRegisterWriteWord(MCP23S17_GPINTEN, interruptPins);
 }
 
 void MCP23S17Device::digitalWrite(uint8_t pin, bool value) {
