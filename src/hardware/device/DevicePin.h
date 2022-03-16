@@ -32,6 +32,7 @@ class DevicePin {
 class AbstractDigitalPin {
     public:
         bool getDigitalValue() { return digitalValue; }
+        void setDigitalValue(bool digitalValue) { this->digitalValue = digitalValue; }
 
     protected:
         bool digitalValue;
@@ -44,6 +45,7 @@ class AbstractAnalogPin {
             voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
 
         float getAnalogValue() { return analogValue; }
+        void setAnalogValue(float analogValue) { this->analogValue = analogValue; }
         uint16_t getBinaryValue() { return voltageScale.convertReverse(analogValue); }
         void setBinaryRange(uint16_t min, uint16_t max) { voltageScale.setInputRange(min, max); }
         void setAnalogRange(float min, float max) { voltageScale.setOutputRange(min, max); }

@@ -2,6 +2,7 @@
 #define MCP23S17Device_h
 
 #include <gpio_MCP23S17.h>
+#include <wiring.h>
 #include "../device/DevicePin.h"
 
 #define MCP23S17_PINCOUNT 16
@@ -14,6 +15,7 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
         };
         inline void init();
         inline void send();
+        inline void receive();
         inline void digitalWrite(uint8_t pin, bool value);
         inline bool digitalRead(uint8_t pin);
 
@@ -55,6 +57,16 @@ void MCP23S17Device::send() {
         }
     }
     gpioPortUpdate();
+}
+
+void MCP23S17Device::receive() {
+    uint16_t gpio = readGpioPort();
+    for(int i = 0; i < MCP23S17_PINCOUNT; i++) {
+        if(pins[i].getPinType() == PinType::DIGITAL_INPUT) {
+            bool value = bitRead(gpio, pins[i].getPin());
+            pins[i].setDigitalValue(value);
+        }
+    }
 }
 
 void MCP23S17Device::digitalWrite(uint8_t pin, bool value) {
