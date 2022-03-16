@@ -64,6 +64,7 @@ namespace eurorack {
         this->interruptPin = interruptPin;
         value = inputPin.digitalRead();
         if(interruptPin >= 0) {
+            pinMode(interruptPin, INPUT);
             inputPin.enableInterrupt(true);
             interruptInputs[interruptInputCount] = this;
             interruptInputCount++;
