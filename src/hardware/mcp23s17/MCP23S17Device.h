@@ -11,6 +11,7 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
     public:
         MCP23S17Device(const uint8_t csPin,const uint8_t haenAddress) : gpio_MCP23S17(csPin, haenAddress) {
             Device::setDeferredOutput(true);
+            Device::setDeferredInput(true);
             begin();
         };
         inline void init();

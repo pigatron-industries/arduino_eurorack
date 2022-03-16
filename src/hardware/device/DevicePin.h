@@ -80,7 +80,10 @@ class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigit
         }
 
         bool digitalRead() {
-            return DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
+            if(!DevicePin<T>::device.isDeferredInput()) {
+                digitalValue = DevicePin<T>::device.digitalRead(DevicePin<T>::pin);
+            }
+            return digitalValue;
         }
 
         void enableInterrupt(bool enabled) { this->interruptEnabled = enabled; }
@@ -122,7 +125,10 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
         }
 
         float analogRead() {
-            return voltageScale.convert(DevicePin<T>::device.analogRead(DevicePin<T>::pin));
+            if(!DevicePin<T>::device.isDeferredInput()) {
+                analogValue = voltageScale.convert(DevicePin<T>::device.analogRead(DevicePin<T>::pin));
+            }
+            return analogValue;
         }
 
         uint16_t binaryRead() {

@@ -15,8 +15,11 @@ class Device {
     public:
         bool isDeferredOutput() { return deferredOutput; }
         void setDeferredOutput(bool deferredOutput) { this->deferredOutput = deferredOutput; }
+        bool isDeferredInput() { return deferredInput; }
+        void setDeferredInput(bool deferredInput) { this->deferredInput = deferredInput; }
     protected:
         bool deferredOutput = false;
+        bool deferredInput = false;
 };
 
 class DigitalOutputDevice {
