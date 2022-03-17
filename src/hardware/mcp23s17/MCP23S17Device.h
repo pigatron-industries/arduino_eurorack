@@ -63,7 +63,7 @@ void MCP23S17Device::send() {
 void MCP23S17Device::receive() {
     uint16_t gpio = readGpioPort();
     for(int i = 0; i < MCP23S17_PINCOUNT; i++) {
-        if(pins[i].getPinType() == PinType::DIGITAL_INPUT) {
+        if(pins[i].getPinType() == PinType::DIGITAL_INPUT || pins[i].getPinType() == PinType::DIGITAL_INPUT_PULLUP) {
             bool value = bitRead(gpio, pins[i].getPin());
             pins[i].setDigitalValue(value);
         }
