@@ -13,11 +13,15 @@ enum PinType {
 
 class Device {
     public:
+        bool isDeferredInit() { return deferredInit; }
+        void setDeferredInit(bool deferredInit) { this->deferredInit = deferredInit; }
         bool isDeferredOutput() { return deferredOutput; }
         void setDeferredOutput(bool deferredOutput) { this->deferredOutput = deferredOutput; }
         bool isDeferredInput() { return deferredInput; }
         void setDeferredInput(bool deferredInput) { this->deferredInput = deferredInput; }
+        void setPinType(uint8_t pin, PinType pinType) {}
     protected:
+        bool deferredInit = true;
         bool deferredOutput = false;
         bool deferredInput = false;
 };

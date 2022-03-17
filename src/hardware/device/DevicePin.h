@@ -15,6 +15,9 @@ class DevicePin {
         void setPinType(PinType pinType) {
             this->enabled = true;
             this->pinType = pinType;
+            if(!device.isDeferredInit()) {
+                device.setPinType(pin, pinType);
+            }
         }
 
         PinType getPinType() { return pinType; }
