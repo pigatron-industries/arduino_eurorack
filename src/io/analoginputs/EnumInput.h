@@ -9,7 +9,7 @@ template<class T = NativeDevice>
 class EnumInput : public LinearInput<T> {
     public:
         EnumInput(AnalogInputPin<T>& input, float _realMin, float _realMax, int maxIntValue) : 
-            LinearInput(input, _realMin, _realMax, 0.1, maxIntValue+0.9) {
+            LinearInput<T>(input, _realMin, _realMax, 0.1, maxIntValue+0.9) {
         }
 
         inline bool update() {
