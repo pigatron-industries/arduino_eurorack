@@ -1,5 +1,5 @@
-#ifndef LinearInput_h
-#define LinearInput_h
+#ifndef EnumInput_h
+#define EnumInput_h
 
 #include <inttypes.h>
 #include "AbstractInput.h"
@@ -8,8 +8,8 @@
 template<class T = NativeDevice>
 class EnumInput : public LinearInput<T> {
     public:
-        EnumInput() : 
-            LinearInput(AnalogInputPin<T>& input, float _realMin, float _realMax, float _virtualMin, float _virtualMax) {
+        EnumInput(AnalogInputPin<T>& input, float _realMin, float _realMax, int maxIntValue) : 
+            LinearInput(input, _realMin, _realMax, 0.1, maxIntValue+0.9) {
         }
 
         inline bool update() {
