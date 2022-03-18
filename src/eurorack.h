@@ -22,6 +22,7 @@
 #include "hardware/RotaryEncoderButton.h"
 
 #include "io/analoginputs/LinearInput.h"
+#include "io/analoginputs/EnumInput.h"
 #include "io/analoginputs/ExpInput.h"
 #include "io/analoginputs/PowInput.h"
 #include "io/analoginputs/AnalogGateInput.h"
