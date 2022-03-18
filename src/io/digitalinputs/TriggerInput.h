@@ -62,7 +62,6 @@ namespace eurorack {
     TriggerInput<T>::TriggerInput(DigitalInputPin<T>& inputPin, bool inverted, uint8_t interruptPin) : inputPin(inputPin) {
         this->inverted = inverted;
         this->interruptPin = interruptPin;
-        value = inputPin.digitalRead();
         if(interruptPin >= 0) {
             pinMode(interruptPin, INPUT);
             inputPin.enableInterrupt(true);
