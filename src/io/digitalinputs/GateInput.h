@@ -11,7 +11,7 @@ class GateInput {
     public:
         GateInput(DigitalInputPin<T>& input, bool inverted = true) : input(input), inverted(inverted) {
             input.setPinType(PinType::DIGITAL_INPUT_PULLUP);
-            debounce.begin(input.digitalRead());
+            debounce.begin(false);
         }
 
         bool getValue() { return inverted ? !debounce.read() : debounce.read(); }
