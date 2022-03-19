@@ -17,4 +17,4 @@ Works with Teensy LC/4.0/4.1
 
 Depending on requirements not all of the components need to be soldered.
 
-![Teensy Motherboard](images/hardware_teensy_motherboard_8cv_mki.png)
+![Teensy Motherboard](images/hardware_teensy_motherboard_8cv_mki.drawio.png)
