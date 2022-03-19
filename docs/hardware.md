@@ -15,6 +15,8 @@ Motherboard for teensy containing circuits to enable the following:
 
 Works with Teensy LC/4.0/4.1
 
+### Soldering
+
 Depending on requirements not all of the components need to be soldered.
 
 Do not solder both section A and B at the same time.
