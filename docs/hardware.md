@@ -47,4 +47,11 @@ Do not solder both section A and B at the same time.
 
 ### Teensy Connections
 
+Teensy LC
+![Teensy LC](images/hardware_teensy_motherboard_LC.png)
 
+Teesny 4.0
+![Teensy 4.0](images/hardware_teensy_motherboard_4.0.png)
+
+Teensy 4.1
+![Teensy 4.1](images/hardware_teensy_motherboard_4.1.png)
