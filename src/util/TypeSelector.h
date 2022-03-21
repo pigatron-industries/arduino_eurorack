@@ -31,9 +31,11 @@ class ArraySelector {
         size_t getSelectedIndex() { return selectedIndex; }
 
         T& select(size_t i) { 
-            selectedIndex = i; 
-            selected = items[i]; 
-            return selected; 
+            if(i < N) {
+                selectedIndex = i; 
+                selected = items[i]; 
+            }
+            return selected;
         }
 
         T& increment() {
