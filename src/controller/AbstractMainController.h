@@ -27,6 +27,7 @@ class AbstractMainController {
 
         virtual void controllerInit();
         void doEncoderEvent(RotaryEncoderButton::EncoderEvent event);
+        void saveMode();
 };
 
 
@@ -47,9 +48,14 @@ void AbstractMainController<B, Ts...>::update() {
 
 template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::controllerInit() {
+    saveMode();
+    controllers.getSelected()->init();
+}
+
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::saveMode() {
     configMode.data.controllerIndex = controllers.getSelectedIndex();
     Config::config.save(configMode);
-    controllers.getSelected()->init();
 }
 
 template <class B, class... Ts>
