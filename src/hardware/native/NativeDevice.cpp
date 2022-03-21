@@ -3,6 +3,7 @@
 NativeDevice NativeDevice::instance;
 
 NativeDevice::NativeDevice() {
+    setDeferredInit(false);
 }
 
 void NativeDevice::setPinType(uint8_t pin, PinType pinType) {
