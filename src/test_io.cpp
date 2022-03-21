@@ -23,6 +23,8 @@
             DigitalInput(test3, 10)
             DigitalOutput(11)
             DigitalOutput(test4, 11)
+
+            AnalogInputSumPin<> sum = AnalogInputSumPin<>(Hardware::hw.A0, Hardware::hw.test1);
     };
 
     Hardware Hardware::hw;
@@ -89,6 +91,7 @@
     // Analog Inputs
 
     LinearInput<> linearInput = LinearInput<>(Hardware::hw.A0, -5.0, 5.0, 0.0, 5.0);
+    LinearInput<> linearSumInput = LinearInput<>(Hardware::hw.sum, -5.0, 5.0, 0.0, 5.0);
     AnalogGateInput<> analogGateInput = AnalogGateInput<>(Hardware::hw.A0, 3.0);
     CrossfadeInput<> crossfadeInput = CrossfadeInput<>(Hardware::hw.A0, -5.0, 5.0);
     ExpInput<> expInput = ExpInput<>(Hardware::hw.A0);

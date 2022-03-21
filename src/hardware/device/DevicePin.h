@@ -24,6 +24,7 @@ class DevicePin {
         uint8_t getPin() { return pin; };
         void enable(bool enabled) { this->enabled = enabled; }
         bool isEnabled() { return enabled; }
+        T& getDevice() { return device; }
 
     protected:
         T& device;
