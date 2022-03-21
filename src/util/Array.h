@@ -5,8 +5,6 @@ template<class T, int MAXSIZE>
 class Array {
 
     public:
-        int _size = 0;
-        T items[MAXSIZE];
 
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
@@ -18,6 +16,10 @@ class Array {
         void clear() {
             _size = 0;
         }
+
+    private:
+        int _size = 0;
+        T items[MAXSIZE];
 
 };
 

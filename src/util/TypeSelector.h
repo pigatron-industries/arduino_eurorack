@@ -24,30 +24,27 @@ for_each(std::tuple<Ts...>& t, Func func) {
 template<class T, int N>
 class ArraySelector {
     public:
-        ArraySelector(): selected(items[0]) {}
+        ArraySelector() {} 
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
-        T& getSelected() { return selected; }
+        T& getSelected() { return items[selectedIndex]; }
         size_t getSelectedIndex() { return selectedIndex; }
 
         T& select(size_t i) { 
             if(i < N) {
-                selectedIndex = i; 
-                selected = items[i]; 
+                selectedIndex = i;
             }
-            return selected;
+            return getSelected();
         }
 
         T& increment() {
             selectedIndex = (selectedIndex + 1) % N;
-            selected = items[selectedIndex];
-            return selected;
+            return getSelected();
         }
 
         T& decrement() {
             selectedIndex = selectedIndex > 0 ? selectedIndex - 1 : N - 1;
-            selected = items[selectedIndex];
-            return selected;
+            return getSelected();
         }
 
         T& cycle(int direction) {
@@ -56,7 +53,7 @@ class ArraySelector {
             } else if(direction < 0) {
                 return decrement();
             }
-            return selected;
+            return getSelected();
         }
 
         int getSize() {
@@ -66,7 +63,6 @@ class ArraySelector {
     protected:
         Array<T, N> items;
         size_t selectedIndex;
-        T& selected;
 };
 
 

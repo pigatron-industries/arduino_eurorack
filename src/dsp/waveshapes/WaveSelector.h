@@ -17,17 +17,17 @@ namespace eurorack {
 
     template<class... Ts>
     inline float WaveSelector<Ts...>::get(float phase) {
-        return TypeSelector<WaveShape, Ts...>::selected->get(phase);
+        return TypeSelector<WaveShape, Ts...>::getSelected()->get(phase);
     }
 
     template<class... Ts>
     inline float WaveSelector<Ts...>::polyblep(float phase, float phaseIncrement) {
-        return TypeSelector<WaveShape, Ts...>::selected->polyblep(phase, phaseIncrement);
+        return TypeSelector<WaveShape, Ts...>::getSelected()->polyblep(phase, phaseIncrement);
     }
 
     template<class... Ts>
     inline void WaveSelector<Ts...>::setFrequency(float frequency) {
-        TypeSelector<WaveShape, Ts...>::selected->setFrequency(frequency);
+        TypeSelector<WaveShape, Ts...>::getSelected()->setFrequency(frequency);
     }
 
 }
