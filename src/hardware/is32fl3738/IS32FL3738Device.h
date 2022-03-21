@@ -15,7 +15,7 @@
 
 class IS32FL3738Device : public Device, public DigitalOutputDevice, public AnalogOutputDevice {
     public:
-        IS32FL3738Device(TwoWire& wire, uint8_t address = IS32_ADDRESS_A);
+        IS32FL3738Device(TwoWire& wire, uint8_t sdbPin, uint8_t address = IS32_ADDRESS_A);
         void init();
         void digitalWrite(uint8_t pin, bool value);
         void analogWrite(uint8_t pin, uint16_t value);
@@ -34,6 +34,7 @@ class IS32FL3738Device : public Device, public DigitalOutputDevice, public Analo
     private:
         TwoWire& wire;
         uint8_t address;
+        uint8_t sdbPin;
 
         void setOnOffRegisters();
         void writeRegister(uint8_t reg, uint8_t data);

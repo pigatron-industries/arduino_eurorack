@@ -21,8 +21,9 @@
 #define IS32_REG_GLOBAL_UNLOCK_PAGE_UNLOCK 0xC5 //Unlock page selection
 
 
-IS32FL3738Device::IS32FL3738Device(TwoWire& wire, uint8_t address) : 
+IS32FL3738Device::IS32FL3738Device(TwoWire& wire, uint8_t sdbPin, uint8_t address) : 
     wire(wire), address(address) {
+        this->sdbPin = sdbPin;
 }
 
 void IS32FL3738Device::init() {
@@ -34,6 +35,8 @@ void IS32FL3738Device::init() {
     writeRegister(IS32_REG_GLOBAL_CURRENT_CONTROL, 0xFF);
     setOnOffRegisters();
 
+    pinMode(sdbPin, OUTPUT);
+    ::digitalWrite(sdbPin, true);
 }
 
 void IS32FL3738Device::digitalWrite(uint8_t pin, bool value) {
