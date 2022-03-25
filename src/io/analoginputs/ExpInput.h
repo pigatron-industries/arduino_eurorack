@@ -6,6 +6,8 @@
 template<class T = AnalogInputPin<NativeDevice>>
 class ExpInput : public AbstractInput<T> {
     public:
+        static constexpr float MID_VALUE_C5 = 523.25;
+
         ExpInput(T& input) : AbstractInput<T>(input) {
         }
 
@@ -21,7 +23,7 @@ class ExpInput : public AbstractInput<T> {
         void setMidValue(float midValue) { this->midValue = midValue; }
 
     private:
-        float midValue = 523.25; //C5
+        float midValue = MID_VALUE_C5;
         float expValue;
 };
 
