@@ -56,7 +56,7 @@ class ArraySelector {
             return getSelected();
         }
 
-        int getSize() {
+        unsigned int getSize() {
             return N;
         }
 
