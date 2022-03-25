@@ -11,10 +11,10 @@
 #define SMOOTHING_WEIGHT 0.03
 #define STABILISE_THRESHOLD 0.005
 
-template<class T = NativeDevice>
+template<class T = AnalogInputPin<NativeDevice>>
 class AbstractInput {
     public:
-        AbstractInput(AnalogInputPin<T>& input) : 
+        AbstractInput(T& input) : 
             input(input) {
             input.setPinType(PinType::ANALOG_INPUT);
         }
@@ -29,7 +29,7 @@ class AbstractInput {
         }
 
     protected:
-        AnalogInputPin<T>& input;
+        T& input;
         float smoothingWeight = SMOOTHING_WEIGHT;
 
         uint32_t value;

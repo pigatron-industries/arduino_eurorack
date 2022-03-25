@@ -3,13 +3,13 @@
 
 #include "AbstractInput.h"
 
-template<class T = NativeDevice>
+template<class T = AnalogInputPin<NativeDevice>>
 class ExpInput : public AbstractInput<T> {
     public:
-        ExpInput(AnalogInputPin<T>& input) : AbstractInput<T>(input) {
+        ExpInput(T& input) : AbstractInput<T>(input) {
         }
 
-        ExpInput(AnalogInputPin<T>& input, float midValue) : AbstractInput<T>(input) {
+        ExpInput(T& input, float midValue) : AbstractInput<T>(input) {
             this->midValue = midValue;
         }
 

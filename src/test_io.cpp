@@ -63,6 +63,7 @@
     // MAX11300
 
     MAX11300Device max11300 = MAX11300Device(&SPI, 10, 11);
+    LinearInput<AnalogInputPin<MAX11300Device>> max11300Input = LinearInput<AnalogInputPin<MAX11300Device>>(max11300.pins[0], -5.0, 5.0, 0.0, 1.0);
 
     void testMAX11300Pins() {
         max11300.pins[0].setPinType(ANALOG_OUTPUT);

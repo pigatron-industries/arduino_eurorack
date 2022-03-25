@@ -3,10 +3,10 @@
 
 #include "LinearInput.h"
 
-template<class T = NativeDevice>
+template<class T = AnalogInputPin<NativeDevice>>
 class AnalogGateInput : public LinearInput<T> {
     public:
-        AnalogGateInput(AnalogInputPin<T>& input, float triggerVoltage = 2) : 
+        AnalogGateInput(T& input, float triggerVoltage = 2) : 
             LinearInput<T>(input, -5, 5, -5, 5)  {
                 this->triggerVoltage = triggerVoltage;
                 this->smoothingWeight = 1;
