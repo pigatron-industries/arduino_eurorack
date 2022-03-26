@@ -48,13 +48,13 @@ Where digitalOutputPin is the name of the variable created to represent the pin 
 A pin definition can then be used with a modifier to change the way it behaves.
 The modifier template requires the type of device that the pin is part of.
 
-If using a direct connection to a microcontroller pin then the default NAtiveDevice can be used e.g.
+If using a direct connection to a microcontroller pin then the default NativeDevice can be used e.g.
 
     LinearInput<> cvInput = LinearInput<>(analogInputPin, -5, 5, 0, 10);
 
 If using an IO expander then it should use the name of the IO expander device:
 
-    LinearInput<MAX11300> cvInput = LinearInput<MAX11300>(analogInputPin, -5, 5, 0, 10);
+    LinearInput<AnalogInputPin<MAX11300>> cvInput = LinearInput<AnalogInputPin<MAX11300>>(analogInputPin, -5, 5, 0, 10);
 
 Using this system allows us to change hardware without having to do a major refactor of code.
 

@@ -3260,8 +3260,8 @@ grid 2.54 mm</description>
 <part name="38" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="IC11" library="ic_dac" deviceset="TEXAS_INSTRUMENTS_DAC8164IBPWG4" device="TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1"/>
-<part name="IC10" library="ic_dac" deviceset="TEXAS_INSTRUMENTS_DAC8164IBPWG4" device="TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1"/>
+<part name="IC11" library="ic_dac" deviceset="TEXAS_INSTRUMENTS_DAC8164IBPWG4" device="TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1" value="DAC8164"/>
+<part name="IC10" library="ic_dac" deviceset="TEXAS_INSTRUMENTS_DAC8164IBPWG4" device="TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1" value="DAC8164"/>
 <part name="SUPPLY34" library="supply" deviceset="GND" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>

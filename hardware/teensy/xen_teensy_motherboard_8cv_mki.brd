@@ -9,23 +9,23 @@
 </settings>
 <grid distance="50" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="12.5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
@@ -33,10 +33,10 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
@@ -45,8 +45,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -214,6 +214,9 @@
 <dimension x1="0" y1="110.49" x2="29.845" y2="110.49" x3="14.9225" y3="115.57" textsize="1.778" layer="48"/>
 <dimension x1="69.85" y1="110.49" x2="45.085" y2="110.49" x3="57.4675" y3="115.57" textsize="1.778" layer="48"/>
 <text x="56.35625" y="78.26375" size="0.8128" layer="25" font="vector">3.3VA</text>
+<text x="37.1475" y="33.9725" size="0.8128" layer="27" font="vector">DAC8164</text>
+<text x="45.4025" y="33.9725" size="0.8128" layer="27" font="vector">DAC8164</text>
+<text x="34.925" y="56.515" size="0.8128" layer="27" font="vector" rot="R90">Bead</text>
 </plain>
 <libraries>
 <library name="connectors">
@@ -975,12 +978,12 @@ einem neuen Namen ab.</description>
 <element name="C1" library="capacitors" package="SV-C" value="22uF" x="50.8" y="69.5325" smashed="yes" rot="R270">
 <attribute name="NAME" x="50.26025" y="72.04075" size="0.8128" layer="25" font="vector" ratio="10"/>
 <attribute name="SPICEPREFIX" value="C" x="50.8" y="69.5325" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="48.133" y="66.8655" size="1.27" layer="27" ratio="10" rot="R270"/>
+<attribute name="VALUE" x="49.3395" y="69.088" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C2" library="capacitors" package="SV-C" value="22uF" x="42.545" y="58.1025" smashed="yes">
 <attribute name="NAME" x="40.10025" y="56.1975" size="0.8128" layer="25" font="vector" ratio="10" rot="R90"/>
 <attribute name="SPICEPREFIX" value="C" x="42.545" y="58.1025" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="45.212" y="55.4355" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="42.9895" y="56.642" size="0.8128" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="GND" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="43.815" y="69.5325" smashed="yes">
 <attribute name="NAME" x="39.78275" y="68.58" size="0.8128" layer="25" font="vector" ratio="10" rot="R90"/>
@@ -998,27 +1001,27 @@ einem neuen Namen ab.</description>
 </element>
 <element name="IC4" library="ic_analogue" package="TSSOP14" value="MCP6004" x="12.7" y="21.59" smashed="yes" rot="R270">
 <attribute name="NAME" x="11.96975" y="24.47925" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="12.065" y="28.321" size="1.27" layer="27" ratio="10" rot="R270"/>
+<attribute name="VALUE" x="10.414" y="24.4475" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R21" library="resistors" package="R0603" value="33k" x="10.16" y="26.67" smashed="yes">
 <attribute name="NAME" x="9.2075" y="27.27325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="7.239" y="28.0162" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="9.144" y="27.3812" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C16" library="capacitors" package="C0603" value="1nF" x="10.16" y="29.21" smashed="yes">
 <attribute name="NAME" x="9.11225" y="29.74975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="6.731" y="26.416" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="8.9535" y="29.9085" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R22" library="resistors" package="R0603" value="100k" x="6.35" y="29.21" smashed="yes">
 <attribute name="NAME" x="5.3975" y="29.81325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="30.5562" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="29.9212" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R23" library="resistors" package="R0603" value="100k" x="6.35" y="26.67" smashed="yes">
 <attribute name="NAME" x="5.3975" y="27.27325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="28.0162" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="27.3812" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R24" library="resistors" package="R0603" value="100k" x="6.35" y="24.13" smashed="yes">
 <attribute name="NAME" x="5.3975" y="24.73325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="25.4762" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="24.8412" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="CV3B" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="22.86" smashed="yes" rot="MR0">
 <attribute name="SPICEPREFIX" value="X" x="1.27" y="22.86" size="1.778" layer="28" rot="MR0" display="off"/>
@@ -1029,27 +1032,27 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C18" library="capacitors" package="C0603" value="100nF" x="6.35" y="21.59" smashed="yes">
 <attribute name="NAME" x="5.30225" y="22.12975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="2.921" y="18.796" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="4.826" y="22.2885" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R25" library="resistors" package="R0603" value="33k" x="10.16" y="16.51" smashed="yes">
 <attribute name="NAME" x="8.255" y="17.11325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="7.239" y="17.8562" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="9.144" y="17.2212" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C17" library="capacitors" package="C0603" value="1nF" x="10.16" y="13.97" smashed="yes">
 <attribute name="NAME" x="9.271" y="14.6685" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="6.731" y="11.176" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="9.271" y="14.6685" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R26" library="resistors" package="R0603" value="100k" x="6.35" y="19.05" smashed="yes">
 <attribute name="NAME" x="3.4925" y="19.65325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="20.3962" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="19.7612" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R27" library="resistors" package="R0603" value="100k" x="6.35" y="16.51" smashed="yes">
 <attribute name="NAME" x="5.3975" y="17.11325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="17.8562" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="17.2212" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R28" library="resistors" package="R0603" value="100k" x="6.35" y="13.97" smashed="yes">
 <attribute name="NAME" x="5.3975" y="14.57325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="15.3162" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="14.6812" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="CV2" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="20.32" smashed="yes" rot="MR0">
 <attribute name="NAME" x="3.175" y="19.304" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
@@ -1060,43 +1063,43 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R30" library="resistors" package="R0603" value="33k" x="15.24" y="16.51" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.9225" y="17.11325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.161" y="15.1638" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.256" y="18.0213" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C20" library="capacitors" package="C0603" value="1nF" x="15.24" y="13.97" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.351" y="14.50975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.669" y="16.764" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.129" y="15.494" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R31" library="resistors" package="R0603" value="100k" x="19.05" y="15.24" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="15.84325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="13.8938" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="16.7513" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R32" library="resistors" package="R0603" value="100k" x="19.05" y="17.78" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="18.38325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="16.4338" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="19.2913" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R33" library="resistors" package="R0603" value="100k" x="19.05" y="20.32" smashed="yes" rot="R180">
 <attribute name="NAME" x="17.145" y="20.92325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="18.9738" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="21.8313" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R34" library="resistors" package="R0603" value="33k" x="15.24" y="26.67" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.2875" y="27.27325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.161" y="25.3238" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.256" y="28.1813" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C21" library="capacitors" package="C0603" value="1nF" x="15.24" y="29.21" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.351" y="29.74975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.669" y="32.004" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.129" y="30.734" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R35" library="resistors" package="R0603" value="100k" x="19.05" y="27.94" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="28.54325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="26.5938" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="29.4513" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R36" library="resistors" package="R0603" value="100k" x="19.05" y="25.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="26.00325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="24.0538" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="26.9113" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R37" library="resistors" package="R0603" value="100k" x="19.05" y="22.86" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="23.46325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="21.5138" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="24.3713" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="CV1" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="15.24" smashed="yes" rot="MR0">
 <attribute name="NAME" x="3.175" y="14.224" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
@@ -1150,39 +1153,39 @@ einem neuen Namen ab.</description>
 </element>
 <element name="IC8" library="ic_voltage_reg" package="SOT-23" value="LM4040-5V" x="24.13" y="35.56" smashed="yes" rot="R180">
 <attribute name="NAME" x="25.05075" y="33.75025" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="21.209" y="36.83" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="29.1465" y="38.1" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R7" library="resistors" package="R0603" value="2K" x="24.13" y="41.91" smashed="yes">
 <attribute name="NAME" x="23.495" y="42.51325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.209" y="43.2562" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="23.4315" y="42.6212" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C6" library="capacitors" package="C0603" value="100nF" x="24.13" y="39.37" smashed="yes" rot="R180">
 <attribute name="NAME" x="23.495" y="40.005" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="24.765" y="41.275" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="26.035" y="40.9575" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="IC3" library="ic_analogue" package="TSSOP14" value="MCP6004" x="12.7" y="41.91" smashed="yes" rot="R270">
 <attribute name="NAME" x="11.8745" y="38.1635" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="12.065" y="48.641" size="1.27" layer="27" ratio="10" rot="R270"/>
+<attribute name="VALUE" x="10.0965" y="44.7675" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R8" library="resistors" package="R0603" value="33k" x="10.16" y="46.99" smashed="yes">
 <attribute name="NAME" x="9.36625" y="47.59325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="7.239" y="48.3362" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="9.144" y="47.7012" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C7" library="capacitors" package="C0603" value="1nF" x="10.16" y="49.53" smashed="yes">
 <attribute name="NAME" x="9.42975" y="50.06975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="6.731" y="46.736" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="8.9535" y="50.2285" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R11" library="resistors" package="R0603" value="100k" x="6.35" y="46.99" smashed="yes">
 <attribute name="NAME" x="5.3975" y="47.59325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="48.3362" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="47.7012" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R12" library="resistors" package="R0603" value="100k" x="6.35" y="49.53" smashed="yes">
 <attribute name="NAME" x="5.3975" y="50.13325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="50.8762" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="50.2412" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R13" library="resistors" package="R0603" value="100k" x="6.35" y="44.45" smashed="yes">
 <attribute name="NAME" x="5.3975" y="45.05325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="45.7962" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="45.1612" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="CV7B" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="45.72" smashed="yes" rot="MR180">
 <attribute name="SPICEPREFIX" value="X" x="1.27" y="40.64" size="1.778" layer="28" rot="MR180" display="off"/>
@@ -1193,23 +1196,23 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R15" library="resistors" package="R0603" value="33k" x="10.16" y="36.83" smashed="yes">
 <attribute name="NAME" x="9.2075" y="37.43325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="7.239" y="38.1762" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="9.144" y="37.5412" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="C10" library="capacitors" package="C0603" value="1nF" x="10.16" y="34.29" smashed="yes">
 <attribute name="NAME" x="9.11225" y="34.82975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="6.731" y="31.496" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="8.9535" y="34.9885" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R29" library="resistors" package="R0603" value="100k" x="6.35" y="39.37" smashed="yes">
 <attribute name="NAME" x="3.81" y="39.97325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="40.7162" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="40.0812" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R62" library="resistors" package="R0603" value="100k" x="6.35" y="36.83" smashed="yes">
 <attribute name="NAME" x="5.3975" y="37.43325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="38.1762" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="37.5412" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="R63" library="resistors" package="R0603" value="100k" x="6.35" y="34.29" smashed="yes">
 <attribute name="NAME" x="5.3975" y="34.89325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="3.429" y="35.6362" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="5.0165" y="35.0012" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="CV6" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="40.64" smashed="yes" rot="MR180">
 <attribute name="NAME" x="3.175" y="39.624" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
@@ -1220,43 +1223,43 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R64" library="resistors" package="R0603" value="33k" x="15.24" y="36.83" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.2875" y="37.43325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.161" y="35.4838" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.256" y="38.3413" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C11" library="capacitors" package="C0603" value="1nF" x="15.24" y="34.29" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.351" y="34.82975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="18.669" y="37.084" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.4465" y="35.814" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R65" library="resistors" package="R0603" value="100k" x="19.05" y="38.1" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="38.70325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="36.7538" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.3835" y="39.6113" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R66" library="resistors" package="R0603" value="100k" x="19.05" y="35.56" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="36.16325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="34.2138" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.3835" y="37.0713" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R67" library="resistors" package="R0603" value="100k" x="19.05" y="40.64" smashed="yes" rot="R180">
 <attribute name="NAME" x="18.0975" y="41.24325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="21.971" y="39.2938" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.3835" y="42.1513" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R68" library="resistors" package="R0603" value="33k" x="15.24" y="46.99" smashed="yes" rot="R180">
 <attribute name="NAME" x="16.51" y="48.4505" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="18.161" y="45.6438" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.5735" y="48.5013" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="C14" library="capacitors" package="C0603" value="1nF" x="15.24" y="49.53" smashed="yes" rot="R180">
 <attribute name="NAME" x="16.4465" y="50.89525" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="18.669" y="52.324" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="16.4465" y="51.054" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R69" library="resistors" package="R0603" value="100k" x="19.05" y="45.72" smashed="yes" rot="R180">
 <attribute name="NAME" x="20.32" y="47.1805" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="21.971" y="44.3738" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.3835" y="47.2313" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R70" library="resistors" package="R0603" value="100k" x="19.05" y="48.26" smashed="yes" rot="R180">
 <attribute name="NAME" x="20.32" y="49.7205" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="21.971" y="46.9138" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.701" y="49.7713" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R71" library="resistors" package="R0603" value="100k" x="19.05" y="43.18" smashed="yes" rot="R180">
 <attribute name="NAME" x="20.32" y="44.6405" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="21.971" y="41.8338" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="20.3835" y="44.6913" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="CV5" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="33.02" smashed="yes" rot="MR180">
 <attribute name="NAME" x="3.175" y="34.544" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
@@ -1274,7 +1277,7 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C15" library="capacitors" package="C0603" value="100nF" x="6.35" y="41.91" smashed="yes">
 <attribute name="NAME" x="5.461" y="42.44975" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="2.921" y="39.116" size="1.27" layer="27" ratio="10"/>
+<attribute name="VALUE" x="4.826" y="42.6085" size="0.8128" layer="27" font="vector" ratio="10"/>
 </element>
 <element name="5V1" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="63.5" y="81.28" smashed="yes" rot="MR180">
 <attribute name="SPICEPREFIX" value="X" x="63.5" y="81.28" size="1.016" layer="28" rot="MR180" display="off"/>
@@ -1298,23 +1301,23 @@ einem neuen Namen ab.</description>
 </element>
 <element name="IC1" library="ic_analogue" package="TSSOP14" value="TL074PW" x="48.5775" y="16.8275" smashed="yes">
 <attribute name="NAME" x="45.593" y="15.5575" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="54.4195" y="14.9225" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="51.7525" y="17.272" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="R1" library="resistors" package="R0603" value="120k" x="43.6245" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.9895" y="13.6525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="45.5295" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="42.9895" y="13.0175" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R2" library="resistors" package="R0603" value="30k" x="46.0375" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="45.4025" y="9.8425" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="47.9425" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="45.4025" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C4" library="capacitors" package="C0603" value="100pF" x="40.9575" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="40.3225" y="13.6525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="42.8625" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="40.3225" y="12.7" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R3" library="resistors" package="R0603" value="1k" x="65.405" y="13.97" smashed="yes">
 <attribute name="NAME" x="66.19875" y="15.5575" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="12.065" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="14.605" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO6" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="13.97" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="13.716" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1322,19 +1325,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R4" library="resistors" package="R0603" value="120k" x="53.6575" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="53.0225" y="13.6525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="55.5625" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="53.0225" y="13.0175" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R5" library="resistors" package="R0603" value="30k" x="51.1175" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="50.4825" y="9.8425" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="53.0225" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="50.4825" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C5" library="capacitors" package="C0603" value="100pF" x="56.1975" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="55.5625" y="13.6525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="58.1025" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="55.5625" y="12.7" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R6" library="resistors" package="R0603" value="1k" x="65.405" y="16.51" smashed="yes">
 <attribute name="NAME" x="66.19875" y="18.0975" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="14.605" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="17.145" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO7" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="16.51" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="16.256" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1342,19 +1345,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R9" library="resistors" package="R0603" value="120k" x="53.6575" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="53.0225" y="18.7325" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="51.7525" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="52.07" y="20.6375" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R10" library="resistors" package="R0603" value="30k" x="51.1175" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="50.4825" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="49.2125" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="49.53" y="23.495" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C8" library="capacitors" package="C0603" value="100pF" x="56.1975" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="55.5625" y="18.7325" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="54.2925" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="54.61" y="20.955" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R14" library="resistors" package="R0603" value="1k" x="65.405" y="19.05" smashed="yes">
 <attribute name="NAME" x="66.675" y="20.6375" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="17.145" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="19.685" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO8" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="19.05" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="18.796" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1362,19 +1365,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R16" library="resistors" package="R0603" value="120k" x="43.4975" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="44.1325" y="20.0025" size="0.8128" layer="25" font="vector" rot="R270"/>
-<attribute name="VALUE" x="41.5925" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="41.91" y="20.0025" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R17" library="resistors" package="R0603" value="30k" x="46.0375" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="45.4025" y="22.06625" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="44.1325" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="44.45" y="23.495" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C9" library="capacitors" package="C0603" value="100pF" x="40.9575" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="41.5925" y="20.0025" size="0.8128" layer="25" font="vector" rot="R270"/>
-<attribute name="VALUE" x="39.0525" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="39.37" y="20.955" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R18" library="resistors" package="R0603" value="1k" x="65.405" y="11.43" smashed="yes">
 <attribute name="NAME" x="66.675" y="13.0175" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="9.525" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="12.065" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO5" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="11.43" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="11.176" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1382,19 +1385,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R19" library="resistors" package="R0603" value="120k" x="26.035" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="25.4" y="13.335" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="27.94" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="27.94" y="13.6525" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R20" library="resistors" package="R0603" value="30k" x="28.575" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="27.94" y="9.525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="30.48" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="27.94" y="9.525" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C12" library="capacitors" package="C0603" value="100pF" x="23.495" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="22.86" y="13.335" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="25.4" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="22.86" y="12.7" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R38" library="resistors" package="R0603" value="1k" x="65.405" y="3.81" smashed="yes">
 <attribute name="NAME" x="66.675" y="5.3975" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="1.905" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="4.445" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO2" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="3.81" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="3.556" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1402,19 +1405,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R39" library="resistors" package="R0603" value="120k" x="36.195" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="35.56" y="13.335" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="38.1" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="35.56" y="13.0175" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R40" library="resistors" package="R0603" value="30k" x="33.655" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="33.02" y="9.525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="35.56" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="33.02" y="9.525" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C13" library="capacitors" package="C0603" value="100pF" x="38.735" y="14.2875" smashed="yes" rot="R90">
 <attribute name="NAME" x="38.1" y="13.335" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="40.64" y="13.6525" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="38.1" y="12.7" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R41" library="resistors" package="R0603" value="1k" x="65.405" y="6.35" smashed="yes">
 <attribute name="NAME" x="66.675" y="7.9375" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="4.445" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="6.985" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO3" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="6.35" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="6.096" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1422,19 +1425,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R42" library="resistors" package="R0603" value="120k" x="36.195" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="35.56" y="18.415" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="34.29" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="34.6075" y="20.6375" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R43" library="resistors" package="R0603" value="30k" x="33.655" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="33.02" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="31.75" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="32.0675" y="23.495" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C19" library="capacitors" package="C0603" value="100pF" x="38.735" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="38.1" y="18.415" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="36.83" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="37.1475" y="20.955" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R44" library="resistors" package="R0603" value="1k" x="65.405" y="8.89" smashed="yes">
 <attribute name="NAME" x="66.675" y="10.4775" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="6.985" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="9.525" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO4" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="8.89" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="8.636" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1442,19 +1445,19 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R45" library="resistors" package="R0603" value="120k" x="26.035" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="25.4" y="18.415" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="24.13" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="24.4475" y="20.6375" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R46" library="resistors" package="R0603" value="30k" x="28.575" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="27.94" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="26.67" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="26.9875" y="23.8125" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C22" library="capacitors" package="C0603" value="100pF" x="23.495" y="19.3675" smashed="yes" rot="R270">
 <attribute name="NAME" x="22.86" y="18.415" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="21.59" y="20.0025" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="21.9075" y="20.955" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R47" library="resistors" package="R0603" value="1k" x="65.405" y="1.27" smashed="yes">
 <attribute name="NAME" x="66.675" y="2.8575" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="-0.635" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="1.905" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="CVO1" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="1.27" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="1.016" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1462,23 +1465,23 @@ einem neuen Namen ab.</description>
 </element>
 <element name="IC5" library="ic_analogue" package="TSSOP14" value="TL074PW" x="31.115" y="16.8275" smashed="yes">
 <attribute name="NAME" x="28.1305" y="17.78" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="36.957" y="14.9225" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="34.29" y="17.272" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="C23" library="capacitors" package="C0603" value="100nF" x="31.115" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.48" y="8.89" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="33.02" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="30.48" y="8.89" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C24" library="capacitors" package="C0603" value="100nF" x="31.115" y="22.86" smashed="yes" rot="R90">
 <attribute name="NAME" x="30.48" y="22.86" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="33.02" y="22.225" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="30.48" y="21.59" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C25" library="capacitors" package="C0603" value="100nF" x="48.5775" y="22.86" smashed="yes" rot="R90">
 <attribute name="NAME" x="47.9425" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="50.4825" y="22.225" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="47.9425" y="21.2725" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C26" library="capacitors" package="C0603" value="100nF" x="48.5775" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="47.9425" y="8.89" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="50.4825" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="47.9425" y="8.89" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="GND4" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="41.275" y="69.5325" smashed="yes">
 <attribute name="SPICEPREFIX" value="X" x="41.275" y="69.5325" size="1.016" layer="27" display="off"/>
@@ -1488,52 +1491,52 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R48" library="resistors" package="R0603" value="120k" x="40.9575" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="40.3225" y="9.525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="42.8625" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="40.3225" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R49" library="resistors" package="R0603" value="120k" x="56.1975" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="55.5625" y="9.525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="58.1025" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="55.5625" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R50" library="resistors" package="R0603" value="120k" x="56.1975" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="55.5625" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="54.2925" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="54.61" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R51" library="resistors" package="R0603" value="120k" x="40.9575" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="40.3225" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="39.0525" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="39.37" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R52" library="resistors" package="R0603" value="120k" x="23.495" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="22.86" y="8.255" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="25.4" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="22.86" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R53" library="resistors" package="R0603" value="120k" x="38.735" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="38.1" y="9.525" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="40.64" y="9.8425" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="38.1" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R54" library="resistors" package="R0603" value="120k" x="38.735" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="38.1" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="36.83" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="37.1475" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R55" library="resistors" package="R0603" value="120k" x="23.495" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="22.86" y="21.9075" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="21.59" y="23.495" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="21.9075" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="IC7" library="ic_voltage_reg" package="WE78" value="R-78E5.0-0.5" x="35.56" y="69.5325" smashed="yes" rot="R90">
 <attribute name="NAME" x="28.575" y="63.8175" size="0.8128" layer="25" font="vector" ratio="15" rot="R90"/>
-<attribute name="VALUE" x="27.305" y="63.8175" size="0.6096" layer="27" ratio="15" rot="R90"/>
+<attribute name="VALUE" x="32.385" y="65.0875" size="0.8128" layer="27" font="vector" ratio="15" rot="R90"/>
 </element>
 <element name="L1" library="resistors" package="L2012C" value="33uH" x="32.385" y="60.96" smashed="yes" rot="R270">
 <attribute name="NAME" x="31.59125" y="60.48375" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="29.845" y="62.865" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="32.385" y="59.055" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C3" library="capacitors" package="SV-B" value="10uF" x="26.035" y="71.12" smashed="yes" rot="R270">
 <attribute name="NAME" x="28.47875" y="68.4175" size="0.8128" layer="25" font="vector" rot="R180"/>
 <attribute name="SPICEPREFIX" value="C" x="26.035" y="71.12" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="VALUE" x="23.21" y="72.77" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="24.7025" y="70.835" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="C27" library="capacitors" package="C0603" value="100nF" x="26.3525" y="65.7225" smashed="yes" rot="R180">
 <attribute name="NAME" x="27.305" y="65.0875" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="26.9875" y="67.6275" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="28.2575" y="65.0875" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="IC2" library="ic_digital" package="SO28W" package3d_urn="urn:adsk.eagle:package:20803/2" value="MCP23S17SO" x="44.45" y="46.69" smashed="yes" rot="R180">
 <attribute name="MF" value="MICROCHIP" x="44.45" y="67.01" size="1.778" layer="27" rot="R180" display="off"/>
@@ -1542,11 +1545,11 @@ einem neuen Namen ab.</description>
 <attribute name="OC_FARNELL" value="unknown" x="44.45" y="67.01" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="OC_NEWARK" value="31K2950" x="44.45" y="67.01" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="POPULARITY" value="1" x="44.45" y="67.01" size="1.778" layer="27" rot="R180" display="off"/>
-<attribute name="VALUE" x="60.198" y="47.6298" size="1.778" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="47.498" y="47.6298" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="R56" library="resistors" package="R0603" value="10k" x="55.9825" y="27.94" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.825" y="28.54325" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="VALUE" x="58.9035" y="26.5938" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="56.681" y="29.4513" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="IO1" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="48.26" smashed="yes" rot="MR180">
 <attribute name="NAME" x="66.675" y="48.006" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1614,7 +1617,7 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R82" library="resistors" package="R0603" value="1k" x="40.22" y="39.37" smashed="yes" rot="R180">
 <attribute name="NAME" x="41.49" y="38.608" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="43.141" y="38.0238" size="1.27" layer="27" ratio="10" rot="R180"/>
+<attribute name="VALUE" x="40.9185" y="38.3413" size="0.8128" layer="27" font="vector" ratio="10" rot="R180"/>
 </element>
 <element name="24_LC-A10" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="53.34" y="88.9" smashed="yes" rot="R90">
 <attribute name="SPICEPREFIX" value="X" x="53.34" y="88.9" size="1.778" layer="27" rot="R90" display="off"/>
@@ -1656,7 +1659,7 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C32" library="capacitors" package="C0603" value="100nF" x="13.6525" y="60.6425" smashed="yes" rot="R180">
 <attribute name="NAME" x="14.605" y="60.0075" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="14.2875" y="62.5475" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="12.065" y="60.96" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="5" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="104.14" smashed="yes" rot="MR0">
 <attribute name="NAME" x="66.675" y="104.04475" size="0.8128" layer="26" font="vector" ratio="10" rot="MR0"/>
@@ -1713,7 +1716,7 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="3.175" y="109.474" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
 <attribute name="SPICEPREFIX" value="X" x="1.27" y="109.22" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="IC11" library="ic_dac" package="TEXAS_INSTRUMENTS_DAC8164IBPWG4_1" value="TEXAS_INSTRUMENTS_DAC8164IBPWG4TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1" x="39.52875" y="29.845" smashed="yes" rot="R90">
+<element name="IC11" library="ic_dac" package="TEXAS_INSTRUMENTS_DAC8164IBPWG4_1" value="DAC8164" x="39.52875" y="29.845" smashed="yes" rot="R90">
 <attribute name="CIIVA_IDS" value="1106843" x="39.52875" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 <attribute name="CODE__JEDEC" value="MO-153" x="39.52875" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 <attribute name="COMPONENT_LINK_1_DESCRIPTION" value="Manufacturer URL" x="39.52875" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
@@ -1752,7 +1755,7 @@ einem neuen Namen ab.</description>
 <attribute name="VAULT_GUID" value="4CBE38FC-6508-4746-89A4-DCA776D537C7" x="39.52875" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 <attribute name="VAULT_REVISION" value="57F45E06-978A-418D-B5AB-51E808FEEA60" x="39.52875" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 </element>
-<element name="IC10" library="ic_dac" package="TEXAS_INSTRUMENTS_DAC8164IBPWG4_1" value="TEXAS_INSTRUMENTS_DAC8164IBPWG4TEXAS_INSTRUMENTS_DAC8164IBPWG4_0_1" x="48.10125" y="29.845" smashed="yes" rot="R90">
+<element name="IC10" library="ic_dac" package="TEXAS_INSTRUMENTS_DAC8164IBPWG4_1" value="DAC8164" x="48.10125" y="29.845" smashed="yes" rot="R90">
 <attribute name="CIIVA_IDS" value="1106843" x="48.10125" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 <attribute name="CODE__JEDEC" value="MO-153" x="48.10125" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
 <attribute name="COMPONENT_LINK_1_DESCRIPTION" value="Manufacturer URL" x="48.10125" y="29.845" size="0.8128" layer="27" font="vector" rot="R90" display="off"/>
@@ -1793,11 +1796,11 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C33" library="capacitors" package="C0603" value="470nF" x="35.56" y="29.845" smashed="yes" rot="R90">
 <attribute name="NAME" x="33.9725" y="30.7975" size="0.8128" layer="25" font="vector" rot="R270"/>
-<attribute name="VALUE" x="37.465" y="29.21" size="1.27" layer="27" rot="R90"/>
+<attribute name="VALUE" x="35.8775" y="31.75" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="C34" library="capacitors" package="C0603" value="470nF" x="44.1325" y="28.575" smashed="yes" rot="R270">
 <attribute name="NAME" x="43.4975" y="27.6225" size="0.8128" layer="25" font="vector" rot="R90"/>
-<attribute name="VALUE" x="42.2275" y="29.21" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="43.4975" y="33.9725" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="34" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="86.36" smashed="yes" rot="MR180">
 <attribute name="NAME" x="3.175" y="86.45525" size="0.8128" layer="26" font="vector" ratio="10" rot="MR180"/>
@@ -1881,191 +1884,176 @@ einem neuen Namen ab.</description>
 </element>
 <element name="Q1" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.6675" y="27.9425" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.5925" y="27.6" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.4925" y="29.8475" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R99" library="resistors" package="R0603" value="10k" x="65.405" y="27.94" smashed="yes">
 <attribute name="NAME" x="63.8175" y="28.575" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="26.035" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="28.575" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R57" library="resistors" package="R0603" value="10k" x="55.88" y="30.48" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="31.115" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="32.385" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="32.0675" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q2" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="30.48" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="30.7975" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="28.575" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R58" library="resistors" package="R0603" value="10k" x="65.405" y="30.48" smashed="yes">
 <attribute name="NAME" x="63.8175" y="31.115" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="28.575" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="31.115" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R59" library="resistors" package="R0603" value="10k" x="55.88" y="33.02" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="33.655" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="34.925" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="34.6075" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q3" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="33.02" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="32.7025" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="34.925" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R60" library="resistors" package="R0603" value="10k" x="65.405" y="33.02" smashed="yes">
 <attribute name="NAME" x="63.8175" y="33.655" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="31.115" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="33.655" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R61" library="resistors" package="R0603" value="10k" x="55.88" y="35.56" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="36.195" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="37.465" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="37.1475" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q4" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="35.56" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="35.8775" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="33.655" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R72" library="resistors" package="R0603" value="10k" x="65.405" y="35.56" smashed="yes">
 <attribute name="NAME" x="63.8175" y="36.195" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="33.655" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="36.195" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R73" library="resistors" package="R0603" value="10k" x="55.88" y="38.1" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="38.735" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="40.005" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="39.6875" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q5" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="38.1" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="37.7825" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="40.005" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R74" library="resistors" package="R0603" value="10k" x="65.405" y="38.1" smashed="yes">
 <attribute name="NAME" x="63.8175" y="38.735" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="36.195" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="38.735" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R75" library="resistors" package="R0603" value="10k" x="55.88" y="40.64" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="41.275" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="42.545" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="42.2275" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q6" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="40.64" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="40.9575" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="38.735" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R76" library="resistors" package="R0603" value="10k" x="65.405" y="40.64" smashed="yes">
 <attribute name="NAME" x="63.8175" y="41.275" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="38.735" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="41.275" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R77" library="resistors" package="R0603" value="10k" x="55.88" y="43.18" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="43.815" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="45.085" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="44.7675" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q7" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="43.18" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="42.8625" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="45.085" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R78" library="resistors" package="R0603" value="10k" x="65.405" y="43.18" smashed="yes">
 <attribute name="NAME" x="63.8175" y="43.815" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="41.275" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="43.815" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R79" library="resistors" package="R0603" value="10k" x="55.88" y="45.72" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="46.355" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="47.625" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="47.3075" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q8" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="45.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="46.0375" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="43.815" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R80" library="resistors" package="R0603" value="10k" x="65.405" y="45.72" smashed="yes">
 <attribute name="NAME" x="63.8175" y="46.355" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="43.815" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="46.355" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R81" library="resistors" package="R0603" value="10k" x="55.88" y="48.26" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.9275" y="48.895" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="50.165" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="49.8475" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q9" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="48.26" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="47.9425" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="50.165" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R100" library="resistors" package="R0603" value="10k" x="65.405" y="48.26" smashed="yes">
 <attribute name="NAME" x="63.8175" y="48.895" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="46.355" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="48.895" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R101" library="resistors" package="R0603" value="10k" x="55.88" y="50.8" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="51.435" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="52.705" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="52.3875" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q10" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="50.8" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="51.1175" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="48.895" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R102" library="resistors" package="R0603" value="10k" x="65.405" y="50.8" smashed="yes">
 <attribute name="NAME" x="63.8175" y="51.435" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="48.895" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="51.435" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R103" library="resistors" package="R0603" value="10k" x="55.88" y="53.34" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="53.975" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="55.245" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="54.9275" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q11" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="53.34" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="53.0225" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="55.245" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R104" library="resistors" package="R0603" value="10k" x="65.405" y="53.34" smashed="yes">
 <attribute name="NAME" x="63.8175" y="53.975" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="51.435" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="53.975" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R105" library="resistors" package="R0603" value="10k" x="55.88" y="55.88" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="56.515" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="57.785" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="57.4675" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q12" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="55.88" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="56.1975" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="53.975" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R106" library="resistors" package="R0603" value="10k" x="65.405" y="55.88" smashed="yes">
 <attribute name="NAME" x="63.8175" y="56.515" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="53.975" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="56.515" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R107" library="resistors" package="R0603" value="10k" x="55.88" y="58.42" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="59.055" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="60.325" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="60.0075" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q13" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="58.42" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="58.1025" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="60.325" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="R108" library="resistors" package="R0603" value="10k" x="65.405" y="58.42" smashed="yes">
 <attribute name="NAME" x="63.8175" y="59.055" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="56.515" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="59.055" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R109" library="resistors" package="R0603" value="10k" x="55.88" y="60.96" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="61.595" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="62.865" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="62.5475" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q14" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="60.96" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="61.2775" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="59.055" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R110" library="resistors" package="R0603" value="10k" x="65.405" y="60.96" smashed="yes">
 <attribute name="NAME" x="63.8175" y="61.595" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="59.055" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="61.595" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R111" library="resistors" package="R0603" value="10k" x="55.88" y="63.5" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="64.135" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="65.405" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="65.0875" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q15" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="59.69" y="63.5" smashed="yes" rot="R270">
 <attribute name="NAME" x="61.595" y="63.1825" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="65.405" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="59.055" y="25.0825" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R112" library="resistors" package="R0603" value="10k" x="65.405" y="63.5" smashed="yes">
 <attribute name="NAME" x="63.8175" y="64.135" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="61.595" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.77" y="64.135" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R113" library="resistors" package="R0603" value="10k" x="55.88" y="66.04" smashed="yes" rot="R180">
 <attribute name="NAME" x="54.61" y="66.675" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="67.945" size="1.27" layer="27" rot="R180"/>
+<attribute name="VALUE" x="56.8325" y="67.6275" size="0.8128" layer="27" font="vector" rot="R180"/>
 </element>
 <element name="Q16" library="transistors" package="SOT23" package3d_urn="urn:adsk.eagle:package:43389/2" value="BF170" x="61.595" y="66.04" smashed="yes" rot="R90">
 <attribute name="NAME" x="59.69" y="66.3575" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="64.77" y="64.135" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R114" library="resistors" package="R0603" value="10k" x="65.405" y="66.04" smashed="yes">
 <attribute name="NAME" x="63.8175" y="66.675" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="64.77" y="64.135" size="1.27" layer="27"/>
+<attribute name="VALUE" x="64.4525" y="66.675" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="24_4.0-A10" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="35.56" y="88.9" smashed="yes">
 <attribute name="SPICEPREFIX" value="X" x="35.56" y="88.9" size="1.778" layer="27" display="off"/>
@@ -2081,11 +2069,11 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R115" library="resistors" package="R0603" value="2K" x="57.15" y="92.71" smashed="yes">
 <attribute name="NAME" x="58.42" y="94.615" size="0.8128" layer="25" font="vector" rot="R180"/>
-<attribute name="VALUE" x="56.515" y="90.805" size="1.27" layer="27"/>
+<attribute name="VALUE" x="56.515" y="93.345" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R116" library="resistors" package="R0603" value="2K" x="57.15" y="90.17" smashed="yes">
 <attribute name="NAME" x="55.5625" y="88.265" size="0.8128" layer="25" font="vector"/>
-<attribute name="VALUE" x="56.515" y="88.265" size="1.27" layer="27"/>
+<attribute name="VALUE" x="56.515" y="90.805" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="10_IO_CS" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="38.735" y="109.22" smashed="yes" rot="MR270">
 <attribute name="NAME" x="38.989" y="107.315" size="0.8128" layer="26" font="vector" ratio="10" rot="MR270"/>
@@ -2258,35 +2246,35 @@ einem neuen Namen ab.</description>
 </element>
 <element name="R83" library="resistors" package="R0603" value="120k" x="43.4975" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="42.7355" y="9.5885" size="0.8128" layer="25" rot="R90"/>
-<attribute name="VALUE" x="45.4025" y="9.8425" size="1.016" layer="27" rot="R90"/>
+<attribute name="VALUE" x="42.8625" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R84" library="resistors" package="R0603" value="120k" x="53.6575" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="52.8955" y="9.5885" size="0.8128" layer="25" rot="R90"/>
-<attribute name="VALUE" x="55.5625" y="9.8425" size="1.016" layer="27" rot="R90"/>
+<attribute name="VALUE" x="53.0225" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R85" library="resistors" package="R0603" value="120k" x="53.6575" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="52.197" y="24.0665" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="51.7525" y="23.495" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="52.07" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R86" library="resistors" package="R0603" value="120k" x="43.4975" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="42.037" y="24.0665" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="41.5925" y="23.495" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="41.91" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R87" library="resistors" package="R0603" value="120k" x="26.035" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="24.5745" y="24.0665" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="24.13" y="23.495" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="24.4475" y="24.4475" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R88" library="resistors" package="R0603" value="120k" x="36.195" y="22.86" smashed="yes" rot="R270">
 <attribute name="NAME" x="34.7345" y="24.0665" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="34.29" y="23.495" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="34.6075" y="24.13" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="R89" library="resistors" package="R0603" value="120k" x="36.195" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="36.703" y="12.1285" size="1.016" layer="25" rot="R90"/>
-<attribute name="VALUE" x="38.1" y="9.8425" size="1.016" layer="27" rot="R90"/>
+<attribute name="VALUE" x="35.56" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="R90" library="resistors" package="R0603" value="120k" x="26.035" y="10.4775" smashed="yes" rot="R90">
 <attribute name="NAME" x="25.273" y="10.541" size="0.8128" layer="25" rot="R90"/>
-<attribute name="VALUE" x="27.94" y="9.8425" size="1.016" layer="27" rot="R90"/>
+<attribute name="VALUE" x="25.4" y="9.2075" size="0.8128" layer="27" font="vector" rot="R90"/>
 </element>
 <element name="OFFSET" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="21.59" smashed="yes" rot="MR180">
 <attribute name="NAME" x="66.675" y="21.336" size="0.8128" layer="26" ratio="10" rot="MR0"/>
@@ -2294,7 +2282,7 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C28" library="capacitors" package="C0805" value="22uF" x="30.1625" y="60.9575" smashed="yes" rot="R270">
 <attribute name="NAME" x="28.3845" y="62.164" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="28.2575" y="61.5925" size="1.016" layer="27" rot="R270"/>
+<attribute name="VALUE" x="28.2575" y="62.8625" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="L2" library="resistors" package="R0603" value="" x="34.6075" y="61.4925" smashed="yes" rot="R270">
 <attribute name="NAME" x="33.02" y="62.1275" size="0.8128" layer="25" rot="R270"/>
@@ -2325,12 +2313,12 @@ einem neuen Namen ab.</description>
 </element>
 <element name="C29" library="capacitors" package="C0805" value="22uF" x="36.83" y="60.96" smashed="yes" rot="R270">
 <attribute name="NAME" x="38.1" y="62.23" size="0.8128" layer="25" rot="R270"/>
-<attribute name="VALUE" x="34.29" y="62.23" size="1.27" layer="27" rot="R270"/>
+<attribute name="VALUE" x="36.5125" y="59.055" size="0.8128" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="C30" library="capacitors" package="SV-B" value="10uF" x="27.94" y="49.53" smashed="yes">
 <attribute name="NAME" x="30.6387" y="50.4825" size="0.8128" layer="25" ratio="12"/>
 <attribute name="SPICEPREFIX" value="C" x="27.94" y="49.53" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="28.575" y="46.99" size="1.016" layer="27" ratio="12" rot="R90"/>
+<attribute name="VALUE" x="28.2575" y="47.9425" size="0.8128" layer="27" font="vector" ratio="12" rot="R90"/>
 </element>
 <element name="3.3VA" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="60.96" y="78.74" smashed="yes" rot="MR180">
 <attribute name="NAME" x="56.1975" y="78.994" size="0.8128" layer="26" ratio="10" rot="MR180"/>
@@ -2347,23 +2335,23 @@ einem neuen Namen ab.</description>
 </element>
 <element name="IC12" library="ic_analogue" package="SO16" value="CD4051CD4051_SO16" x="13.97" y="67.31" smashed="yes" rot="R90">
 <attribute name="NAME" x="17.272" y="74.549" size="1.27" layer="25" ratio="10" rot="R180"/>
-<attribute name="VALUE" x="14.605" y="63.246" size="1.27" layer="27" ratio="10" rot="R90"/>
+<attribute name="VALUE" x="14.605" y="63.246" size="0.8128" layer="27" font="vector" ratio="10" rot="R90"/>
 </element>
 <element name="R91" library="resistors" package="R0603" value="0R" x="5.08" y="63.5" smashed="yes">
 <attribute name="NAME" x="6.731" y="62.992" size="0.8128" layer="25"/>
-<attribute name="VALUE" x="4.445" y="61.595" size="1.016" layer="27"/>
+<attribute name="VALUE" x="4.445" y="64.135" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R92" library="resistors" package="R0603" value="0R" x="5.08" y="66.04" smashed="yes">
 <attribute name="NAME" x="6.731" y="65.532" size="0.8128" layer="25"/>
-<attribute name="VALUE" x="4.445" y="64.135" size="1.016" layer="27"/>
+<attribute name="VALUE" x="4.445" y="66.675" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R93" library="resistors" package="R0603" value="0R" x="5.08" y="68.58" smashed="yes">
 <attribute name="NAME" x="6.731" y="68.072" size="0.8128" layer="25"/>
-<attribute name="VALUE" x="4.445" y="66.675" size="1.016" layer="27"/>
+<attribute name="VALUE" x="4.445" y="69.215" size="0.8128" layer="27" font="vector"/>
 </element>
 <element name="R94" library="resistors" package="R0603" value="0R" x="5.08" y="71.12" smashed="yes">
 <attribute name="NAME" x="6.731" y="70.612" size="0.8128" layer="25"/>
-<attribute name="VALUE" x="4.445" y="69.215" size="1.016" layer="27"/>
+<attribute name="VALUE" x="4.445" y="71.755" size="0.8128" layer="27" font="vector"/>
 </element>
 </elements>
 <signals>
