@@ -79,8 +79,12 @@ class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigi
 template<class T = NativeDevice>
 class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
     public:
-        DigitalInputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
-            DevicePin<T>::setPinType(PinType::DIGITAL_INPUT);
+        DigitalInputPin(T& device, uint8_t pin, bool pullup = false) : DevicePin<T>(device, pin) {
+            if(pullup) {
+                DevicePin<T>::setPinType(PinType::DIGITAL_INPUT_PULLUP);
+            } else {
+                DevicePin<T>::setPinType(PinType::DIGITAL_INPUT);
+            }
         }
 
         bool digitalRead() {
