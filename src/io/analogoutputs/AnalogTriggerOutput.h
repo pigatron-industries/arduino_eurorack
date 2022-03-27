@@ -9,7 +9,7 @@ template<class T = NativeDevice>
 class AnalogTriggerOutput {
 
     public:
-        AnalogTriggerOutput(AnalogOutputPin<T>& output, unsigned long durationMicros = 1000, float triggerVoltage = 5) : output(output) {
+        AnalogTriggerOutput(AnalogOutputPin<T>& output, unsigned long durationMicros = 20000, float triggerVoltage = 5) : output(output) {
             this->duration = durationMicros;
             this->triggerVoltage = triggerVoltage;
         }
