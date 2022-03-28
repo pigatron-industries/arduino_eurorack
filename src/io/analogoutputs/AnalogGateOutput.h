@@ -8,17 +8,26 @@ template<class T = NativeDevice>
 class AnalogGateOutput {
 
     public:
-        AnalogGateOutput(AnalogOutputPin<T>& output, float gateVoltage = 5) : output(output) {
+        AnalogGateOutput(AnalogOutputPin<T>& output, float gateVoltage = 5, float zeroVoltage = 0) : output(output) {
             this->gateVoltage = gateVoltage;
+            this->zeroVoltage = zeroVoltage;
         }
 
         void gate(bool value) { 
-            output.analogWrite(value ? gateVoltage : 0);
+            this->value = value;
+            output.analogWrite(value ? gateVoltage : zeroVoltage);
+        }
+
+        void setZeroVoltage(float zeroVoltage) { 
+            this->zeroVoltage = zeroVoltage;
+            gate(value);
         }
 
     protected:
         AnalogOutputPin<T>& output;
+        bool value;
         float gateVoltage;
+        float zeroVoltage;
 
 };
 

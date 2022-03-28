@@ -9,9 +9,10 @@ template<class T = NativeDevice>
 class AnalogTriggerOutput {
 
     public:
-        AnalogTriggerOutput(AnalogOutputPin<T>& output, unsigned long durationMicros = 20000, float triggerVoltage = 5) : output(output) {
+        AnalogTriggerOutput(AnalogOutputPin<T>& output, unsigned long durationMicros = 20000, float triggerVoltage = 5, float zeroVoltage = 0) : output(output) {
             this->duration = durationMicros;
             this->triggerVoltage = triggerVoltage;
+            this->zeroVoltage = zeroVoltage;
         }
 
         void setDuration(unsigned long durationMillis) {
@@ -21,7 +22,7 @@ class AnalogTriggerOutput {
         void update() {  
             if(triggered && timer.hasJustStopped()) {
                 triggered = false; 
-                output.analogWrite(0);
+                output.analogWrite(zeroVoltage);
             }
         }
 
@@ -36,12 +37,21 @@ class AnalogTriggerOutput {
         }
 
         void setTriggerDurationMicros(unsigned long duration) { this->duration = duration; }
+        void setTriggerVoltage(float triggerVoltage) { this->triggerVoltage = triggerVoltage; }
+
+        void setZeroVoltage(float zeroVoltage) { 
+            this->zeroVoltage = zeroVoltage; 
+            if(timer.isStopped()) {  
+                output.analogWrite(zeroVoltage);
+            } 
+        }
 
     protected:
         AnalogOutputPin<T>& output;
         bool triggered;
         unsigned long duration;
         float triggerVoltage;
+        float zeroVoltage;
         Timer timer;
 
 };
