@@ -37,4 +37,6 @@
         waveInterpolator3D.get(0.5);
     }
 
+    EnvelopePlayer<Envelope<WaveSequence<2, Line>>> envelopePlayer;
+
 #endif

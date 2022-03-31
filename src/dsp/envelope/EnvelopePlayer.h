@@ -1,12 +1,13 @@
 #ifndef EnvelopePlayer_h
 #define EnvelopePlayer_h
 
+#include <Arduino.h>
 #include "Envelope.h"
 #include "../oscillator/WaveOscillator.h"
 
 namespace eurorack {
 
-    template<class T = WaveShape>
+    template<class T = Envelope<WaveShape>>
     class EnvelopePlayer : public WaveOscillator<T> {
         public:
             EnvelopePlayer() {}
@@ -16,6 +17,8 @@ namespace eurorack {
             virtual float process();
             
         private:
+            enum State { OFF, ATTACK, SUSTAIN, DECAY };
+            State state = State::OFF;
             bool gate;
     };
 
@@ -32,9 +35,11 @@ namespace eurorack {
         }
         gate = value;
         if(gate) {
+            state = State::ATTACK;
             WaveOscillator<T>::phase = 0;
             WaveOscillator<T>::playing = true;
         } else {
+            state = State::DECAY;
             // TODO this causes envelope to jump to sustain point if it hasn't reached it yet
             WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getSustainPhase();
             WaveOscillator<T>::playing = true;
@@ -43,18 +48,19 @@ namespace eurorack {
 
     template<class T>
     float EnvelopePlayer<T>::process() {
-        if(gate && !WaveOscillator<T>::playing) {
-            return 1;
+        if(state == State::SUSTAIN) {
+            WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getSustainPhase();
         }
-        
+
         float value = WaveOscillator<T>::waveShape.get(WaveOscillator<T>::phase);
 
         if(WaveOscillator<T>::playing) {
             WaveOscillator<T>::incrementPhase();
-            if(gate && WaveOscillator<T>::phase > WaveOscillator<T>::waveShape.getSustainPhase()) {
+            if(gate && WaveOscillator<T>::phase >= WaveOscillator<T>::waveShape.getSustainPhase()) {
+                state = State::SUSTAIN;
                 WaveOscillator<T>::playing = false;
-                WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getSustainPhase();
             } else if(!gate && WaveOscillator<T>::phase > WaveOscillator<T>::waveShape.getLength()) {
+                state = State::OFF;
                 WaveOscillator<T>::playing = false;
             }
         }
