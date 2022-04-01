@@ -20,6 +20,7 @@ namespace eurorack {
             enum State { OFF, ATTACK, SUSTAIN, DECAY };
             State state = State::OFF;
             bool gate;
+            float value;
     };
 
     template<class T>
@@ -29,19 +30,18 @@ namespace eurorack {
     }
 
     template<class T>
-    void EnvelopePlayer<T>::setGate(bool value) {
-        if(value == gate) {
+    void EnvelopePlayer<T>::setGate(bool gate) {
+        if(gate == this->gate) {
             return;
         }
-        gate = value;
+        this->gate = gate;
         if(gate) {
             state = State::ATTACK;
-            WaveOscillator<T>::phase = 0;
+            WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getAttackPhase(value);
             WaveOscillator<T>::playing = true;
         } else {
             state = State::DECAY;
-            // TODO this causes envelope to jump to sustain point if it hasn't reached it yet
-            WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getSustainPhase();
+            WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getDecayPhase(value);
             WaveOscillator<T>::playing = true;
         }
     }
@@ -52,7 +52,7 @@ namespace eurorack {
             WaveOscillator<T>::phase = WaveOscillator<T>::waveShape.getSustainPhase();
         }
 
-        float value = WaveOscillator<T>::waveShape.get(WaveOscillator<T>::phase);
+        value = WaveOscillator<T>::waveShape.get(WaveOscillator<T>::phase);
 
         if(WaveOscillator<T>::playing) {
             WaveOscillator<T>::incrementPhase();
