@@ -2,20 +2,20 @@
 #define FilterInput_h
 
 #include <inttypes.h>
-#include "AbstractInput.h"
+#include "AbstractAnalogInput.h"
 
 template<class T = AnalogInputPin<NativeDevice>>
-class FilterInput : public AbstractInput<T> {
+class FilterInput : public AbstractAnalogInput<T> {
     public:
-        FilterInput(T& input) : AbstractInput<T>(input) {
+        FilterInput(T& input) : AbstractAnalogInput<T>(input) {
         }
 
-        FilterInput(T& input, float zeroFrequency) : AbstractInput<T>(input) {
+        FilterInput(T& input, float zeroFrequency) : AbstractAnalogInput<T>(input) {
             this->zeroFrequency = zeroFrequency;
         }
 
         inline bool update() {
-            if(AbstractInput<T>::update()) {
+            if(AbstractAnalogInput<T>::update()) {
                 if(this->getStableVoltage() > 0.5) {
                     frequency = zeroFrequency*powf(2, (this->getStableVoltage()*2)-6);
                     highPass = true;

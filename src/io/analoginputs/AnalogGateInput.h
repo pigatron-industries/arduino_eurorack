@@ -1,21 +1,21 @@
 #ifndef AnalogGateInput_h
 #define AnalogGateInput_h
 
-#include "LinearInput.h"
+#include "AbstractAnalogInput.h"
 
 template<class T = AnalogInputPin<NativeDevice>>
-class AnalogGateInput : public LinearInput<T> {
+class AnalogGateInput : public AbstractAnalogInput<T> {
     public:
         AnalogGateInput(T& input, float triggerVoltage = 2) : 
-            LinearInput<T>(input, -5, 5, -5, 5)  {
+            AbstractAnalogInput<T>(input)  {
                 this->triggerVoltage = triggerVoltage;
                 this->smoothingWeight = 1;
         }
 
         inline bool update() {
             bool prevGate = gate;
-            if(LinearInput<T>::update()) {
-                gate = this->getValue() > triggerVoltage;
+            if(AbstractAnalogInput<T>::update()) {
+                gate = this->getStableVoltage() > triggerVoltage;
                 triggeredOn = !prevGate && gate;
                 if(prevGate != gate) {
                     return true;

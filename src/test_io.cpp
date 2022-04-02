@@ -102,7 +102,8 @@
         linearInput.update();
         linearInput.getValue();
         analogGateInput.update();
-        analogGateInput.getValue();
+        analogGateInput.isTriggeredOn();
+        analogGateInput.isGateOn();
     }
 
     // Digital inputs

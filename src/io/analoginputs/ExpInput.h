@@ -1,17 +1,17 @@
 #ifndef ExpInput_h
 #define ExpInput_h
 
-#include "AbstractInput.h"
+#include "AbstractAnalogInput.h"
 
 template<class T = AnalogInputPin<NativeDevice>>
-class ExpInput : public AbstractInput<T> {
+class ExpInput : public AbstractAnalogInput<T> {
     public:
         static constexpr float MID_VALUE_C5 = 523.25;
 
-        ExpInput(T& input) : AbstractInput<T>(input) {
+        ExpInput(T& input) : AbstractAnalogInput<T>(input) {
         }
 
-        ExpInput(T& input, float midValue) : AbstractInput<T>(input) {
+        ExpInput(T& input, float midValue) : AbstractAnalogInput<T>(input) {
             this->midValue = midValue;
         }
 

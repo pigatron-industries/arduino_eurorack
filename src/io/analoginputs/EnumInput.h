@@ -2,7 +2,7 @@
 #define EnumInput_h
 
 #include <inttypes.h>
-#include "AbstractInput.h"
+#include "LinearInput.h"
 #include "../../util/RangeScale.h"
 
 template<class T = AnalogInputPin<NativeDevice>>
@@ -16,7 +16,7 @@ class EnumInput : public LinearInput<T> {
             bool changed = LinearInput<T>::update();
             if(changed) {
                 int prevIntValue = intValue;
-                intValue = int(getValue());
+                intValue = int(this->getValue());
                 if(prevIntValue != intValue) {
                     return true;
                 }

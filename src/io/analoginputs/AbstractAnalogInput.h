@@ -1,5 +1,5 @@
-#ifndef AbstractInput_h
-#define AbstractInput_h
+#ifndef AbstractAnalogInput_h
+#define AbstractAnalogInput_h
 
 #include <inttypes.h>
 #include "Arduino.h"
@@ -12,9 +12,9 @@
 #define STABILISE_THRESHOLD 0.005
 
 template<class T = AnalogInputPin<NativeDevice>>
-class AbstractInput {
+class AbstractAnalogInput {
     public:
-        AbstractInput(T& input) : 
+        AbstractAnalogInput(T& input) : 
             input(input) {
             input.setPinType(PinType::ANALOG_INPUT);
         }
