@@ -3,19 +3,19 @@
 
 #include "LinearInput.h"
 
-template<class T = NativeDevice>
-class AnalogGateInput : public LinearInput<T> {
+template<class T = AnalogInputPin<NativeDevice>>
+class AnalogGateInput : public AbstractAnalogInput<T> {
     public:
-        AnalogGateInput(AnalogInputPin<T>& input, float triggerVoltage = 2) : 
-            LinearInput<T>(input, -5, 5, -5, 5)  {
+        AnalogGateInput(T& input, float triggerVoltage = 2) : 
+            AbstractAnalogInput<T>(input)  {
                 this->triggerVoltage = triggerVoltage;
                 this->smoothingWeight = 1;
         }
 
         inline bool update() {
             bool prevGate = gate;
-            if(LinearInput<T>::update()) {
-                gate = this->getValue() > triggerVoltage;
+            if(AbstractAnalogInput<T>::update()) {
+                gate = this->getStableVoltage() > triggerVoltage;
                 triggeredOn = !prevGate && gate;
                 triggeredOff = prevGate && !gate;
                 if(prevGate != gate) {
