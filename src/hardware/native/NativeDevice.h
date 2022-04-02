@@ -5,6 +5,7 @@
 
 #define NATIVE NativeDevice::instance
 #define GET_MACRO(_1, _2, NAME,...) NAME
+#define GET_MACRO3(_1, _2, _3, NAME,...) NAME
 
 #define AnalogInput1(PIN) AnalogInputPin<> PIN = AnalogInputPin<>(NativeDevice::instance, ::PIN);
 #define AnalogInput2(NAME, PIN) AnalogInputPin<> NAME = AnalogInputPin<>(NativeDevice::instance, ::PIN);
@@ -16,7 +17,8 @@
 
 #define DigitalInput1(PIN) DigitalInputPin<> D ## PIN = DigitalInputPin<>(NativeDevice::instance, PIN);
 #define DigitalInput2(NAME, PIN) DigitalInputPin<> NAME = DigitalInputPin<>(NativeDevice::instance, PIN);
-#define DigitalInput(...) GET_MACRO(__VA_ARGS__, DigitalInput2, DigitalInput1)(__VA_ARGS__)
+#define DigitalInput3(NAME, PIN, INVERT) DigitalInputPin<> NAME = DigitalInputPin<>(NativeDevice::instance, PIN, INVERT);
+#define DigitalInput(...) GET_MACRO3(__VA_ARGS__, DigitalInput3, DigitalInput2, DigitalInput1)(__VA_ARGS__)
 
 #define DigitalOutput1(PIN) DigitalOutputPin<> D ## PIN = DigitalOutputPin<>(NativeDevice::instance, PIN);
 #define DigitalOutput2(NAME, PIN) DigitalOutputPin<> NAME = DigitalOutputPin<>(NativeDevice::instance, PIN);
