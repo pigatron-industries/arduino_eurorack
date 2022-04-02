@@ -16,9 +16,9 @@ class AnalogGateInput : public AbstractAnalogInput<T> {
             bool prevGate = gate;
             if(AbstractAnalogInput<T>::update()) {
                 gate = this->getStableVoltage() > triggerVoltage;
-                triggeredOn = !prevGate && gate;
-                triggeredOff = prevGate && !gate;
-                if(prevGate != gate) {
+                if(debounce.update(gate)) {
+                    triggeredOn = debounce.rose();
+                    triggeredOff = debounce.fell();
                     return true;
                 }
             }
@@ -42,6 +42,7 @@ class AnalogGateInput : public AbstractAnalogInput<T> {
         bool gate;
         bool triggeredOn;
         bool triggeredOff;
+        Debounce debounce;
 };
 
 #endif
