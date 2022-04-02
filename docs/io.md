@@ -89,10 +89,14 @@ Use an analog input like to get a gate signal. Useful if an analog pin can be so
 
 GATE_ON_VOLTAGE is the voltage above which the gate is considered on. Defaults to 2.0V.
 
-To detect when gate is first triggered:
+To detect when gate is first triggered on or off:
 
     if(gateInput.update()) {
-        bool trigger = gateInput.isTriggeredOn();
+        if(gateInput.isTriggeredOn()) {
+
+        } else if (gateInput.isTriggeredOff()) {
+            
+        }
     }
 
 To get current state of gate:
