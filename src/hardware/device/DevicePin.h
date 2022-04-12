@@ -1,9 +1,10 @@
 #ifndef DevicePin_h
 #define DevicePin_h
 
+#include <inttypes.h>
 #include "Device.h"
 #include "../../util/RangeScale.h"
-#include <inttypes.h>
+#include "NoiseFilter.h"
 
 class NativeDevice;
 
@@ -134,7 +135,8 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
 
         float analogRead() {
             if(!DevicePin<T>::device.isDeferredInput()) {
-                analogValue = voltageScale.convert(DevicePin<T>::device.analogRead(DevicePin<T>::pin));
+                while(!noiseFilter.addValue(DevicePin<T>::device.analogRead(DevicePin<T>::pin))) {}
+                analogValue = voltageScale.convert(noiseFilter.getFiltered());
             }
             return analogValue;
         }
@@ -142,6 +144,9 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
         uint16_t binaryRead() {
             return DevicePin<T>::device.analogRead(DevicePin<T>::pin);
         }
+
+    private:
+        NoiseFilter<8> noiseFilter = NoiseFilter<8>(8, 2);
 };
 
 
