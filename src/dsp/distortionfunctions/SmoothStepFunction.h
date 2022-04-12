@@ -9,7 +9,7 @@ namespace eurorack {
     //https://www.desmos.com/calculator/a09w9zntai
     class SmoothStepFunction : public WaveShape {
         public:
-            SmoothStepFunction() { calcCoefficients(); }
+            SmoothStepFunction(float midGradient = 0, float midPoint = 0.5) { this->midGradient = midGradient; this->midPoint = midPoint; calcCoefficients(); }
             void setMidPoint(float midPoint) { this->midPoint = midPoint; calcCoefficients(); } 
             void setMidGradient(float midGradient) {  this->midGradient = midGradient; calcCoefficients(); }
             void setParams(float midPoint, float midGradient) { this->midPoint = midPoint; this->midGradient = midGradient; calcCoefficients(); }
