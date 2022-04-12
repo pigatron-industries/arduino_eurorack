@@ -6,7 +6,7 @@
 
 namespace eurorack {
 
-    //https://www.desmos.com/calculator/3zhzwbfrxd
+    //https://www.desmos.com/calculator/a09w9zntai
     class SmoothStepFunction : public WaveShape {
         public:
             SmoothStepFunction() { calcCoefficients(); }
