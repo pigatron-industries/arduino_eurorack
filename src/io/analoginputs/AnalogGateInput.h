@@ -9,11 +9,9 @@ class AnalogGateInput : public AbstractAnalogInput<T> {
         AnalogGateInput(T& input, float triggerVoltage = 2) : 
             AbstractAnalogInput<T>(input)  {
                 this->triggerVoltage = triggerVoltage;
-                this->smoothingWeight = 1;
         }
 
         inline bool update() {
-            bool prevGate = gate;
             if(AbstractAnalogInput<T>::update()) {
                 gate = this->getStableVoltage() > triggerVoltage;
                 if(debounce.update(gate)) {

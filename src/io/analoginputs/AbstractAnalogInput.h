@@ -2,14 +2,14 @@
 #define AbstractAnalogInput_h
 
 #include <inttypes.h>
-#include "Arduino.h"
+#include <Arduino.h>
 #include "../../hardware/device/DevicePin.h"
 #include "../../hardware/native/NativeDevice.h"
 #include "../../util/util.h"
 #include "../../util/RangeScale.h"
+#include "../../dsp/filter/AnalogInputFilter.h"
 
-#define SMOOTHING_WEIGHT 0.03
-#define STABILISE_THRESHOLD 0.005
+#define STABILISE_THRESHOLD 0.00
 
 template<class T = AnalogInputPin<NativeDevice>>
 class AbstractAnalogInput {
@@ -30,18 +30,20 @@ class AbstractAnalogInput {
 
     protected:
         T& input;
-        float smoothingWeight = SMOOTHING_WEIGHT;
 
         uint32_t value;
-        float measuredVoltage;
-        float smoothedVoltage;
-        float stableVoltage;
+        float measuredVoltage; // actual voltage as measured
+        float smoothedVoltage; // after smoothing (averaging) function
+        float stableVoltage;   // after hysteresis function
+
+        AnalogInputFilter inputFilter = AnalogInputFilter();
 
         bool changed;
 
         bool readVoltage() {
             measuredVoltage = input.analogRead();
-            smoothedVoltage = smooth(measuredVoltage, smoothedVoltage, smoothingWeight);
+            smoothedVoltage = inputFilter.process(measuredVoltage);
+
             float diff = fabsf(smoothedVoltage-stableVoltage);
             if(diff > STABILISE_THRESHOLD) {
                 changed = true;
