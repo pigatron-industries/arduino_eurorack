@@ -11,6 +11,15 @@ NativeDevice::NativeDevice() {
 void NativeDevice::init() {
     analogReadResolution(12);
     Serial.begin(SERIAL_BAUD);
+    #if defined(TEENSYDUINO)
+        //TODO check if 1 adc or multiple
+        adc.adc0->setAveraging(4);
+        adc.adc1->setAveraging(4);
+        adc.adc0->setSamplingSpeed(ADC_SAMPLING_SPEED::HIGH_SPEED);
+        adc.adc1->setSamplingSpeed(ADC_SAMPLING_SPEED::HIGH_SPEED);
+        adc.adc0->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED);
+        adc.adc1->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED);
+    #endif
 }
 
 void NativeDevice::setPinType(uint8_t pin, PinType pinType) {

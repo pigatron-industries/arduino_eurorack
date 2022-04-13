@@ -135,8 +135,8 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
 
         float analogRead() {
             if(!DevicePin<T>::device.isDeferredInput()) {
-                while(!noiseFilter.addValue(DevicePin<T>::device.analogRead(DevicePin<T>::pin))) {}
-                analogValue = voltageScale.convert(noiseFilter.getFiltered());
+                uint16_t binaryValue = DevicePin<T>::device.analogRead(DevicePin<T>::pin));
+                analogValue = voltageScale.convert(binaryValue);
             }
             return analogValue;
         }
@@ -144,9 +144,6 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
         uint16_t binaryRead() {
             return DevicePin<T>::device.analogRead(DevicePin<T>::pin);
         }
-
-    private:
-        NoiseFilter<8> noiseFilter = NoiseFilter<8>(8, 2);
 };
 
 
