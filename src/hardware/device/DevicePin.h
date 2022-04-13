@@ -135,7 +135,7 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
 
         float analogRead() {
             if(!DevicePin<T>::device.isDeferredInput()) {
-                uint16_t binaryValue = DevicePin<T>::device.analogRead(DevicePin<T>::pin));
+                uint16_t binaryValue = DevicePin<T>::device.analogRead(DevicePin<T>::pin);
                 analogValue = voltageScale.convert(binaryValue);
             }
             return analogValue;
