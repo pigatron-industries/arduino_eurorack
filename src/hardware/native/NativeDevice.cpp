@@ -46,5 +46,9 @@ void NativeDevice::analogWrite(uint8_t pin, uint16_t value) {
 }
 
 uint16_t NativeDevice::analogRead(uint8_t pin) {
-    return ::analogRead(pin);
+    #if defined(TEENSYDUINO)
+        return adc.analogRead(pin);
+    #else
+        return ::analogRead(pin);
+    #endif
 }

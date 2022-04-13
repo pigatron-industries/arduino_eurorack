@@ -3,6 +3,10 @@
 
 #include "../device/DevicePin.h"
 
+#if defined(TEENSYDUINO)
+    #include <ADC.h>
+#endif
+
 #define NATIVE NativeDevice::instance
 #define GET_MACRO(_1, _2, NAME,...) NAME
 #define GET_MACRO3(_1, _2, _3, NAME,...) NAME
@@ -34,6 +38,11 @@ class NativeDevice: public Device, public DigitalOutputDevice, public DigitalInp
         bool digitalRead(uint8_t pin);
         void analogWrite(uint8_t pin, uint16_t value);
         uint16_t analogRead(uint8_t pin);
+
+    private:
+        #if defined(TEENSYDUINO)
+            ADC adc;
+        #endif
 };
 
 #endif
