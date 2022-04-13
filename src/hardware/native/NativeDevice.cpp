@@ -1,9 +1,16 @@
 #include "NativeDevice.h"
 
+#define SERIAL_BAUD 115200
+
 NativeDevice NativeDevice::instance;
 
 NativeDevice::NativeDevice() {
     setDeferredInit(false);
+}
+
+void NativeDevice::init() {
+    analogReadResolution(12);
+    Serial.begin(SERIAL_BAUD);
 }
 
 void NativeDevice::setPinType(uint8_t pin, PinType pinType) {

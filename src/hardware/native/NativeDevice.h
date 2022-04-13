@@ -28,6 +28,7 @@ class NativeDevice: public Device, public DigitalOutputDevice, public DigitalInp
     public:
         static NativeDevice instance;
         NativeDevice();
+        void init();
         void setPinType(uint8_t pin, PinType pinType);
         void digitalWrite(uint8_t pin, bool value);
         bool digitalRead(uint8_t pin);
