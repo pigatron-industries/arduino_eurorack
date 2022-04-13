@@ -33,7 +33,6 @@ class AbstractMainController {
 
 template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::init() {
-    Eurorack::init();
     Config::config.load(configMode);
     controllers.select(configMode.data.controllerIndex);
     controllers.getSelected()->setMode(configMode.data.controllerMode);

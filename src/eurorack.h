@@ -3,8 +3,6 @@
 
 #include <Wire.h>
 
-#include "EurorackConfig.h"
-
 #include "debug/Profiler.h"
 
 #include "util/util.h"
