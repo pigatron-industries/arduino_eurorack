@@ -4,7 +4,6 @@
 #include <inttypes.h>
 #include "Device.h"
 #include "../../util/RangeScale.h"
-#include "NoiseFilter.h"
 
 class NativeDevice;
 
