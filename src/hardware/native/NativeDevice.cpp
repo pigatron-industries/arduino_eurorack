@@ -12,13 +12,11 @@ void NativeDevice::init() {
     analogReadResolution(12);
     Serial.begin(SERIAL_BAUD);
     #if defined(TEENSYDUINO)
-        //TODO check if 1 adc or multiple
-        adc.adc0->setAveraging(4);
-        adc.adc1->setAveraging(4);
-        adc.adc0->setSamplingSpeed(ADC_SAMPLING_SPEED::HIGH_SPEED);
-        adc.adc1->setSamplingSpeed(ADC_SAMPLING_SPEED::HIGH_SPEED);
-        adc.adc0->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED);
-        adc.adc1->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED);
+        for(uint32_t i = 0; i < (sizeof(adc.adc)/sizeof(adc.adc[0])); i++ ) {
+            adc.adc[i]->setAveraging(4);
+            adc.adc[i]->setSamplingSpeed(ADC_SAMPLING_SPEED::HIGH_SPEED);
+            adc.adc[i]->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED);
+        }
     #endif
 }
 
