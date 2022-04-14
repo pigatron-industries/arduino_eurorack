@@ -9,7 +9,7 @@
 #include "../../util/RangeScale.h"
 #include "../../dsp/filter/AnalogInputFilter.h"
 
-#define STABILISE_THRESHOLD 0.00
+#define STABILISE_THRESHOLD 0.005
 
 template<class T = AnalogInputPin<NativeDevice>>
 class AbstractAnalogInput {
