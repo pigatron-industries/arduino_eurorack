@@ -1,6 +1,8 @@
 #ifndef Clock_h
 #define Clock_h
 
+#include <Arduino.h>
+
 class Clock {
     public:
         enum State {
@@ -11,6 +13,9 @@ class Clock {
         void setFrequency(float frequency);
         void reset();
         void externalTick();
+
+        float getFrequency() { return frequency; } 
+        State getState() { return state; }
 
         bool process();
 
