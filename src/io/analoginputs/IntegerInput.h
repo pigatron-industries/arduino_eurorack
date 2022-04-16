@@ -1,22 +1,22 @@
-#ifndef EnumInput_h
-#define EnumInput_h
+#ifndef IntegerInput_h
+#define IntegerInput_h
 
 #include <inttypes.h>
-#include "LinearInput.h"
-#include "../../util/RangeScale.h"
+#include <eurorack.h>
+#include <math.h>
 
 template<class T = AnalogInputPin<NativeDevice>>
-class EnumInput : public LinearInput<T> {
+class IntegerInput : public LinearInput<T> {
     public:
-        EnumInput(T& input, float _realMin, float _realMax, int maxIntValue) : 
-            LinearInput<T>(input, _realMin, _realMax, 0.1, maxIntValue+0.9) {
+        IntegerInput(T& input, float _realMin, float _realMax, int minValue, int maxValue) : 
+            LinearInput<T>(input, _realMin, _realMax, float(minValue)-0.5, float(maxValue)+0.5) {
         }
 
         inline bool update() {
             bool changed = LinearInput<T>::update();
             if(changed) {
                 int prevIntValue = intValue;
-                intValue = int(this->getValue());
+                intValue = int(roundf(this->getValue()));
                 if(prevIntValue != intValue) {
                     return true;
                 }
