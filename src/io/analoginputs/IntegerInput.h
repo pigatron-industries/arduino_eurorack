@@ -9,7 +9,9 @@ template<class T = AnalogInputPin<NativeDevice>>
 class IntegerInput : public LinearInput<T> {
     public:
         IntegerInput(T& input, float _realMin, float _realMax, int minValue, int maxValue) : 
-            LinearInput<T>(input, _realMin, _realMax, float(minValue)-0.5, float(maxValue)+0.5) {
+            LinearInput<T>(input, _realMin, _realMax, float(minValue)-0.49, float(maxValue)+0.49) {
+                this->minValue = minValue;
+                this->maxValue = maxValue;
         }
 
         inline bool update() {
@@ -29,6 +31,8 @@ class IntegerInput : public LinearInput<T> {
         }
 
     private:
+        int minValue;
+        int maxValue;
         int intValue;
 };
 
