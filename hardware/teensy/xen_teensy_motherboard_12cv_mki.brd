@@ -3500,7 +3500,7 @@ einem neuen Namen ab.</description>
 <wire x1="46.5229" y1="11.42250625" x2="46.98250625" y2="10.9629" width="0.3048" layer="16"/>
 <wire x1="46.98250625" y1="10.9629" x2="47.63249375" y2="10.9629" width="0.3048" layer="16"/>
 <wire x1="50.63959375" y1="13.97" x2="62.23" y2="13.97" width="0.3048" layer="16"/>
-<wire x1="43.4975" y1="16.8275" x2="46.5229" y2="13.8021" width="0.3048" layer="16"/>
+<wire x1="43.4975" y1="16.8275" x2="46.5229" y2="13.8021" width="0.3048" layer="16" locked="yes"/>
 <wire x1="46.5229" y1="13.8021" x2="46.5229" y2="11.42250625" width="0.3048" layer="16"/>
 <wire x1="47.63249375" y1="10.9629" x2="50.63959375" y2="13.97" width="0.3048" layer="16"/>
 <via x="62.23" y="13.97" extent="1-16" drill="0.35"/>
@@ -4862,6 +4862,10 @@ will not be understood (or retained) with this version.
 Since Version 8.3, EAGLE supports the association of 3D packages
 with devices in libraries, schematics, and board files. Those 3D
 packages will not be understood (or retained) with this version.
+</note>
+<note version="8.5" severity="warning">
+Since Version 8.5, EAGLE supports locking for holes, vias, wires and polygons. 
+The locking property on all objects of these types will not be understood in this version. 
 </note>
 </compatibility>
 </eagle>

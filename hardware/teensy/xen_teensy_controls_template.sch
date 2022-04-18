@@ -3,7 +3,7 @@
 <eagle version="9.6.0">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -756,28 +756,28 @@ grid 5 mm, outline 2.5 x 7.5 mm</description>
 <part name="IO16" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV11_" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT4" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV11" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT3" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV10" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT5" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV10_" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT6" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV9" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT8" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV9_" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT7" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV12" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT2" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
-<part name="CV12_" library="connectors" deviceset="HEADER/MALE/01" device="">
+<part name="PT1" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
 <part name="5" library="connectors" deviceset="HEADER/MALE/01" device="">
@@ -844,6 +844,12 @@ grid 5 mm, outline 2.5 x 7.5 mm</description>
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
 <part name="10_IO_CS" library="connectors" deviceset="HEADER/MALE/01" device="">
+<attribute name="SPICEPREFIX" value="X"/>
+</part>
+<part name="3.3VA" library="connectors" deviceset="HEADER/MALE/01" device="">
+<attribute name="SPICEPREFIX" value="X"/>
+</part>
+<part name="OFFSET" library="connectors" deviceset="HEADER/MALE/01" device="">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
 </parts>
@@ -1048,28 +1054,28 @@ grid 5 mm, outline 2.5 x 7.5 mm</description>
 <instance part="IO16" gate="HEADER" x="2.54" y="-53.34" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-54.356" size="1.778" layer="96"/>
 </instance>
-<instance part="CV11_" gate="HEADER" x="2.54" y="-167.64" smashed="yes">
+<instance part="PT4" gate="HEADER" x="2.54" y="-167.64" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-168.656" size="1.778" layer="96"/>
 </instance>
-<instance part="CV11" gate="HEADER" x="2.54" y="-165.1" smashed="yes">
+<instance part="PT3" gate="HEADER" x="2.54" y="-165.1" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-166.116" size="1.778" layer="96"/>
 </instance>
-<instance part="CV10" gate="HEADER" x="2.54" y="-157.48" smashed="yes">
+<instance part="PT5" gate="HEADER" x="2.54" y="-157.48" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-158.496" size="1.778" layer="96"/>
 </instance>
-<instance part="CV10_" gate="HEADER" x="2.54" y="-160.02" smashed="yes">
+<instance part="PT6" gate="HEADER" x="2.54" y="-160.02" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-161.036" size="1.778" layer="96"/>
 </instance>
-<instance part="CV9" gate="HEADER" x="2.54" y="-149.86" smashed="yes">
+<instance part="PT8" gate="HEADER" x="2.54" y="-149.86" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-150.876" size="1.778" layer="96"/>
 </instance>
-<instance part="CV9_" gate="HEADER" x="2.54" y="-152.4" smashed="yes">
+<instance part="PT7" gate="HEADER" x="2.54" y="-152.4" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-153.416" size="1.778" layer="96"/>
 </instance>
-<instance part="CV12" gate="HEADER" x="2.54" y="-172.72" smashed="yes">
+<instance part="PT2" gate="HEADER" x="2.54" y="-172.72" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-173.736" size="1.778" layer="96"/>
 </instance>
-<instance part="CV12_" gate="HEADER" x="2.54" y="-175.26" smashed="yes">
+<instance part="PT1" gate="HEADER" x="2.54" y="-175.26" smashed="yes">
 <attribute name="NAME" x="-11.176" y="-176.276" size="1.778" layer="96"/>
 </instance>
 <instance part="5" gate="HEADER" x="2.54" y="40.64" smashed="yes">
@@ -1137,6 +1143,12 @@ grid 5 mm, outline 2.5 x 7.5 mm</description>
 </instance>
 <instance part="10_IO_CS" gate="HEADER" x="2.54" y="27.94" smashed="yes">
 <attribute name="NAME" x="-11.176" y="26.924" size="1.778" layer="96"/>
+</instance>
+<instance part="3.3VA" gate="HEADER" x="2.54" y="88.9" smashed="yes">
+<attribute name="NAME" x="-11.176" y="87.884" size="1.778" layer="96"/>
+</instance>
+<instance part="OFFSET" gate="HEADER" x="2.54" y="-180.34" smashed="yes">
+<attribute name="NAME" x="-11.176" y="-181.356" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>

@@ -3,7 +3,7 @@
 <eagle version="9.6.0">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -158,9 +158,9 @@
 <wire x1="0" y1="110.48" x2="0" y2="0" width="0" layer="20"/>
 <text x="73.66" y="36.83" size="0.8128" layer="25" font="vector" ratio="10" rot="R90">Rob Ellis 2021</text>
 <dimension x1="-8.89" y1="110.49" x2="-8.89" y2="0" x3="-15.24" y3="55.245" textsize="1.778" layer="48"/>
-<text x="3.33375" y="74.45375" size="0.8128" layer="25" font="vector">GND</text>
-<text x="3.33375" y="69.37375" size="0.8128" layer="25" font="vector">-12V</text>
-<text x="3.33375" y="82.07375" size="0.8128" layer="25" font="vector">12V</text>
+<text x="3.33375" y="73.18375" size="0.8128" layer="25" font="vector">GND</text>
+<text x="3.33375" y="68.10375" size="0.8128" layer="25" font="vector">-12V</text>
+<text x="3.33375" y="83.34375" size="0.8128" layer="25" font="vector">12V</text>
 <dimension x1="69.85" y1="0" x2="69.85" y2="11.43" x3="76.2" y3="5.715" textsize="1.778" layer="48"/>
 <dimension x1="0" y1="0" x2="0" y2="26.67" x3="-3.81" y3="13.335" textsize="1.6764" layer="48"/>
 <dimension x1="69.85" y1="110.49" x2="69.85" y2="72.39" x3="78.74" y3="91.44" textsize="1.778" layer="51"/>
@@ -461,9 +461,9 @@ einem neuen Namen ab.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="3.3V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="77.47" smashed="yes" rot="R90">
-<attribute name="NAME" x="3.175" y="77.05725" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="77.47" size="1.778" layer="27" rot="R90" display="off"/>
+<element name="3.3V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="78.74" smashed="yes" rot="R90">
+<attribute name="NAME" x="3.175" y="78.32725" size="0.8128" layer="25" font="vector" ratio="10"/>
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="78.74" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
 <element name="CV3_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="22.86" smashed="yes">
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="22.86" size="1.778" layer="27" display="off"/>
@@ -525,9 +525,9 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="35.78225" y="107.34675" size="0.8128" layer="25" font="vector" ratio="10" rot="R270"/>
 <attribute name="SPICEPREFIX" value="X" x="36.195" y="109.22" size="1.016" layer="27" rot="R270" display="off"/>
 </element>
-<element name="5V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="80.01" smashed="yes" rot="R180">
-<attribute name="NAME" x="3.20675" y="79.629" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="80.01" size="1.016" layer="27" rot="R180" display="off"/>
+<element name="5V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="81.28" smashed="yes" rot="R180">
+<attribute name="NAME" x="3.20675" y="80.899" size="0.8128" layer="25" font="vector" ratio="10"/>
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="81.28" size="1.016" layer="27" rot="R180" display="off"/>
 </element>
 <element name="CV7_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="45.72" smashed="yes" rot="R180">
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="40.64" size="1.778" layer="27" rot="R180" display="off"/>
@@ -688,32 +688,36 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="3.175" y="45.466" size="0.8128" layer="25" font="vector" ratio="10"/>
 <attribute name="SPICEPREFIX" value="X" x="31.75" y="181.61" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="CV11_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="63.5" smashed="yes" rot="R180">
+<element name="PT4" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="63.5" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="63.754" size="0.8128" layer="25" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="78.74" y="59.69" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV11" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="66.04" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.675" y="65.024" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
+<element name="PT3" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="66.04" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="66.294" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="66.04" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV10" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="60.96" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.675" y="59.944" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
+<element name="PT5" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="60.96" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="61.214" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="74.93" y="102.87" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV10_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="58.42" smashed="yes" rot="R180">
+<element name="PT6" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="58.42" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="58.674" size="0.8128" layer="25" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="86.36" y="104.14" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV9" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="53.34" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.675" y="54.864" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
+<element name="PT8" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="53.34" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="53.594" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="144.78" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV9_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="55.88" smashed="yes" rot="R180">
+<element name="PT7" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="55.88" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="56.134" size="0.8128" layer="25" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="80.01" y="151.13" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV12" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="68.58" smashed="yes" rot="R180">
-<attribute name="NAME" x="66.675" y="70.104" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
+<element name="PT2" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="68.58" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="68.834" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="171.45" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="CV12_" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="71.12" smashed="yes" rot="R180">
+<element name="PT1" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="68.58" y="71.12" smashed="yes" rot="R180">
+<attribute name="NAME" x="66.675" y="71.374" size="0.8128" layer="25" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="80.01" y="177.8" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
 <element name="5" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="104.14" smashed="yes">
@@ -784,22 +788,30 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="66.675" y="94.234" size="0.8128" layer="25" font="vector" ratio="10" rot="R180"/>
 <attribute name="SPICEPREFIX" value="X" x="68.58" y="93.98" size="0.8128" layer="27" font="vector" rot="R180" display="off"/>
 </element>
-<element name="GND9" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="74.93" smashed="yes">
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="74.93" size="0.8128" layer="27" font="vector" display="off"/>
+<element name="GND9" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="73.66" smashed="yes">
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="73.66" size="0.8128" layer="27" font="vector" display="off"/>
 </element>
-<element name="+12V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="69.85" smashed="yes">
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="69.85" size="1.778" layer="27" display="off"/>
+<element name="+12V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="68.58" smashed="yes">
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="68.58" size="1.778" layer="27" display="off"/>
 </element>
-<element name="-12V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="82.55" smashed="yes">
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="82.55" size="1.778" layer="27" display="off"/>
+<element name="-12V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="83.82" smashed="yes">
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="83.82" size="1.778" layer="27" display="off"/>
 </element>
-<element name="-5V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="72.39" smashed="yes">
-<attribute name="NAME" x="3.175" y="71.97725" size="0.8128" layer="25" font="vector" ratio="10"/>
-<attribute name="SPICEPREFIX" value="X" x="1.27" y="72.39" size="1.778" layer="27" display="off"/>
+<element name="-5V" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="71.12" smashed="yes">
+<attribute name="NAME" x="3.175" y="70.70725" size="0.8128" layer="25" font="vector" ratio="10"/>
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="71.12" size="1.778" layer="27" display="off"/>
 </element>
 <element name="10_IO_CS" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="31.115" y="109.22" smashed="yes" rot="R270">
 <attribute name="NAME" x="30.861" y="107.315" size="0.8128" layer="25" font="vector" ratio="10" rot="R270"/>
 <attribute name="SPICEPREFIX" value="X" x="31.115" y="109.22" size="1.778" layer="27" rot="R270" display="off"/>
+</element>
+<element name="3.3VA" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="76.2" smashed="yes">
+<attribute name="NAME" x="3.175" y="75.946" size="0.8128" layer="25" ratio="10"/>
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="76.2" size="1.778" layer="27" display="off"/>
+</element>
+<element name="OFFSET" library="connectors" package="HEADER/MALE/01" value="HEADER/MALE/01" x="1.27" y="21.59" smashed="yes">
+<attribute name="NAME" x="3.175" y="21.336" size="0.8128" layer="25" ratio="10"/>
+<attribute name="SPICEPREFIX" value="X" x="1.27" y="21.59" size="1.778" layer="27" display="off"/>
 </element>
 </elements>
 <signals>
@@ -813,7 +825,7 @@ einem neuen Namen ab.</description>
 <wire x1="40.005" y1="11.645" x2="39.79" y2="11.645" width="0.3048" layer="1"/>
 <wire x1="15.66" y1="11.645" x2="15.875" y2="11.645" width="0.3048" layer="1"/>
 <contactref element="+12V" pad="1"/>
-<wire x1="15.875" y1="14.545" x2="1.27" y2="69.85" width="0" layer="19" extent="1-1"/>
+<wire x1="15.875" y1="14.545" x2="1.27" y2="68.58" width="0" layer="19" extent="1-1"/>
 <wire x1="39.79" y1="11.645" x2="15.875" y2="11.645" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="-12V">
@@ -826,7 +838,7 @@ einem neuen Namen ab.</description>
 <wire x1="15.875" y1="22.645" x2="15.66" y2="22.645" width="0.3048" layer="1"/>
 <wire x1="39.79" y1="22.645" x2="40.005" y2="22.645" width="0.3048" layer="1"/>
 <contactref element="-12V" pad="1"/>
-<wire x1="15.66" y1="22.645" x2="1.27" y2="82.55" width="0" layer="19" extent="1-1"/>
+<wire x1="15.66" y1="22.645" x2="1.27" y2="83.82" width="0" layer="19" extent="1-1"/>
 <wire x1="39.79" y1="22.645" x2="15.875" y2="22.645" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PE">
@@ -845,7 +857,7 @@ einem neuen Namen ab.</description>
 <wire x1="40.005" y1="9.945" x2="41.275" y2="11.215" width="0.3048" layer="1"/>
 <wire x1="41.275" y1="23.075" x2="40.005" y2="24.345" width="0.3048" layer="1"/>
 <contactref element="GND9" pad="1"/>
-<wire x1="15.875" y1="24.345" x2="1.27" y2="74.93" width="0" layer="19" extent="1-1"/>
+<wire x1="15.875" y1="24.345" x2="1.27" y2="73.66" width="0" layer="19" extent="1-1"/>
 <wire x1="17.145" y1="11.215" x2="17.145" y2="23.075" width="0" layer="19" extent="1-1"/>
 <wire x1="40.005" y1="24.345" x2="17.145" y2="23.075" width="0" layer="19" extent="1-1"/>
 <wire x1="41.275" y1="11.215" x2="41.275" y2="23.075" width="0" layer="19" extent="1-1"/>
