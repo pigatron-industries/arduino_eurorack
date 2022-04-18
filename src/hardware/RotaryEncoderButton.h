@@ -10,6 +10,7 @@ public:
 
     enum EncoderEvent {
         EVENT_NONE,
+        EVENT_PRESSED,
         EVENT_CLOCKWISE,
         EVENT_ANTICLOCKWISE,
         EVENT_SHORT_PRESS,
@@ -32,6 +33,8 @@ private:
     RotaryEncoder encoder;
     DigitalInputPin<> encoderButtonPin;
     PushButton<> encoderButton;
+
+    bool rotatedWhilePressed = false;
     
 };
 
