@@ -6,6 +6,13 @@ class Array {
 
     public:
 
+        Array() {}
+        Array(std::initializer_list<T> list) {
+            for(auto& item : list) {
+                add(item);
+            }
+        }
+
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
         int size() { return _size; }
