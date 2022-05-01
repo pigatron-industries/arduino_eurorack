@@ -16,7 +16,7 @@
     ],
     "license": "Unlicense",
     "dependencies": {
-      "thomasfredericks/Bounce2": "^2.57"
+      "sumotoy/gpio_MCP23S17": "^0.9"
     },
     "frameworks": "arduino",
     "platforms": "*"
