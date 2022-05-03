@@ -36,6 +36,9 @@ class Array {
             return false;
         }
 
+        T* begin() { return &items[0]; }
+        T* end() { return &items[_size]; }
+
     private:
         int _size = 0;
         T items[MAXSIZE];
