@@ -21,9 +21,37 @@ class CycleEnum {
             return value;
         }
 
-        void setValue(T value) {
-            if(value <= last) {
+        T setValue(T value) {
+            if(value > last) {
+                this->value = value % (last + 1);
+            } else if (value < 0) {
+                this->value = value + (last + 1);
+            } else {
                 this->value = value;
+            }
+            
+            return value;
+        }
+
+        const T operator=(const T& other) {
+            return setValue(other);
+        }
+
+        const T operator-(const T& other) const {
+            T returnValue = value - other;
+            if(returnValue < 0) {
+                return returnValue + (last + 1);
+            } else {
+                return returnValue;
+            }
+        }
+
+        const T operator+(const T& other) const {
+            T returnValue = value + other;
+            if(returnValue > last) {
+                return last % (last + 1);
+            } else {
+                return returnValue;
             }
         }
 };
