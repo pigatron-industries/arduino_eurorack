@@ -49,7 +49,7 @@ class CycleEnum {
         const T operator+(const T& other) const {
             T returnValue = value + other;
             if(returnValue > last) {
-                return last % (last + 1);
+                return returnValue % (last + 1);
             } else {
                 return returnValue;
             }
