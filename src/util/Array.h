@@ -1,6 +1,22 @@
 #ifndef Array_h
 #define Array_h
 
+// use ArrayPtr for pasing around arrays without needing to know the size at compile time.
+template<class T>
+class ArrayPtr {
+
+    public:
+        ArrayPtr(T* ptr, int size) : ptr(ptr), _size(size) {}
+        T& operator[](int i) { return ptr[i]; }
+        const T& operator[](int i) const { return ptr[i]; }
+        int size() { return _size; }
+
+    private:
+        T* ptr;
+        int _size = 0;
+};
+
+
 template<class T, int MAXSIZE>
 class Array {
 
@@ -38,6 +54,8 @@ class Array {
 
         T* begin() { return &items[0]; }
         T* end() { return &items[_size]; }
+
+        ArrayPtr<T> ptr() { return ArrayPtr<T>(&items[0], _size); }
 
     private:
         int _size = 0;
