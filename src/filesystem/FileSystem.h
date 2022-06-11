@@ -11,9 +11,9 @@ class FileSystem {
         FileSystem(uint8_t csPin, const char* rootDirectory = "/"); // Use SPI
         void init();
 
-        bool cd(char* directoryPath);
+        bool cd(const char* directoryPath);
         FileList& ls() { return fileList; }
-        bool read(char* filePath, FileReader* fileReader);
+        bool read(const char* filePath, FileReader* fileReader);
 
     private:
         static SdFat sd;
@@ -21,7 +21,7 @@ class FileSystem {
         bool sdio = false;
         uint8_t csPin;
         const char* rootDirectory;
-        char* currentDirectory;
+        const char* currentDirectory;
 
         FileList fileList;
 

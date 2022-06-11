@@ -48,7 +48,7 @@ bool FileSystem::begin() {
     return true;
 }
 
-bool FileSystem::cd(char* directoryPath) {
+bool FileSystem::cd(const char* directoryPath) {
     if(!begin()) {
         return false;
     }
@@ -79,7 +79,7 @@ bool FileSystem::cd(char* directoryPath) {
     }
 }
 
-bool FileSystem::read(char* filePath, FileReader* fileReader) {
+bool FileSystem::read(const char* filePath, FileReader* fileReader) {
     if(!begin()) {
         return false;
     }
