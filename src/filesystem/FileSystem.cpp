@@ -5,17 +5,18 @@ SdFat FileSystem::sd;
 
 FileSystem::FileSystem(const char* rootDirectory) :
     rootDirectory(rootDirectory) {
+        sdio = true;
 }
 
 FileSystem::FileSystem(uint8_t csPin, const char* rootDirectory) : 
     csPin(csPin), rootDirectory(rootDirectory) {
+        sdio = false;
 }
 
 void FileSystem::init() {
-
-    if(csPin >= 0) {
-        if (!sd.begin(csPin)) {
-            Serial.println("SD card init failed");
+    if(sdio) {
+        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
+            Serial.println("SDIO card init failed");
             Serial.print(F("SdError: 0X"));
             Serial.print(sd.sdErrorCode(), HEX);
             Serial.print(F(",0X"));
@@ -23,8 +24,8 @@ void FileSystem::init() {
             return;
         }
     } else {
-        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
-            Serial.println("SD card init failed");
+        if (!sd.begin(csPin)) {
+            Serial.println("SPI SD card init failed");
             Serial.print(F("SdError: 0X"));
             Serial.print(sd.sdErrorCode(), HEX);
             Serial.print(F(",0X"));

@@ -18,7 +18,8 @@ class FileSystem {
     private:
         static SdFat sd;
         
-        uint8_t csPin = -1;
+        bool sdio = false;
+        uint8_t csPin;
         const char* rootDirectory;
         char* currentDirectory;
 
