@@ -14,25 +14,7 @@ FileSystem::FileSystem(uint8_t csPin, const char* rootDirectory) :
 }
 
 void FileSystem::init() {
-    if(sdio) {
-        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
-            Serial.println("SDIO card init failed");
-            Serial.print(F("SdError: 0X"));
-            Serial.print(sd.sdErrorCode(), HEX);
-            Serial.print(F(",0X"));
-            Serial.println(sd.sdErrorData(), HEX);
-            return;
-        }
-    } else {
-        if (!sd.begin(csPin)) {
-            Serial.println("SPI SD card init failed");
-            Serial.print(F("SdError: 0X"));
-            Serial.print(sd.sdErrorCode(), HEX);
-            Serial.print(F(",0X"));
-            Serial.println(sd.sdErrorData(), HEX);
-            return;
-        }
-    }
+    begin();
 
     if(!sd.exists(rootDirectory)) {
         Serial.println("Creating root directory");
@@ -42,8 +24,32 @@ void FileSystem::init() {
     sd.end();
 }
 
+bool FileSystem::begin() {
+    if(sdio) {
+        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
+            Serial.println("SDIO card init failed");
+            Serial.print(F("SdError: 0X"));
+            Serial.print(sd.sdErrorCode(), HEX);
+            Serial.print(F(",0X"));
+            Serial.println(sd.sdErrorData(), HEX);
+            return false;
+        }
+    } else {
+        if (!sd.begin(csPin)) {
+            Serial.println("SPI SD card init failed");
+            Serial.print(F("SdError: 0X"));
+            Serial.print(sd.sdErrorCode(), HEX);
+            Serial.print(F(",0X"));
+            Serial.println(sd.sdErrorData(), HEX);
+            return false;
+        }
+    }
+
+    return true;
+}
+
 bool FileSystem::cd(char* directoryPath) {
-    if(!sd.begin()) {
+    if(!begin()) {
         return false;
     }
 
@@ -74,7 +80,7 @@ bool FileSystem::cd(char* directoryPath) {
 }
 
 bool FileSystem::read(char* filePath, FileReader* fileReader) {
-    if(!sd.begin()) {
+    if(!begin()) {
         return false;
     }
 

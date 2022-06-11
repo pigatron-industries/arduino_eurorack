@@ -24,6 +24,8 @@ class FileSystem {
         char* currentDirectory;
 
         FileList fileList;
+
+        bool begin();
 };
 
 #endif
