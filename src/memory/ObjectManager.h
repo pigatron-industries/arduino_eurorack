@@ -8,6 +8,7 @@ template <class T = char>
 class ObjectManager {
     public:
         ObjectManager(MemPool<>& memPool) : memPool(memPool), objects(memPool) {}
+        T* add(T& t);
 
     private:
         MemPool<>& memPool;
@@ -15,16 +16,11 @@ class ObjectManager {
         LinkedList<T> objects;
 };
 
-// template <class T>
-// T* MemPool<T>::allocate(size_t size) {
-//     if (poolIndex + size >= poolSize) {
-//         Serial.println("Pool memory space exceeded");
-//         return 0;
-//     }
-//     T* ptr = &poolMem[poolIndex];
-//     poolIndex += size;
-//     return ptr;
-// }
+template <class T>
+T* ObjectManager<T>::add(T& t) {
+    return objects.add(t);
+
+}
 
 
 #endif

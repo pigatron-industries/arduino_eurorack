@@ -39,17 +39,17 @@ class LinkedList {
             Unlink and link the LinkedList correcly;
             Increment _size
         */
-        virtual bool add(int index, T);
+        virtual T* add(int index, T);
         /*
             Adds a T object in the end of the LinkedList;
             Increment _size;
         */
-        virtual bool add(T);
+        virtual T* add(T);
         /*
             Adds a T object in the start of the LinkedList;
             Increment _size;
         */
-        virtual bool unshift(T);
+        virtual T* unshift(T);
         /*
             Set the object at index, with T;
         */
@@ -181,7 +181,7 @@ LinkedList<T>::LinkedList(int sizeIndex, T _t){
 }
 
 template<typename T>
-bool LinkedList<T>::add(int index, T _t){
+T* LinkedList<T>::add(int index, T _t){
 
 	if(index >= _size)
 		return add(_t);
@@ -198,11 +198,11 @@ bool LinkedList<T>::add(int index, T _t){
 	_size++;
 	isCached = false;
 
-	return true;
+	return &tmp->data;
 }
 
 template<typename T>
-bool LinkedList<T>::add(T _t){
+T* LinkedList<T>::add(T _t){
     ListNode<T>* mem = (ListNode<T>*)memPool.allocate(sizeof(ListNode<T>));
     ListNode<T>* tmp = new(mem) ListNode<T>();
 
@@ -222,11 +222,11 @@ bool LinkedList<T>::add(T _t){
 	_size++;
 	isCached = false;
 
-	return true;
+	return &tmp->data;
 }
 
 template<typename T>
-bool LinkedList<T>::unshift(T _t){
+T* LinkedList<T>::unshift(T _t){
 
 	if(_size == 0)
 		return add(_t);
@@ -239,7 +239,7 @@ bool LinkedList<T>::unshift(T _t){
 	_size++;
 	isCached = false;
 	
-	return true;
+	return &tmp->data;
 }
 
 
