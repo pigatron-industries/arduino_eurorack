@@ -12,11 +12,15 @@ BufferFileReader::BufferFileReader(MemPool<>& memPool) {
 
 bool BufferFileReader::read(FsFile& file) {
     size = file.size();
+    allocate(size);
+    file.readBytes(buffer, size);
+    return true;
+}
+
+void BufferFileReader::allocate(size_t size) {
     if(memPool == nullptr) {
         buffer = new char[size];
     } else {
         buffer = memPool->allocate(size);
     }
-    file.readBytes(buffer, size);
-    return true;
 }

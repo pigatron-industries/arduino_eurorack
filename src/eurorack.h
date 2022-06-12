@@ -6,11 +6,14 @@
 #include "debug/Profiler.h"
 
 #include "util/util.h"
+#include "util/stringutil.h"
 #include "util/Array.h"
 #include "util/CycleEnum.h"
-#include "util/MemPool.h"
 #include "util/SlewLimiter.h"
 #include "util/TypeSelector.h"
+
+#include "memory/MemPool.h"
+#include "memory/ObjectManager.h"
 
 #include "hardware/device/Device.h"
 #include "hardware/device/DevicePin.h"

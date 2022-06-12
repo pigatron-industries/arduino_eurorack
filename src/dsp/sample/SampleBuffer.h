@@ -2,7 +2,7 @@
 #define SampleBuffer_h
 #include <stdlib.h>
 #include <stdint.h>
-#include "util/MemPool.h"
+#include "memory/MemPool.h"
 
 namespace eurorack {
 

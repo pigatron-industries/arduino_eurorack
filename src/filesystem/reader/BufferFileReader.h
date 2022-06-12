@@ -3,7 +3,7 @@
 
 #include <SdFat.h>
 #include "FileReader.h"
-#include "util/MemPool.h"
+#include "memory/MemPool.h"
 
 class BufferFileReader : public FileReader {
     public:
@@ -14,11 +14,13 @@ class BufferFileReader : public FileReader {
         char* getBuffer() { return buffer; }
         size_t getSize() { return size; }
 
-    private:
+    protected:
         char* buffer;
         size_t size;
 
         MemPool<>* memPool;
+
+        void allocate(size_t size);
 };
 
 #endif
