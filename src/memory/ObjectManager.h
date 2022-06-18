@@ -9,6 +9,7 @@ class ObjectManager {
     public:
         ObjectManager(MemPool<>& memPool) : memPool(memPool), objects(memPool) {}
         T* add(T& t);
+        LinkedList<T>& getObjects() { return objects; }
 
     private:
         MemPool<>& memPool;
@@ -19,7 +20,6 @@ class ObjectManager {
 template <class T>
 T* ObjectManager<T>::add(T& t) {
     return objects.add(t);
-
 }
 
 
