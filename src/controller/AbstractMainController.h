@@ -38,6 +38,10 @@ class AbstractMainController {
         void decrementController();
         void incrementMode();
         void decrementMode();
+
+        void incrementParameter();
+        void incrementValue();
+        void decrementValue();
 };
 
 
@@ -95,6 +99,16 @@ void AbstractMainController<B, Ts...>::decrementMode() {
     Serial.println(configMode.data.controllerMode);
     controllers.getSelected()->init();
     Config::config.save(configMode);
+}
+
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::incrementValue() {
+    controllers.getSelected()->cycleValue(1);
+}
+
+template <class B, class... Ts>
+void AbstractMainController<B, Ts...>::decrementValue() {
+    controllers.getSelected()->cycleValue(-1);
 }
 
 template <class B, class... Ts>
