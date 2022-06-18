@@ -25,6 +25,12 @@ class AbstractMainController {
 
         ConfigField<ModeConfig> configMode;
 
+        void (AbstractMainController<B, Ts...>::*heldClockWise)() = &AbstractMainController::incrementController;
+        void (AbstractMainController<B, Ts...>::*heldAntiClockWise)() = &AbstractMainController::decrementController;
+        void (AbstractMainController<B, Ts...>::*clockWise)() = &AbstractMainController::incrementMode;
+        void (AbstractMainController<B, Ts...>::*antiClockWise)() = &AbstractMainController::decrementMode;
+        void (AbstractMainController<B, Ts...>::*shortPress)() = &AbstractMainController::controllerInit;
+
         virtual void controllerInit();
         void doEncoderEvent(RotaryEncoderButton::EncoderEvent event);
         void saveMode();
@@ -95,19 +101,19 @@ template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::doEncoderEvent(RotaryEncoderButton::EncoderEvent event) {
     switch(event) {
         case RotaryEncoderButton::EncoderEvent::EVENT_CLOCKWISE:
-            incrementMode();
+            (this->*clockWise)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_ANTICLOCKWISE:
-            decrementMode();
+            (this->*antiClockWise)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_HELD_CLOCKWISE:
-            incrementController();
+            (this->*heldClockWise)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_HELD_ANTICLOCKWISE:
-            decrementController();
+            (this->*heldAntiClockWise)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_SHORT_PRESS:
-            controllerInit();
+            (this->*shortPress)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_NONE:
             break;
