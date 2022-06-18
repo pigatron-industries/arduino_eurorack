@@ -23,6 +23,11 @@ class Array {
     public:
 
         Array() {}
+        Array(T& initItem, int size) {
+            for(int i = 0; i < size; i++) {
+                add(initItem);
+            }
+        }
         Array(std::initializer_list<T> list) {
             for(auto& item : list) {
                 add(item);

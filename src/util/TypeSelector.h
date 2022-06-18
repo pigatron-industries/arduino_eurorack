@@ -24,7 +24,8 @@ for_each(std::tuple<Ts...>& t, Func func) {
 template<class T, int N>
 class ArraySelector {
     public:
-        ArraySelector() {} 
+        ArraySelector() {}  
+        ArraySelector(std::initializer_list<T> list) : items(list) {}
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
         T& getSelected() { return items[selectedIndex]; }

@@ -7,6 +7,11 @@ class CycleEnum {
         T value;
         T last;
 
+        CycleEnum() {
+            this->value = 0;
+            this->last = 0;
+        }
+
         CycleEnum(T value, T last) {
             this->value = value;
             this->last = last;
