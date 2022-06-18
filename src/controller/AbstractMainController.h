@@ -30,6 +30,7 @@ class AbstractMainController {
         void (AbstractMainController<B, Ts...>::*clockWise)() = &AbstractMainController::incrementMode;
         void (AbstractMainController<B, Ts...>::*antiClockWise)() = &AbstractMainController::decrementMode;
         void (AbstractMainController<B, Ts...>::*shortPress)() = &AbstractMainController::controllerInit;
+        bool initOnModeSelect = true;
 
         virtual void controllerInit();
         void doEncoderEvent(RotaryEncoderButton::EncoderEvent event);
@@ -88,7 +89,10 @@ void AbstractMainController<B, Ts...>::incrementMode() {
     configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
     Serial.print("Mode: ");
     Serial.println(configMode.data.controllerMode);
-    controllers.getSelected()->init();
+    if(initOnModeSelect) {
+        controllers.getSelected()->init();
+    }
+        
     Config::config.save(configMode);
 }
 
@@ -97,7 +101,10 @@ void AbstractMainController<B, Ts...>::decrementMode() {
     configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
     Serial.print("Mode: ");
     Serial.println(configMode.data.controllerMode);
-    controllers.getSelected()->init();
+    if(initOnModeSelect) {
+        controllers.getSelected()->init();
+    }
+    
     Config::config.save(configMode);
 }
 
