@@ -92,6 +92,8 @@ class TypeSelector : public ArraySelector<B*, sizeof...(Ts)> {
             ArraySelector<B*, sizeof...(Ts)>::select(0);
         }
 
+        std::tuple<Ts...>& getObjects() { return objects; }
+
     protected:
         std::tuple<Ts...> objects;
 };
