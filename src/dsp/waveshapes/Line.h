@@ -12,11 +12,13 @@ namespace eurorack {
             virtual void setLength(float length);
             void setStartValue(float startValue);
             void setEndValue(float endValue);
+            void setStartEndValue(float startValue, float endValue);
             virtual float get(float phase);
 
         protected:
             float startValue;
             float endValue;
+            float lengthRecip;
 
             float gradient;
 
@@ -25,6 +27,7 @@ namespace eurorack {
 
     inline void Line::setLength(float length) {
         WaveShape::setLength(length);
+        lengthRecip = 1 / length;
         calculateGradient();
     }
 
@@ -38,6 +41,12 @@ namespace eurorack {
         calculateGradient();
     }
 
+    void Line::setStartEndValue(float startValue, float endValue) {
+        this->startValue = startValue;
+        this->endValue = endValue;
+        calculateGradient();
+    }
+
     inline float Line::get(float phase) {
         if(isinf(gradient)) {
             return endValue;
@@ -47,7 +56,7 @@ namespace eurorack {
     }
 
     inline void Line::calculateGradient() {
-        gradient = (endValue - startValue) / length;
+        gradient = (endValue - startValue) * lengthRecip;
     }
 
 }
