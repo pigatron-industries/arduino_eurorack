@@ -41,7 +41,7 @@ namespace eurorack {
         calculateGradient();
     }
 
-    void Line::setStartEndValue(float startValue, float endValue) {
+    inline void Line::setStartEndValue(float startValue, float endValue) {
         this->startValue = startValue;
         this->endValue = endValue;
         calculateGradient();
