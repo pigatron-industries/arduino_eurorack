@@ -8,7 +8,7 @@ namespace eurorack {
 
     class Line : public WaveShape {
         public:
-            Line() {}
+            Line() { setLength(1); }
             virtual void setLength(float length);
             void setStartValue(float startValue);
             void setEndValue(float endValue);
