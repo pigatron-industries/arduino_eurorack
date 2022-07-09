@@ -24,6 +24,7 @@ class Config {
             }
 
             EEPROM.get(field.address, field.data);
+            nextAddress += field.size;
         }
 
         template<class T> 

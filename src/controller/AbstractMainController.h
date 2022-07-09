@@ -1,7 +1,7 @@
 #ifndef AbstractMainController_h
 #define AbstractMainController_h
 
-#include "Config.h"
+#include "../eeprom/Config.h"
 
 class ModeConfig {
     public:

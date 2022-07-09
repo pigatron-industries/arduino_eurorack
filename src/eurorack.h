@@ -39,6 +39,7 @@
 
 #include "controller/AbstractMainController.h"
 #include "controller/AbstractController.h"
-#include "controller/Config.h"
+
+#include "eeprom/Config.h"
 
 #endif

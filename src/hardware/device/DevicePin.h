@@ -4,6 +4,7 @@
 #include <inttypes.h>
 #include "Device.h"
 #include "../../util/RangeScale.h"
+#include "../../eeprom/Config.h"
 
 class NativeDevice;
 
@@ -42,6 +43,12 @@ class AbstractDigitalPin {
         bool digitalValue;
 };
 
+class AnalogPinCalibrationData {
+    public:
+        uint8_t check = 0;
+        float min = 0;
+        float max = 0;
+};
 
 class AbstractAnalogPin {
     public:
@@ -57,10 +64,25 @@ class AbstractAnalogPin {
         RangeScale& getScale() { return voltageScale; }
         RangeScale& getCalibratedScale() { return calibratedScale; }
 
+        void loadCalibration() {
+            Config::config.load(calibration);
+            if(calibration.data.check == 0) {
+                calibratedScale.setOutputRange(calibration.data.min, calibration.data.max);
+            }
+        }
+
+        void saveCalibration() {
+            calibration.data.check = 0;
+            calibration.data.min = calibratedScale.getToMin();
+            calibration.data.max = calibratedScale.getToMax();
+            Config::config.save(calibration);
+        }
+
     protected:
         float analogValue;
         RangeScale voltageScale;
         RangeScale calibratedScale;
+        ConfigField<AnalogPinCalibrationData> calibration;
 };
 
 
