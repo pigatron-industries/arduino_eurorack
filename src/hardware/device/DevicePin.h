@@ -46,17 +46,21 @@ class AbstractDigitalPin {
 class AbstractAnalogPin {
     public:
         AbstractAnalogPin(uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) :
-            voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
+            voltageScale(0, pow(2, bits)-1, lowVoltage, highVoltage),
+            calibratedScale(0, pow(2, bits)-1, lowVoltage, highVoltage) {}
 
         float getAnalogValue() { return analogValue; }
         void setAnalogValue(float analogValue) { this->analogValue = analogValue; }
-        uint16_t getBinaryValue() { return voltageScale.convertReverse(analogValue); }
-        void setBinaryRange(uint16_t min, uint16_t max) { voltageScale.setInputRange(min, max); }
-        void setAnalogRange(float min, float max) { voltageScale.setOutputRange(min, max); }
+        uint16_t getBinaryValue() { return calibratedScale.convertReverse(analogValue); }
+        void setBinaryRange(uint16_t min, uint16_t max) { calibratedScale.setInputRange(min, max); }
+        void setAnalogRange(float min, float max) { calibratedScale.setOutputRange(min, max); }
+        RangeScale& getScale() { return voltageScale; }
+        RangeScale& getCalibratedScale() { return calibratedScale; }
 
     protected:
         float analogValue;
         RangeScale voltageScale;
+        RangeScale calibratedScale;
 };
 
 
@@ -112,11 +116,18 @@ class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalog
                 DevicePin<T>::setPinType(PinType::ANALOG_OUTPUT);
         }
 
+        void binaryWrite(uint16_t value) {
+            analogValue = calibratedScale.convert(value);
+            if(!DevicePin<T>::device.isDeferredOutput()) {
+                DevicePin<T>::device.analogWrite(DevicePin<T>::pin, value);
+            }
+        }
+
         void analogWrite(float value) {
             // TODO convert float to int
             analogValue = value;
             if(!DevicePin<T>::device.isDeferredOutput()) {
-                DevicePin<T>::device.analogWrite(DevicePin<T>::pin, voltageScale.convertReverse(analogValue));
+                DevicePin<T>::device.analogWrite(DevicePin<T>::pin, calibratedScale.convertReverse(analogValue));
             }
         }
 };
@@ -135,7 +146,7 @@ class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPi
         float analogRead() {
             if(!DevicePin<T>::device.isDeferredInput()) {
                 uint16_t binaryValue = DevicePin<T>::device.analogRead(DevicePin<T>::pin);
-                analogValue = voltageScale.convert(binaryValue);
+                analogValue = calibratedScale.convert(binaryValue);
             }
             return analogValue;
         }
