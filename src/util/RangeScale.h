@@ -49,6 +49,16 @@ class RangeScale {
         float getToMin() { return toMin; }
         float getToMax() { return toMax; }
 
+        void offset(float amount) {
+            toMin += amount;
+            toMax += amount;
+        }
+
+        void scale(float amount) {
+            toMin -= amount;
+            toMax += amount;
+        }
+
     private:
         float fromMin, fromMax, toMin, toMax;
         float fromRange, toRange, factor, reverseFactor;
