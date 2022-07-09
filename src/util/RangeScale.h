@@ -56,8 +56,8 @@ class RangeScale {
         }
 
         void scale(float amount) {
-            toMin -= amount;
-            toMax += amount;
+            toMin += amount;
+            toMax -= amount;
             calcFactor();
         }
 
