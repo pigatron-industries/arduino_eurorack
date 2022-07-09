@@ -52,11 +52,13 @@ class RangeScale {
         void offset(float amount) {
             toMin += amount;
             toMax += amount;
+            calcFactor();
         }
 
         void scale(float amount) {
             toMin -= amount;
             toMax += amount;
+            calcFactor();
         }
 
     private:
