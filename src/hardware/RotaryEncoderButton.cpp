@@ -25,10 +25,10 @@ RotaryEncoderButton::EncoderEvent RotaryEncoderButton::getEncoderEvent() {
         return EncoderEvent::EVENT_ANTICLOCKWISE;
     }
     if(encoderButton.released()) {
-        rotatedWhilePressed = false;
-        if(encoderButton.previousDuration() < 1000) {
+        if(!rotatedWhilePressed && encoderButton.previousDuration() < 1000) {
             return EncoderEvent::EVENT_SHORT_PRESS;
         }
+        rotatedWhilePressed = false;
     }
     if(encoderButton.pressed()) {
         return EncoderEvent::EVENT_PRESSED;
