@@ -18,6 +18,7 @@
 #include "hardware/device/Device.h"
 #include "hardware/device/DevicePin.h"
 #include "hardware/device/AnalogInputSumPin.h"
+#include "hardware/device/AnalogPinCalibration.h"
 #include "hardware/native/NativeDevice.h"
 
 #include "hardware/RotaryEncoder.h"
