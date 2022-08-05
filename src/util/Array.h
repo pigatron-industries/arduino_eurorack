@@ -40,6 +40,10 @@ class Array {
         int size() { return _size; }
 
         int add(const T& item) {
+            if(_size == MAXSIZE) {
+                Serial.println("ERROR: Array overflow!");
+                return -1;
+            }
             items[_size] = item;
             return _size++;
         }
