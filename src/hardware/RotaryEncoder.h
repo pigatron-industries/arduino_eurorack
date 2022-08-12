@@ -2,6 +2,7 @@
 #define RotaryEncoder_h
 
 #include <Arduino.h>
+#include "util/Array.h"
 
 // Enable this to emit codes twice per step.
 //#define HALF_STEP
@@ -17,33 +18,37 @@
 // Anti-clockwise step.
 #define DIR_CCW 0x20
 
+#define MAX_ENCODERS 2
+
 class RotaryEncoder {
 
-public:
-    RotaryEncoder(uint8_t pin1, uint8_t pin2);
+    public:
+        RotaryEncoder(uint8_t pin1, uint8_t pin2);
 
-    bool update() {
-        movement = position;
-        position = 0; 
-        return movement != 0;
-    }
+        bool update() {
+            movement = position;
+            position = 0; 
+            return movement != 0;
+        }
 
-    long getMovement() {
-        return movement;
-    }
+        long getMovement() {
+            return movement;
+        }
 
-private:
-    static RotaryEncoder* encoderPtr;
+    private:
+        static RotaryEncoder* encoderPtrs[MAX_ENCODERS];
+        static int encoderCount;
 
-    long position = 0;
-    long movement = 0;
+        long position = 0;
+        long movement = 0;
 
-    unsigned char state;
-    unsigned char pin1;
-    unsigned char pin2;
+        unsigned char state;
+        unsigned char pin1;
+        unsigned char pin2;
 
-    static void interrupt();
-    unsigned char process();
+        static void interrupt();
+        unsigned char process();
+        
 };
 
 #endif
