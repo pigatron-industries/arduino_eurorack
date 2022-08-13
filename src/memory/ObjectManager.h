@@ -10,6 +10,7 @@ class ObjectManager {
         ObjectManager(MemPool<>& memPool) : memPool(memPool), objects(memPool) {}
         T* add(T& t);
         LinkedList<T>& getObjects() { return objects; }
+        void clear();
 
     private:
         MemPool<>& memPool;
@@ -20,6 +21,11 @@ class ObjectManager {
 template <class T>
 T* ObjectManager<T>::add(T& t) {
     return objects.add(t);
+}
+
+template <class T>
+void ObjectManager<T>::clear() {
+    objects.clear();
 }
 
 

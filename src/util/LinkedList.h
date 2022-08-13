@@ -130,7 +130,7 @@ LinkedList<T>::~LinkedList() {
 	{
 		tmp=root;
 		root=root->next;
-		delete tmp;
+		//delete tmp;
 	}
 	last = NULL;
 	_size=0;
@@ -268,7 +268,7 @@ T LinkedList<T>::pop(){
 	if(_size >= 2){
 		ListNode<T> *tmp = getNode(_size - 2);
 		T ret = tmp->next->data;
-		delete(tmp->next);
+		//delete(tmp->next);
 		tmp->next = NULL;
 		last = tmp;
 		_size--;
@@ -276,7 +276,7 @@ T LinkedList<T>::pop(){
 	}else{
 		// Only one element left on the list
 		T ret = root->data;
-		delete(root);
+		//delete(root);
 		root = NULL;
 		last = NULL;
 		_size = 0;
@@ -292,7 +292,7 @@ T LinkedList<T>::shift(){
 	if(_size > 1){
 		ListNode<T> *_next = root->next;
 		T ret = root->data;
-		delete(root);
+		//delete(root);
 		root = _next;
 		_size --;
 		isCached = false;
@@ -324,7 +324,7 @@ T LinkedList<T>::remove(int index){
 	ListNode<T> *toDelete = tmp->next;
 	T ret = toDelete->data;
 	tmp->next = tmp->next->next;
-	delete(toDelete);
+	//delete(toDelete);
 	_size--;
 	isCached = false;
 	return ret;

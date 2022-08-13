@@ -98,7 +98,7 @@ void AbstractMainController<B, Ts...>::incrementMode() {
 
 template <class B, class... Ts>
 void AbstractMainController<B, Ts...>::decrementMode() {
-    configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
+    configMode.data.controllerMode = controllers.getSelected()->cycleMode(-1);
     Serial.print("Mode: ");
     Serial.println(configMode.data.controllerMode);
     if(initOnModeSelect) {
