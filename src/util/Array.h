@@ -1,6 +1,8 @@
 #ifndef Array_h
 #define Array_h
 
+#include <Arduino.h>
+
 // use ArrayPtr for pasing around arrays without needing to know the size at compile time.
 template<class T>
 class ArrayPtr {
