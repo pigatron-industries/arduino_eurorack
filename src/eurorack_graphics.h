@@ -8,6 +8,7 @@
 #include "graphics/components/MessageBoxComponent.h"
 
 #include "graphics/containers/VerticalContainer.h"
+#include "graphics/containers/HorizontalContainer.h"
 
 #include "graphics/manager/FocusManager.h"
 

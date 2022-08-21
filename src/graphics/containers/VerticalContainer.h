@@ -17,11 +17,14 @@ void VerticalContainer<G, N>::layout() {
     int childTop = this->top;
     for(Component<G>* component : this->components) {
         component->setTop(childTop);
-        component->setLeft(0);
+        component->setLeft(this->left);
         component->layout();
         childTop += component->getHeight();
+        if(component->getWidth() > this->width) {
+            this->setWidth(component->getWidth());
+        }
     }
-    this->height = childTop;
+    this->setHeight(childTop);
 }
 
 #endif
