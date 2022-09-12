@@ -25,18 +25,20 @@ void FileSystem::init() {
 }
 
 bool FileSystem::begin() {
-    if(sdio) {
-        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
-            Serial.println("SDIO card init failed");
+    if(!sdio) {
+        if (!sd.begin(csPin)) {
+            Serial.println("SPI SD card init failed");
             Serial.print(F("SdError: 0X"));
             Serial.print(sd.sdErrorCode(), HEX);
             Serial.print(F(",0X"));
             Serial.println(sd.sdErrorData(), HEX);
-            return false;
+            sdio = true;
         }
-    } else {
-        if (!sd.begin(csPin)) {
-            Serial.println("SPI SD card init failed");
+    }
+
+    if(sdio) {
+        if (!sd.begin(SdioConfig(FIFO_SDIO))) {
+            Serial.println("SDIO card init failed");
             Serial.print(F("SdError: 0X"));
             Serial.print(sd.sdErrorCode(), HEX);
             Serial.print(F(",0X"));
