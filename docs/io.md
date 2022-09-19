@@ -13,9 +13,10 @@ For the latter there are some macros with can be used to create the pin objects
 
     AnalogInput(analogInputPin, A8)
 
-Where analogInputPin is the name of the variable created to represent the pin and A8 is the arduino analog pin number. This is a macro which creates an object of type `AnalogInputPin<NativeDevice>`
+This is a macro which creates an object of type `AnalogInputPin<NativeDevice>`. 
+Where analogInputPin is the name of the variable created to represent the pin and A8 is the arduino analog pin number. 
 
-Recommended circuit. Uses an inverting rail-to-rail op-amp powered by 3.3V. Scales an input of -5V/5V to 3.3V/0V required by the Arduino. 
+Example circuit. Uses an inverting rail-to-rail op-amp powered by 3.3V. Scales an input of -5V/5V to 3.3V/0V required by the Arduino. 
 The values are then re-inverted by the library code. Requires a -5V reference voltage.
 
 ![Analog Input Circuit](images/input_analogue.png)
@@ -28,9 +29,10 @@ The values are then re-inverted by the library code. Requires a -5V reference vo
 
     DigitalInput(digitalInputPin, 0)
 
-Where digitalInputPin is the name of the variable created to represent the pin and 0 is the arduino digital pin number. This is a macro which creates an object of type `DigitalInputPin<NativeDevice>`
+This is a macro which creates an object of type `DigitalInputPin<NativeDevice>`. 
+Where digitalInputPin is the name of the variable created to represent the pin and 0 is the arduino digital pin number. 
 
-Recommended circuit.
+Example circuit.
 
 ![Digital Input Circuit](images/input_digital.png)
 
@@ -39,7 +41,14 @@ Recommended circuit.
 
     DigitalOutput(digitalOutputPin, 1)
 
-Where digitalOutputPin is the name of the variable created to represent the pin and 1 is the arduino digital pin number. This is a macro which creates an object of type `DigitalOutputPin<NativeDevice>`
+This is a macro which creates an object of type `DigitalOutputPin<NativeDevice>`. 
+Where digitalOutputPin is the name of the variable created to represent the pin and 1 is the arduino digital pin number. 
+
+### Analog Input Summing
+
+Two named analog input pins can be summed together using AnalogInputSumPin.
+
+    AnalogInputSumPin<> waveSumPin = AnalogInputSumPin<>(wavePotPin, waveCvPin);
 
 ---
 
@@ -116,7 +125,26 @@ TODO
 
 #### PushButton
 
-TODO
+A PushButton can be used on a DigitalInput pin. The physcal push button should make a connection between the pin and ground.
+If the device supports a pullup resistor then this turned on, if not then an external pullup resistor will be needed.
+
+Define:
+
+    PushButton<> button = PushButton<>(digitalInputPin);
+
+Use in loop:
+
+    if(button.update() && button.pressed()) {
+        // Do stuff when button pressed
+    }
+
+Functions:
+
+    button.update()
+    button.pressed()
+    button.released()
+    button.held()
+
 
 #### GateInput
 
@@ -140,6 +168,18 @@ TODO
 
 ## Specialised Hardware
 
-### RotaryEncoder and RotaryEncoderButton
+### RotaryEncoder
+
+A rotary encoder connected to 2 dgital pins. This currently only works with a direct connection to native device pins and is defined with digital pin numbers.
+
+    RotaryEncoder encoder = RotaryEncoder(1, 2);
+
+Needs to be updated in the loop with
+
+    encoder.update();
+
+Then the getMovement function will return the amount of movement (negative or positive toindicate direction) since the last update. 
+
+### RotaryEncoderButton
 
 
