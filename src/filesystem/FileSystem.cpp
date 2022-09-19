@@ -20,8 +20,6 @@ void FileSystem::init() {
         Serial.println("Creating root directory");
         sd.mkdir(rootDirectory, true);
     }
-
-    sd.end();
 }
 
 bool FileSystem::begin() {
@@ -69,12 +67,10 @@ bool FileSystem::cd(const char* directoryPath) {
             entry = dir.openNextFile();
         }
         dir.close();
-        sd.end();
         currentDirectory = directoryPath;
         return true;
     } else {
         dir.close();
-        sd.end();
         return false;
     }
 }
@@ -88,6 +84,5 @@ bool FileSystem::read(const char* filePath, FileReader* fileReader) {
     fileReader->read(file);
 
     file.close();
-    sd.end();
     return true;
 }
