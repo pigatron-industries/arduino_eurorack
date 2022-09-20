@@ -10,8 +10,9 @@ class AbstractController {
         virtual void save() {};
         virtual void init() {};
         virtual void update() {};
-        int cycleMode(int amount) { mode.cycle(amount); return mode.value; }
-        void setMode(int value) { mode.setValue(value); }
+        virtual int cycleMode(int amount) { mode.cycle(amount); return mode.value; }
+        virtual void cycleValue(int amount) { mode.cycle(amount); init(); }
+        virtual void setMode(int value) { mode.setValue(value); }
     
     protected: 
         CycleEnum<int> mode;
