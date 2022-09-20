@@ -10,6 +10,7 @@ class ClockDivider {
         void setDivisor(int divisor) { this->divisor = divisor; }
         void setOffset(int offset) { this->offset = offset; }
 
+        bool getTrigger();
         bool getAndResetTrigger();
 
     private:
@@ -42,6 +43,10 @@ inline bool ClockDivider::tick() {
 
 inline void ClockDivider::reset() {
     counter = -1 + offset;
+}
+
+inline bool ClockDivider::getTrigger() {
+    return triggered;
 }
 
 inline bool ClockDivider::getAndResetTrigger() {
