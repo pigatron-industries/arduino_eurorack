@@ -51,6 +51,9 @@ void AbstractMainController<B, Ts...>::init() {
     Config::config.load(configMode);
     controllers.select(configMode.data.controllerIndex);
     controllers.getSelected()->setMode(configMode.data.controllerMode);
+    for(B* controller : controllers.getItems()) {
+        controller->load();
+    }
     controllerInit();
 }
 

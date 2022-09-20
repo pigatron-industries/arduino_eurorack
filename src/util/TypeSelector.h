@@ -30,6 +30,7 @@ class ArraySelector {
         const T& operator[](int i) const { return items[i]; }
         T& getSelected() { return items[selectedIndex]; }
         size_t getSelectedIndex() { return selectedIndex; }
+        Array<T, N>& getItems() { return items; }
 
         T& select(size_t i) { 
             if(i < N) {
