@@ -2,6 +2,7 @@
 #define Eurorack_h
 
 #include <Wire.h>
+#include <SPI.h>
 
 #include "debug/Profiler.h"
 
