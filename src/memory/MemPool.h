@@ -4,10 +4,11 @@
 #include <stddef.h>
 #include <Arduino.h>
 
-template <class T = char>
+template <class T = unsigned char>
 class MemPool {
     public:
         MemPool(T* poolMem, size_t poolSize) : poolMem(poolMem), poolSize(poolSize) {}
+        MemPool(size_t poolSize) : poolSize(poolSize) { poolMem = new T[poolSize]; }
         T* allocate(size_t size);
         void reset();
     private:
