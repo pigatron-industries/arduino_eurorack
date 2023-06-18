@@ -19,7 +19,7 @@ bool BufferFileReader::read(FsFile& file) {
 
 void BufferFileReader::allocate(size_t size) {
     if(memPool == nullptr) {
-        buffer = new char[size];
+        buffer = new unsigned char[size];
     } else {
         buffer = memPool->allocate(size);
     }

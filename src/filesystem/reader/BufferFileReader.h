@@ -11,11 +11,11 @@ class BufferFileReader : public FileReader {
         BufferFileReader(MemPool<>& memPool);
         bool read(FsFile& file);
 
-        char* getBuffer() { return buffer; }
+        unsigned char* getBuffer() { return buffer; }
         size_t getSize() { return size; }
 
     protected:
-        char* buffer;
+        unsigned char* buffer;
         size_t size;
 
         MemPool<>* memPool;
