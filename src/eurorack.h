@@ -39,7 +39,8 @@
 #include "io/digitalinputs/TriggerInput.h"
 #include "io/digitaloutputs/TriggerOutput.h"
 
-#include "controller/AbstractMainController.h"
+#include "controller/SingleEncoderController.h"
+#include "controller/DoubleEncoderController.h"
 #include "controller/AbstractController.h"
 
 #include "eeprom/Config.h"

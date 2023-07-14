@@ -1,7 +1,8 @@
-#ifndef AbstractMainController_h
-#define AbstractMainController_h
+#ifndef SingleEncoderController_h
+#define SingleEncoderController_h
 
-#include "../eeprom/Config.h"
+#include "eeprom/Config.h"
+#include "hardware/RotaryEncoderButton.h"
 
 class ModeConfig {
     public:
@@ -9,10 +10,12 @@ class ModeConfig {
         uint8_t controllerMode;
 };
 
+#define AbstractMainController SingleEncoderController
+
 template <class B, class... Ts>
-class AbstractMainController {
+class SingleEncoderController {
     public:
-        AbstractMainController(RotaryEncoderButton& rotaryEncoderButton) : 
+        SingleEncoderController(RotaryEncoderButton& rotaryEncoderButton) : 
             encoder(rotaryEncoderButton) {}
 
         void init();
@@ -25,11 +28,11 @@ class AbstractMainController {
 
         ConfigField<ModeConfig> configMode;
 
-        void (AbstractMainController<B, Ts...>::*heldClockWise)() = &AbstractMainController::incrementController;
-        void (AbstractMainController<B, Ts...>::*heldAntiClockWise)() = &AbstractMainController::decrementController;
-        void (AbstractMainController<B, Ts...>::*clockWise)() = &AbstractMainController::incrementMode;
-        void (AbstractMainController<B, Ts...>::*antiClockWise)() = &AbstractMainController::decrementMode;
-        void (AbstractMainController<B, Ts...>::*shortPress)() = &AbstractMainController::controllerInit;
+        void (SingleEncoderController<B, Ts...>::*heldClockWise)() = &SingleEncoderController::incrementController;
+        void (SingleEncoderController<B, Ts...>::*heldAntiClockWise)() = &SingleEncoderController::decrementController;
+        void (SingleEncoderController<B, Ts...>::*clockWise)() = &SingleEncoderController::incrementMode;
+        void (SingleEncoderController<B, Ts...>::*antiClockWise)() = &SingleEncoderController::decrementMode;
+        void (SingleEncoderController<B, Ts...>::*shortPress)() = &SingleEncoderController::controllerInit;
         bool initOnModeSelect = true;
 
         virtual void controllerInit();
@@ -47,7 +50,7 @@ class AbstractMainController {
 
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::init() {
+void SingleEncoderController<B, Ts...>::init() {
     Config::config.load(configMode);
     controllers.select(configMode.data.controllerIndex);
     controllers.getSelected()->setMode(configMode.data.controllerMode);
@@ -58,37 +61,37 @@ void AbstractMainController<B, Ts...>::init() {
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::update() {
+void SingleEncoderController<B, Ts...>::update() {
     doEncoderEvent(encoder.getEncoderEvent());
     controllers.getSelected()->update();
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::controllerInit() {
+void SingleEncoderController<B, Ts...>::controllerInit() {
     saveMode();
     controllers.getSelected()->init();
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::saveMode() {
+void SingleEncoderController<B, Ts...>::saveMode() {
     configMode.data.controllerIndex = controllers.getSelectedIndex();
     Config::config.save(configMode);
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::incrementController() {
+void SingleEncoderController<B, Ts...>::incrementController() {
     controllers.increment();
     controllerInit();
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::decrementController() {
+void SingleEncoderController<B, Ts...>::decrementController() {
     controllers.decrement();
     controllerInit();
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::incrementMode() {
+void SingleEncoderController<B, Ts...>::incrementMode() {
     configMode.data.controllerMode = controllers.getSelected()->cycleMode(1);
     Serial.print("Mode: ");
     Serial.println(configMode.data.controllerMode);
@@ -100,7 +103,7 @@ void AbstractMainController<B, Ts...>::incrementMode() {
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::decrementMode() {
+void SingleEncoderController<B, Ts...>::decrementMode() {
     configMode.data.controllerMode = controllers.getSelected()->cycleMode(-1);
     Serial.print("Mode: ");
     Serial.println(configMode.data.controllerMode);
@@ -112,17 +115,17 @@ void AbstractMainController<B, Ts...>::decrementMode() {
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::incrementValue() {
+void SingleEncoderController<B, Ts...>::incrementValue() {
     controllers.getSelected()->cycleValue(1);
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::decrementValue() {
+void SingleEncoderController<B, Ts...>::decrementValue() {
     controllers.getSelected()->cycleValue(-1);
 }
 
 template <class B, class... Ts>
-void AbstractMainController<B, Ts...>::doEncoderEvent(RotaryEncoderButton::EncoderEvent event) {
+void SingleEncoderController<B, Ts...>::doEncoderEvent(RotaryEncoderButton::EncoderEvent event) {
     switch(event) {
         case RotaryEncoderButton::EncoderEvent::EVENT_CLOCKWISE:
             (this->*clockWise)();
