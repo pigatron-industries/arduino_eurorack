@@ -50,7 +50,6 @@ template <class B, class... Ts>
 void DoubleEncoderController<B, Ts...>::init() {
     Config::config.load(controllerConfig);
     controllers.select(controllerConfig.data.controllerIndex);
-    controllers.getSelected()->setMode(controllerConfig.data.parameterIndex);
     for(B* controller : controllers.getItems()) {
         controller->load();
     }
@@ -84,7 +83,7 @@ void DoubleEncoderController<B, Ts...>::changeController(int8_t direction) {
 
 template <class B, class... Ts>
 void DoubleEncoderController<B, Ts...>::changeParameter(int8_t direction) {
-    controllerConfig.data.parameterIndex = controllers.getSelected()->cycleMode(direction);
+    controllerConfig.data.parameterIndex = controllers.getSelected()->cycleParameter(direction);
     if(initOnModeSelect) {
         controllers.getSelected()->init();
     }

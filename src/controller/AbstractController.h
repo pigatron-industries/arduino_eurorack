@@ -18,4 +18,17 @@ class AbstractController {
         CycleEnum<int> mode;
 };
 
+class AbstractDoubleEncoderController {
+    public:
+        AbstractDoubleEncoderController() {}
+        virtual void load() {}
+        virtual void save() {}
+        virtual void init() {}
+        virtual void update() {}
+        virtual int cycleParameter(int amount) {}
+        virtual void cycleValue(int amount) {}
+    
+    protected: 
+};
+
 #endif
