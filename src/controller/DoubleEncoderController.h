@@ -3,12 +3,8 @@
 
 #include "eeprom/Config.h"
 #include "hardware/RotaryEncoderButton.h"
+#include "SingleEncoderController.h"
 
-class ControllerConfig {
-    public:
-        uint8_t controllerIndex;
-        uint8_t parameterIndex;
-};
 
 template <class B, class... Ts>
 class DoubleEncoderController {

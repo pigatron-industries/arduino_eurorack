@@ -42,6 +42,7 @@
 #include "controller/SingleEncoderController.h"
 #include "controller/DoubleEncoderController.h"
 #include "controller/AbstractController.h"
+#include "controller/AbstractParameterizedController.h"
 
 #include "eeprom/Config.h"
 
