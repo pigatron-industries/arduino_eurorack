@@ -5,7 +5,7 @@
 #include "AbstractController.h"
 
 template<int N>
-class AbstractParameterizedController : public AbstractController {
+class AbstractParameterizedController {
     public:
         AbstractParameterizedController() {}
         void configParam(uint8_t param, uint8_t defaultval, uint8_t maxval);
