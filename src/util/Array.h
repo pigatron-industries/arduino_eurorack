@@ -40,6 +40,7 @@ class Array {
         const T& operator[](int i) const { return items[i]; }
         
         int size() { return _size; }
+        bool isFull() { return _size == MAXSIZE; }
 
         int add(const T& item) {
             if(_size == MAXSIZE) {
@@ -48,6 +49,14 @@ class Array {
             }
             items[_size] = item;
             return _size++;
+        }
+
+        int remove(int index) {
+            for(int i = index; i < _size-1; i++) {
+                items[i] = items[i+1];
+            }
+            _size--;
+            return _size;
         }
 
         void clear() {
