@@ -20,11 +20,15 @@ class PushButton {
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
         bool heldFor(int duration) {
-            if (debounce.read()) {
+            if (!held()) {
                 latch = false;
                 return false;
             }
-            return held() && debounce.duration() >= duration && !latch;
+            if (held() && debounce.duration() >= duration && !latch) {
+                latch = true;
+                return true;
+            }
+            return false;
         }
 
         void waitForPressAndRelease() {
