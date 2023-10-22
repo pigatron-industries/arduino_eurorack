@@ -19,6 +19,14 @@ class PushButton {
         unsigned long duration() { return debounce.duration(); }
         unsigned long previousDuration() { return debounce.previousDuration(); }
 
+        bool heldFor(int duration) {
+            if (debounce.read()) {
+                latch = false;
+                return false;
+            }
+            return held() && debounce.duration() >= duration && !latch;
+        }
+
         void waitForPressAndRelease() {
             while(!held()) { update(); }
             while(held()) { update(); }
@@ -27,6 +35,7 @@ class PushButton {
     protected:
         DigitalInputPin<T>& input;
         Debounce debounce;
+        bool latch = false;
 
 };
 
