@@ -12,6 +12,7 @@ class AbstractController {
         virtual void update() {}
         virtual int cycleParameter(int amount) {}
         virtual void cycleValue(int amount) {}
+        virtual void selectValue() {}
 };
 
 

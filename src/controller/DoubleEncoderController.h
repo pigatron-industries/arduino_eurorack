@@ -29,6 +29,7 @@ class DoubleEncoderController {
         void (DoubleEncoderController<B, Ts...>::*encoder1Turn)(int8_t direction) = &DoubleEncoderController::changeParameter;
         void (DoubleEncoderController<B, Ts...>::*encoder1ShortPress)() = &DoubleEncoderController::controllerInit;
         void (DoubleEncoderController<B, Ts...>::*encoder2Turn)(int8_t direction) = &DoubleEncoderController::changeValue;
+        void (DoubleEncoderController<B, Ts...>::*encoder2ShortPress)() = &DoubleEncoderController::selectValue;
 
         bool initOnModeSelect = true;
 
@@ -39,6 +40,7 @@ class DoubleEncoderController {
         void changeController(int8_t direction);
         void changeParameter(int8_t direction);
         void changeValue(int8_t direction);
+        void selectValue();
 };
 
 
@@ -93,6 +95,11 @@ void DoubleEncoderController<B, Ts...>::changeValue(int8_t direction) {
 }
 
 template <class B, class... Ts>
+void DoubleEncoderController<B, Ts...>::selectValue() {
+    controllers.getSelected()->selectValue();
+}
+
+template <class B, class... Ts>
 void DoubleEncoderController<B, Ts...>::doEncoder1Event(RotaryEncoderButton::EncoderEvent event) {
     switch(event) {
         case RotaryEncoderButton::EncoderEvent::EVENT_CLOCKWISE:
@@ -123,6 +130,9 @@ void DoubleEncoderController<B, Ts...>::doEncoder2Event(RotaryEncoderButton::Enc
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_ANTICLOCKWISE:
             (this->*encoder2Turn)(-1);
+            break;
+        case RotaryEncoderButton::EncoderEvent::EVENT_SHORT_PRESS:
+            (this->*encoder2ShortPress)();
             break;
         case RotaryEncoderButton::EncoderEvent::EVENT_NONE:
             break;
