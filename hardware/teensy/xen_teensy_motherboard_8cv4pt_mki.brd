@@ -3760,15 +3760,11 @@ einem neuen Namen ab.</description>
 <wire x1="43.4975" y1="11.3275" x2="46.0375" y2="11.3275" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$3">
-<contactref element="R1" pad="2"/>
 <contactref element="C4" pad="2"/>
 <contactref element="IC1" pad="1"/>
 <contactref element="R3" pad="1"/>
-<wire x1="40.9575" y1="15.1375" x2="43.6245" y2="15.1375" width="0.3048" layer="1"/>
-<wire x1="43.6245" y1="15.1375" x2="44.85345" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="44.85345" y1="15.1375" x2="45.751475" y2="14.765525" width="0.3048" layer="1" curve="-45"/>
 <wire x1="45.751475" y1="14.765525" x2="46.6275" y2="13.8895" width="0.3048" layer="1"/>
-<wire x1="43.6245" y1="15.1375" x2="43.6245" y2="16.7005" width="0.3048" layer="1"/>
 <wire x1="43.6245" y1="16.7005" x2="43.4975" y2="16.8275" width="0.3048" layer="1"/>
 <via x="43.4975" y="16.8275" extent="1-16" drill="0.35"/>
 <wire x1="47.268415625" y1="9.854871875" x2="46.400528125" y2="9.854871875" width="0.3048" layer="16"/>
@@ -3782,11 +3778,15 @@ einem neuen Namen ab.</description>
 <wire x1="52.43564375" y1="13.97" x2="62.23" y2="13.97" width="0.3048" layer="16"/>
 <via x="62.23" y="13.97" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="13.97" x2="64.555" y2="13.97" width="0.3048" layer="1"/>
+<wire x1="43.6245" y1="16.7005" x2="44.85345" y2="15.1375" width="0" layer="19" extent="1-1"/>
+<wire x1="40.9575" y1="15.1375" x2="43.4975" y2="16.8275" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$4">
 <contactref element="R3" pad="2"/>
 <contactref element="CVO6" pad="1"/>
 <wire x1="68.58" y1="13.97" x2="66.255" y2="13.97" width="0.3048" layer="1"/>
+<contactref element="R1" pad="2"/>
+<wire x1="43.6245" y1="15.1375" x2="66.255" y2="13.97" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DAC1">
 <contactref element="IC11" pad="7"/>
@@ -3825,15 +3825,11 @@ einem neuen Namen ab.</description>
 <wire x1="53.6575" y1="11.3275" x2="56.1975" y2="11.3275" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$6">
-<contactref element="R4" pad="2"/>
 <contactref element="C5" pad="2"/>
 <contactref element="R6" pad="1"/>
 <contactref element="IC1" pad="7"/>
-<wire x1="53.6575" y1="15.1375" x2="56.1975" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="50.5275" y1="13.8895" x2="51.403525" y2="14.765525" width="0.3048" layer="1"/>
 <wire x1="51.403525" y1="14.765525" x2="52.30155" y2="15.1375" width="0.3048" layer="1" curve="-45"/>
-<wire x1="52.30155" y1="15.1375" x2="53.6575" y2="15.1375" width="0.3048" layer="1"/>
-<wire x1="53.6575" y1="15.1375" x2="53.6575" y2="16.8275" width="0.3048" layer="1"/>
 <via x="53.6575" y="16.8275" extent="1-16" drill="0.35"/>
 <wire x1="53.6575" y1="16.8275" x2="54.070125" y2="16.414875" width="0.3048" layer="16"/>
 <wire x1="54.070125" y1="16.414875" x2="54.96815" y2="16.0429" width="0.3048" layer="16" curve="45"/>
@@ -3841,11 +3837,15 @@ einem neuen Namen ab.</description>
 <wire x1="62.23" y1="16.51" x2="64.555" y2="16.51" width="0.3048" layer="1"/>
 <wire x1="61.102321875" y1="16.0429" x2="62.23" y2="16.51" width="0.3048" layer="16" curve="45"/>
 <wire x1="54.96815" y1="16.0429" x2="61.102321875" y2="16.0429" width="0.3048" layer="16"/>
+<wire x1="53.6575" y1="16.8275" x2="56.1975" y2="15.1375" width="0" layer="19" extent="1-1"/>
+<wire x1="52.30155" y1="15.1375" x2="53.6575" y2="16.8275" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$7">
 <contactref element="R6" pad="2"/>
 <contactref element="CVO7" pad="1"/>
 <wire x1="66.255" y1="16.51" x2="68.58" y2="16.51" width="0.3048" layer="1"/>
+<contactref element="R4" pad="2"/>
+<wire x1="53.6575" y1="15.1375" x2="66.255" y2="16.51" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$9">
 <contactref element="R10" pad="2"/>
@@ -3865,12 +3865,9 @@ einem neuen Namen ab.</description>
 <wire x1="56.1975" y1="22.01" x2="53.6575" y2="22.01" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$10">
-<contactref element="R9" pad="2"/>
 <contactref element="C8" pad="2"/>
 <contactref element="R14" pad="1"/>
 <contactref element="IC1" pad="8"/>
-<wire x1="53.6575" y1="18.5175" x2="56.1975" y2="18.5175" width="0.3048" layer="1"/>
-<wire x1="53.6575" y1="18.5175" x2="52.30155" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="52.30155" y1="18.5175" x2="51.403525" y2="18.889475" width="0.3048" layer="1" curve="-45"/>
 <wire x1="51.403525" y1="18.889475" x2="50.5275" y2="19.7655" width="0.3048" layer="1"/>
 <wire x1="56.1975" y1="18.5175" x2="56.1975" y2="16.8275" width="0.3048" layer="1"/>
@@ -3880,11 +3877,14 @@ einem neuen Namen ab.</description>
 <wire x1="58.94605" y1="19.05" x2="62.23" y2="19.05" width="0.3048" layer="16"/>
 <via x="62.23" y="19.05" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="19.05" x2="64.555" y2="19.05" width="0.3048" layer="1"/>
+<wire x1="52.30155" y1="18.5175" x2="56.1975" y2="18.5175" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$11">
 <contactref element="R14" pad="2"/>
 <contactref element="CVO8" pad="1"/>
 <wire x1="66.255" y1="19.05" x2="68.58" y2="19.05" width="0.3048" layer="1"/>
+<contactref element="R9" pad="2"/>
+<wire x1="53.6575" y1="18.5175" x2="66.255" y2="19.05" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$12">
 <contactref element="R17" pad="2"/>
@@ -3904,14 +3904,11 @@ einem neuen Namen ab.</description>
 <wire x1="43.4975" y1="22.01" x2="40.9575" y2="22.01" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$15">
-<contactref element="R16" pad="2"/>
 <contactref element="C9" pad="2"/>
 <contactref element="R18" pad="1"/>
 <contactref element="IC1" pad="14"/>
-<wire x1="40.9575" y1="18.5175" x2="43.4975" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="46.6275" y1="19.7655" x2="45.751475" y2="18.889475" width="0.3048" layer="1"/>
 <wire x1="45.751475" y1="18.889475" x2="44.85345" y2="18.5175" width="0.3048" layer="1" curve="-45"/>
-<wire x1="44.85345" y1="18.5175" x2="43.4975" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="40.9575" y1="18.5175" x2="40.9575" y2="16.8275" width="0.3048" layer="1"/>
 <via x="40.9575" y="16.8275" extent="1-16" drill="0.35"/>
 <wire x1="47.478840625" y1="9.346871875" x2="46.190103125" y2="9.346871875" width="0.3048" layer="16"/>
@@ -3927,11 +3924,14 @@ einem neuen Namen ab.</description>
 <wire x1="60.569975" y1="13.090025" x2="62.23" y2="11.43" width="0.3048" layer="16"/>
 <via x="62.23" y="11.43" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="11.43" x2="64.555" y2="11.43" width="0.3048" layer="1"/>
+<wire x1="40.9575" y1="18.5175" x2="44.85345" y2="18.5175" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$17">
 <contactref element="R18" pad="2"/>
 <contactref element="CVO5" pad="1"/>
 <wire x1="66.255" y1="11.43" x2="68.58" y2="11.43" width="0.3048" layer="1"/>
+<contactref element="R16" pad="2"/>
+<wire x1="43.4975" y1="18.5175" x2="66.255" y2="11.43" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$20">
 <contactref element="R20" pad="2"/>
@@ -3951,14 +3951,10 @@ einem neuen Namen ab.</description>
 <wire x1="26.035" y1="11.3275" x2="28.575" y2="11.3275" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$21">
-<contactref element="R19" pad="2"/>
 <contactref element="C12" pad="2"/>
 <contactref element="R38" pad="1"/>
 <contactref element="IC5" pad="1"/>
-<wire x1="26.035" y1="15.1375" x2="23.495" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="29.165" y1="13.8895" x2="27.917" y2="15.1375" width="0.3048" layer="1"/>
-<wire x1="27.917" y1="15.1375" x2="26.035" y2="15.1375" width="0.3048" layer="1"/>
-<wire x1="26.035" y1="15.5575" x2="26.035" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="26.035" y1="15.5575" x2="27.305" y2="16.8275" width="0.3048" layer="1"/>
 <via x="27.305" y="16.8275" extent="1-16" drill="0.35"/>
 <wire x1="27.305" y1="16.8275" x2="27.568025" y2="16.564475" width="0.3048" layer="16"/>
@@ -3987,11 +3983,15 @@ einem neuen Namen ab.</description>
 <wire x1="61.014475" y1="5.025525" x2="62.23" y2="3.81" width="0.3048" layer="16"/>
 <via x="62.23" y="3.81" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="3.81" x2="64.555" y2="3.81" width="0.3048" layer="1"/>
+<wire x1="27.305" y1="16.8275" x2="27.917" y2="15.1375" width="0" layer="19" extent="1-1"/>
+<wire x1="23.495" y1="15.1375" x2="26.035" y2="15.5575" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$25">
 <contactref element="R38" pad="2"/>
 <contactref element="CVO2" pad="1"/>
 <wire x1="68.58" y1="3.81" x2="66.255" y2="3.81" width="0.3048" layer="1"/>
+<contactref element="R19" pad="2"/>
+<wire x1="26.035" y1="15.1375" x2="66.255" y2="3.81" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$28">
 <contactref element="R40" pad="2"/>
@@ -4016,15 +4016,11 @@ einem neuen Namen ab.</description>
 <wire x1="36.195" y1="11.3275" x2="38.735" y2="11.3275" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$33">
-<contactref element="R39" pad="2"/>
 <contactref element="C13" pad="2"/>
 <contactref element="R41" pad="1"/>
 <contactref element="IC5" pad="7"/>
-<wire x1="38.735" y1="15.1375" x2="36.195" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="33.065" y1="13.8895" x2="33.941025" y2="14.765525" width="0.3048" layer="1"/>
 <wire x1="33.941025" y1="14.765525" x2="34.83905" y2="15.1375" width="0.3048" layer="1" curve="-45"/>
-<wire x1="34.83905" y1="15.1375" x2="36.195" y2="15.1375" width="0.3048" layer="1"/>
-<wire x1="36.195" y1="15.5575" x2="36.195" y2="15.1375" width="0.3048" layer="1"/>
 <wire x1="36.195" y1="15.5575" x2="34.925" y2="16.8275" width="0.3048" layer="1"/>
 <via x="34.925" y="16.8275" extent="1-16" drill="0.35"/>
 <wire x1="34.925" y1="16.8275" x2="37.410525" y2="14.341975" width="0.3048" layer="16"/>
@@ -4046,11 +4042,15 @@ einem neuen Namen ab.</description>
 <wire x1="61.1505" y1="8.574375" x2="61.1505" y2="7.95555" width="0.3048" layer="16"/>
 <wire x1="61.1505" y1="7.95555" x2="61.522475" y2="7.057525" width="0.3048" layer="16" curve="45"/>
 <wire x1="61.522475" y1="7.057525" x2="62.23" y2="6.35" width="0.3048" layer="16"/>
+<wire x1="36.195" y1="15.5575" x2="38.735" y2="15.1375" width="0" layer="19" extent="1-1"/>
+<wire x1="34.83905" y1="15.1375" x2="36.195" y2="15.5575" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$42">
 <contactref element="R41" pad="2"/>
 <contactref element="CVO3" pad="1"/>
 <wire x1="66.255" y1="6.35" x2="68.58" y2="6.35" width="0.3048" layer="1"/>
+<contactref element="R39" pad="2"/>
+<wire x1="36.195" y1="15.1375" x2="66.255" y2="6.35" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$43">
 <contactref element="R43" pad="2"/>
@@ -4072,12 +4072,9 @@ einem neuen Namen ab.</description>
 <wire x1="36.195" y1="22.01" x2="38.735" y2="22.01" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$44">
-<contactref element="R42" pad="2"/>
 <contactref element="C19" pad="2"/>
 <contactref element="R44" pad="1"/>
 <contactref element="IC5" pad="8"/>
-<wire x1="38.735" y1="18.5175" x2="36.195" y2="18.5175" width="0.3048" layer="1"/>
-<wire x1="36.195" y1="18.5175" x2="34.83905" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="34.83905" y1="18.5175" x2="33.941025" y2="18.889475" width="0.3048" layer="1" curve="-45"/>
 <wire x1="33.941025" y1="18.889475" x2="33.065" y2="19.7655" width="0.3048" layer="1"/>
 <wire x1="38.735" y1="18.5175" x2="38.438015625" y2="17.800515625" width="0.3048" layer="1" curve="-45"/>
@@ -4094,11 +4091,14 @@ einem neuen Namen ab.</description>
 <wire x1="58.537975" y1="12.582025" x2="62.23" y2="8.89" width="0.3048" layer="16"/>
 <via x="62.23" y="8.89" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="8.89" x2="64.555" y2="8.89" width="0.3048" layer="1"/>
+<wire x1="37.465" y1="16.8275" x2="34.83905" y2="18.5175" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$47">
 <contactref element="R44" pad="2"/>
 <contactref element="CVO4" pad="1"/>
 <wire x1="68.58" y1="8.89" x2="66.255" y2="8.89" width="0.3048" layer="1"/>
+<contactref element="R42" pad="2"/>
+<wire x1="36.195" y1="18.5175" x2="66.255" y2="8.89" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$48">
 <contactref element="R46" pad="2"/>
@@ -4118,14 +4118,11 @@ einem neuen Namen ab.</description>
 <wire x1="26.035" y1="22.01" x2="28.575" y2="22.01" width="0.3048" layer="1"/>
 </signal>
 <signal name="N$49">
-<contactref element="R45" pad="2"/>
 <contactref element="C22" pad="2"/>
 <contactref element="R47" pad="1"/>
 <contactref element="IC5" pad="14"/>
-<wire x1="26.035" y1="18.5175" x2="23.495" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="29.165" y1="19.7655" x2="28.288975" y2="18.889475" width="0.3048" layer="1"/>
 <wire x1="28.288975" y1="18.889475" x2="27.39095" y2="18.5175" width="0.3048" layer="1" curve="-45"/>
-<wire x1="27.39095" y1="18.5175" x2="26.035" y2="18.5175" width="0.3048" layer="1"/>
 <wire x1="23.495" y1="18.5175" x2="23.495" y2="18.0975" width="0.3048" layer="1"/>
 <wire x1="23.495" y1="18.0975" x2="24.765" y2="16.8275" width="0.3048" layer="1"/>
 <via x="24.765" y="16.8275" extent="1-16" drill="0.35"/>
@@ -4155,11 +4152,14 @@ einem neuen Namen ab.</description>
 <wire x1="60.229875" y1="3.270125" x2="59.8579" y2="4.16815" width="0.3048" layer="16" curve="-45"/>
 <via x="62.23" y="1.27" extent="1-16" drill="0.35"/>
 <wire x1="62.23" y1="1.27" x2="64.555" y2="1.27" width="0.3048" layer="1"/>
+<wire x1="24.765" y1="16.8275" x2="27.39095" y2="18.5175" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$50">
 <contactref element="R47" pad="2"/>
 <contactref element="CVO1" pad="1"/>
 <wire x1="68.58" y1="1.27" x2="66.255" y2="1.27" width="0.3048" layer="1"/>
+<contactref element="R45" pad="2"/>
+<wire x1="26.035" y1="18.5175" x2="66.255" y2="1.27" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="DAC3">
 <contactref element="IC11" pad="8"/>
