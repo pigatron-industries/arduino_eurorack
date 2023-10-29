@@ -13,6 +13,10 @@ class AnalogPinCalibration {
             increment = analogPin->getScale().convert(0) - analogPin->getScale().convert(1);
         }
 
+        AbstractAnalogPin* getPin() {
+            return analogPin;
+        }
+
         void offset(int amount) {
             analogPin->getCalibratedScale().offset(increment * amount);
         }
