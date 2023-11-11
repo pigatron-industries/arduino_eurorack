@@ -8,7 +8,7 @@ template<int N>
 class AbstractParameterizedController {
     public:
         AbstractParameterizedController() {}
-        void configParam(uint8_t param, uint8_t defaultval, uint8_t maxval);
+        void configParam(int param, int defaultval, int maxval);
         void load();
         void save();
         int cycleParameter(int amount);
@@ -19,16 +19,16 @@ class AbstractParameterizedController {
 
         struct SaveParameters {
             uint8_t check = 0;
-            uint8_t parameters[N];
+            int parameters[N];
         };
         ConfigField<SaveParameters> config;
 };
 
 
 template<int N>
-void AbstractParameterizedController<N>::configParam(uint8_t index, uint8_t defaultval, uint8_t maxval) {
+void AbstractParameterizedController<N>::configParam(int index, int defaultval, int maxval) {
     parameters[index].last = maxval;
-    if(config.data.check == 0 && parameters[index].value <= maxval) {
+    if(config.data.check == 0 && config.data.parameters[index] <= maxval) {
         parameters[index].value = config.data.parameters[index];
     } else {
         parameters[index].value = defaultval;
