@@ -1,8 +1,6 @@
 #ifndef AbstractController_h
 #define AbstractController_h
 
-#include "../util/CycleEnum.h"
-
 class AbstractController {
     public:
         AbstractController() {}

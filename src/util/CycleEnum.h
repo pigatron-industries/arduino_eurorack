@@ -38,6 +38,10 @@ class CycleEnum {
             return value;
         }
 
+        T getValue() {
+            return value;
+        }
+
         const T operator=(const T& other) {
             return setValue(other);
         }

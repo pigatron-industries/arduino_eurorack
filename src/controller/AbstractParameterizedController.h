@@ -3,19 +3,20 @@
 
 #include <inttypes.h>
 #include "AbstractController.h"
+#include "../util/CycleSelectEnum.h"
 
 template<int N>
 class AbstractParameterizedController {
     public:
         AbstractParameterizedController() {}
-        void configParam(int param, int defaultval, int maxval);
+        void configParam(int param, int defaultval, int maxval, bool autoSelect = true);
         void load();
         void save();
         int cycleParameter(int amount);
         void cycleValue(int amount);
 
     protected:
-        ArraySelector<CycleEnum<int>, N> parameters;
+        ArraySelector<CycleSelectEnum<int>, N> parameters;
 
         struct SaveParameters {
             uint8_t check = 0;
@@ -26,7 +27,8 @@ class AbstractParameterizedController {
 
 
 template<int N>
-void AbstractParameterizedController<N>::configParam(int index, int defaultval, int maxval) {
+void AbstractParameterizedController<N>::configParam(int index, int defaultval, int maxval, bool autoSelect = true) {
+    parameters[index].setAutoSelect(autoSelect);
     parameters[index].last = maxval;
     if(config.data.check == 0 && config.data.parameters[index] <= maxval) {
         parameters[index].value = config.data.parameters[index];
