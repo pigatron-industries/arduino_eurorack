@@ -2,6 +2,7 @@
 #define Triangle_h
 
 #include "../base/WaveShape.h"
+#include "../../util/mathutil.h"
 #include "math.h"
 
 namespace eurorack {
@@ -21,7 +22,7 @@ namespace eurorack {
     inline float Triangle::polyblep(float phase, float phaseIncrement) {
         float pb = 0;
         pb += polyblepTransient(phase, phaseIncrement);
-        pb -= polyblepTransient(fmodf(phase + 0.5f, 1.0f), phaseIncrement);
+        pb -= polyblepTransient(fastmod1f(phase + 0.5f), phaseIncrement);
         return pb;
     }
 

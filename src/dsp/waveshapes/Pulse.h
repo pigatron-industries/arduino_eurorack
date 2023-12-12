@@ -2,6 +2,7 @@
 #define Pulse_h
 
 #include "../base/WaveShape.h"
+#include "../../util/mathutil.h"
 #include "math.h"
 
 namespace eurorack {
@@ -23,7 +24,7 @@ namespace eurorack {
     inline float Pulse::polyblep(float phase, float phaseIncrement) {
         float pb = 0;
         pb += polyblepTransient(phase, phaseIncrement);
-        pb -= polyblepTransient(fmodf(phase + width, 1.0), phaseIncrement);
+        pb -= polyblepTransient(fastmod1f(phase + width), phaseIncrement);
         return pb;
     }
 
