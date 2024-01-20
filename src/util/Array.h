@@ -26,13 +26,18 @@ class Array {
 
         Array() {}
         Array(T& initItem, int size) {
-            for(int i = 0; i < size; i++) {
-                add(initItem);
-            }
+            init(initItem, size);
         }
         Array(std::initializer_list<T> list) {
             for(auto& item : list) {
                 add(item);
+            }
+        }
+
+        void init(T& initItem, int size) {
+            clear();
+            for(int i = 0; i < size; i++) {
+                add(initItem);
             }
         }
 

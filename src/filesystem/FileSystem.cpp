@@ -53,6 +53,8 @@ bool FileSystem::cd(const char* directoryPath) {
         return false;
     }
 
+    // TODO if directoryPath == currentDirectory do nothing
+
     FsFile dir = sd.open(String(rootDirectory) + directoryPath);
     if(dir.isDirectory()) {
         fileList.clear();
