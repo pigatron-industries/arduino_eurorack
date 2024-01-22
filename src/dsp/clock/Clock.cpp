@@ -1,7 +1,4 @@
 #include "Clock.h"
-#include <math.h>
-
-#define WAIT_TIME_MIN 0.2
 
 void Clock::init(float sampleRate) {
     this->sampleRate = sampleRate;
@@ -17,18 +14,14 @@ void Clock::reset() {
     phase = 0;
 }
 
-void Clock::externalTick() {
-    switch(state) {
-        case CLK_INTERNAL:
-            state = CLK_EXTERNAL_WAITING;
-            break;
-        case CLK_EXTERNAL_WAITING:
-            state = CLK_EXTERNAL;
-        case CLK_EXTERNAL:
-            externalTime = externalTimeCounter;
-            frequency = 1/externalTime;
-            externalWaitTime = fmaxf(externalTime*2, WAIT_TIME_MIN);
-            externalTicked = true;
+inline bool Clock::process() {
+    phase += phaseInc;
+    if(phase > phaseMax) {
+        phase -= phaseMax;
+        return true;
+    } else if (phase < 0.0f) {
+        phase += phaseMax;
+        return true;
     }
-    externalTimeCounter = 0;
+    return false;
 }
