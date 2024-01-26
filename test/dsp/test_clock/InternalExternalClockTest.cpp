@@ -110,4 +110,5 @@ void test_InternalExternalClock() {
     RUN_TEST(test_switchToExternal);
     RUN_TEST(test_externalClock);
     RUN_TEST(test_internalDivider);
+    RUN_TEST(test_externalDivider);
 }
