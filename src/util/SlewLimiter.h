@@ -1,7 +1,7 @@
 #ifndef SlewLimiter_h
 #define SlewLimiter_h
 
-#include "util.h"
+#include "mathutil.h"
 
 class SlewLimiter {
     public:
