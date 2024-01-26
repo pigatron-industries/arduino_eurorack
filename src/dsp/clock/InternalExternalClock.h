@@ -10,7 +10,7 @@ class InternalExternalClock : public Clock {
             CLK_INTERNAL, CLK_EXTERNAL_WAITING, CLK_EXTERNAL
         };
         enum MultiplierDivider {
-            CLK_MULTIPLIER, CL_DIVIDER
+            CLK_NONE, CLK_MULTIPLIER, CLK_DIVIDER
         };
 
         void externalTick();
@@ -32,7 +32,7 @@ class InternalExternalClock : public Clock {
         float externalWaitTime;
         float externalFrequency;
 
-        MultiplierDivider frequencyMultiplierDividerType = CLK_MULTIPLIER;
+        MultiplierDivider frequencyMultiplierDividerType = CLK_NONE;
         int frequencyMultiplierDivider = 1;
         ClockDivider clockDivider;
 };

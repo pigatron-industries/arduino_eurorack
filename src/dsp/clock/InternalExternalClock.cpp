@@ -7,9 +7,11 @@
 void InternalExternalClock::setFrequencyMultiplierDivider(MultiplierDivider type, int value) {
     frequencyMultiplierDividerType = type;
     frequencyMultiplierDivider = value;
+    clockDivider.setDivisor(value);
 }
 
 void InternalExternalClock::externalTick() {
+    externalTicked = true;
     switch(state) {
         case CLK_INTERNAL:
             state = CLK_EXTERNAL_WAITING;
@@ -20,21 +22,33 @@ void InternalExternalClock::externalTick() {
             externalTime = externalTimeCounter;
             frequency = 1/externalTime;
             externalWaitTime = fmaxf(externalTime*2, WAIT_TIME_MIN);
-            externalTicked = true;
     }
     externalTimeCounter = 0;
 }
 
 bool InternalExternalClock::process() {
+    bool tick = false;
     switch(state) {
         case CLK_EXTERNAL_WAITING:
             externalTimeCounter += sampleTime;
+            tick = externalTicked;
+            if(externalTicked) {
+                externalTicked = false;
+            }
+            processInternal();
+            break;
         case CLK_INTERNAL:
-            return processInternal();
+            tick = processInternal();
+            break;
         case CLK_EXTERNAL:
-            return processExternal();
+            tick = processExternal();
     }
-    return false;
+
+    if (frequencyMultiplierDividerType == CLK_DIVIDER && tick == true) {
+        return clockDivider.tick();
+    }
+
+    return tick;
 }
 
 bool InternalExternalClock::processInternal() {
@@ -48,6 +62,7 @@ bool InternalExternalClock::processExternal() {
         externalTicked = false;
         return true;
     } else {
+        // Switch back to internal after no external tick for time
         if(externalTimeCounter > externalWaitTime) {
             state = CLK_INTERNAL;
         }
