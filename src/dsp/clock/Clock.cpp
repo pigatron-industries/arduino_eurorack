@@ -14,7 +14,7 @@ void Clock::reset() {
     phase = 0;
 }
 
-inline bool Clock::process() {
+bool Clock::process() {
     phase += phaseInc;
     if(phase > phaseMax) {
         phase -= phaseMax;
