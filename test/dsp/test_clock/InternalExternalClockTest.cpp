@@ -59,9 +59,11 @@ void test_externalClock() {
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
     clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(2, clock.getFrequency());
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
     clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(2, clock.getFrequency());
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
 }
@@ -86,7 +88,7 @@ void test_internalDivider() {
 void test_externalDivider() {
     InternalExternalClock clock = InternalExternalClock();
     clock.init(4); // 4Hz sample rate
-    clock.setFrequency(8); // 8Hz frequency (ignored)
+    clock.setFrequency(0.1); // 0.1Hz frequency (ignored)
     clock.setFrequencyMultiplierDivider(InternalExternalClock::MultiplierDivider::CLK_DIVIDER, 2);
 
     // switch to 2Hz external clock
@@ -94,13 +96,66 @@ void test_externalDivider() {
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
     clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(2, clock.getFrequency());
     TEST_ASSERT_FALSE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
     clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(2, clock.getFrequency());
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
     clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(2, clock.getFrequency());
     TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+}
+
+void test_internalMultiplier() {
+    InternalExternalClock clock = InternalExternalClock();
+    clock.init(4); // 4Hz sample rate
+    clock.setFrequency(1); // 1Hz frequency
+    clock.setFrequencyMultiplierDivider(InternalExternalClock::MultiplierDivider::CLK_MULTIPLIER, 2);
+
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+}
+
+void test_externalMultiplier() {
+    InternalExternalClock clock = InternalExternalClock();
+    clock.init(4); // 4Hz sample rate
+    clock.setFrequency(0.1); // 0.1Hz frequency (ignored)
+    clock.setFrequencyMultiplierDivider(InternalExternalClock::MultiplierDivider::CLK_MULTIPLIER, 2);
+
+    // switch to 2Hz external clock
+    clock.externalTick();
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(1, clock.getFrequency());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(1, clock.getFrequency());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());  // if external tick is late wait for it
+    clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(0.8, clock.getFrequency());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
 }
 
@@ -111,4 +166,6 @@ void test_InternalExternalClock() {
     RUN_TEST(test_externalClock);
     RUN_TEST(test_internalDivider);
     RUN_TEST(test_externalDivider);
+    RUN_TEST(test_internalMultiplier);
+    RUN_TEST(test_externalMultiplier);
 }

@@ -14,8 +14,8 @@ class InternalExternalClock : public Clock {
         };
 
         void externalTick();
+        void setFrequency(float frequency);
         void setFrequencyMultiplierDivider(MultiplierDivider type, int value);
-        float getExternalFrequency() { return externalFrequency; }
         State getState() { return state; }
         bool process();
 
@@ -30,7 +30,6 @@ class InternalExternalClock : public Clock {
         float externalTimeCounter = 0;
         float externalTime = 0;
         float externalWaitTime;
-        float externalFrequency;
 
         MultiplierDivider frequencyMultiplierDividerType = CLK_NONE;
         int frequencyMultiplierDivider = 1;

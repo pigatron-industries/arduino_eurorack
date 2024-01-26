@@ -9,6 +9,9 @@ class Clock {
         float getFrequency() { return frequency; } 
         bool process();
 
+        float getPhaseIncrement() { return phaseInc; }
+        float getPhase() { return phase; }
+
     protected:
         void setPhaseMax(float phaseMax) { this->phaseMax = phaseMax; }
 
