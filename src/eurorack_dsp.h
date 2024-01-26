@@ -2,6 +2,7 @@
 #define EurorackDsp_h
 
 #include "dsp/clock/Clock.h"
+#include "dsp/clock/InternalExternalClock.h"
 #include "dsp/clock/ClockDivider.h"
 #include "dsp/clock/ClockGate.h"
 #include "dsp/envelope/Envelope.h"
