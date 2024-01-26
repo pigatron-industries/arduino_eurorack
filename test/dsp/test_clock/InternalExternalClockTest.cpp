@@ -157,6 +157,12 @@ void test_externalMultiplier() {
     TEST_ASSERT_FALSE(clock.process());
     TEST_ASSERT_TRUE(clock.process());
     TEST_ASSERT_FALSE(clock.process());
+    clock.externalTick();
+    TEST_ASSERT_EQUAL_FLOAT(1, clock.getFrequency());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
+    TEST_ASSERT_TRUE(clock.process());
+    TEST_ASSERT_FALSE(clock.process());
 }
 
 void test_InternalExternalClock() {

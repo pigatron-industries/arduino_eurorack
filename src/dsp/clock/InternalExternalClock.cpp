@@ -36,6 +36,7 @@ void InternalExternalClock::externalTick() {
             externalWaitTime = fmaxf(externalTime*2, WAIT_TIME_MIN);
     }
     externalTimeCounter = 0;
+    multiplierCounter = 0;
 }
 
 bool InternalExternalClock::process() {
@@ -70,6 +71,14 @@ bool InternalExternalClock::processInternal() {
 bool InternalExternalClock::processExternal() {
     bool tick = Clock::process();
     externalTimeCounter += sampleTime;
+
+    if(tick) {
+        multiplierCounter++;
+        if(frequencyMultiplierDividerType == MultiplierDivider::CLK_MULTIPLIER) {
+            tick = multiplierCounter < frequencyMultiplierDivider;
+        }
+    }
+
     if(externalTicked) {
         externalTicked = false;
         tick = true;
