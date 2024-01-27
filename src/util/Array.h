@@ -41,6 +41,12 @@ class Array {
             }
         }
 
+        setItems(T* itemsptr, int size) {
+            items = itemsptr;
+            _size = size;
+        }
+
+        T& get(int i) { return items[i]; }
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
         
