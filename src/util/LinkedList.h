@@ -26,7 +26,7 @@ template<typename T>
 class LinkedList {
 
     public:
-        LinkedList(MemPool<>& memPool);
+        LinkedList();
         LinkedList(int sizeIndex, T _t); //initiate list size and default value
         virtual ~LinkedList();
 
@@ -39,12 +39,12 @@ class LinkedList {
             Unlink and link the LinkedList correcly;
             Increment _size
         */
-        virtual T* add(int index, T);
+        virtual T* add(int index, T, MemPool<>* memPool = nullptr);
         /*
             Adds a T object in the end of the LinkedList;
             Increment _size;
         */
-        virtual T* add(T);
+        virtual T* add(T, MemPool<>* memPool = nullptr);
         /*
             Adds a T object in the start of the LinkedList;
             Increment _size;
@@ -112,7 +112,7 @@ class LinkedList {
 
 // Initialize LinkedList with false values
 template<typename T>
-LinkedList<T>::LinkedList(MemPool<>& memPool) : memPool(memPool) {
+LinkedList<T>::LinkedList() {
 	root=NULL;
 	last=NULL;
 	_size=0;
@@ -181,16 +181,15 @@ LinkedList<T>::LinkedList(int sizeIndex, T _t){
 }
 
 template<typename T>
-T* LinkedList<T>::add(int index, T _t){
-
+T* LinkedList<T>::add(int index, T _t, MemPool<>* memPool = nullptr){
 	if(index >= _size)
-		return add(_t);
+		return add(_t, memPool);
 
 	if(index == 0)
 		return unshift(_t);
 
-	ListNode<T> *tmp = new ListNode<T>(),
-				 *_prev = getNode(index-1);
+	ListNode<T> *tmp = allocateObject<ListNode<T>>(memPool);
+	ListNode<T> *_prev = getNode(index-1);
 	tmp->data = _t;
 	tmp->next = _prev->next;
 	_prev->next = tmp;
@@ -202,9 +201,8 @@ T* LinkedList<T>::add(int index, T _t){
 }
 
 template<typename T>
-T* LinkedList<T>::add(T _t){
-    ListNode<T>* mem = (ListNode<T>*)memPool.allocate(sizeof(ListNode<T>));
-    ListNode<T>* tmp = new(mem) ListNode<T>();
+T* LinkedList<T>::add(T _t, MemPool<>* memPool = nullptr){
+	ListNode<T>* tmp = allocateObject<ListNode<T>>(memPool);
 
 	tmp->data = _t;
 	tmp->next = NULL;

@@ -34,4 +34,17 @@ void MemPool<T>::reset() {
 }
 
 
+template <class T>
+T* allocateObject(MemPool<>* memPool = nullptr) {
+    T* obj = nullptr;
+    if(memPool == nullptr) {
+        obj = new T();
+    } else {
+        T* mem = (T*)memPool->allocate(sizeof(T));
+        obj = new(mem) T();
+    }
+    return obj;
+}
+
+
 #endif
