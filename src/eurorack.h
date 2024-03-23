@@ -12,6 +12,7 @@
 #include "util/CycleEnum.h"
 #include "util/SlewLimiter.h"
 #include "util/TypeSelector.h"
+#include "util/LinkedList.h"
 
 #include "memory/MemPool.h"
 #include "memory/ObjectManager.h"
