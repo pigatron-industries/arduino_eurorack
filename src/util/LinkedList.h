@@ -102,8 +102,6 @@ class LinkedList {
         // everytime the list suffer changes
         bool isCached;
 
-        MemPool<>& memPool;
-
         ListNode<T>* getNode(int index);
 
         ListNode<T>* findEndOfSortedString(ListNode<T> *p, int (*cmp)(T &, T &));
