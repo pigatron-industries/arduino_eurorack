@@ -15,7 +15,6 @@
 #include "util/LinkedList.h"
 
 #include "memory/MemPool.h"
-#include "memory/ObjectManager.h"
 
 #include "hardware/device/Device.h"
 #include "hardware/device/DevicePin.h"
