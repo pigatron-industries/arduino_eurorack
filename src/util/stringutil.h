@@ -59,10 +59,10 @@ inline const char* memmem(const char *haystack, size_t hlen, const char *needle,
 
     needle_first = *(unsigned char *)needle;
 
-    while (plen >= nlen && (p = memchr(p, needle_first, plen - nlen + 1)))
+    while (plen >= nlen && (p = (const char*)memchr(p, needle_first, plen - nlen + 1)))
     {
         if (!memcmp(p, needle, nlen))
-            return (void *)p;
+            return p;
 
         p++;
         plen = hlen - (p - haystack);

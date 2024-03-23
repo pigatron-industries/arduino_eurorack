@@ -179,7 +179,7 @@ LinkedList<T>::LinkedList(int sizeIndex, T _t){
 }
 
 template<typename T>
-T* LinkedList<T>::add(int index, T _t, MemPool<>* memPool = nullptr){
+T* LinkedList<T>::add(int index, T _t, MemPool<>* memPool){
 	if(index >= _size)
 		return add(_t, memPool);
 
@@ -199,7 +199,7 @@ T* LinkedList<T>::add(int index, T _t, MemPool<>* memPool = nullptr){
 }
 
 template<typename T>
-T* LinkedList<T>::add(T _t, MemPool<>* memPool = nullptr){
+T* LinkedList<T>::add(T _t, MemPool<>* memPool){
 	ListNode<T>* tmp = allocateObject<ListNode<T>>(memPool);
 
 	tmp->data = _t;

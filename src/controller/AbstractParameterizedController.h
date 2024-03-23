@@ -27,7 +27,7 @@ class AbstractParameterizedController {
 
 
 template<int N>
-void AbstractParameterizedController<N>::configParam(int index, int defaultval, int maxval, bool autoSelect = true) {
+void AbstractParameterizedController<N>::configParam(int index, int defaultval, int maxval, bool autoSelect) {
     parameters[index].setAutoSelect(autoSelect);
     parameters[index].last = maxval;
     if(config.data.check == 0 && config.data.parameters[index] <= maxval) {
