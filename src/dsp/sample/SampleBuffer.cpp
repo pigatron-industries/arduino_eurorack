@@ -3,21 +3,21 @@
 
 using namespace eurorack;
 
-void SampleBuffer::init(size_t bufferSize, MemPool<float>& memPool) { 
+void SampleBuffer::init(size_t bufferSize, MemPool<>& memPool) { 
     init(0, 0, bufferSize, memPool);
 }
 
-void SampleBuffer::init(float sampleRate, size_t bufferSize, MemPool<float>& memPool) {
+void SampleBuffer::init(float sampleRate, size_t bufferSize, MemPool<>& memPool) {
     init(sampleRate, 0, bufferSize, memPool);
 }
 
-void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool<float>& memPool) {
+void SampleBuffer::init(float sampleRate, float sampleFrequency, size_t bufferSize, MemPool<>& memPool) {
     this->bufferSize = bufferSize;
     this->sampleSize = bufferSize;
     this->sampleRate = sampleRate;
     this->sampleFrequency = sampleFrequency;
     this->playbackSampleRate = sampleRate;
-    buffer = memPool.allocate(bufferSize);
+    buffer = allocateBuffer<float>(bufferSize, &memPool);
     reset();
     clear();
     inited = true;

@@ -46,5 +46,17 @@ T* allocateObject(MemPool<>* memPool = nullptr) {
     return obj;
 }
 
+template <class T>
+T* allocateBuffer(size_t size, MemPool<>* memPool = nullptr) {
+    T* buffer = nullptr;
+    if(memPool == nullptr) {
+        buffer = new T[size]();
+    } else {
+        T* mem = (T*)memPool->allocate(size * sizeof(T));
+        buffer = new(mem) T[size]();
+    }
+    return buffer;
+}
+
 
 #endif

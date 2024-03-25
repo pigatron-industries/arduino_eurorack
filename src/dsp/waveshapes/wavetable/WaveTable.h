@@ -22,7 +22,7 @@ namespace eurorack {
     class WaveTable : public BaseWaveTable {
         public:
             WaveTable() {}
-            void init(MemPool<float>& memPool);
+            void init(MemPool<>& memPool);
             virtual float get(float phase);
 
             virtual size_t getTableSize() { return TABLES; }
@@ -50,7 +50,7 @@ namespace eurorack {
     SampleBuffer WaveTable<TABLES, SAMPLES>::tempBuffer;
 
     template<int TABLES, int SAMPLES>
-    void WaveTable<TABLES, SAMPLES>::init(MemPool<float>& memPool) {
+    void WaveTable<TABLES, SAMPLES>::init(MemPool<>& memPool) {
         if(!tempBuffer.isInited()) {
             tempBuffer.init(SAMPLES, memPool);
         }
