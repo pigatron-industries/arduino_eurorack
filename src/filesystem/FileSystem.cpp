@@ -31,6 +31,8 @@ bool FileSystem::begin() {
             Serial.print(F(",0X"));
             Serial.println(sd.sdErrorData(), HEX);
             sdio = true;
+        } else {
+            Serial.println("SPI SD card init success");
         }
     }
 
@@ -42,6 +44,8 @@ bool FileSystem::begin() {
             Serial.print(F(",0X"));
             Serial.println(sd.sdErrorData(), HEX);
             return false;
+        } else {
+            Serial.println("SDIO card init success");
         }
     }
 

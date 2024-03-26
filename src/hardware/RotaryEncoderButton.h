@@ -19,8 +19,8 @@ public:
         EVENT_HELD_ANTICLOCKWISE
     };
 
-    RotaryEncoderButton(uint8_t encoderPin1, uint8_t encoderPin2, uint8_t buttonPin) : 
-        encoder(encoderPin1, encoderPin2), 
+    RotaryEncoderButton(uint8_t encoderPin1, uint8_t encoderPin2, uint8_t buttonPin, bool useInterrupt = true) : 
+        encoder(encoderPin1, encoderPin2, useInterrupt), 
         encoderButtonPin(NativeDevice::instance, buttonPin), 
         encoderButton(encoderButtonPin) {}
 

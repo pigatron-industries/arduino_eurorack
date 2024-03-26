@@ -23,9 +23,12 @@
 class RotaryEncoder {
 
     public:
-        RotaryEncoder(uint8_t pin1, uint8_t pin2);
+        RotaryEncoder(uint8_t pin1, uint8_t pin2, bool useInterrupt = true);
 
         bool update() {
+            if (!useInterrupt) {
+                poll();
+            }
             movement = position;
             position = 0; 
             return movement != 0;
@@ -39,6 +42,8 @@ class RotaryEncoder {
         static RotaryEncoder* encoderPtrs[MAX_ENCODERS];
         static int encoderCount;
 
+        bool useInterrupt;
+
         long position = 0;
         long movement = 0;
 
@@ -47,6 +52,7 @@ class RotaryEncoder {
         unsigned char pin2;
 
         static void interrupt();
+        void poll();
         unsigned char process();
         
 };

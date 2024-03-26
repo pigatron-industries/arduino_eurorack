@@ -50,6 +50,9 @@ class ArraySelector {
         }
 
         T& cycle(int direction) {
+            if(N <= 1) {
+                return getSelected();
+            }
             if(direction > 0) {
                 return increment();
             } else if(direction < 0) {

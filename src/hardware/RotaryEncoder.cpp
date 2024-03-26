@@ -60,7 +60,7 @@ const unsigned char ttable[7][4] = {
 RotaryEncoder* RotaryEncoder::encoderPtrs[MAX_ENCODERS];
 int RotaryEncoder::encoderCount = 0;
 
-RotaryEncoder::RotaryEncoder(uint8_t pin1, uint8_t pin2) {
+RotaryEncoder::RotaryEncoder(uint8_t pin1, uint8_t pin2, bool useInterrupt) {
     encoderPtrs[encoderCount] = this;
     encoderCount++;
     this->pin1 = pin1;
@@ -75,19 +75,26 @@ RotaryEncoder::RotaryEncoder(uint8_t pin1, uint8_t pin2) {
 
     state = R_START;
 
-    attachInterrupt(pin1, RotaryEncoder::interrupt, CHANGE);
-    attachInterrupt(pin2, RotaryEncoder::interrupt, CHANGE);
+    this->useInterrupt = useInterrupt;
+    if(useInterrupt) {
+        attachInterrupt(pin1, RotaryEncoder::interrupt, CHANGE);
+        attachInterrupt(pin2, RotaryEncoder::interrupt, CHANGE);
+    }
 }
 
 void RotaryEncoder::interrupt() {
     for(int i = 0; i<encoderCount; i++) {
         RotaryEncoder* encoderPtr = encoderPtrs[i];
-        unsigned char result = encoderPtr->process();
-        if (result == DIR_CW) {
-            encoderPtr->position++;
-        } else if (result == DIR_CCW) {
-            encoderPtr->position--;
-        }
+        encoderPtr->poll();
+    }
+}
+
+void RotaryEncoder::poll() {
+    unsigned char result = this->process();
+    if (result == DIR_CW) {
+        this->position++;
+    } else if (result == DIR_CCW) {
+        this->position--;
     }
 }
 
