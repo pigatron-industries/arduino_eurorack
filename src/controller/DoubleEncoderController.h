@@ -36,7 +36,7 @@ class DoubleEncoderController {
         virtual void controllerInit();
         void doEncoder1Event(RotaryEncoderButton::EncoderEvent event);
         void doEncoder2Event(RotaryEncoderButton::EncoderEvent event);
-        void saveState();
+        virtual void saveState();
         void changeController(int8_t direction);
         void changeParameter(int8_t direction);
         void changeValue(int8_t direction);
@@ -86,7 +86,7 @@ void DoubleEncoderController<B, Ts...>::changeParameter(int8_t direction) {
         controllers.getSelected()->init();
     }
         
-    Config::config.save(controllerConfig);
+    this->saveState();
 }
 
 template <class B, class... Ts>
