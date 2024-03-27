@@ -7,6 +7,16 @@ inline bool beginsWith(const char* str, const char* beginning) {
     return strncmp(str, beginning, strlen(beginning)) == 0;
 }
 
+inline bool endsWith(const char* str, const char* ending) {
+    size_t strLength = strlen(str);
+    size_t endingLength = strlen(ending);
+    if (endingLength > strLength) {
+        return false;
+    }
+    const char* strEnd = str + strLength - endingLength;
+    return strcmp(strEnd, ending) == 0;
+}
+
 inline bool wildcardMatch(const char *wild, const char *string) {
     const char *cp = NULL, *mp = NULL;
 

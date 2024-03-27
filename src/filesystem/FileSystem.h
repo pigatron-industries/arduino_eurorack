@@ -4,6 +4,13 @@
 #include <SdFat.h>
 #include "FileInfo.h"
 #include "reader/FileReader.h"
+#include "util/Array.h"
+
+#define MAX_FILE_COUNT 255
+
+
+typedef Array<FileInfo, MAX_FILE_COUNT> FileList;
+
 
 class FileSystem {
     public:
@@ -13,6 +20,7 @@ class FileSystem {
 
         bool cd(const char* directoryPath);
         FileList& ls() { return fileList; }
+        FileList& ls(const char* extension);
         bool read(const char* filePath, FileReader* fileReader);
 
     private:
@@ -24,6 +32,7 @@ class FileSystem {
         const char* currentDirectory;
 
         FileList fileList;
+        FileList filteredFileList;
 
         bool begin();
 };

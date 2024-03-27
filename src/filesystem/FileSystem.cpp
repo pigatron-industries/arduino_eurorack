@@ -70,7 +70,7 @@ bool FileSystem::cd(const char* directoryPath) {
             if(!beginsWith(file.filename, "._")) {
                 String filepath = directoryPath + String(file.filename);
                 strcpy(file.filepath, filepath.c_str());
-                fileList.addFile(file);
+                fileList.add(file);
             }
             entry = dir.openNextFile();
         }
@@ -82,6 +82,18 @@ bool FileSystem::cd(const char* directoryPath) {
         return false;
     }
 }
+
+FileList& FileSystem::ls(const char* extension) {
+    filteredFileList.clear();
+    for(int i = 0; i < fileList.size(); i++) {
+        FileInfo& file = fileList.get(i);
+        if(endsWith(file.filename, extension)) {
+            filteredFileList.add(file);
+        }
+    }
+    return filteredFileList;
+}
+
 
 bool FileSystem::read(const char* filePath, FileReader* fileReader) {
     if(!begin()) {
