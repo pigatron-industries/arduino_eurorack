@@ -86,8 +86,14 @@ class AbstractAnalogPin {
 };
 
 
+class AbstractDigitalOutputPin: virtual public AbstractDigitalPin {
+    public:
+        virtual void digitalWrite(bool value) = 0;
+};
+
+
 template<class T = NativeDevice>
-class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
+class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigitalOutputPin {
     public:
         DigitalOutputPin(T& device, uint8_t pin) : DevicePin<T>(device, pin) {
             DevicePin<T>::setPinType(PinType::DIGITAL_OUTPUT);
@@ -102,8 +108,14 @@ class DigitalOutputPin: virtual public DevicePin<T>, virtual public AbstractDigi
 };
 
 
+class AbstractDigitalInputPin: virtual public AbstractDigitalPin {
+    public:
+        virtual bool digitalRead() = 0;
+};
+
+
 template<class T = NativeDevice>
-class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigitalPin {
+class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigitalInputPin {
     public:
         DigitalInputPin(T& device, uint8_t pin, bool pullup = false) : DevicePin<T>(device, pin) {
             if(pullup) {
@@ -128,8 +140,15 @@ class DigitalInputPin: virtual public DevicePin<T>, virtual public AbstractDigit
 };
 
 
+class AbstractAnalogOutputPin: virtual public AbstractAnalogPin {
+    public:
+        virtual void binaryWrite(uint16_t value) = 0;
+        virtual void analogWrite(float value) = 0;
+};
+
+
 template<class T = NativeDevice>
-class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalogPin {
+class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalogOutputPin {
     public:
         AnalogOutputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
@@ -155,8 +174,15 @@ class AnalogOutputPin: public DigitalOutputPin<T>, virtual public AbstractAnalog
 };
 
 
+class AbstractAnalogInputPin: virtual public AbstractAnalogPin {
+    public:
+        virtual float analogRead() = 0;
+        virtual uint16_t binaryRead() = 0;
+};
+
+
 template<class T = NativeDevice>
-class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogPin {
+class AnalogInputPin: public DigitalInputPin<T>, virtual public AbstractAnalogInputPin {
     public:
         AnalogInputPin(T& device, uint8_t pin, uint8_t bits = 12, float lowVoltage = 5, float highVoltage = -5) : 
             DevicePin<T>(device, pin),
