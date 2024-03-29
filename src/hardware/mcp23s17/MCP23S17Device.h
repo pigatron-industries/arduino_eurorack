@@ -42,12 +42,21 @@ class MCP23S17Device: public gpio_MCP23S17, public Device, public DigitalOutputD
 
 void MCP23S17Device::init() {
     uint16_t interruptPins = 0;
+    uint16_t pinModes = 0;
+    uint16_t pinPullups = 0;
     for(int i = 0; i < MCP23S17_PINCOUNT; i++) {
-        gpioPinMode(pins[i].getPin(), pins[i].getPinType() == PinType::DIGITAL_OUTPUT);
+        if(pins[i].getPinType() == PinType::DIGITAL_OUTPUT) {
+            pinModes |= (1 << pins[i].getPin());
+        }
+        if(pins[i].getPinType() == PinType::DIGITAL_INPUT_PULLUP) {
+            pinPullups |= (1 << pins[i].getPin());
+        }
         if(pins[i].getInterruptEnabled()) {
             interruptPins |= (1 << pins[i].getPin());
         }
     }
+    gpioPinMode(pinModes);
+    portPullup(pinPullups);
     gpioRegisterWriteWord(MCP23S17_GPINTEN, interruptPins);
 }
 
