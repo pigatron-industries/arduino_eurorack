@@ -53,7 +53,7 @@ T* allocateBuffer(size_t size, MemPool<>* memPool = nullptr) {
         buffer = new T[size]();
     } else {
         T* mem = (T*)memPool->allocate(size * sizeof(T));
-        buffer = new(mem) T[size]();
+        buffer = mem;
     }
     return buffer;
 }
