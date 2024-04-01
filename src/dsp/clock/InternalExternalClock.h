@@ -21,8 +21,8 @@ class InternalExternalClock : public Clock {
         bool process();
 
     protected:
-        bool processExternal();
-        bool processInternal();
+        virtual bool processExternal();
+        virtual bool processInternal();
 
     private:
         State state = CLK_INTERNAL;
