@@ -14,7 +14,7 @@ class IntegerInput : public LinearInput<T> {
                 this->maxValue = maxValue;
         }
 
-        void setRange(int min, float max) {
+        void setRange(int min, int max) {
             LinearInput<T>::setRange(float(min)-0.49, float(max)+0.49);
         }
 
