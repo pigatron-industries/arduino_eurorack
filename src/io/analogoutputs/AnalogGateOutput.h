@@ -18,6 +18,8 @@ class AnalogGateOutput {
             output.analogWrite(value ? gateVoltage : zeroVoltage);
         }
 
+        bool getGate() { return value; }
+
         void setZeroVoltage(float zeroVoltage) { 
             this->zeroVoltage = zeroVoltage;
             gate(value);
