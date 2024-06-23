@@ -24,7 +24,9 @@ class Array {
 
     public:
 
-        Array() {}
+        Array(int size = 0) { 
+            _size = size; 
+        }
         Array(T& initItem, int size) {
             init(initItem, size);
         }
@@ -41,7 +43,13 @@ class Array {
             }
         }
 
-        T& get(int i) { return items[i]; }
+        T& get(int i) { 
+            if (i >= 0) {
+                return items[i];
+            } else {
+                return items[_size + i];
+            }
+        }
         T& operator[](int i) { return items[i]; }
         const T& operator[](int i) const { return items[i]; }
         

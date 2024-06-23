@@ -10,6 +10,7 @@ class AbstractParameterizedController {
     public:
         AbstractParameterizedController() {}
         void configParam(int param, int defaultval, int maxval, bool autoSelect = true);
+        void getParameterValue(int index) { return parameters[index].value; }
         void load();
         void save();
         int cycleParameter(int amount);
