@@ -16,8 +16,7 @@
     ],
     "license": "Unlicense",
     "dependencies": {
-      "sumotoy/gpio_MCP23S17": "^0.9",
-      "greiman/SdFat": "^2.1.2"
+      "sumotoy/gpio_MCP23S17": "^0.9"
     },
     "frameworks": "arduino",
     "platforms": "*"
