@@ -6,6 +6,14 @@
 
 namespace eurorack {
 
+    /**
+     * Represents a buffer of stored samples.
+     * The buffer has a write head that moves through the buffer as samples are written.
+     * The sample size represents the point at which the buffer is considered full and the write head wraps around to the beginning.
+     * The buffer size can be larger than the sample size to allow the sample to be resized up to the buffer size.
+     * The sample can be read at any position but does not keep a track of the read head position. 
+     * SamplePlayer can be used for this and allows for multplie read heads to be used on the same sample buffer.
+     */
     class SampleBuffer
     {
         public:

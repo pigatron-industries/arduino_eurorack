@@ -11,6 +11,7 @@
 #include "dsp/oscillator/PhaseDistortionOscillator.h"
 #include "dsp/filter/StateVariableFilter.h"
 #include "dsp/sample/SampleBuffer.h"
+#include "dsp/sample/SamplePlayer.h"
 #include "dsp/sample/DelayLine.h"
 
 #include "dsp/distortionfunctions/TwoLineFunction.h"
