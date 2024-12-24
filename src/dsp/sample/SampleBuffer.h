@@ -29,6 +29,8 @@ namespace eurorack {
 
             size_t getSampleSize() { return sampleSize; }
             size_t getBufferSize() { return bufferSize; }
+            float getSampleRate() { return sampleRate; }
+            float getSampleFrequency() { return sampleFrequency; }
             void setSampleSize(size_t sampleSize);
 
             float& operator [] (size_t i) { return buffer[i]; }
@@ -54,7 +56,7 @@ namespace eurorack {
             bool bufferFull;
 
             float sampleRate;         // sample rate that the sample was recorded at
-            float sampleFrequency;    // actual frequency of waveform
+            float sampleFrequency;    // actual frequency of waveform when played back at recorded sample rate
             float playbackSampleRate; // sample rate of playback
 
             const float read(size_t position, float fraction) const;
