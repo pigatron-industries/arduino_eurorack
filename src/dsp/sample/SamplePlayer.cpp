@@ -4,7 +4,9 @@ using namespace eurorack;
 
 void SamplePlayer::init(float sampleRate) {
     this->sampleRate = sampleRate;
-    sample->setPlaybackSampleRate(sampleRate);
+    if (sample != nullptr) {
+        sample->setPlaybackSampleRate(sampleRate);
+    }
 }
 
 void SamplePlayer::setSample(SampleBuffer* sample) { 
