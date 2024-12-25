@@ -13,14 +13,13 @@ namespace eurorack {
 
             void setSample(SampleBuffer* sample);
             void setFrequency(float frequency);
+            void setLoop(boolean loop) { this->loop = loop; }
 
             void play();
             void pause();
             void stop();
 
             float process();
-
-            float readPointer = 0;
 
         private:
             SampleBuffer* sample = nullptr;
@@ -30,6 +29,7 @@ namespace eurorack {
             boolean loop = false;
             float readIncrement = 1.0;
             float frequency = 440;
+            float readPointer = 0;
 
             void calcReadIncrement();
     };
