@@ -27,3 +27,19 @@ void SamplePlayer::calcReadIncrement() {
         readIncrement = (frequency / originalFrequency) * (originalSampleRate / sampleRate);
     }
 }
+
+void SamplePlayer::play() {
+    if (sample != nullptr) {
+        playing = true;
+
+    }
+}
+
+void SamplePlayer::pause() {
+    playing = false;
+}
+
+void SamplePlayer::stop() {
+    playing = false;
+    readPointer = 0;
+}

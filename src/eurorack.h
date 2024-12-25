@@ -8,6 +8,7 @@
 
 #include "util/util.h"
 #include "util/stringutil.h"
+#include "util/pitchutil.h"
 #include "util/Array.h"
 #include "util/CycleEnum.h"
 #include "util/SlewLimiter.h"

@@ -14,13 +14,20 @@ namespace eurorack {
             void setSample(SampleBuffer* sample);
             void setFrequency(float frequency);
 
+            void play();
+            void pause();
+            void stop();
+
             float process();
+
+            float readPointer = 0;
 
         private:
             SampleBuffer* sample = nullptr;
             float sampleRate;
-
-            float readPointer = 0;
+            
+            boolean playing = false;
+            boolean loop = false;
             float readIncrement = 1.0;
             float frequency = 440;
 
@@ -29,11 +36,14 @@ namespace eurorack {
 
 
     inline float SamplePlayer::process() {
-        if (sample != nullptr) {
+        if(playing) {
             float output = sample->read(readPointer);
             readPointer += readIncrement;
             if (readPointer >= sample->getSampleSize()) {
                 readPointer = 0;
+                if(!loop) {
+                    playing = false;
+                }
             }
             return output;
         }
