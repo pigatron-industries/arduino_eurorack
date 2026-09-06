@@ -9,7 +9,7 @@ void SamplePlayer::init(float sampleRate) {
     }
 }
 
-void SamplePlayer::setSample(SampleBuffer* sample) { 
+void SamplePlayer::setSample(SampleBuffer<float>* sample) { 
     this->sample = sample; 
     sample->setPlaybackSampleRate(sampleRate);
     calcReadIncrement();

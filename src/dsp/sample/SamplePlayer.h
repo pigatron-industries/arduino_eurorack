@@ -11,7 +11,7 @@ namespace eurorack {
             SamplePlayer() {}
             void init(float sampleRate);
 
-            void setSample(SampleBuffer* sample);
+            void setSample(SampleBuffer<float>* sample);
             void setFrequency(float frequency);
             void setLoop(boolean loop) { this->loop = loop; }
 
@@ -22,7 +22,7 @@ namespace eurorack {
             float process();
 
         private:
-            SampleBuffer* sample = nullptr;
+            SampleBuffer<float>* sample = nullptr;
             float sampleRate;
             
             boolean playing = false;
