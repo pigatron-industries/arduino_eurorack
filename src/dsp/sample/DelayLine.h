@@ -7,7 +7,7 @@
 
 namespace eurorack {
 
-    class DelayLine : public SampleBuffer
+    class DelayLine : public SampleBuffer<float>
     {
         public:
             DelayLine() {}
@@ -27,7 +27,7 @@ namespace eurorack {
         if(pos < 0) {
             pos += bufferSize;
         }
-        return SampleBuffer::read(pos);
+        return SampleBuffer<float>::read(pos);
     }
 
 }
