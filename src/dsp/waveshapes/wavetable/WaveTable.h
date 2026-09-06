@@ -13,7 +13,7 @@ namespace eurorack {
         public:
             virtual size_t getTableSize() = 0;
             virtual size_t getSampleSize() = 0;
-            virtual SampleBuffer& getTempBuffer() = 0;
+            virtual SampleBuffer<float>& getTempBuffer() = 0;
             virtual void copyTempBufferToTable(int tableIndex) = 0;
             virtual float getTableFrequency(int tableIndex) = 0;
     };
@@ -31,11 +31,11 @@ namespace eurorack {
             virtual void setFrequency(float frequency);
             virtual float getTableFrequency(int tableIndex);
 
-            virtual SampleBuffer& getTempBuffer() { return tempBuffer; }
+            virtual SampleBuffer<float>& getTempBuffer() { return tempBuffer; }
             virtual void copyTempBufferToTable(int tableIndex);
 
         private:
-            SampleBuffer buffer[TABLES];
+            SampleBuffer<float> buffer[TABLES];
             float tableFrequency[TABLES];
             int tableIndex;
 
@@ -47,7 +47,7 @@ namespace eurorack {
 
 
     template<int TABLES, int SAMPLES>  
-    SampleBuffer WaveTable<TABLES, SAMPLES>::tempBuffer;
+    SampleBuffer<float> WaveTable<TABLES, SAMPLES>::tempBuffer;
 
     template<int TABLES, int SAMPLES>
     void WaveTable<TABLES, SAMPLES>::init(MemPool<>& memPool) {
