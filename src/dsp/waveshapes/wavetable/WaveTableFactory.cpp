@@ -8,7 +8,7 @@ float WaveTableFactory::SAMPLERATE = 48000;
 bool WaveTableFactory::addSine(BaseWaveTable* wavetable, float amplitude, int mult, float phaseShift) {
     float nyquist = SAMPLERATE * 0.5;
     size_t bufferSize = wavetable->getSampleSize();
-    SampleBuffer& tempBuffer = wavetable->getTempBuffer();
+    SampleBuffer<float>& tempBuffer = wavetable->getTempBuffer();
     bool added = false;
 
     // create sine in temp buffer
