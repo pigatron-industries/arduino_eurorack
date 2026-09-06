@@ -14,6 +14,7 @@ namespace eurorack {
      * The sample can be read at any position but does not keep a track of the read head position. 
      * SamplePlayer can be used for this and allows for multplie read heads to be used on the same sample buffer.
      */
+    template <typename T = float>
     class SampleBuffer
     {
         public:
@@ -49,7 +50,7 @@ namespace eurorack {
             bool inited;
             size_t bufferSize;        // size of buffer
             size_t sampleSize;        // size of the sample within the buffer
-            float* buffer;
+            T* buffer;
             
             size_t writePointer;
             bool sampleFull;
@@ -61,51 +62,7 @@ namespace eurorack {
 
             const float read(size_t position, float fraction) const;
     };
-
-
-    inline bool SampleBuffer::write(const float sample) {
-        buffer[writePointer] = sample;
-        writePointer++;
-        if(!sampleFull && writePointer >= sampleSize) {
-            sampleFull = true;
-        }
-        if(writePointer >= bufferSize) {
-            bufferFull = true;
-            writePointer = 0;
-        }
-        return sampleFull;
-    }
-
-    inline bool SampleBuffer::mix(const float sample) {
-        buffer[writePointer] += sample;
-        writePointer++;
-        if(!sampleFull && writePointer >= sampleSize) {
-            sampleFull = true;
-        }
-        if(writePointer >= bufferSize) {
-            bufferFull = true;
-            writePointer = 0;
-        }
-        return sampleFull;
-    }
-
-    inline const float SampleBuffer::read(int position) const {
-        return buffer[position];
-    }
-
-    inline const float SampleBuffer::read(float position) const {
-        int32_t intPosition = static_cast<int32_t>(position);
-        float fracPosition = position - static_cast<float>(intPosition);
-        intPosition = static_cast<size_t>(intPosition) < bufferSize ? intPosition : bufferSize - 1;
-        return read(intPosition, fracPosition);
-    }
-
-    inline const float SampleBuffer::read(size_t intPosition, float fracPosition) const {
-        float a = buffer[intPosition % bufferSize];
-        float b = buffer[(intPosition + 1) % bufferSize];
-        return a + (b - a) * fracPosition;
-    }
-    
 }
 
+#include "SampleBufferImpl.h"
 #endif
